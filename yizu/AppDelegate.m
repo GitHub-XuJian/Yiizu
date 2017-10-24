@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "SFRootVC.h"
+#import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // 键盘自动升起
+    [IQKeyboardManager sharedManager].enable = YES;
+    
     // 1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 2.设置窗口的跟控制器

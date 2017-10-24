@@ -24,12 +24,6 @@
                                                          action:@selector(leftItemAction:)];
     self.navigationItem.leftBarButtonItem = item;
     
-    
-    [XAFNetWork GET:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
-    } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
 }
 - (void)leftItemAction:(UIBarButtonItem *)sender {
     YTBarButtonItemSelecteView *selecteView = [[YTBarButtonItemSelecteView alloc] initWithView:self.navigationController.view];
