@@ -22,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 1.首页
-    HomeViewController *homeVC = [[HomeViewController alloc] init]; 
+    UIStoryboard* sb=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
+    UIViewController* homeVC=[sb instantiateInitialViewController];
     [self addChildVC:homeVC title:@"首页" image:@"UnHome" selectedImage:@"Home"];
     // 4.活动
     ActivityViewController *activityVC = [[ActivityViewController alloc] init];
