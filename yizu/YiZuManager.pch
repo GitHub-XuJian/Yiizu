@@ -1,0 +1,18 @@
+//
+//  ContactsManagerPch.pch
+//  ContactsManager
+//
+//  Created by 徐健 on 2016/12/20.
+//  Copyright © 2016年 徐健. All rights reserved.
+//
+
+#ifndef ContactsManagerPch_pch
+#define ContactsManagerPch_pch
+#import "CustomTabBarController.h"
+#import "CustomNavigationController.h"
+#import "MethodsValue.h"
+#import "UIView+Extension.h"
+#import "UIImage+Extension.h"
+#import "MJRefresh.h"           // 下拉刷新上拉加载
+#import "XAFNetWork.h"          // AF封装网络请求
+#endif
