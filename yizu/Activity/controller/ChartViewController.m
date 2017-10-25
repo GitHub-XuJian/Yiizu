@@ -1,28 +1,26 @@
 //
-//  MallViewController.m
+//  ChartViewController.m
 //  yizu
 //
-//  Created by 徐健 on 17/10/23.
+//  Created by 徐健 on 17/10/25.
 //  Copyright © 2017年 XuJian. All rights reserved.
 //
 
-#import "MallViewController.h"
+#import "ChartViewController.h"
 
-@interface MallViewController ()
+@interface ChartViewController ()
 
 @end
 
-@implementation MallViewController
+@implementation ChartViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 @end

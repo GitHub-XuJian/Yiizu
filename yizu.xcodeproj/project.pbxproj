@@ -112,6 +112,8 @@
 		AF8B6CF51FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CE31FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m */; };
 		AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CE51FA01A4A008DA068 /* UIImageView+WebCache.m */; };
 		AF8B6CF71FA01A4A008DA068 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CE71FA01A4A008DA068 /* UIView+WebCacheOperation.m */; };
+		AF8B6CFD1FA01D7A008DA068 /* EncapsulationMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */; };
+		AF8B6D001FA04424008DA068 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CFF1FA04424008DA068 /* ChartViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -348,6 +350,10 @@
 		AF8B6CE51FA01A4A008DA068 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CE61FA01A4A008DA068 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		AF8B6CE71FA01A4A008DA068 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		AF8B6CFB1FA01D7A008DA068 /* EncapsulationMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncapsulationMethod.h; sourceTree = "<group>"; };
+		AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncapsulationMethod.m; sourceTree = "<group>"; };
+		AF8B6CFE1FA04424008DA068 /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
+		AF8B6CFF1FA04424008DA068 /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -650,6 +656,8 @@
 			children = (
 				AF66AD491F9D82570079A2CF /* ActivityViewController.h */,
 				AF66AD4A1F9D82570079A2CF /* ActivityViewController.m */,
+				AF8B6CFE1FA04424008DA068 /* ChartViewController.h */,
+				AF8B6CFF1FA04424008DA068 /* ChartViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -671,6 +679,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AF8B6CFA1FA01D7A008DA068 /* CustomMethod */,
 				AF8B6CC61FA01A4A008DA068 /* SDWebImage */,
 				AF66AE501F9F1AB10079A2CF /* IQKeyboardManager */,
 				AF66ADC31F9DE1B50079A2CF /* MJRefresh */,
@@ -973,6 +982,15 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		AF8B6CFA1FA01D7A008DA068 /* CustomMethod */ = {
+			isa = PBXGroup;
+			children = (
+				AF8B6CFB1FA01D7A008DA068 /* EncapsulationMethod.h */,
+				AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */,
+			);
+			path = CustomMethod;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1111,6 +1129,7 @@
 				AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */,
 				AF66AE771F9F1AB10079A2CF /* IQUITextFieldView+Additions.m in Sources */,
 				AF66ADFD1F9DE1B60079A2CF /* MJRefreshGifHeader.m in Sources */,
+				AF8B6CFD1FA01D7A008DA068 /* EncapsulationMethod.m in Sources */,
 				AF66AE131F9EDE540079A2CF /* MembershipActivationCodeView.m in Sources */,
 				AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				AF66ADB41F9DDD250079A2CF /* UIButton+AFNetworking.m in Sources */,
@@ -1172,6 +1191,7 @@
 				AF66AD281F9D80410079A2CF /* SFRootVC.m in Sources */,
 				AF66ADF41F9DE1B60079A2CF /* MJRefreshComponent.m in Sources */,
 				AF66AE791F9F1AB10079A2CF /* IQUIViewController+Additions.m in Sources */,
+				AF8B6D001FA04424008DA068 /* ChartViewController.m in Sources */,
 				AF66AE811F9F1AB10079A2CF /* IQToolbar.m in Sources */,
 				AF66ADFC1F9DE1B60079A2CF /* MJRefreshBackStateFooter.m in Sources */,
 				AF8B6CF51FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m in Sources */,
