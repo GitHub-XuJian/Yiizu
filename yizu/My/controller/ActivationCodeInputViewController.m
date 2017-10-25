@@ -22,7 +22,7 @@
 }
 - (void)createViewUI
 {
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
