@@ -127,7 +127,6 @@
 		AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */; };
 		AFC62F2E1FA1B5D500A3F3F5 /* MCRadarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F241FA1B5D500A3F3F5 /* MCRadarChartView.m */; };
 		AFC62F2F1FA1B5D500A3F3F5 /* MCRadarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F261FA1B5D500A3F3F5 /* MCRadarLayer.m */; };
-		AFC62F331FA1B60F00A3F3F5 /* LRSChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F321FA1B60F00A3F3F5 /* LRSChartView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -394,8 +393,6 @@
 		AFC62F241FA1B5D500A3F3F5 /* MCRadarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRadarChartView.m; sourceTree = "<group>"; };
 		AFC62F251FA1B5D500A3F3F5 /* MCRadarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRadarLayer.h; sourceTree = "<group>"; };
 		AFC62F261FA1B5D500A3F3F5 /* MCRadarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRadarLayer.m; sourceTree = "<group>"; };
-		AFC62F311FA1B60F00A3F3F5 /* LRSChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRSChartView.h; sourceTree = "<group>"; };
-		AFC62F321FA1B60F00A3F3F5 /* LRSChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRSChartView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1045,7 +1042,6 @@
 		AFC62F071FA1B5A100A3F3F5 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				AFC62F301FA1B60F00A3F3F5 /* LRSChart */,
 				AFC62F141FA1B5D500A3F3F5 /* MCBarChart */,
 			);
 			path = Chart;
@@ -1074,15 +1070,6 @@
 				AFC62F261FA1B5D500A3F3F5 /* MCRadarLayer.m */,
 			);
 			path = MCBarChart;
-			sourceTree = "<group>";
-		};
-		AFC62F301FA1B60F00A3F3F5 /* LRSChart */ = {
-			isa = PBXGroup;
-			children = (
-				AFC62F311FA1B60F00A3F3F5 /* LRSChartView.h */,
-				AFC62F321FA1B60F00A3F3F5 /* LRSChartView.m */,
-			);
-			path = LRSChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1257,7 +1244,6 @@
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
 				AF66AD7A1F9DB5070079A2CF /* HelpCenterViewController.m in Sources */,
-				AFC62F331FA1B60F00A3F3F5 /* LRSChartView.m in Sources */,
 				AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */,
 				AF66AE7D1F9F1AB10079A2CF /* IQTextView.m in Sources */,
 				AFC62F2F1FA1B5D500A3F3F5 /* MCRadarLayer.m in Sources */,
