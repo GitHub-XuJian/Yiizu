@@ -14,6 +14,9 @@
 		1FE5356D1F9F2E7300713053 /* LoopImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535621F9F2E7300713053 /* LoopImageController.m */; };
 		1FE5356E1F9F2E7300713053 /* LoopImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535651F9F2E7300713053 /* LoopImageModel.m */; };
 		1FE5356F1F9F2E7300713053 /* LoopImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535681F9F2E7300713053 /* LoopImageCell.m */; };
+		AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */; };
+		AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D011FA1DF9500A1225F /* JXTAlertView.m */; };
+		AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */; };
 		AF66ACF31F9D7E540079A2CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66ACF21F9D7E540079A2CF /* main.m */; };
 		AF66ACF61F9D7E540079A2CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66ACF51F9D7E540079A2CF /* AppDelegate.m */; };
 		AF66ACFB1F9D7E550079A2CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF66ACF91F9D7E550079A2CF /* LaunchScreen.storyboard */; };
@@ -160,6 +163,13 @@
 		1FE535651F9F2E7300713053 /* LoopImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopImageModel.m; sourceTree = "<group>"; };
 		1FE535671F9F2E7300713053 /* LoopImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopImageCell.h; sourceTree = "<group>"; };
 		1FE535681F9F2E7300713053 /* LoopImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopImageCell.m; sourceTree = "<group>"; };
+		AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
+		AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
+		AF626D001FA1DF9500A1225F /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
+		AF626D011FA1DF9500A1225F /* JXTAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertView.m; sourceTree = "<group>"; };
+		AF626D021FA1DF9500A1225F /* JXTAlertManagerHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertManagerHeader.h; sourceTree = "<group>"; };
+		AF626D0B1FA2D1AB00A1225F /* XSaverTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XSaverTool.h; sourceTree = "<group>"; };
+		AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XSaverTool.m; sourceTree = "<group>"; };
 		AF66ACEE1F9D7E540079A2CF /* yizu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yizu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF66ACF21F9D7E540079A2CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AF66ACF41F9D7E540079A2CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -495,6 +505,67 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		AF626CFB1FA1DF9500A1225F /* JXTAlertManager */ = {
+			isa = PBXGroup;
+			children = (
+				AF626CFC1FA1DF9500A1225F /* AlertController */,
+				AF626CFF1FA1DF9500A1225F /* AlertView */,
+				AF626D021FA1DF9500A1225F /* JXTAlertManagerHeader.h */,
+			);
+			path = JXTAlertManager;
+			sourceTree = "<group>";
+		};
+		AF626CFC1FA1DF9500A1225F /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */,
+				AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
+		AF626CFF1FA1DF9500A1225F /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				AF626D001FA1DF9500A1225F /* JXTAlertView.h */,
+				AF626D011FA1DF9500A1225F /* JXTAlertView.m */,
+			);
+			path = AlertView;
+			sourceTree = "<group>";
+		};
+		AF626D071FA2D17E00A1225F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AF626D081FA2D17E00A1225F /* controller */,
+				AF626D091FA2D17E00A1225F /* model */,
+				AF626D0A1FA2D17E00A1225F /* view */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		AF626D081FA2D17E00A1225F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		AF626D091FA2D17E00A1225F /* model */ = {
+			isa = PBXGroup;
+			children = (
+				AF626D0B1FA2D1AB00A1225F /* XSaverTool.h */,
+				AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		AF626D0A1FA2D17E00A1225F /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		AF66ACE51F9D7E540079A2CF = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +589,7 @@
 		AF66ACF01F9D7E540079A2CF /* yizu */ = {
 			isa = PBXGroup;
 			children = (
+				AF626D071FA2D17E00A1225F /* Login */,
 				AF66AD551F9D90270079A2CF /* other */,
 				AF66AD451F9D823E0079A2CF /* Activity */,
 				AF66AD291F9D81D20079A2CF /* Home */,
@@ -718,6 +790,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AF626CFB1FA1DF9500A1225F /* JXTAlertManager */,
 				AFC62F071FA1B5A100A3F3F5 /* Chart */,
 				AF8B6CFA1FA01D7A008DA068 /* CustomMethod */,
 				AF8B6CC61FA01A4A008DA068 /* SDWebImage */,
@@ -1214,6 +1287,7 @@
 				AF66AE131F9EDE540079A2CF /* MembershipActivationCodeView.m in Sources */,
 				AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				AF66ADB41F9DDD250079A2CF /* UIButton+AFNetworking.m in Sources */,
+				AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */,
 				AF8B6CEE1FA01A4A008DA068 /* SDWebImageDownloaderOperation.m in Sources */,
 				AF66ADAD1F9DDD250079A2CF /* AFURLRequestSerialization.m in Sources */,
 				AF66AE161F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.m in Sources */,
@@ -1243,6 +1317,7 @@
 				AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
+				AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */,
 				AF66AD7A1F9DB5070079A2CF /* HelpCenterViewController.m in Sources */,
 				AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */,
 				AF66AE7D1F9F1AB10079A2CF /* IQTextView.m in Sources */,
@@ -1255,6 +1330,7 @@
 				AF66ADAB1F9DDD250079A2CF /* AFNetworkReachabilityManager.m in Sources */,
 				1FE5356E1F9F2E7300713053 /* LoopImageModel.m in Sources */,
 				AF66ADB01F9DDD250079A2CF /* AFAutoPurgingImageCache.m in Sources */,
+				AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */,
 				AF66AD831F9DB9D30079A2CF /* MyCollectionTableViewCell.m in Sources */,
 				AFC62F131FA1B5C600A3F3F5 /* UIView+Common.m in Sources */,
 				AF66AD601F9D947F0079A2CF /* MyHeaderVeiw.m in Sources */,
