@@ -25,6 +25,7 @@
  
     
     HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
+    aVC.cityId=self.cityID;
     UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
     [self presentViewController:nav animated:YES completion:nil];
     
@@ -61,6 +62,7 @@
     self.scrollView.delegate=self;
     self.pageCon.currentPage=0;
     
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
     [XAFNetWork GET:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Slideshow" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         self.loopArr =responseObject[@"list"];
@@ -69,6 +71,11 @@
                 NSLog(@"出错了");
     }];
  
+}
+- (void)massageCityId:(NSNotification *)notification
+{
+    NSLog(@"loopIma接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
+    self.cityID=notification.userInfo[@"cityId"];
 }
 - (void)updatePageControl:(UIScrollView*)srollView
 {

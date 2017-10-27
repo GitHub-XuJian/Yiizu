@@ -10,4 +10,7 @@
 
 @interface LoopImageViewController : UIViewController
 
+@property(nonatomic, copy)NSString* cityID;
+
+
 @end

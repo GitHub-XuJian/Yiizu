@@ -4,7 +4,7 @@
 //
 //  Created by myMac on 2017/10/23.
 //  Copyright © 2017年 XuJian. All rights reserved.
-//
+
 
 #import "HomeListCell.h"
 #import "HomeListModel.h"
@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *obtainedLab;
 //点赞数
 @property (weak, nonatomic) IBOutlet UILabel *upvoteLab;
+
+
 
 @end
 

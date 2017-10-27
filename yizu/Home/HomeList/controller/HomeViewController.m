@@ -11,9 +11,15 @@
 #import "XAFNetWork.h"
 #import "HomeCityBtnController.h"
 #import "HomeListModel.h"
+
+#import "LoopImageViewController.h"
+
 @interface HomeViewController ()<HomeCityBtnDelegate>
 @property(nonatomic, strong)NSArray* listArr;
 @property(nonatomic, strong)UIButton* navBtn;
+
+
+
 @end
 
 @implementation HomeViewController
@@ -33,15 +39,14 @@
     UIBarButtonItem* btn2=[[UIBarButtonItem alloc]initWithCustomView:btn];
     self.navigationItem.leftBarButtonItem=btn2;
     self.navBtn=btn;
-    
-    //http://123.207.158.228/yizu/index.php%20/Mobile/Index/index_area/data/%2073/area/845/page/1
-    http://123.207.158.228/yizu/index.php /Mobile/Index/index_area/data/ 73/area/845/page/1
-    [HomeListModel HomeListWithUrl:@"http://123.207.158.228/yizu/index.php%20/Mobile/Index/index_area/data/%2073/area/845/page/1" success:^(NSArray *array) {
+
+    [HomeListModel HomeListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/845/page/1" success:^(NSArray *array) {
         
         self.listArr=array;
     } error:^{
         
     }];
+    
 }
 
 - (void)navBtnAction
@@ -56,7 +61,17 @@
 #pragma mark- homeCityBtnDelegate
 -(void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url
 {
-  [self.navBtn setTitle:title forState:UIControlStateNormal];
+    [self.navBtn setTitle:title forState:UIControlStateNormal];
+    
+    NSDictionary *dict = @{@"name":title, @"cityId":url};
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"nameId" object:nil userInfo:dict];
+    
+    
+    //postNotificationName:之后的参数就是这个通知的名字，要和要和接收者中的名字一样，才能让接收者正确接收。
+    //object：接收对象
+    //userInfo: 携带的参数，在例子中我携带了一个字典，因为有时候我们要传递的参数不只是一个，所以把东西全部放在通知里面，在接收者中，根据字典里面的键来取出里面的值。
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -88,31 +103,6 @@
 }
 */
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 /*
 #pragma mark - Navigation

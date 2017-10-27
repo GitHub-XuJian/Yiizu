@@ -20,10 +20,12 @@
     [super viewDidLoad];
     self.navigationItem.title=@"选择区域";
     self.view.backgroundColor=[UIColor whiteColor];
-    
     self.arr=[[NSMutableArray alloc]init];
+    
+
+    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_district/data/%@",self.cityId];
     //qvyv
-        [XAFNetWork GET:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_district/data/73" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
           
             for (NSDictionary* dic in responseObject) {
                 AreaListModel* model=[[AreaListModel alloc]init];
@@ -36,6 +38,8 @@
     
         }];
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

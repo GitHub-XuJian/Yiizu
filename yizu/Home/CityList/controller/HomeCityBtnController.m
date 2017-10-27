@@ -40,7 +40,7 @@
     
     [CityListModel CityListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_city" success:^(NSArray *array) {
         self.cityArr=array;
-        NSLog(@"arr===%lu",(unsigned long)self.cityArr.count);
+       
     } error:^{
         NSLog(@"出错了");
     }];
