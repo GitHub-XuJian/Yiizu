@@ -10,7 +10,19 @@
 
 @interface HomeListModel : NSObject
 
+//shang hu name
+@property (nonatomic, copy) NSString* chambername;
+//yi shou
+@property (nonatomic, copy) NSString*   obtained;
 
-- (instancetype)ModelWithDict:(NSDictionary*)dic;
+@property (nonatomic, copy) NSString* image1;
+@property (nonatomic, copy) NSString* image2;
+@property (nonatomic, copy) NSString* image3;
+
++ (instancetype)ModelWithDict:(NSDictionary*)dic;
+
++(void)HomeListWithUrl:(NSString*)url success:(void(^)(NSArray* array))sBlock error:(void(^)())eBlock;
+
+
 
 @end
