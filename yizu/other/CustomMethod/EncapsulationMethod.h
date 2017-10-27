@@ -25,6 +25,11 @@
  */
 + (NSString *)arrayToJSONString:(NSArray *)array;
 /**
+ * 字典转json
+ */
++(NSString *)dictToJsonData:(NSDictionary *)dict;
+
+/**
  * 检查非法字符串
  */
 + (BOOL)JudgeTheillegalCharacter:(NSString *)content;

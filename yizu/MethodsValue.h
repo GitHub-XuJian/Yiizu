@@ -6,7 +6,6 @@
 //  Copyright © 2016年 XuJian. All rights reserved.
 //
 
-
 /***
  *  沙盒路径
  */
@@ -23,7 +22,7 @@
 /***
  *  服务器地址
  */
-#define Main_Server @"http://112.74.174.20/contactOne/"
+#define Main_Server @"http://123.207.158.228/yizu/index.php/"
 //#define Main_Server @"http://192.168.0.112:8080/contactOne/"
 
 //各种颜色宏定义
@@ -100,5 +99,23 @@
 #define KEYBOARD_HEIGHT 316
 #define KEYBOARDFiel_HEIGHT 256
 
-#define MoreSelectedTable_ID  @"akjsdlkasjdklajsdoiuhdohhfsdibciubgkjbdjkbad"
+/***
+ *  登陆数据存储Key
+ */
+#define EmailKey @"emailKey"
+#define Password  @"loginPassword"
+#define UserIDKey @"userIDKey"
+#define IsLogin @"isLogin"
+#define UserName @"userName"
+#define enterBackTime @"time"
+
+
+
+
+
+
+
+
+
+
 

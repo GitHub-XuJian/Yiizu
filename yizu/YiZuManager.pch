@@ -17,5 +17,6 @@
 #import "XAFNetWork.h"              // AF封装网络请求
 #import "UIImageView+WebCache.h"    // 加载网络图片
 #import "EncapsulationMethod.h"     // 自定义方法集合
-
+#import "JXTAlertManagerHeader.h"   // 弹框
+#import "XSaverTool.h"
 #endif
