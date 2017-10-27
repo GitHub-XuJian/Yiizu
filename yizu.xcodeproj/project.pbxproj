@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0292BD1FA2C89C00A75635 /* HomAreaBtnController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0292BC1FA2C89C00A75635 /* HomAreaBtnController.m */; };
+		1F0292C01FA2CEBC00A75635 /* AreaListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0292BF1FA2CEBC00A75635 /* AreaListModel.m */; };
+		1FE3B8AC1FA1771300E2E298 /* HomeCityBtnController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3B8AB1FA1771300E2E298 /* HomeCityBtnController.m */; };
+		1FE3B8B31FA181F200E2E298 /* CityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3B8B21FA181F200E2E298 /* CityListModel.m */; };
+		1FE3B8B61FA18EB300E2E298 /* CityListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3B8B51FA18EB200E2E298 /* CityListCell.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
 		1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355E1F9F2E7300713053 /* HomeListCell.m */; };
-		1FE5356D1F9F2E7300713053 /* LoopImageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535621F9F2E7300713053 /* LoopImageController.m */; };
-		1FE5356E1F9F2E7300713053 /* LoopImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535651F9F2E7300713053 /* LoopImageModel.m */; };
-		1FE5356F1F9F2E7300713053 /* LoopImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535681F9F2E7300713053 /* LoopImageCell.m */; };
+		1FF18C641FA01C02002B61BC /* LoopImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF18C631FA01C02002B61BC /* LoopImageViewController.m */; };
 		AF66ACF31F9D7E540079A2CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66ACF21F9D7E540079A2CF /* main.m */; };
 		AF66ACF61F9D7E540079A2CF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66ACF51F9D7E540079A2CF /* AppDelegate.m */; };
 		AF66ACFB1F9D7E550079A2CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF66ACF91F9D7E550079A2CF /* LaunchScreen.storyboard */; };
@@ -116,6 +119,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F0292BB1FA2C89C00A75635 /* HomAreaBtnController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomAreaBtnController.h; sourceTree = "<group>"; };
+		1F0292BC1FA2C89C00A75635 /* HomAreaBtnController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomAreaBtnController.m; sourceTree = "<group>"; };
+		1F0292BE1FA2CEBC00A75635 /* AreaListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AreaListModel.h; sourceTree = "<group>"; };
+		1F0292BF1FA2CEBC00A75635 /* AreaListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AreaListModel.m; sourceTree = "<group>"; };
+		1FE3B8AA1FA1771300E2E298 /* HomeCityBtnController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCityBtnController.h; sourceTree = "<group>"; };
+		1FE3B8AB1FA1771300E2E298 /* HomeCityBtnController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCityBtnController.m; sourceTree = "<group>"; };
+		1FE3B8B11FA181F200E2E298 /* CityListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityListModel.h; sourceTree = "<group>"; };
+		1FE3B8B21FA181F200E2E298 /* CityListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityListModel.m; sourceTree = "<group>"; };
+		1FE3B8B41FA18EB100E2E298 /* CityListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityListCell.h; sourceTree = "<group>"; };
+		1FE3B8B51FA18EB200E2E298 /* CityListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityListCell.m; sourceTree = "<group>"; };
 		1FE535561F9F2E7300713053 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1FE535571F9F2E7300713053 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		1FE535591F9F2E7300713053 /* HomeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListModel.h; sourceTree = "<group>"; };
@@ -123,12 +136,8 @@
 		1FE5355C1F9F2E7300713053 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1FE5355D1F9F2E7300713053 /* HomeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListCell.h; sourceTree = "<group>"; };
 		1FE5355E1F9F2E7300713053 /* HomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListCell.m; sourceTree = "<group>"; };
-		1FE535611F9F2E7300713053 /* LoopImageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopImageController.h; sourceTree = "<group>"; };
-		1FE535621F9F2E7300713053 /* LoopImageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopImageController.m; sourceTree = "<group>"; };
-		1FE535641F9F2E7300713053 /* LoopImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopImageModel.h; sourceTree = "<group>"; };
-		1FE535651F9F2E7300713053 /* LoopImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopImageModel.m; sourceTree = "<group>"; };
-		1FE535671F9F2E7300713053 /* LoopImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoopImageCell.h; sourceTree = "<group>"; };
-		1FE535681F9F2E7300713053 /* LoopImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoopImageCell.m; sourceTree = "<group>"; };
+		1FF18C621FA01C02002B61BC /* LoopImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoopImageViewController.h; sourceTree = "<group>"; };
+		1FF18C631FA01C02002B61BC /* LoopImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoopImageViewController.m; sourceTree = "<group>"; };
 		AF66ACEE1F9D7E540079A2CF /* yizu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yizu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF66ACF21F9D7E540079A2CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AF66ACF41F9D7E540079A2CF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -326,6 +335,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1FE3B8AD1FA180B900E2E298 /* CityList */ = {
+			isa = PBXGroup;
+			children = (
+				1FE3B8AF1FA181B600E2E298 /* model */,
+				1FE3B8B01FA181C200E2E298 /* view */,
+				1FE3B8AE1FA181A500E2E298 /* controller */,
+			);
+			path = CityList;
+			sourceTree = "<group>";
+		};
+		1FE3B8AE1FA181A500E2E298 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1FE3B8AA1FA1771300E2E298 /* HomeCityBtnController.h */,
+				1FE3B8AB1FA1771300E2E298 /* HomeCityBtnController.m */,
+				1F0292BB1FA2C89C00A75635 /* HomAreaBtnController.h */,
+				1F0292BC1FA2C89C00A75635 /* HomAreaBtnController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1FE3B8AF1FA181B600E2E298 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1FE3B8B11FA181F200E2E298 /* CityListModel.h */,
+				1FE3B8B21FA181F200E2E298 /* CityListModel.m */,
+				1F0292BE1FA2CEBC00A75635 /* AreaListModel.h */,
+				1F0292BF1FA2CEBC00A75635 /* AreaListModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		1FE3B8B01FA181C200E2E298 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1FE3B8B41FA18EB100E2E298 /* CityListCell.h */,
+				1FE3B8B51FA18EB200E2E298 /* CityListCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		1FE535541F9F2E7300713053 /* HomeList */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,8 +427,8 @@
 		1FE535601F9F2E7300713053 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				1FE535611F9F2E7300713053 /* LoopImageController.h */,
-				1FE535621F9F2E7300713053 /* LoopImageController.m */,
+				1FF18C621FA01C02002B61BC /* LoopImageViewController.h */,
+				1FF18C631FA01C02002B61BC /* LoopImageViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -386,8 +436,6 @@
 		1FE535631F9F2E7300713053 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				1FE535641F9F2E7300713053 /* LoopImageModel.h */,
-				1FE535651F9F2E7300713053 /* LoopImageModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -395,8 +443,6 @@
 		1FE535661F9F2E7300713053 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				1FE535671F9F2E7300713053 /* LoopImageCell.h */,
-				1FE535681F9F2E7300713053 /* LoopImageCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -484,6 +530,7 @@
 		AF66AD291F9D81D20079A2CF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1FE3B8AD1FA180B900E2E298 /* CityList */,
 				1FE535541F9F2E7300713053 /* HomeList */,
 				1FE5355F1F9F2E7300713053 /* LoopImage */,
 			);
@@ -549,10 +596,10 @@
 				AF66AD7B1F9DB51F0079A2CF /* AboutUsViewController.h */,
 				AF66AD7C1F9DB51F0079A2CF /* AboutUsViewController.m */,
 				AF66AD7E1F9DB5460079A2CF /* ContactUsViewController.h */,
-				AF66AD7F1F9DB5460079A2CF /* ContactUsViewController.m */,
 				AF66AE081F9EDC200079A2CF /* MembershipActivationCodeViewController.h */,
 				AF66AE091F9EDC200079A2CF /* MembershipActivationCodeViewController.m */,
 				AF66AE0B1F9EDD2F0079A2CF /* MembersPayViewController.h */,
+				AF66AD7F1F9DB5460079A2CF /* ContactUsViewController.m */,
 				AF66AE0C1F9EDD2F0079A2CF /* MembersPayViewController.m */,
 				AF66AE0E1F9EDD470079A2CF /* ActivationCodeInputViewController.h */,
 				AF66AE0F1F9EDD470079A2CF /* ActivationCodeInputViewController.m */,
@@ -1040,6 +1087,7 @@
 				AF66ADAF1F9DDD250079A2CF /* AFURLSessionManager.m in Sources */,
 				AF66AD501F9D84990079A2CF /* CustomNavigationController.m in Sources */,
 				AF66ACF31F9D7E540079A2CF /* main.m in Sources */,
+				1F0292C01FA2CEBC00A75635 /* AreaListModel.m in Sources */,
 				AF66AD271F9D80410079A2CF /* CustomTabBarController.m in Sources */,
 				AF66AE051F9DE1B60079A2CF /* UIView+MJExtension.m in Sources */,
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
@@ -1051,9 +1099,7 @@
 				AF66ADC11F9DDFB50079A2CF /* XAFNetWork.m in Sources */,
 				AF66AD771F9DB4F40079A2CF /* MyActivationCodeViewController.m in Sources */,
 				AF66AD591F9D90270079A2CF /* YTBarButtonItemSelecteView.m in Sources */,
-				1FE5356D1F9F2E7300713053 /* LoopImageController.m in Sources */,
 				AF66ADAB1F9DDD250079A2CF /* AFNetworkReachabilityManager.m in Sources */,
-				1FE5356E1F9F2E7300713053 /* LoopImageModel.m in Sources */,
 				AF66ADB01F9DDD250079A2CF /* AFAutoPurgingImageCache.m in Sources */,
 				AF66AD831F9DB9D30079A2CF /* MyCollectionTableViewCell.m in Sources */,
 				AF66AD601F9D947F0079A2CF /* MyHeaderVeiw.m in Sources */,
@@ -1062,6 +1108,7 @@
 				AF66ADB21F9DDD250079A2CF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AF66AE7E1F9F1AB10079A2CF /* IQBarButtonItem.m in Sources */,
 				AF66AE041F9DE1B60079A2CF /* UIScrollView+MJRefresh.m in Sources */,
+				1F0292BD1FA2C89C00A75635 /* HomAreaBtnController.m in Sources */,
 				AF66AE801F9F1AB10079A2CF /* IQTitleBarButtonItem.m in Sources */,
 				AF66ADAA1F9DDD250079A2CF /* AFHTTPSessionManager.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,
@@ -1074,12 +1121,13 @@
 				AF66ADF41F9DE1B60079A2CF /* MJRefreshComponent.m in Sources */,
 				AF66AE791F9F1AB10079A2CF /* IQUIViewController+Additions.m in Sources */,
 				AF66AE811F9F1AB10079A2CF /* IQToolbar.m in Sources */,
+				1FF18C641FA01C02002B61BC /* LoopImageViewController.m in Sources */,
 				AF66ADFC1F9DE1B60079A2CF /* MJRefreshBackStateFooter.m in Sources */,
 				AF66ADF51F9DE1B60079A2CF /* MJRefreshFooter.m in Sources */,
 				AF66AE761F9F1AB10079A2CF /* IQUIScrollView+Additions.m in Sources */,
 				AF66AE7B1F9F1AB10079A2CF /* IQKeyboardManager.m in Sources */,
+				1FE3B8AC1FA1771300E2E298 /* HomeCityBtnController.m in Sources */,
 				AF66AD741F9DB4D80079A2CF /* MyActivitiesViewController.m in Sources */,
-				1FE5356F1F9F2E7300713053 /* LoopImageCell.m in Sources */,
 				AF66AD6B1F9D99E60079A2CF /* UIView+Extension.m in Sources */,
 				AF66ADAC1F9DDD250079A2CF /* AFSecurityPolicy.m in Sources */,
 				AF66ADFE1F9DE1B60079A2CF /* MJRefreshNormalHeader.m in Sources */,
@@ -1089,6 +1137,7 @@
 				1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */,
 				AF66ADF71F9DE1B60079A2CF /* MJRefreshAutoGifFooter.m in Sources */,
 				AF66ADF31F9DE1B60079A2CF /* MJRefreshBackFooter.m in Sources */,
+				1FE3B8B31FA181F200E2E298 /* CityListModel.m in Sources */,
 				AF66AE101F9EDD470079A2CF /* ActivationCodeInputViewController.m in Sources */,
 				AF66AE7C1F9F1AB10079A2CF /* IQKeyboardReturnKeyHandler.m in Sources */,
 				AF66AE751F9F1AB10079A2CF /* IQNSArray+Sort.m in Sources */,
@@ -1099,6 +1148,7 @@
 				AF66ADAE1F9DDD250079A2CF /* AFURLResponseSerialization.m in Sources */,
 				AF66ADFF1F9DE1B60079A2CF /* MJRefreshStateHeader.m in Sources */,
 				AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */,
+				1FE3B8B61FA18EB300E2E298 /* CityListCell.m in Sources */,
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

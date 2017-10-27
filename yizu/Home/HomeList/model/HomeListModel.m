@@ -7,10 +7,11 @@
 //
 
 #import "HomeListModel.h"
+#import "XAFNetWork.h"
 
 @implementation HomeListModel
 
-- (instancetype)ModelWithDict:(NSDictionary *)dic
++(instancetype)ModelWithDict:(NSDictionary *)dic
 {
  
     HomeListModel* model=[HomeListModel new];
@@ -22,5 +23,25 @@
 }
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{}
+
++(void)HomeListWithUrl:(NSString *)url success:(void (^)(NSArray *))sBlock error:(void (^)())eBlock
+{
+    [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray* mArr=[NSMutableArray array];
+        NSArray* listArr=responseObject[@"list"];
+          NSLog(@"homeList==%@",listArr);
+        for (NSDictionary* dic in listArr) {
+            HomeListModel* model=[self ModelWithDict:dic];
+            [mArr addObject:model];
+        }
+        if (sBlock) {
+            sBlock(mArr.copy);
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+
 
 @end

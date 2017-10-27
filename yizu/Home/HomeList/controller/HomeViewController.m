@@ -8,39 +8,75 @@
 
 #import "HomeViewController.h"
 #import "HomeListCell.h"
-
-@interface HomeViewController ()
-
+#import "XAFNetWork.h"
+#import "HomeCityBtnController.h"
+#import "HomeListModel.h"
+@interface HomeViewController ()<HomeCityBtnDelegate>
+@property(nonatomic, strong)NSArray* listArr;
+@property(nonatomic, strong)UIButton* navBtn;
 @end
 
 @implementation HomeViewController
 
+- (void)setListArr:(NSArray *)listArr
+{
+    _listArr=listArr;
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title=@"依足";
+    UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
+    [btn setTitle:@"沈阳" forState:UIControlStateNormal];
+    [btn setFrame:CGRectMake(0, 0, 70, 60)];
+    [btn addTarget:self action:@selector(navBtnAction) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem* btn2=[[UIBarButtonItem alloc]initWithCustomView:btn];
+    self.navigationItem.leftBarButtonItem=btn2;
+    self.navBtn=btn;
+    
+    //http://123.207.158.228/yizu/index.php%20/Mobile/Index/index_area/data/%2073/area/845/page/1
+    http://123.207.158.228/yizu/index.php /Mobile/Index/index_area/data/ 73/area/845/page/1
+    [HomeListModel HomeListWithUrl:@"http://123.207.158.228/yizu/index.php%20/Mobile/Index/index_area/data/%2073/area/845/page/1" success:^(NSArray *array) {
+        
+        self.listArr=array;
+    } error:^{
+        
+    }];
 }
 
+- (void)navBtnAction
+{
+    HomeCityBtnController* hVC=[[HomeCityBtnController alloc]init];
+    hVC.delegate=self;
+    UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:hVC];
+    
+    [self presentViewController:nav animated:YES completion:nil];
+    
+}
+#pragma mark- homeCityBtnDelegate
+-(void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url
+{
+  [self.navBtn setTitle:title forState:UIControlStateNormal];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
-    return 10;
+    return self.listArr.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
-    
+    cell.model=self.listArr[indexPath.row];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    return 180;
 }
 
 /*
