@@ -67,6 +67,9 @@
     AreaListModel* model=self.arr[indexPath.row];
     
     cell.textLabel.text=model.name;
+  
+    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"AreaId" object:nil userInfo:dict];
     
     return cell;
 }

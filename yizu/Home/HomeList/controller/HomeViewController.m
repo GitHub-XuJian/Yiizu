@@ -11,14 +11,13 @@
 #import "XAFNetWork.h"
 #import "HomeCityBtnController.h"
 #import "HomeListModel.h"
-
 #import "LoopImageViewController.h"
 
 @interface HomeViewController ()<HomeCityBtnDelegate>
 @property(nonatomic, strong)NSArray* listArr;
 @property(nonatomic, strong)UIButton* navBtn;
-
-
+//用于保存首页拼接接口
+@property(nonatomic, copy)NSString* homeListCityId;
 
 @end
 
@@ -40,6 +39,9 @@
     self.navigationItem.leftBarButtonItem=btn2;
     self.navBtn=btn;
 
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
+    
+    //NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/%@/area/%@/page/%d"]
     [HomeListModel HomeListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/845/page/1" success:^(NSArray *array) {
         
         self.listArr=array;
@@ -48,7 +50,11 @@
     }];
     
 }
-
+- (void)massageCityId:(NSNotification *)notification
+{
+    NSLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
+   
+}
 - (void)navBtnAction
 {
     HomeCityBtnController* hVC=[[HomeCityBtnController alloc]init];
@@ -62,15 +68,11 @@
 -(void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url
 {
     [self.navBtn setTitle:title forState:UIControlStateNormal];
-    
+    self.homeListCityId=url;
     NSDictionary *dict = @{@"name":title, @"cityId":url};
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"nameId" object:nil userInfo:dict];
     
-    
-    //postNotificationName:之后的参数就是这个通知的名字，要和要和接收者中的名字一样，才能让接收者正确接收。
-    //object：接收对象
-    //userInfo: 携带的参数，在例子中我携带了一个字典，因为有时候我们要传递的参数不只是一个，所以把东西全部放在通知里面，在接收者中，根据字典里面的键来取出里面的值。
    
 }
 - (void)didReceiveMemoryWarning {

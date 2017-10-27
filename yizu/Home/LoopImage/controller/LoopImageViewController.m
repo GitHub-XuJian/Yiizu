@@ -72,6 +72,7 @@
     }];
  
 }
+#pragma mark-
 - (void)massageCityId:(NSNotification *)notification
 {
     NSLog(@"loopIma接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
