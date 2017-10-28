@@ -102,6 +102,8 @@
 		AF66AE811F9F1AB10079A2CF /* IQToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AE701F9F1AB10079A2CF /* IQToolbar.m */; };
 		AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AE721F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m */; };
 		AF66AE831F9F1AB10079A2CF /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF66AE741F9F1AB10079A2CF /* IQKeyboardManager.bundle */; };
+		AF6C464F1FA30E0900797125 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C464E1FA30E0900797125 /* LoginViewController.m */; };
+		AF6C465B1FA3187C00797125 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C465A1FA3187C00797125 /* LoginView.m */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -349,6 +351,10 @@
 		AF66AE711F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "IQUIView+IQKeyboardToolbar.h"; sourceTree = "<group>"; };
 		AF66AE721F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "IQUIView+IQKeyboardToolbar.m"; sourceTree = "<group>"; };
 		AF66AE741F9F1AB10079A2CF /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		AF6C464D1FA30E0900797125 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		AF6C464E1FA30E0900797125 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		AF6C46591FA3187C00797125 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		AF6C465A1FA3187C00797125 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -551,6 +557,8 @@
 		AF626D081FA2D17E00A1225F /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C464D1FA30E0900797125 /* LoginViewController.h */,
+				AF6C464E1FA30E0900797125 /* LoginViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -567,6 +575,8 @@
 		AF626D0A1FA2D17E00A1225F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C46591FA3187C00797125 /* LoginView.h */,
+				AF6C465A1FA3187C00797125 /* LoginView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1354,6 +1364,7 @@
 				AF66AE0A1F9EDC200079A2CF /* MembershipActivationCodeViewController.m in Sources */,
 				AF66ADAF1F9DDD250079A2CF /* AFURLSessionManager.m in Sources */,
 				AF66AD501F9D84990079A2CF /* CustomNavigationController.m in Sources */,
+				AF6C465B1FA3187C00797125 /* LoginView.m in Sources */,
 				AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */,
 				AF8B6CEC1FA01A4A008DA068 /* SDWebImageDecoder.m in Sources */,
 				AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */,
@@ -1431,6 +1442,7 @@
 				1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */,
 				AF66ADF71F9DE1B60079A2CF /* MJRefreshAutoGifFooter.m in Sources */,
 				AF66ADF31F9DE1B60079A2CF /* MJRefreshBackFooter.m in Sources */,
+				AF6C464F1FA30E0900797125 /* LoginViewController.m in Sources */,
 				AF66AE101F9EDD470079A2CF /* ActivationCodeInputViewController.m in Sources */,
 				AF626D251FA2D97D00A1225F /* CityListModel.m in Sources */,
 				AF66AE7C1F9F1AB10079A2CF /* IQKeyboardReturnKeyHandler.m in Sources */,

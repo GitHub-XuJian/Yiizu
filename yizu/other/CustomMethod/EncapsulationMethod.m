@@ -39,6 +39,18 @@
     return NO;
     
 }
+/***
+ *  返回当前视图控制器
+ */
++ (UIViewController *)viewController:(UIView *)view {
+    for (UIView* next = [view superview]; next; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)nextResponder;
+        }
+    }
+    return nil;
+}
 // View转image
 - (UIImage*) imageWithUIView:(UIView*) view
 {

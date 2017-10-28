@@ -11,7 +11,10 @@
 @interface EncapsulationMethod : NSObject
 
 +(EncapsulationMethod *)sharedManager;
-
+/**
+ *  返回当前视图控制器
+ */
++ (UIViewController *)viewController:(UIView *)view;
 /**
  * 根据字符内容计算宽度
  */

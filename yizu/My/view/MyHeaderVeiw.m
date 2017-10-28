@@ -7,6 +7,7 @@
 //
 
 #import "MyHeaderVeiw.h"
+#import "LoginViewController.h"
 
 @implementation MyHeaderVeiw
 
@@ -54,6 +55,15 @@
 }
 - (void)headPortraitBtnClick:(UIButton *)btn
 {
+    LoginViewController *loginViewC = [[LoginViewController alloc] init];
+    loginViewC.successfulBlock = ^{
+        
+    };
+    loginViewC.failedBlock = ^{
+        
+    };
+    [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
 
+//    [[EncapsulationMethod viewController:self].navigationController pushViewController:loginViewC animated:YES];
 }
 @end

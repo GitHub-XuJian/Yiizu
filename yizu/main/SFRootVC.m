@@ -10,7 +10,7 @@
 
 #import "SFRootVC.h"
 #import "CustomTabBarController.h"
-
+#import "LoginViewController.h"
 
 @interface SFRootVC()
 @end
@@ -24,17 +24,17 @@
         // 进入主框架
         rootVc = [[CustomTabBarController alloc] init];
 //    }else{
-        // 切换主界面
-        // 切换界面方式  1.push 2.tabBarVC  3.modale
-//        loginViewController * login = [[loginViewController alloc] init];
+////         切换主界面
+////         切换界面方式  1.push 2.tabBarVC  3.modale
+//        LoginViewController * login = [[LoginViewController alloc] init];
 //        login.successfulBlock = ^(){
 //            // 想让新特性界面销毁
 //            // 切换窗口的跟控制器
 //            CustomTabBarController *tabBarVC = [[CustomTabBarController alloc] init];
-//            SFKeyWindow.rootViewController =  tabBarVC;
+//            KeyWindow.rootViewController =  tabBarVC;
 //        };
 //        login.failedBlock = ^(){
-//            
+//
 //        };
 //        rootVc = login;
 //    }
