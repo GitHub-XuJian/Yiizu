@@ -35,8 +35,10 @@
     
    
     [self.collectionView registerClass:[CityListCell class] forCellWithReuseIdentifier:@"citycell"];
-    self.collectionView.backgroundColor=[UIColor whiteColor];
-    
+    #define DGBColorA(r,g,b,a) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:(a)]
+    self.collectionView.backgroundColor = DGBColorA(245, 245, 245, 1);
+    //垂直方向反弹是否有效要开启弹簧效果
+    self.collectionView.alwaysBounceVertical = YES;
     
     [CityListModel CityListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_city" success:^(NSArray *array) {
         self.cityArr=array;
@@ -55,12 +57,12 @@
     
     UICollectionViewFlowLayout *collectionFL = [[UICollectionViewFlowLayout alloc] init];
 #define  screenW [UIScreen mainScreen].bounds.size.width
-    CGFloat itemW = screenW / 3 - 1;
+    CGFloat itemW = screenW / 3 - 10;
     CGFloat itemH = 50;
-    collectionFL.minimumLineSpacing = 1;
-    collectionFL.minimumInteritemSpacing = 1;
+    collectionFL.minimumLineSpacing = 5;
+    collectionFL.minimumInteritemSpacing = 5;
     collectionFL.itemSize = CGSizeMake(itemW, itemH);
-    
+    collectionFL.sectionInset=UIEdgeInsetsMake(5, 5, 5, 5);
     collectionFL.headerReferenceSize = CGSizeMake(screenW, 60);
     
     return [super initWithCollectionViewLayout:collectionFL];
@@ -90,6 +92,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CityListCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"citycell" forIndexPath:indexPath];
+    cell.backgroundColor=[UIColor whiteColor];
     
     CityListModel* model=self.cityArr[indexPath.item];
     
