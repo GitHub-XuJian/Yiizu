@@ -19,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"选择区域";
+    UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
+    [btn setTitle:@"取消" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.view.backgroundColor=[UIColor whiteColor];
     self.arr=[[NSMutableArray alloc]init];
     
@@ -40,7 +44,10 @@
 }
 
 
-
+- (void)cancle
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -68,14 +75,19 @@
     
     cell.textLabel.text=model.name;
   
-    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId};
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"AreaId" object:nil userInfo:dict];
+
+  
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      AreaListModel* model=self.arr[indexPath.row];
+    
+    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId};
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"AreaId" object:nil userInfo:dict];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

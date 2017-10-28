@@ -16,8 +16,14 @@
 @interface HomeViewController ()<HomeCityBtnDelegate>
 @property(nonatomic, strong)NSArray* listArr;
 @property(nonatomic, strong)UIButton* navBtn;
-//用于保存首页拼接接口
+//用于保存首页拼接城市接口
 @property(nonatomic, copy)NSString* homeListCityId;
+//用于保存首页拼接区域接口
+@property(nonatomic, copy)NSString* homeListAreaId;
+
+
+
+
 
 @end
 
@@ -27,6 +33,19 @@
 {
     _listArr=listArr;
     [self.tableView reloadData];
+}
+-(void)setHomeListAreaId:(NSString *)homeListAreaId
+{
+    _homeListAreaId=homeListAreaId;
+    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/%@/area/%@/page/1",self.homeListCityId,self.homeListAreaId];
+    NSLog(@"homeUrl=%@",url);
+    [HomeListModel HomeListWithUrl:url success:^(NSArray *array) {
+        
+        self.listArr=array;
+        NSLog(@"不是第一次");
+    } error:^{
+        
+    }];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,9 +58,10 @@
     self.navigationItem.leftBarButtonItem=btn2;
     self.navBtn=btn;
 
+    //接受数据
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
+
     
-    //NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/%@/area/%@/page/%d"]
     [HomeListModel HomeListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/845/page/1" success:^(NSArray *array) {
         
         self.listArr=array;
@@ -50,11 +70,14 @@
     }];
     
 }
+#pragma mark-通知回传
 - (void)massageCityId:(NSNotification *)notification
 {
-    NSLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
+    //NSLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"areaId"]);
+    self.homeListAreaId=notification.userInfo[@"areaId"];
    
 }
+#pragma mark-首页导航条按钮
 - (void)navBtnAction
 {
     HomeCityBtnController* hVC=[[HomeCityBtnController alloc]init];

@@ -23,7 +23,7 @@
 - (IBAction)btnAction:(id)sender
 {
  
-    
+    NSLog(@"点击了区域按钮%@",self.cityID);
     HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
     aVC.cityId=self.cityID;
     UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
@@ -54,14 +54,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //设置第一次点击区域按钮
+    self.cityID=@"73";
    
-    self.scrollView.pagingEnabled=YES;
-    self.scrollView.showsHorizontalScrollIndicator=NO;
-    self.scrollView.bounces=NO;
-    self.scrollView.delegate=self;
-    self.pageCon.currentPage=0;
+    [self setScrollViewStyle];
     
+    //通知接受数据
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
     [XAFNetWork GET:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Slideshow" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -72,10 +70,19 @@
     }];
  
 }
-#pragma mark-
+#pragma mark-scrollView相关设置
+- (void)setScrollViewStyle
+{
+    self.scrollView.pagingEnabled=YES;
+    self.scrollView.showsHorizontalScrollIndicator=NO;
+    self.scrollView.bounces=NO;
+    self.scrollView.delegate=self;
+    self.pageCon.currentPage=0;
+}
+#pragma mark-通知回传
 - (void)massageCityId:(NSNotification *)notification
 {
-    NSLog(@"loopIma接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
+    //NSLog(@"loopIma接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
     self.cityID=notification.userInfo[@"cityId"];
 }
 - (void)updatePageControl:(UIScrollView*)srollView
