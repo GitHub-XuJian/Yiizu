@@ -32,7 +32,6 @@
 		AF66AD4B1F9D82570079A2CF /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AD4A1F9D82570079A2CF /* ActivityViewController.m */; };
 		AF66AD501F9D84990079A2CF /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AD4F1F9D84990079A2CF /* CustomNavigationController.m */; };
 		AF66AD541F9D8BF90079A2CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF66AD531F9D8BF90079A2CF /* Assets.xcassets */; };
-		AF66AD591F9D90270079A2CF /* YTBarButtonItemSelecteView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AD581F9D90270079A2CF /* YTBarButtonItemSelecteView.m */; };
 		AF66AD601F9D947F0079A2CF /* MyHeaderVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AD5F1F9D947F0079A2CF /* MyHeaderVeiw.m */; };
 		AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AD641F9D99E60079A2CF /* Foundation+Log.m */; };
 		AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF66AD661F9D99E60079A2CF /* UIImage+Extension.m */; };
@@ -213,8 +212,6 @@
 		AF66AD4E1F9D84990079A2CF /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
 		AF66AD4F1F9D84990079A2CF /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		AF66AD531F9D8BF90079A2CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		AF66AD571F9D90270079A2CF /* YTBarButtonItemSelecteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTBarButtonItemSelecteView.h; sourceTree = "<group>"; };
-		AF66AD581F9D90270079A2CF /* YTBarButtonItemSelecteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTBarButtonItemSelecteView.m; sourceTree = "<group>"; };
 		AF66AD5E1F9D947F0079A2CF /* MyHeaderVeiw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHeaderVeiw.h; sourceTree = "<group>"; };
 		AF66AD5F1F9D947F0079A2CF /* MyHeaderVeiw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHeaderVeiw.m; sourceTree = "<group>"; };
 		AF66AD641F9D99E60079A2CF /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -879,18 +876,8 @@
 				AF66ADC31F9DE1B50079A2CF /* MJRefresh */,
 				AF66ADC21F9DE0C40079A2CF /* AFNetworking */,
 				AF66AD631F9D99E60079A2CF /* category */,
-				AF66AD561F9D90270079A2CF /* YTBarButtonItemSelecteView */,
 			);
 			path = other;
-			sourceTree = "<group>";
-		};
-		AF66AD561F9D90270079A2CF /* YTBarButtonItemSelecteView */ = {
-			isa = PBXGroup;
-			children = (
-				AF66AD571F9D90270079A2CF /* YTBarButtonItemSelecteView.h */,
-				AF66AD581F9D90270079A2CF /* YTBarButtonItemSelecteView.m */,
-			);
-			path = YTBarButtonItemSelecteView;
 			sourceTree = "<group>";
 		};
 		AF66AD631F9D99E60079A2CF /* category */ = {
@@ -1414,7 +1401,6 @@
 				AF66AE0D1F9EDD2F0079A2CF /* MembersPayViewController.m in Sources */,
 				AF66ADC11F9DDFB50079A2CF /* XAFNetWork.m in Sources */,
 				AF66AD771F9DB4F40079A2CF /* MyActivationCodeViewController.m in Sources */,
-				AF66AD591F9D90270079A2CF /* YTBarButtonItemSelecteView.m in Sources */,
 				AF66ADAB1F9DDD250079A2CF /* AFNetworkReachabilityManager.m in Sources */,
 				AF66ADB01F9DDD250079A2CF /* AFAutoPurgingImageCache.m in Sources */,
 				AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */,
