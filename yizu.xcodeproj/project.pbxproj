@@ -110,6 +110,8 @@
 		AF6C46691FA4546800797125 /* CSdetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46681FA4546800797125 /* CSdetailsViewController.m */; };
 		AF6C46931FA6F7B600797125 /* LLTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46911FA6F7B600797125 /* LLTabBarItem.m */; };
 		AF6C46941FA6F7B600797125 /* LLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46921FA6F7B600797125 /* LLTabBar.m */; };
+		AF6C469C1FA71BC900797125 /* UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C469A1FA71BC800797125 /* UUID.m */; };
+		AF6C469D1FA71BC900797125 /* KeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C469B1FA71BC800797125 /* KeyChainStore.m */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -373,6 +375,10 @@
 		AF6C46901FA6F7B600797125 /* LLTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLTabBarItem.h; sourceTree = "<group>"; };
 		AF6C46911FA6F7B600797125 /* LLTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLTabBarItem.m; sourceTree = "<group>"; };
 		AF6C46921FA6F7B600797125 /* LLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLTabBar.m; sourceTree = "<group>"; };
+		AF6C46981FA71BC800797125 /* KeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainStore.h; sourceTree = "<group>"; };
+		AF6C46991FA71BC800797125 /* UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUID.h; sourceTree = "<group>"; };
+		AF6C469A1FA71BC800797125 /* UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUID.m; sourceTree = "<group>"; };
+		AF6C469B1FA71BC800797125 /* KeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainStore.m; sourceTree = "<group>"; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -874,6 +880,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C46971FA71BC800797125 /* UUIDAndKeychain */,
 				AF6C468D1FA6F7B600797125 /* CustomView */,
 				AF626CFB1FA1DF9500A1225F /* JXTAlertManager */,
 				AFC62F071FA1B5A100A3F3F5 /* Chart */,
@@ -1157,6 +1164,17 @@
 			path = LLTabBar;
 			sourceTree = "<group>";
 		};
+		AF6C46971FA71BC800797125 /* UUIDAndKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C46981FA71BC800797125 /* KeyChainStore.h */,
+				AF6C46991FA71BC800797125 /* UUID.h */,
+				AF6C469A1FA71BC800797125 /* UUID.m */,
+				AF6C469B1FA71BC800797125 /* KeyChainStore.m */,
+			);
+			path = UUIDAndKeychain;
+			sourceTree = "<group>";
+		};
 		AF8B6CC61FA01A4A008DA068 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1395,6 +1413,7 @@
 				AF66ADB61F9DDD250079A2CF /* UIProgressView+AFNetworking.m in Sources */,
 				AF66ADB31F9DDD250079A2CF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				AF66AD7D1F9DB51F0079A2CF /* AboutUsViewController.m in Sources */,
+				AF6C469C1FA71BC900797125 /* UUID.m in Sources */,
 				AF66ADB71F9DDD250079A2CF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF66ADFB1F9DE1B60079A2CF /* MJRefreshBackNormalFooter.m in Sources */,
 				AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */,
@@ -1441,6 +1460,7 @@
 				AF66AE7E1F9F1AB10079A2CF /* IQBarButtonItem.m in Sources */,
 				AF66AE041F9DE1B60079A2CF /* UIScrollView+MJRefresh.m in Sources */,
 				AF66AE801F9F1AB10079A2CF /* IQTitleBarButtonItem.m in Sources */,
+				AF6C469D1FA71BC900797125 /* KeyChainStore.m in Sources */,
 				AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */,
 				AF66ADAA1F9DDD250079A2CF /* AFHTTPSessionManager.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,

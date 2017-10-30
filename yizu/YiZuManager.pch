@@ -19,4 +19,6 @@
 #import "EncapsulationMethod.h"     // 自定义方法集合
 #import "JXTAlertManagerHeader.h"   // 弹框
 #import "XSaverTool.h"
+#import "UUID.h"
+
 #endif
