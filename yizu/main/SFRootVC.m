@@ -15,9 +15,8 @@
 #import "ActivityViewController.h"
 #import "MallViewController.h"
 #import "MyViewController.h"
-#import "LLTabBar.h"
 
-@interface SFRootVC()<LLTabBarDelegate, UIActionSheetDelegate>
+@interface SFRootVC()
 @end
 
 @implementation SFRootVC
@@ -32,10 +31,12 @@
 
     // 4.活动
     ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+    activityVC.title = @"活动";
     CustomNavigationController *nav2 = [[CustomNavigationController alloc] initWithRootViewController:activityVC];
 
     // 2.商城
     MallViewController *mallVC = [[MallViewController alloc] init];
+    mallVC.title = @"商城";
     CustomNavigationController *nav3 = [[CustomNavigationController alloc] initWithRootViewController:mallVC];
 
     // 3.我的
