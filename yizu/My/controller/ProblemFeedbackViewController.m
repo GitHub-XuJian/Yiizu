@@ -87,7 +87,7 @@
     }else if (_content.length == 0) {
         jxt_showAlertTitle(@"请输入反馈问题");
     }else{
-        NSString *urlStr = [[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Support/information/name/%@/info/%@/time/%@",_name,_content,[EncapsulationMethod getCurrentTimes]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Support/information/name/%@/info/%@/time/%@",Main_Server,_name,_content,[EncapsulationMethod getCurrentTimes]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"wenti"] isEqualToString:@"success"]) {
                 jxt_showAlertTitle(@"反馈成功");

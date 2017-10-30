@@ -48,6 +48,7 @@
     passwordTextField.frame = CGRectMake(accountTextField.x, accountTextField.y+accountTextField.height+5, accountTextField.width, accountTextField.height);
     passwordTextField.placeholder = @"请输入密码";
     passwordTextField.delegate = self;
+    passwordTextField.secureTextEntry = YES;
     [backImageView addSubview:passwordTextField];
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(passwordTextField.x, passwordTextField.y+passwordTextField.height+0.5, passwordTextField.width, 0.5)];
@@ -67,7 +68,7 @@
     NSArray *array = @[@"新浪",@"微信",@"QQ"];
     for (int i = 0; i < array.count; i++) {
         UIButton *thirdPartybtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-(44*3+20)/2+i*50,kSCREEN_HEIGHT-100, 44, 44) andImageStr:nil andTitleStr:array[i] andBtnTag:i+Sina andTitleColor:[UIColor whiteColor]];
-        thirdPartybtn.backgroundColor = [UIColor redColor];
+        thirdPartybtn.backgroundColor = [UIColor clearColor];
         [backImageView addSubview:thirdPartybtn];
     }
 }
