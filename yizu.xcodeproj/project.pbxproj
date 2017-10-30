@@ -108,6 +108,8 @@
 		AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46621FA451BE00797125 /* ProblemFeedbackViewController.m */; };
 		AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46651FA451E900797125 /* ContactCSViewController.m */; };
 		AF6C46691FA4546800797125 /* CSdetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46681FA4546800797125 /* CSdetailsViewController.m */; };
+		AF6C46931FA6F7B600797125 /* LLTabBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46911FA6F7B600797125 /* LLTabBarItem.m */; };
+		AF6C46941FA6F7B600797125 /* LLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46921FA6F7B600797125 /* LLTabBar.m */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -367,6 +369,10 @@
 		AF6C46671FA4546800797125 /* CSdetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSdetailsViewController.h; sourceTree = "<group>"; };
 		AF6C46681FA4546800797125 /* CSdetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSdetailsViewController.m; sourceTree = "<group>"; };
 		AF6C466A1FA6C75200797125 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		AF6C468F1FA6F7B600797125 /* LLTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLTabBar.h; sourceTree = "<group>"; };
+		AF6C46901FA6F7B600797125 /* LLTabBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LLTabBarItem.h; sourceTree = "<group>"; };
+		AF6C46911FA6F7B600797125 /* LLTabBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLTabBarItem.m; sourceTree = "<group>"; };
+		AF6C46921FA6F7B600797125 /* LLTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LLTabBar.m; sourceTree = "<group>"; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -868,6 +874,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C468D1FA6F7B600797125 /* CustomView */,
 				AF626CFB1FA1DF9500A1225F /* JXTAlertManager */,
 				AFC62F071FA1B5A100A3F3F5 /* Chart */,
 				AF8B6CFA1FA01D7A008DA068 /* CustomMethod */,
@@ -1129,6 +1136,25 @@
 				AF66AE741F9F1AB10079A2CF /* IQKeyboardManager.bundle */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		AF6C468D1FA6F7B600797125 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C468E1FA6F7B600797125 /* LLTabBar */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		AF6C468E1FA6F7B600797125 /* LLTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C468F1FA6F7B600797125 /* LLTabBar.h */,
+				AF6C46921FA6F7B600797125 /* LLTabBar.m */,
+				AF6C46901FA6F7B600797125 /* LLTabBarItem.h */,
+				AF6C46911FA6F7B600797125 /* LLTabBarItem.m */,
+			);
+			path = LLTabBar;
 			sourceTree = "<group>";
 		};
 		AF8B6CC61FA01A4A008DA068 /* SDWebImage */ = {
@@ -1437,12 +1463,14 @@
 				AF626D231FA2D97D00A1225F /* HomeCityBtnController.m in Sources */,
 				AF626D221FA2D97D00A1225F /* HomAreaBtnController.m in Sources */,
 				AF66ADF51F9DE1B60079A2CF /* MJRefreshFooter.m in Sources */,
+				AF6C46931FA6F7B600797125 /* LLTabBarItem.m in Sources */,
 				AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */,
 				AF8B6CF41FA01A4A008DA068 /* UIImage+WebP.m in Sources */,
 				AF66AE761F9F1AB10079A2CF /* IQUIScrollView+Additions.m in Sources */,
 				AF66AE7B1F9F1AB10079A2CF /* IQKeyboardManager.m in Sources */,
 				AF66AD741F9DB4D80079A2CF /* MyActivitiesViewController.m in Sources */,
 				AFC62F2E1FA1B5D500A3F3F5 /* MCRadarChartView.m in Sources */,
+				AF6C46941FA6F7B600797125 /* LLTabBar.m in Sources */,
 				AFC62F2C1FA1B5D500A3F3F5 /* MCLineChartView.m in Sources */,
 				AF66AD6B1F9D99E60079A2CF /* UIView+Extension.m in Sources */,
 				AFC62F291FA1B5D500A3F3F5 /* MCCircleChartView.m in Sources */,

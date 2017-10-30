@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import "SFRootVC.h"
 #import "IQKeyboardManager.h"
+#import "LLTabBar.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<LLTabBarDelegate>
 
 @end
 
@@ -31,13 +32,18 @@
     // 1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 2.设置窗口的跟控制器
-    self.window.rootViewController = [SFRootVC chooseWindowRootVC];
+    UITabBarController *tabbarController = [SFRootVC chooseWindowRootVC];
+    LLTabBar *tabbar = [SFRootVC tabbarinitWithController:tabbarController];
+    tabbar.delegate = self;
+    self.window.rootViewController = tabbarController;
     // 3,让窗口显示
     [self.window makeKeyAndVisible];
     
     return YES;
 }
-
+- (void)tabBarDidSelectedRiseButton {
+    NSLog(@"激活");
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

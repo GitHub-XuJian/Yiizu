@@ -11,34 +11,64 @@
 #import "SFRootVC.h"
 #import "CustomTabBarController.h"
 #import "LoginViewController.h"
+#import "HomeViewController.h"
+#import "ActivityViewController.h"
+#import "MallViewController.h"
+#import "MyViewController.h"
+#import "LLTabBar.h"
 
-@interface SFRootVC()
+@interface SFRootVC()<LLTabBarDelegate, UIActionSheetDelegate>
 @end
 
 @implementation SFRootVC
 
-+ (UIViewController *)chooseWindowRootVC{
++ (UITabBarController *)chooseWindowRootVC{
 
-    UIViewController *rootVc;
-//    if ([XSaverTool boolForKey:IsLogin]) {
-        // 进入主框架
-        rootVc = [[CustomTabBarController alloc] init];
-//    }else{
-////         切换主界面
-////         切换界面方式  1.push 2.tabBarVC  3.modale
-//        LoginViewController * login = [[LoginViewController alloc] init];
-//        login.successfulBlock = ^(){
-//            // 想让新特性界面销毁
-//            // 切换窗口的跟控制器
-//            CustomTabBarController *tabBarVC = [[CustomTabBarController alloc] init];
-//            KeyWindow.rootViewController =  tabBarVC;
-//        };
-//        login.failedBlock = ^(){
-//
-//        };
-//        rootVc = login;
-//    }
-    return rootVc;
+    
+    // 1.首页
+    UIStoryboard* sb=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
+    UIViewController* homeVC=[sb instantiateInitialViewController];
+    CustomNavigationController *nav1 = [[CustomNavigationController alloc] initWithRootViewController:homeVC];
+
+    // 4.活动
+    ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+    CustomNavigationController *nav2 = [[CustomNavigationController alloc] initWithRootViewController:activityVC];
+
+    // 2.商城
+    MallViewController *mallVC = [[MallViewController alloc] init];
+    CustomNavigationController *nav3 = [[CustomNavigationController alloc] initWithRootViewController:mallVC];
+
+    // 3.我的
+    MyViewController *myVC = [[MyViewController alloc] init];
+    CustomNavigationController *nav4 = [[CustomNavigationController alloc] initWithRootViewController:myVC];
+
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[nav1, nav2, nav3, nav4];
+    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    return tabBarController;
+}
++ (LLTabBar *)tabbarinitWithController:(UITabBarController *)controller
+{
+    
+    LLTabBar *tabBar = [[LLTabBar alloc] initWithFrame:controller.tabBar.bounds];
+    
+    tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"UnHome", kLLTabBarItemAttributeSelectedImageName : @"Home", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+                                    @{kLLTabBarItemAttributeTitle : @"活动", kLLTabBarItemAttributeNormalImageName : @"UnActivity", kLLTabBarItemAttributeSelectedImageName : @"Activity", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+                                    @{kLLTabBarItemAttributeTitle : @"激活", kLLTabBarItemAttributeNormalImageName : @"post_normal", kLLTabBarItemAttributeSelectedImageName : @"post_normal", kLLTabBarItemAttributeType : @(LLTabBarItemRise)},
+                                    @{kLLTabBarItemAttributeTitle : @"商城", kLLTabBarItemAttributeNormalImageName : @"UnMall", kLLTabBarItemAttributeSelectedImageName : @"Mall", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+                                    @{kLLTabBarItemAttributeTitle : @"我的", kLLTabBarItemAttributeNormalImageName : @"UnMy", kLLTabBarItemAttributeSelectedImageName : @"My", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)}];
+    
+    //    tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"home_normal", kLLTabBarItemAttributeSelectedImageName : @"home_highlight", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+    //                                    @{kLLTabBarItemAttributeTitle : @"发布", kLLTabBarItemAttributeNormalImageName : @"post_normal", kLLTabBarItemAttributeSelectedImageName : @"post_normal", kLLTabBarItemAttributeType : @(LLTabBarItemRise)},
+    //                                    @{kLLTabBarItemAttributeTitle : @"消息", kLLTabBarItemAttributeNormalImageName : @"message_normal", kLLTabBarItemAttributeSelectedImageName : @"message_highlight", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)}];
+    
+    //    tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"home_normal", kLLTabBarItemAttributeSelectedImageName : @"home_highlight", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+    //                                    @{kLLTabBarItemAttributeTitle : @"同城", kLLTabBarItemAttributeNormalImageName : @"mycity_normal", kLLTabBarItemAttributeSelectedImageName : @"mycity_highlight", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)}];
+    
+    [controller.tabBar addSubview:tabBar];
+    return tabBar;
 }
 
 @end
