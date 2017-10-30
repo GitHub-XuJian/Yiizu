@@ -104,6 +104,11 @@
 		AF66AE831F9F1AB10079A2CF /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF66AE741F9F1AB10079A2CF /* IQKeyboardManager.bundle */; };
 		AF6C464F1FA30E0900797125 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C464E1FA30E0900797125 /* LoginViewController.m */; };
 		AF6C465B1FA3187C00797125 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C465A1FA3187C00797125 /* LoginView.m */; };
+		AF6C465E1FA4197C00797125 /* HelpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C465D1FA4197C00797125 /* HelpDetailsViewController.m */; };
+		AF6C46601FA42E4A00797125 /* bang.html in Resources */ = {isa = PBXBuildFile; fileRef = AF6C465F1FA42E4A00797125 /* bang.html */; };
+		AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46621FA451BE00797125 /* ProblemFeedbackViewController.m */; };
+		AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46651FA451E900797125 /* ContactCSViewController.m */; };
+		AF6C46691FA4546800797125 /* CSdetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46681FA4546800797125 /* CSdetailsViewController.m */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -355,6 +360,15 @@
 		AF6C464E1FA30E0900797125 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		AF6C46591FA3187C00797125 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		AF6C465A1FA3187C00797125 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		AF6C465C1FA4197C00797125 /* HelpDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelpDetailsViewController.h; sourceTree = "<group>"; };
+		AF6C465D1FA4197C00797125 /* HelpDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelpDetailsViewController.m; sourceTree = "<group>"; };
+		AF6C465F1FA42E4A00797125 /* bang.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = bang.html; sourceTree = "<group>"; };
+		AF6C46611FA451BE00797125 /* ProblemFeedbackViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProblemFeedbackViewController.h; sourceTree = "<group>"; };
+		AF6C46621FA451BE00797125 /* ProblemFeedbackViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProblemFeedbackViewController.m; sourceTree = "<group>"; };
+		AF6C46641FA451E900797125 /* ContactCSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactCSViewController.h; sourceTree = "<group>"; };
+		AF6C46651FA451E900797125 /* ContactCSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactCSViewController.m; sourceTree = "<group>"; };
+		AF6C46671FA4546800797125 /* CSdetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSdetailsViewController.h; sourceTree = "<group>"; };
+		AF6C46681FA4546800797125 /* CSdetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSdetailsViewController.m; sourceTree = "<group>"; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -645,6 +659,7 @@
 		AF66ACF01F9D7E540079A2CF /* yizu */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C465F1FA42E4A00797125 /* bang.html */,
 				AF626D071FA2D17E00A1225F /* Login */,
 				AF66AD551F9D90270079A2CF /* other */,
 				AF66AD451F9D823E0079A2CF /* Activity */,
@@ -779,6 +794,14 @@
 				AF66AE0C1F9EDD2F0079A2CF /* MembersPayViewController.m */,
 				AF66AE0E1F9EDD470079A2CF /* ActivationCodeInputViewController.h */,
 				AF66AE0F1F9EDD470079A2CF /* ActivationCodeInputViewController.m */,
+				AF6C465C1FA4197C00797125 /* HelpDetailsViewController.h */,
+				AF6C465D1FA4197C00797125 /* HelpDetailsViewController.m */,
+				AF6C46611FA451BE00797125 /* ProblemFeedbackViewController.h */,
+				AF6C46621FA451BE00797125 /* ProblemFeedbackViewController.m */,
+				AF6C46641FA451E900797125 /* ContactCSViewController.h */,
+				AF6C46651FA451E900797125 /* ContactCSViewController.m */,
+				AF6C46671FA4546800797125 /* CSdetailsViewController.h */,
+				AF6C46681FA4546800797125 /* CSdetailsViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1308,6 +1331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				AF66AD541F9D8BF90079A2CF /* Assets.xcassets in Resources */,
 				1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */,
 				AF66ACFB1F9D7E550079A2CF /* LaunchScreen.storyboard in Resources */,
@@ -1359,6 +1383,7 @@
 				AF66AD7D1F9DB51F0079A2CF /* AboutUsViewController.m in Sources */,
 				AF66ADB71F9DDD250079A2CF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF66ADFB1F9DE1B60079A2CF /* MJRefreshBackNormalFooter.m in Sources */,
+				AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */,
 				1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */,
 				AF66ACF61F9D7E540079A2CF /* AppDelegate.m in Sources */,
 				AF66AE0A1F9EDC200079A2CF /* MembershipActivationCodeViewController.m in Sources */,
@@ -1372,11 +1397,13 @@
 				AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */,
 				AF66ACF31F9D7E540079A2CF /* main.m in Sources */,
 				AF66AD271F9D80410079A2CF /* CustomTabBarController.m in Sources */,
+				AF6C46691FA4546800797125 /* CSdetailsViewController.m in Sources */,
 				AF66AE051F9DE1B60079A2CF /* UIView+MJExtension.m in Sources */,
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
 				AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
+				AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
 				AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */,
 				AF66AD7A1F9DB5070079A2CF /* HelpCenterViewController.m in Sources */,
@@ -1455,6 +1482,7 @@
 				AF66ADAE1F9DDD250079A2CF /* AFURLResponseSerialization.m in Sources */,
 				AF66ADFF1F9DE1B60079A2CF /* MJRefreshStateHeader.m in Sources */,
 				AF8B6CF71FA01A4A008DA068 /* UIView+WebCacheOperation.m in Sources */,
+				AF6C465E1FA4197C00797125 /* HelpDetailsViewController.m in Sources */,
 				AF8B6CF11FA01A4A008DA068 /* UIButton+WebCache.m in Sources */,
 				AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */,
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
