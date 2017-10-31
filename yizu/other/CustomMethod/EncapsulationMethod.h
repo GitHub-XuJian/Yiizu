@@ -24,6 +24,28 @@
  */
 + (CGFloat)calculateRowHeight:(NSString *)textStr andTexFont:(NSInteger )size andMaxWidth:(CGFloat)width;
 /**
+ * Label首行缩进，行间距
+ 参数介绍
+ 
+ lineSpacing (行间距)
+ 
+ FirstLineHeadIndent(首行缩进字符个数)
+ 
+ FontOfSize (字号)
+ 
+ TextColor(字体颜色)
+ 
+ text(字符串内容)
+ 
+ AddLabel(在哪个LB上面使用该特性)
+ 
+ */
++(void)settingLabelTextAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent FontOfSize:(CGFloat)fontOfSize TextColor:(UIColor *)textColor text:(NSString *)text AddLabel:(UILabel *)label;
+/**
+ * 计算UILabel的高度(带有行间距的情况)
+ */
++(CGFloat)getSpaceLabelHeight:(NSString*)str withFont:(UIFont*)font withWidth:(CGFloat)width LineSpacing:(CGFloat)lineSpacing;
+/**
  * 数组转json
  */
 + (NSString *)arrayToJSONString:(NSArray *)array;

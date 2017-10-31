@@ -397,7 +397,11 @@
     NSString *currentTimeString = [formatter stringFromDate:datenow];
     
     NSLog(@"currentTimeString =  %@",currentTimeString);
-    
+    /**
+     * 时间戳
+     */
+//    NSString *timeSp = [NSString stringWithFormat:@"%d", (long)[datenow timeIntervalSince1970]];
+//    NSLog(@"timeSp:%@",timeSp); //时间戳的值
     return currentTimeString;
     
 }
@@ -433,10 +437,54 @@
     return (int)(from + (arc4random() % (to - from + 1)));
 }
 
++(void)settingLabelTextAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent FontOfSize:(CGFloat)fontOfSize TextColor:(UIColor *)textColor text:(NSString *)text AddLabel:(UILabel *)label{
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    
+    //行间距
+    
+    paragraphStyle.lineSpacing = lineSpacing;
+    
+    //首行缩进 (缩进个数 * 字号)
+    
+    paragraphStyle.firstLineHeadIndent = firstLineHeadIndent * fontOfSize;
+    
+    NSDictionary *attributeDic = @{
+                                   
+                                   NSFontAttributeName : [UIFont systemFontOfSize:fontOfSize],
+                                   
+                                   NSParagraphStyleAttributeName : paragraphStyle,
+                                   
+                                   NSForegroundColorAttributeName : textColor
+                                   
+                                   };
+    
+    label.attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributeDic];
+    
+}
+//计算UILabel的高度(带有行间距的情况)
++(CGFloat)getSpaceLabelHeight:(NSString*)str withFont:(UIFont*)font withWidth:(CGFloat)width LineSpacing:(CGFloat)lineSpacing;
+{
+    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+    paraStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    paraStyle.alignment = NSTextAlignmentLeft;
+    paraStyle.lineSpacing = lineSpacing;
+    paraStyle.hyphenationFactor = 1.0;
+    paraStyle.firstLineHeadIndent = 0.0;
+    paraStyle.paragraphSpacingBefore = 0.0;
+    paraStyle.headIndent = 0;
+    paraStyle.tailIndent = 0;
+    NSDictionary *dic = @{NSFontAttributeName:font, NSParagraphStyleAttributeName:paraStyle, NSKernAttributeName:@1.5f
+                          };
+    
+    CGSize size = [str boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
+    return size.height;
+}
 //邮箱地址的正则表达式
 + (BOOL)isValidateEmail:(NSString *)email{
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
+
 @end

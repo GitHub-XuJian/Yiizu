@@ -1,23 +1,22 @@
 //
-//  ContactUsViewController.m
+//  ContactCSViewController.m
 //  yizu
 //
-//  Created by 徐健 on 17/10/23.
+//  Created by 徐健 on 2017/10/28.
 //  Copyright © 2017年 XuJian. All rights reserved.
 //
 
-#import "ContactUsViewController.h"
-#import "ProblemFeedbackViewController.h"
 #import "ContactCSViewController.h"
+#import "CSdetailsViewController.h"
 
-@interface ContactUsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ContactCSViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end
 
-@implementation ContactUsViewController
+@implementation ContactCSViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,12 +33,28 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //默认【下拉刷新】
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     [self.view addSubview:self.tableView];
     
 }
+- (void)refresh
+{
+    [self createDataArray];
+}
 - (void)createDataArray
 {
-    self.dataArray = @[@"问题反馈",@"联系客服"];
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Support/objective",Main_Server];
+    [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        /**
+         * 结束刷新
+         */
+        [self.tableView.mj_header endRefreshing];
+        self.dataArray = responseObject;
+        [self.tableView reloadData];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -67,7 +82,8 @@
         lineview.frame = CGRectMake(0, 135/3, kSCREEN_WIDTH, 0.5);
         [cell.contentView addSubview:lineview];
     }
-    cell.textLabel.text = self.dataArray[indexPath.row];
+    NSDictionary *dict = self.dataArray[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@:  %@",@"客服姓名",dict[@"servename"]];
     
     return cell;
 }
@@ -76,25 +92,13 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    switch (indexPath.row) {
-        case 0:{
-            ProblemFeedbackViewController *pfVC = [[ProblemFeedbackViewController alloc] init];
-            pfVC.title = self.dataArray[indexPath.row];
-            [self.navigationController pushViewController:pfVC animated:YES];
-            break;
-        }
-        case 1:{
-            ContactCSViewController *pfVC = [[ContactCSViewController alloc] init];
-            pfVC.title = self.dataArray[indexPath.row];
-            [self.navigationController pushViewController:pfVC animated:YES];
-            break;
-        }
-        default:
-            break;
-    }
+    CSdetailsViewController *csdVC = [[CSdetailsViewController alloc] init];
+    csdVC.dataDict = self.dataArray[indexPath.row];
+    [self.navigationController pushViewController:csdVC animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 
 @end

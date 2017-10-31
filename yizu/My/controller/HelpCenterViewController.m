@@ -7,6 +7,7 @@
 //
 
 #import "HelpCenterViewController.h"
+#import "HelpDetailsViewController.h"
 
 @interface HelpCenterViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 @property (nonatomic, strong) UITableView     *tableView;
@@ -35,15 +36,25 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self createSearchView];
+//    [self createSearchView];
     [self createTableView];
     [self createDataArray];
 
 }
 - (void)createDataArray
 {
-    self.dataArray = [NSMutableArray arrayWithObjects:@"常见问题",@"如何兑换激活码",@"道具购买后无法显示",@"收藏活动过期怎么办",@"使用依足有什么好处",@"使用指南",@"如何使用激活码",@"如何使用依足", nil];
-    [self.tableView reloadData];
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Support/support_aid/",Main_Server];
+    [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        /**
+         * 结束刷新
+         */
+        [self.tableView.mj_header endRefreshing];
+        self.dataArray = [NSMutableArray arrayWithArray:responseObject];
+        [self.tableView reloadData];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
 }
 - (void)createSearchView
 {
@@ -64,14 +75,20 @@
 }
 - (void)createTableView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 114,kSCREEN_WIDTH,kSCREEN_HEIGHT-114) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64,kSCREEN_WIDTH,kSCREEN_HEIGHT-64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //默认【下拉刷新】
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
     [self.view addSubview:self.tableView];
    
+}
+- (void)refresh
+{
+    [self createDataArray];
 }
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,7 +116,9 @@
         lineview.frame = CGRectMake(0, 135/3, kSCREEN_WIDTH, 0.5);
         [cell.contentView addSubview:lineview];
     }
-    cell.textLabel.text = self.dataArray[indexPath.row];
+    NSDictionary *dict = self.dataArray[indexPath.row];
+    cell.textLabel.text = dict[@"helpname"];
+    
     return cell;
 }
 //响应点击事件
@@ -107,7 +126,12 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-   
+    NSDictionary *dict = self.dataArray[indexPath.row];
+
+    HelpDetailsViewController *hdVC = [[HelpDetailsViewController alloc] init];
+    hdVC.detailsDict = self.dataArray[indexPath.row];
+    hdVC.title = dict[@"helpname"];
+    [self.navigationController pushViewController:hdVC animated:YES];
 }
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
