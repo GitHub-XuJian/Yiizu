@@ -22,5 +22,8 @@ typedef void(^btnClicked)(BtnloginType buttonType,NSString *password);
 
 @interface LoginView : UIView
 @property(nonatomic, copy) btnClicked block;
+@property (nonatomic, strong) UITextField *accountTextField;
+@property (nonatomic, strong) UITextField *passWordTextField;
+
 - (void)btnClicked:(btnClicked)block;
 @end

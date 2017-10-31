@@ -11,6 +11,9 @@
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
 		1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355E1F9F2E7300713053 /* HomeListCell.m */; };
+		AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C51FA828460022E990 /* resetPassword.m */; };
+		AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C81FA828460022E990 /* ForgetViewController.m */; };
+		AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3C91FA828460022E990 /* resetPassword.xib */; };
 		AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */; };
 		AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D011FA1DF9500A1225F /* JXTAlertView.m */; };
 		AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */; };
@@ -112,6 +115,21 @@
 		AF6C46941FA6F7B600797125 /* LLTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46921FA6F7B600797125 /* LLTabBar.m */; };
 		AF6C469C1FA71BC900797125 /* UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C469A1FA71BC800797125 /* UUID.m */; };
 		AF6C469D1FA71BC900797125 /* KeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C469B1FA71BC800797125 /* KeyChainStore.m */; };
+		AF6C46A21FA806E700797125 /* SFValidationEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46A01FA806E700797125 /* SFValidationEmailViewController.m */; };
+		AF6C46AD1FA8073C00797125 /* registerInterface.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF6C46A41FA8073C00797125 /* registerInterface.strings */; };
+		AF6C46AE1FA8073C00797125 /* registerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46A81FA8073C00797125 /* registerViewController.m */; };
+		AF6C46AF1FA8073C00797125 /* registerInterface.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6C46A91FA8073C00797125 /* registerInterface.xib */; };
+		AF6C46B01FA8073C00797125 /* registerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46AC1FA8073C00797125 /* registerInterface.m */; };
+		AF6C46B31FA807E000797125 /* mytimer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46B21FA807E000797125 /* mytimer.m */; };
+		AF6C46B61FA808EC00797125 /* SFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46B51FA808EC00797125 /* SFNavView.m */; };
+		AF6C46BC1FA80D6100797125 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */; };
+		AF6C46BF1FA80DBF00797125 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46BE1FA80DB700797125 /* SystemConfiguration.framework */; };
+		AF6C46C11FA80DD000797125 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C01FA80DD000797125 /* libz.tbd */; };
+		AF6C46C31FA80DDB00797125 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C21FA80DDB00797125 /* libsqlite3.0.tbd */; };
+		AF6C46C51FA80DE800797125 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C41FA80DE800797125 /* libc++.tbd */; };
+		AF6C46C71FA80DF500797125 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C61FA80DF000797125 /* Security.framework */; };
+		AF6C46C91FA80E0300797125 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C81FA80DFE00797125 /* CoreTelephony.framework */; };
+		AF6C46CB1FA80E1700797125 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46CA1FA80E1200797125 /* CFNetwork.framework */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -170,6 +188,11 @@
 		1FE5355C1F9F2E7300713053 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1FE5355D1F9F2E7300713053 /* HomeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListCell.h; sourceTree = "<group>"; };
 		1FE5355E1F9F2E7300713053 /* HomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListCell.m; sourceTree = "<group>"; };
+		AF23F3C51FA828460022E990 /* resetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resetPassword.m; sourceTree = "<group>"; };
+		AF23F3C61FA828460022E990 /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
+		AF23F3C71FA828460022E990 /* resetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resetPassword.h; sourceTree = "<group>"; };
+		AF23F3C81FA828460022E990 /* ForgetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetViewController.m; sourceTree = "<group>"; };
+		AF23F3C91FA828460022E990 /* resetPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = resetPassword.xib; sourceTree = "<group>"; };
 		AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
 		AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
 		AF626D001FA1DF9500A1225F /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
@@ -379,6 +402,30 @@
 		AF6C46991FA71BC800797125 /* UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUID.h; sourceTree = "<group>"; };
 		AF6C469A1FA71BC800797125 /* UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUID.m; sourceTree = "<group>"; };
 		AF6C469B1FA71BC800797125 /* KeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainStore.m; sourceTree = "<group>"; };
+		AF6C46A01FA806E700797125 /* SFValidationEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFValidationEmailViewController.m; sourceTree = "<group>"; };
+		AF6C46A11FA806E700797125 /* SFValidationEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFValidationEmailViewController.h; sourceTree = "<group>"; };
+		AF6C46A51FA8073C00797125 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/registerInterface.strings"; sourceTree = "<group>"; };
+		AF6C46A61FA8073C00797125 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/registerInterface.strings; sourceTree = "<group>"; };
+		AF6C46A71FA8073C00797125 /* registerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registerInterface.h; sourceTree = "<group>"; };
+		AF6C46A81FA8073C00797125 /* registerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registerViewController.m; sourceTree = "<group>"; };
+		AF6C46AA1FA8073C00797125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/registerInterface.xib; sourceTree = "<group>"; };
+		AF6C46AB1FA8073C00797125 /* registerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registerViewController.h; sourceTree = "<group>"; };
+		AF6C46AC1FA8073C00797125 /* registerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registerInterface.m; sourceTree = "<group>"; };
+		AF6C46B11FA807E000797125 /* mytimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytimer.h; sourceTree = "<group>"; };
+		AF6C46B21FA807E000797125 /* mytimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytimer.m; sourceTree = "<group>"; };
+		AF6C46B41FA808EC00797125 /* SFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNavView.h; sourceTree = "<group>"; };
+		AF6C46B51FA808EC00797125 /* SFNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNavView.m; sourceTree = "<group>"; };
+		AF6C46B81FA80D6100797125 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		AF6C46B91FA80D6100797125 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		AF6C46BA1FA80D6100797125 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		AF6C46BE1FA80DB700797125 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		AF6C46C01FA80DD000797125 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		AF6C46C21FA80DDB00797125 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		AF6C46C41FA80DE800797125 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		AF6C46C61FA80DF000797125 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		AF6C46C81FA80DFE00797125 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		AF6C46CA1FA80E1200797125 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -449,6 +496,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6C46CB1FA80E1700797125 /* CFNetwork.framework in Frameworks */,
+				AF6C46C91FA80E0300797125 /* CoreTelephony.framework in Frameworks */,
+				AF6C46C71FA80DF500797125 /* Security.framework in Frameworks */,
+				AF6C46BF1FA80DBF00797125 /* SystemConfiguration.framework in Frameworks */,
+				AF6C46C51FA80DE800797125 /* libc++.tbd in Frameworks */,
+				AF6C46C11FA80DD000797125 /* libz.tbd in Frameworks */,
+				AF6C46C31FA80DDB00797125 /* libsqlite3.0.tbd in Frameworks */,
+				AF6C46BC1FA80D6100797125 /* libWeChatSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +595,18 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		AF23F3C41FA828460022E990 /* Forget */ = {
+			isa = PBXGroup;
+			children = (
+				AF23F3C71FA828460022E990 /* resetPassword.h */,
+				AF23F3C51FA828460022E990 /* resetPassword.m */,
+				AF23F3C91FA828460022E990 /* resetPassword.xib */,
+				AF23F3C61FA828460022E990 /* ForgetViewController.h */,
+				AF23F3C81FA828460022E990 /* ForgetViewController.m */,
+			);
+			path = Forget;
+			sourceTree = "<group>";
+		};
 		AF626CFB1FA1DF9500A1225F /* JXTAlertManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +648,10 @@
 		AF626D081FA2D17E00A1225F /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				AF23F3C41FA828460022E990 /* Forget */,
+				AF6C46A31FA8073C00797125 /* registerViewController */,
+				AF6C46A11FA806E700797125 /* SFValidationEmailViewController.h */,
+				AF6C46A01FA806E700797125 /* SFValidationEmailViewController.m */,
 				AF6C464D1FA30E0900797125 /* LoginViewController.h */,
 				AF6C464E1FA30E0900797125 /* LoginViewController.m */,
 			);
@@ -599,6 +670,8 @@
 		AF626D0A1FA2D17E00A1225F /* view */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C46B11FA807E000797125 /* mytimer.h */,
+				AF6C46B21FA807E000797125 /* mytimer.m */,
 				AF6C46591FA3187C00797125 /* LoginView.h */,
 				AF6C465A1FA3187C00797125 /* LoginView.m */,
 			);
@@ -653,6 +726,7 @@
 				AF66AD041F9D7E550079A2CF /* yizuTests */,
 				AF66AD0F1F9D7E550079A2CF /* yizuUITests */,
 				AF66ACEF1F9D7E540079A2CF /* Products */,
+				AF6C46BD1FA80DB700797125 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -718,6 +792,8 @@
 		AF66AD221F9D80410079A2CF /* main */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C46B41FA808EC00797125 /* SFNavView.h */,
+				AF6C46B51FA808EC00797125 /* SFNavView.m */,
 				AF66AD4E1F9D84990079A2CF /* CustomNavigationController.h */,
 				AF66AD4F1F9D84990079A2CF /* CustomNavigationController.m */,
 				AF66AD231F9D80410079A2CF /* CustomTabBarController.h */,
@@ -880,6 +956,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AF6C46B71FA80D6100797125 /* Wechat */,
 				AF6C46971FA71BC800797125 /* UUIDAndKeychain */,
 				AF6C468D1FA6F7B600797125 /* CustomView */,
 				AF626CFB1FA1DF9500A1225F /* JXTAlertManager */,
@@ -1175,6 +1252,44 @@
 			path = UUIDAndKeychain;
 			sourceTree = "<group>";
 		};
+		AF6C46A31FA8073C00797125 /* registerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C46A41FA8073C00797125 /* registerInterface.strings */,
+				AF6C46A71FA8073C00797125 /* registerInterface.h */,
+				AF6C46AC1FA8073C00797125 /* registerInterface.m */,
+				AF6C46A91FA8073C00797125 /* registerInterface.xib */,
+				AF6C46AB1FA8073C00797125 /* registerViewController.h */,
+				AF6C46A81FA8073C00797125 /* registerViewController.m */,
+			);
+			path = registerViewController;
+			sourceTree = "<group>";
+		};
+		AF6C46B71FA80D6100797125 /* Wechat */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C46B81FA80D6100797125 /* WXApi.h */,
+				AF6C46B91FA80D6100797125 /* WXApiObject.h */,
+				AF6C46BA1FA80D6100797125 /* WechatAuthSDK.h */,
+				AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */,
+			);
+			path = Wechat;
+			sourceTree = "<group>";
+		};
+		AF6C46BD1FA80DB700797125 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF6C46CA1FA80E1200797125 /* CFNetwork.framework */,
+				AF6C46C81FA80DFE00797125 /* CoreTelephony.framework */,
+				AF6C46C61FA80DF000797125 /* Security.framework */,
+				AF6C46C41FA80DE800797125 /* libc++.tbd */,
+				AF6C46C21FA80DDB00797125 /* libsqlite3.0.tbd */,
+				AF6C46C01FA80DD000797125 /* libz.tbd */,
+				AF6C46BE1FA80DB700797125 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AF8B6CC61FA01A4A008DA068 /* SDWebImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1324,6 +1439,7 @@
 				TargetAttributes = {
 					AF66ACED1F9D7E540079A2CF = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = R4485X89UR;
 						ProvisioningStyle = Automatic;
 					};
 					AF66AD001F9D7E550079A2CF = {
@@ -1345,6 +1461,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = AF66ACE51F9D7E540079A2CF;
 			productRefGroup = AF66ACEF1F9D7E540079A2CF /* Products */;
@@ -1363,9 +1480,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6C46AD1FA8073C00797125 /* registerInterface.strings in Resources */,
+				AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */,
 				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				AF66AD541F9D8BF90079A2CF /* Assets.xcassets in Resources */,
 				1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */,
+				AF6C46AF1FA8073C00797125 /* registerInterface.xib in Resources */,
 				AF66ACFB1F9D7E550079A2CF /* LaunchScreen.storyboard in Resources */,
 				AF66AE831F9F1AB10079A2CF /* IQKeyboardManager.bundle in Resources */,
 				AF66AE001F9DE1B60079A2CF /* MJRefresh.bundle in Resources */,
@@ -1409,6 +1529,7 @@
 				AF66AD801F9DB5460079A2CF /* ContactUsViewController.m in Sources */,
 				AF626D261FA2D97D00A1225F /* CityListCell.m in Sources */,
 				AF66AE781F9F1AB10079A2CF /* IQUIView+Hierarchy.m in Sources */,
+				AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */,
 				AF66AD861F9DC55D0079A2CF /* MyActivitiesTableViewCell.m in Sources */,
 				AF66ADB61F9DDD250079A2CF /* UIProgressView+AFNetworking.m in Sources */,
 				AF66ADB31F9DDD250079A2CF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1436,6 +1557,7 @@
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
 				AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
+				AF6C46B01FA8073C00797125 /* registerInterface.m in Sources */,
 				AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
 				AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */,
@@ -1446,7 +1568,9 @@
 				AF66AE0D1F9EDD2F0079A2CF /* MembersPayViewController.m in Sources */,
 				AF66ADC11F9DDFB50079A2CF /* XAFNetWork.m in Sources */,
 				AF66AD771F9DB4F40079A2CF /* MyActivationCodeViewController.m in Sources */,
+				AF6C46AE1FA8073C00797125 /* registerViewController.m in Sources */,
 				AF66ADAB1F9DDD250079A2CF /* AFNetworkReachabilityManager.m in Sources */,
+				AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */,
 				AF66ADB01F9DDD250079A2CF /* AFAutoPurgingImageCache.m in Sources */,
 				AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */,
 				AF66AD831F9DB9D30079A2CF /* MyCollectionTableViewCell.m in Sources */,
@@ -1461,6 +1585,7 @@
 				AF66AE041F9DE1B60079A2CF /* UIScrollView+MJRefresh.m in Sources */,
 				AF66AE801F9F1AB10079A2CF /* IQTitleBarButtonItem.m in Sources */,
 				AF6C469D1FA71BC900797125 /* KeyChainStore.m in Sources */,
+				AF6C46B61FA808EC00797125 /* SFNavView.m in Sources */,
 				AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */,
 				AF66ADAA1F9DDD250079A2CF /* AFHTTPSessionManager.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,
@@ -1498,6 +1623,7 @@
 				AF66ADFE1F9DE1B60079A2CF /* MJRefreshNormalHeader.m in Sources */,
 				AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */,
 				1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */,
+				AF6C46B31FA807E000797125 /* mytimer.m in Sources */,
 				AF66AE031F9DE1B60079A2CF /* UIScrollView+MJExtension.m in Sources */,
 				AF8B6CF21FA01A4A008DA068 /* UIImage+GIF.m in Sources */,
 				AF66ADF91F9DE1B60079A2CF /* MJRefreshAutoStateFooter.m in Sources */,
@@ -1513,6 +1639,7 @@
 				AF8B6CED1FA01A4A008DA068 /* SDWebImageDownloader.m in Sources */,
 				AF66ADB81F9DDD250079A2CF /* UIWebView+AFNetworking.m in Sources */,
 				AF66AE7A1F9F1AB10079A2CF /* IQUIWindow+Hierarchy.m in Sources */,
+				AF6C46A21FA806E700797125 /* SFValidationEmailViewController.m in Sources */,
 				AF66AD4B1F9D82570079A2CF /* ActivityViewController.m in Sources */,
 				AF66ADAE1F9DDD250079A2CF /* AFURLResponseSerialization.m in Sources */,
 				AF66ADFF1F9DE1B60079A2CF /* MJRefreshStateHeader.m in Sources */,
@@ -1563,6 +1690,23 @@
 				AF6C466A1FA6C75200797125 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		AF6C46A41FA8073C00797125 /* registerInterface.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6C46A51FA8073C00797125 /* zh-Hans */,
+				AF6C46A61FA8073C00797125 /* en */,
+			);
+			name = registerInterface.strings;
+			sourceTree = "<group>";
+		};
+		AF6C46A91FA8073C00797125 /* registerInterface.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AF6C46AA1FA8073C00797125 /* Base */,
+			);
+			name = registerInterface.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1664,11 +1808,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R4485X89UR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yizu/YiZuManager.pch;
 				INFOPLIST_FILE = yizu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yizu/other/Wechat",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xujian.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1678,11 +1831,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = R4485X89UR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yizu/YiZuManager.pch;
 				INFOPLIST_FILE = yizu/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/yizu/other/Wechat",
+				);
+				OTHER_LDFLAGS = (
+					"-Objc",
+					"-all_load",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xujian.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

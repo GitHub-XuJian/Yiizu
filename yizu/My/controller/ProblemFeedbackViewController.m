@@ -87,8 +87,9 @@
     }else if (_content.length == 0) {
         jxt_showAlertTitle(@"请输入反馈问题");
     }else{
-        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Support/information/name/%@/info/%@/time/%@",Main_Server,_name,_content,[EncapsulationMethod getCurrentTimes]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *dict = @{@"name":_name,@"info":_content,@"time":[EncapsulationMethod getCurrentTimes]};
+        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Support/information",Main_Server] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"wenti"] isEqualToString:@"success"]) {
                 jxt_showAlertTitle(@"反馈成功");
             }else{

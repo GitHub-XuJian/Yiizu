@@ -91,6 +91,10 @@
  */
 +(NSString*)getCurrentTimes;
 /**
+ * MD5加密
+ */
++ (NSString *) md5:(NSString *) input;
+/**
  * 邮箱正则表达式
  */
 + (BOOL)isValidateEmail:(NSString *)email;

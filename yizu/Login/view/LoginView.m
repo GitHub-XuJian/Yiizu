@@ -39,6 +39,7 @@
     accountTextField.placeholder = @"请输入邮箱地址/手机号";
     accountTextField.delegate = self;
     [backImageView addSubview:accountTextField];
+    self.accountTextField = accountTextField;
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(accountTextField.x, accountTextField.y+accountTextField.height+0.5, accountTextField.width, 0.5)];
     lineView.backgroundColor = kColorLine;
@@ -50,6 +51,7 @@
     passwordTextField.delegate = self;
     passwordTextField.secureTextEntry = YES;
     [backImageView addSubview:passwordTextField];
+    self.passWordTextField = passwordTextField;
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(passwordTextField.x, passwordTextField.y+passwordTextField.height+0.5, passwordTextField.width, 0.5)];
     lineView2.backgroundColor = kColorLine;
@@ -75,7 +77,7 @@
 - (void)btnClickedAction:(UIButton *)btn
 {
     if (_block) {
-        _block((int)btn.tag,@"");
+        _block((int)btn.tag,self.passWordTextField.text);
     }
 }
 - (void)btnClicked:(btnClicked)block
