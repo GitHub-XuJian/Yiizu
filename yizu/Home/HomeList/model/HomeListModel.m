@@ -8,6 +8,7 @@
 
 #import "HomeListModel.h"
 #import "XAFNetWork.h"
+#import "SVProgressHUD.h"
 
 @implementation HomeListModel
 
@@ -26,16 +27,19 @@
 
 +(void)HomeListWithUrl:(NSString *)url success:(void (^)(NSArray *))sBlock error:(void (^)())eBlock
 {
+  
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray* mArr=[NSMutableArray array];
         NSArray* listArr=responseObject[@"list"];
-        //NSLog(@"homeList==%@",listArr);
+        NSLog(@"homeList==%@",listArr);
         for (NSDictionary* dic in listArr) {
             HomeListModel* model=[self ModelWithDict:dic];
             [mArr addObject:model];
         }
         if (sBlock) {
             sBlock(mArr.copy);
+              //[SVProgressHUD setMinimumDismissTimeInterval:0.25];
+              //[SVProgressHUD showSuccessWithStatus:@"加载完成"];
         }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         

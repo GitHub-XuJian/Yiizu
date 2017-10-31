@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @class HomeListModel;
 @interface HomeListCell : UITableViewCell
 
+
+
 @property(nonatomic,strong)HomeListModel * model;
+
 
 
 @end

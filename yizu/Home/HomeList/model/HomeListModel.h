@@ -18,6 +18,12 @@
 @property (nonatomic, copy) NSString* upvote;
 //商户简介
 @property (nonatomic, copy) NSString* chamberjj;
+//商户id
+@property (nonatomic, copy) NSString* chamber_id;
+//排名
+@property (nonatomic, copy) NSString* up;
+//是否点过赞
+@property (nonatomic, copy) NSString* status;
 
 @property (nonatomic, copy) NSString* image1;
 @property (nonatomic, copy) NSString* image2;
