@@ -17,6 +17,9 @@
 
 @property (strong, nonatomic) NSArray* loopArr;
 
+@property (strong, nonatomic)NSTimer* timer;
+@property (assign, nonatomic)int currentNumber;
+
 @end
 
 @implementation LoopImageViewController
@@ -48,10 +51,36 @@
         [imaView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",self.loopArr[i]]]];
         imaView.frame=CGRectMake(i*self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
         [self.scrollView addSubview:imaView];
+        if (self.currentNumber==0) {
+            self.currentNumber++;
+            
+            //设置定时器让_scrollView 无限滚动播放
+            self.timer =[NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(svRun) userInfo:nil repeats:YES];
+        }
     }
     
 }
-
+-(void)svRun
+{
+    
+    
+    self.currentNumber++;
+    
+    if (self.currentNumber==self.loopArr.count) {
+        self.currentNumber=0;
+    }
+    
+    [UIView animateWithDuration:1 animations:^{
+        self.scrollView.contentOffset=CGPointMake( self.view.frame.size.width*self.currentNumber-1, 0);
+        [self updatePageControl:self.scrollView];
+    }];
+    //动画
+//    [self.scrollView
+//     scrollRectToVisible:CGRectMake(self.view.frame.size.width*self.currentNumber-1, 0, self.view.frame.size.width, 0) animated:YES];
+    
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置第一次点击区域按钮
