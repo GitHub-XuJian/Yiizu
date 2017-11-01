@@ -16,6 +16,10 @@
 
 @property (nonatomic) NSInteger  likeCount;         //设置赞数
 
+@property (nonatomic,copy)NSString* chambername;    //保存店铺名字
+
+@property (nonatomic,copy)NSString* userId;         //保存用户id
+
 @property (nonatomic,copy) void (^onClick)(CellBtn *btn);
 
 

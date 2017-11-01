@@ -24,13 +24,13 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{}
 
-+(void)HomeListWithUrl:(NSString *)url success:(void (^)(NSArray *))sBlock error:(void (^)())eBlock
++(void)HomeListWithUrl:(NSString *)url success:(void (^)(NSMutableArray *))sBlock error:(void (^)())eBlock
 {
   
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray* mArr=[NSMutableArray array];
         NSArray* listArr=responseObject[@"list"];
-        NSLog(@"homeList==%@",listArr);
+        //NSLog(@"homeList==%@",listArr);
         for (NSDictionary* dic in listArr) {
             HomeListModel* model=[self ModelWithDict:dic];
             [mArr addObject:model];

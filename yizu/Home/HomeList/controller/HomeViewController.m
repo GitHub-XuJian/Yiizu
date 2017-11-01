@@ -14,12 +14,16 @@
 #import "HomeSearchController.h"
 
 @interface HomeViewController ()<HomeCityBtnDelegate>
-@property(nonatomic, strong)NSArray* listArr;
+@property(nonatomic, strong)NSMutableArray* listArr;
+
 @property(nonatomic, strong)UIButton* navBtn;
 //用于保存首页拼接城市接口
 @property(nonatomic, copy)NSString* homeListCityId;
 //用于保存首页拼接区域接口
 @property(nonatomic, copy)NSString* homeListAreaId;
+//
+@property(nonatomic, copy)NSString* homeURL;
+
 
 
 
@@ -29,68 +33,106 @@
 
 @implementation HomeViewController
 
-- (void)setListArr:(NSArray *)listArr
+- (void)setListArr:(NSMutableArray *)listArr
 {
     _listArr=listArr;
     [self.tableView reloadData];
+    [SVProgressHUD dismiss];
+    [self endRefresh];
 }
 
-//- (void)setHomeListCityId:(NSString *)homeListCityId
-//{
-//    _homeListAreaId=homeListCityId;
-//}
+- (void)setHomeListCityId:(NSString *)homeListCityId
+{
+    _homeListAreaId=homeListCityId;
+    self.homeURL=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/%@",homeListCityId];
+#define HOMENAVBTNURL @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/%@/page/1"
+    NSString* cityURL=[NSString stringWithFormat:HOMENAVBTNURL,homeListCityId];
+    [self loadData:cityURL];
+    NSLog(@"全部商城接口 %@",cityURL);
+}
 
 -(void)setHomeListAreaId:(NSString *)homeListAreaId
 {
     _homeListAreaId=homeListAreaId;
-    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/%@/area/%@/page/1",self.homeListCityId,self.homeListAreaId];
+    NSString* areaUrl=[NSString stringWithFormat:@"/area/%@/page/1",homeListAreaId];
+    NSString* url=[self.homeURL stringByAppendingString:areaUrl];
+    
     NSLog(@"点击城市和区域Url=%@",url);
-    [HomeListModel HomeListWithUrl:url success:^(NSArray *array) {
-        
+
+    [HomeListModel HomeListWithUrl:url success:^(NSMutableArray *array) {
         self.listArr=array;
-        NSLog(@"不是第一次");
+        NSLog(@"再次请求");
     } error:^{
         
     }];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
     self.navigationItem.title=@"依足";
     [self setNavBarBtn];
     
     //接受数据
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
 
-    [self loadData];
+    NSString* urlStr=@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1";
+    [self loadData:urlStr];
     
-  
-    self.tableView.mj_header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
-        [self loadData];
-        
-        [self.tableView.mj_header endRefreshing];
-        
-    }];
+
+    //【下拉刷新】【上拉加载】
+    [self setupRefresh];
+
     
     
     
 }
-
-//- (void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    [self.tableView.mj_header beginRefreshing];
-//}
-- (void)loadData
+-(void)setupRefresh{
+    MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSString* urlStr=@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1";
+        [self loadData:urlStr];
+    }];
+    
+    self.tableView.mj_header = header;
+    
+//    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//
+//        [self loadMore];
+//    }];
+//
+//    self.tableView.mj_footer = footer;
+}
+#pragma mark-结束刷新方法
+-(void)endRefresh{
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
+- (void)loadMore
 {
-    [SVProgressHUD showWithStatus:@"正在加载..."];
-    [HomeListModel HomeListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/843/page/1" success:^(NSArray *array) {
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
+#define MoreHomeList @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/843/page/%d"
+    NSString* strUrl=[NSString stringWithFormat:MoreHomeList,2];
+
+    [self endRefresh];
+    [SVProgressHUD dismiss];
+
+}
+- (void)loadData:(NSString*)strURL
+{
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
+    //http://123.207.158.228//yizu/index.php/Mobile/Index/index_Chamber/data/城市id
+    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1
+
+    [HomeListModel HomeListWithUrl:strURL success:^(NSMutableArray *array) {
         self.listArr=array;
-        
-        [SVProgressHUD dismiss];
+
     } error:^{
         [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+          [self endRefresh];
+        [SVProgressHUD dismiss];
+
     }];
+ 
 }
 
 - (void)setNavBarBtn
@@ -155,6 +197,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
     return self.listArr.count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
