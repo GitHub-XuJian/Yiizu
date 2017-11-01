@@ -24,6 +24,8 @@
 		AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C81FA828460022E990 /* ForgetViewController.m */; };
 		AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3C91FA828460022E990 /* resetPassword.xib */; };
 		AF23F3CF1FA872D30022E990 /* OldAndNewPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3CE1FA872D30022E990 /* OldAndNewPassWordViewController.m */; };
+		AF23F3D21FA962490022E990 /* registeredView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3D11FA962490022E990 /* registeredView.m */; };
+		AF23F3D51FA9BACF0022E990 /* MyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3D41FA9BACF0022E990 /* MyCollectionModel.m */; };
 		AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */; };
 		AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D011FA1DF9500A1225F /* JXTAlertView.m */; };
 		AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */; };
@@ -126,10 +128,7 @@
 		AF6C469C1FA71BC900797125 /* UUID.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C469A1FA71BC800797125 /* UUID.m */; };
 		AF6C469D1FA71BC900797125 /* KeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C469B1FA71BC800797125 /* KeyChainStore.m */; };
 		AF6C46A21FA806E700797125 /* SFValidationEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46A01FA806E700797125 /* SFValidationEmailViewController.m */; };
-		AF6C46AD1FA8073C00797125 /* registerInterface.strings in Resources */ = {isa = PBXBuildFile; fileRef = AF6C46A41FA8073C00797125 /* registerInterface.strings */; };
 		AF6C46AE1FA8073C00797125 /* registerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46A81FA8073C00797125 /* registerViewController.m */; };
-		AF6C46AF1FA8073C00797125 /* registerInterface.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF6C46A91FA8073C00797125 /* registerInterface.xib */; };
-		AF6C46B01FA8073C00797125 /* registerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46AC1FA8073C00797125 /* registerInterface.m */; };
 		AF6C46B31FA807E000797125 /* mytimer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46B21FA807E000797125 /* mytimer.m */; };
 		AF6C46B61FA808EC00797125 /* SFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46B51FA808EC00797125 /* SFNavView.m */; };
 		AF6C46BC1FA80D6100797125 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */; };
@@ -222,6 +221,10 @@
 		AF23F3C91FA828460022E990 /* resetPassword.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = resetPassword.xib; sourceTree = "<group>"; };
 		AF23F3CD1FA872D30022E990 /* OldAndNewPassWordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OldAndNewPassWordViewController.h; sourceTree = "<group>"; };
 		AF23F3CE1FA872D30022E990 /* OldAndNewPassWordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OldAndNewPassWordViewController.m; sourceTree = "<group>"; };
+		AF23F3D01FA962490022E990 /* registeredView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = registeredView.h; sourceTree = "<group>"; };
+		AF23F3D11FA962490022E990 /* registeredView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = registeredView.m; sourceTree = "<group>"; };
+		AF23F3D31FA9BACF0022E990 /* MyCollectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionModel.h; sourceTree = "<group>"; };
+		AF23F3D41FA9BACF0022E990 /* MyCollectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionModel.m; sourceTree = "<group>"; };
 		AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
 		AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
 		AF626D001FA1DF9500A1225F /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
@@ -433,13 +436,8 @@
 		AF6C469B1FA71BC800797125 /* KeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainStore.m; sourceTree = "<group>"; };
 		AF6C46A01FA806E700797125 /* SFValidationEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFValidationEmailViewController.m; sourceTree = "<group>"; };
 		AF6C46A11FA806E700797125 /* SFValidationEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFValidationEmailViewController.h; sourceTree = "<group>"; };
-		AF6C46A51FA8073C00797125 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/registerInterface.strings"; sourceTree = "<group>"; };
-		AF6C46A61FA8073C00797125 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/registerInterface.strings; sourceTree = "<group>"; };
-		AF6C46A71FA8073C00797125 /* registerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registerInterface.h; sourceTree = "<group>"; };
 		AF6C46A81FA8073C00797125 /* registerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registerViewController.m; sourceTree = "<group>"; };
-		AF6C46AA1FA8073C00797125 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/registerInterface.xib; sourceTree = "<group>"; };
 		AF6C46AB1FA8073C00797125 /* registerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registerViewController.h; sourceTree = "<group>"; };
-		AF6C46AC1FA8073C00797125 /* registerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registerInterface.m; sourceTree = "<group>"; };
 		AF6C46B11FA807E000797125 /* mytimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mytimer.h; sourceTree = "<group>"; };
 		AF6C46B21FA807E000797125 /* mytimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytimer.m; sourceTree = "<group>"; };
 		AF6C46B41FA808EC00797125 /* SFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNavView.h; sourceTree = "<group>"; };
@@ -982,6 +980,8 @@
 		AF66AD381F9D81D20079A2CF /* model */ = {
 			isa = PBXGroup;
 			children = (
+				AF23F3D31FA9BACF0022E990 /* MyCollectionModel.h */,
+				AF23F3D41FA9BACF0022E990 /* MyCollectionModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1343,12 +1343,10 @@
 		AF6C46A31FA8073C00797125 /* registerViewController */ = {
 			isa = PBXGroup;
 			children = (
-				AF6C46A41FA8073C00797125 /* registerInterface.strings */,
-				AF6C46A71FA8073C00797125 /* registerInterface.h */,
-				AF6C46AC1FA8073C00797125 /* registerInterface.m */,
-				AF6C46A91FA8073C00797125 /* registerInterface.xib */,
 				AF6C46AB1FA8073C00797125 /* registerViewController.h */,
 				AF6C46A81FA8073C00797125 /* registerViewController.m */,
+				AF23F3D01FA962490022E990 /* registeredView.h */,
+				AF23F3D11FA962490022E990 /* registeredView.m */,
 			);
 			path = registerViewController;
 			sourceTree = "<group>";
@@ -1568,14 +1566,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF6C46AD1FA8073C00797125 /* registerInterface.strings in Resources */,
 				AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */,
 				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				1F4423DB1FA6F0C200F8EA95 /* SVProgressHUD.bundle in Resources */,
 				1F4423CA1FA6C49000F8EA95 /* CustomSearchBar.xib in Resources */,
 				AF66AD541F9D8BF90079A2CF /* Assets.xcassets in Resources */,
 				1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */,
-				AF6C46AF1FA8073C00797125 /* registerInterface.xib in Resources */,
 				AF66ACFB1F9D7E550079A2CF /* LaunchScreen.storyboard in Resources */,
 				AF66AE831F9F1AB10079A2CF /* IQKeyboardManager.bundle in Resources */,
 				AF66AE001F9DE1B60079A2CF /* MJRefresh.bundle in Resources */,
@@ -1649,7 +1645,6 @@
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
 				AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
-				AF6C46B01FA8073C00797125 /* registerInterface.m in Sources */,
 				AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
 				AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */,
@@ -1717,8 +1712,10 @@
 				AF66ADAC1F9DDD250079A2CF /* AFSecurityPolicy.m in Sources */,
 				AF66ADFE1F9DE1B60079A2CF /* MJRefreshNormalHeader.m in Sources */,
 				1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */,
+				AF23F3D51FA9BACF0022E990 /* MyCollectionModel.m in Sources */,
 				AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */,
 				1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */,
+				AF23F3D21FA962490022E990 /* registeredView.m in Sources */,
 				AF6C46B31FA807E000797125 /* mytimer.m in Sources */,
 				AF66AE031F9DE1B60079A2CF /* UIScrollView+MJExtension.m in Sources */,
 				AF8B6CF21FA01A4A008DA068 /* UIImage+GIF.m in Sources */,
@@ -1788,23 +1785,6 @@
 				AF6C466A1FA6C75200797125 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		AF6C46A41FA8073C00797125 /* registerInterface.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF6C46A51FA8073C00797125 /* zh-Hans */,
-				AF6C46A61FA8073C00797125 /* en */,
-			);
-			name = registerInterface.strings;
-			sourceTree = "<group>";
-		};
-		AF6C46A91FA8073C00797125 /* registerInterface.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AF6C46AA1FA8073C00797125 /* Base */,
-			);
-			name = registerInterface.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

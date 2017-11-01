@@ -47,12 +47,25 @@
         [self.contentView addSubview:timeLabel];
         self.timeLabel = timeLabel;
         
-        UILabel *lineview = [[UILabel alloc] init];
-        lineview.backgroundColor = kColorLine;
-        lineview.frame = CGRectMake(0, 135/2, kSCREEN_WIDTH, 0.5);
-        [self.contentView addSubview:lineview];
+//        UILabel *lineview = [[UILabel alloc] init];
+//        lineview.backgroundColor = kColorLine;
+//        lineview.frame = CGRectMake(0, 135/2, kSCREEN_WIDTH, 0.5);
+//        [self.contentView addSubview:lineview];
     }
     return self;
+}
+- (void)setCellModel:(MyCollectionModel *)cellModel
+{
+    self.cellModel = cellModel;
+    
+}
+- (void)createData
+{
+    
+}
+- (void)createFrame
+{
+    
 }
 - (void)setNameStr:(NSString *)nameStr
 {

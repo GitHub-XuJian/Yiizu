@@ -34,7 +34,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
 //    [self createSearchView];
     [self createTableView];

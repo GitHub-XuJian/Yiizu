@@ -16,7 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(kSCREEN_WIDTH/2-100/2, kSCREEN_HEIGHT/2-100/2, 100, 100);
     [btn setTitle:@"画图页面" forState:UIControlStateNormal];

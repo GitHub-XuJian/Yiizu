@@ -38,7 +38,7 @@
     accountTextField.frame = CGRectMake(50, kSCREEN_HEIGHT/2-80/2, kSCREEN_WIDTH-100, 40);
     accountTextField.placeholder = @"请输入手机号";
     accountTextField.delegate = self;
-    accountTextField.text = @"13898388023";
+//    accountTextField.text = @"13898388023";
     [backImageView addSubview:accountTextField];
     self.accountTextField = accountTextField;
     
@@ -50,7 +50,7 @@
     passwordTextField.frame = CGRectMake(accountTextField.x, accountTextField.y+accountTextField.height+5, accountTextField.width, accountTextField.height);
     passwordTextField.placeholder = @"请输入密码";
     passwordTextField.delegate = self;
-    passwordTextField.text = @"1394";
+//    passwordTextField.text = @"1394";
     passwordTextField.secureTextEntry = YES;
     [backImageView addSubview:passwordTextField];
     self.passWordTextField = passwordTextField;
@@ -66,12 +66,9 @@
     UIButton *forgotPasswordBtn = [self createButtonWithFrame:CGRectMake(loginBtn.x,loginBtn.y+loginBtn.height+30, 70, 44) andImageStr:nil andTitleStr:@"忘记密码?" andBtnTag:ForgotPassword andTitleColor:[UIColor whiteColor]];
     [backImageView addSubview:forgotPasswordBtn];
     
-    UIButton *visitorsLoginBtn = [self createButtonWithFrame:CGRectMake(forgotPasswordBtn.x+forgotPasswordBtn.width,forgotPasswordBtn.y, 70, 44) andImageStr:nil andTitleStr:@"游客登录" andBtnTag:VisitorsLogin andTitleColor:[UIColor whiteColor]];
-    [backImageView addSubview:visitorsLoginBtn];
-    
-    NSArray *array = @[@"新浪",@"微信",@"QQ"];
+    NSArray *array = @[@"微信",@"QQ"];
     for (int i = 0; i < array.count; i++) {
-        UIButton *thirdPartybtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-(44*3+20)/2+i*50,kSCREEN_HEIGHT-100, 44, 44) andImageStr:nil andTitleStr:array[i] andBtnTag:i+Sina andTitleColor:[UIColor whiteColor]];
+        UIButton *thirdPartybtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-(44*array.count+20)/2+i*50,kSCREEN_HEIGHT-100, 44, 44) andImageStr:nil andTitleStr:array[i] andBtnTag:i+WeiXin andTitleColor:[UIColor whiteColor]];
         thirdPartybtn.backgroundColor = [UIColor clearColor];
         [backImageView addSubview:thirdPartybtn];
     }

@@ -10,7 +10,6 @@
 #import "HomeListModel.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
-#import "XAFNetWork.h"
 #import "CellBtn.h"
 @interface HomeListCell ()
 //点赞接口

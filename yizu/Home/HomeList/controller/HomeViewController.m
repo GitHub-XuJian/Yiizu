@@ -8,13 +8,10 @@
 
 #import "HomeViewController.h"
 #import "HomeListCell.h"
-#import "XAFNetWork.h"
 #import "HomeCityBtnController.h"
 #import "HomeListModel.h"
 #import "LoopImageViewController.h"
 #import "HomeSearchController.h"
-#import "SVProgressHUD.h"
-#import "MJRefresh.h"
 
 @interface HomeViewController ()<HomeCityBtnDelegate>
 @property(nonatomic, strong)NSArray* listArr;

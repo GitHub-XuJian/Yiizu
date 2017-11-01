@@ -24,7 +24,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
 //    [self loadFile];
     [self loadString:[NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server]];
 }

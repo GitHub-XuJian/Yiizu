@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyCollectionModel.h"
 
 @interface MyCollectionTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIImage *iconImage;
-@property (nonatomic, strong) NSString *nameStr;
-@property (nonatomic, strong) NSString *addressStr;
-@property (nonatomic, strong) NSString *timeStr;
-
+@property (nonatomic, strong) MyCollectionModel *cellModel;
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

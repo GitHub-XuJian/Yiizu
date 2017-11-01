@@ -13,8 +13,6 @@ typedef NS_ENUM(NSUInteger,BtnloginType)
     RegisterBtn,             // 注册
     Back,                    // 返回
     ForgotPassword,          // 忘记密码
-    VisitorsLogin,           // 游客登录
-    Sina,
     WeiXin,
     QQ                     
 };

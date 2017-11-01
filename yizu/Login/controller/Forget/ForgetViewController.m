@@ -31,7 +31,7 @@
             [self.view endEditing:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
         }else {
-            __weak typeof(self) weakself = self;
+//            __weak typeof(self) weakself = self;
 //            if (!weakself.resetPasswordView.account.text && !weakself.resetPasswordView.OldPassword.text && !weakself.resetPasswordView.NewPassword.text ) {
 //                if ([weakself.resetPasswordView.NewPassword.text isEqualToString:weakself.resetPasswordView.confirmNewPassword.text]) {
 //
