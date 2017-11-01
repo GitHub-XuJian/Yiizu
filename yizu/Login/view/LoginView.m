@@ -36,9 +36,11 @@
     
     UITextField *accountTextField = [[UITextField alloc] init];
     accountTextField.frame = CGRectMake(50, kSCREEN_HEIGHT/2-80/2, kSCREEN_WIDTH-100, 40);
-    accountTextField.placeholder = @"请输入邮箱地址/手机号";
+    accountTextField.placeholder = @"请输入手机号";
     accountTextField.delegate = self;
+    accountTextField.text = @"13898388023";
     [backImageView addSubview:accountTextField];
+    self.accountTextField = accountTextField;
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(accountTextField.x, accountTextField.y+accountTextField.height+0.5, accountTextField.width, 0.5)];
     lineView.backgroundColor = kColorLine;
@@ -48,8 +50,10 @@
     passwordTextField.frame = CGRectMake(accountTextField.x, accountTextField.y+accountTextField.height+5, accountTextField.width, accountTextField.height);
     passwordTextField.placeholder = @"请输入密码";
     passwordTextField.delegate = self;
+    passwordTextField.text = @"1394";
     passwordTextField.secureTextEntry = YES;
     [backImageView addSubview:passwordTextField];
+    self.passWordTextField = passwordTextField;
     
     UIView *lineView2 = [[UIView alloc] initWithFrame:CGRectMake(passwordTextField.x, passwordTextField.y+passwordTextField.height+0.5, passwordTextField.width, 0.5)];
     lineView2.backgroundColor = kColorLine;
@@ -75,7 +79,7 @@
 - (void)btnClickedAction:(UIButton *)btn
 {
     if (_block) {
-        _block((int)btn.tag,@"");
+        _block((int)btn.tag,self.passWordTextField.text);
     }
 }
 - (void)btnClicked:(btnClicked)block

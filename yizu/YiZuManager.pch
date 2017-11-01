@@ -20,5 +20,7 @@
 #import "JXTAlertManagerHeader.h"   // 弹框
 #import "XSaverTool.h"
 #import "UUID.h"
+#import "SFNavView.h"
+#import "SVProgressHUD.h"
 
 #endif
