@@ -47,49 +47,31 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-     [self.likeCellBtn addTarget:self action:@selector(like) forControlEvents:UIControlEventTouchUpInside];
+     //[self.likeCellBtn addTarget:self action:@selector(like) forControlEvents:UIControlEventTouchUpInside];
     // Initialization code
 }
-- (void)like
-{
-    //    NSLog(@"点%d",self.isUp);
-    //    if (self.isUp ==NO) {
-    //        [XAFNetWork GET:self.upUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-    //
-    //            int ivalue = [self.numberUp intValue];
-    //            ivalue++;
-    //             self.upvoteLab.text=[NSString stringWithFormat:@"(%d)",ivalue];
-    //                    NSLog(@"点赞%@",responseObject);
-    //                    NSString* str=responseObject[@"diancuole"];
-    //            if ([str isEqualToString:@"already"]) {
-    //
-    //            }
-    //        } fail:^(NSURLSessionDataTask *task, NSError *error) {
-    //
-    //        }];
-    //        self.isUp=YES;
-    //
-    //    }else
-    //    {
-    //
-    //        [XAFNetWork GET:self.cancelUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-    //            NSLog(@"取消%@",responseObject);
-    //        } fail:^(NSURLSessionDataTask *task, NSError *error) {
-    //
-    //        }];
-    //        self.isUp=NO;
-    //    }
-}
+
 
 - (IBAction)keepBtn:(UIButton *)sender
 {
+     sender.userInteractionEnabled = NO;
     if (sender.selected==NO) {
         sender.selected=YES;
         NSLog(@"收藏1");
+        [UIView animateWithDuration:0.25 animations:^{
+    
+            sender.imageView.transform=CGAffineTransformMakeScale(1.5, 1.5);//宽高伸缩比例
+        }];
+        
     }else
     {
         sender.selected=NO;
          NSLog(@"收藏2");
+        [UIView animateWithDuration:0.25 animations:^{
+            sender.imageView.transform = CGAffineTransformIdentity;//变形后复原
+            sender.userInteractionEnabled = YES;
+
+        }];
     }
 }
 
@@ -102,14 +84,32 @@
     //更改
     self.likeCellBtn.likeCount=model.upvote.integerValue;
     //NSLog(@"开始点赞%ld",(long)model.upvote.integerValue);
-    self.likeCellBtn.islike=model.status;
-    //NSLog(@"开始状态%@",model.status);
+    //self.likeCellBtn.islike=model.status;
+    //NSLog(@"开始点赞%@",model.status);
+//    if ([model.status isEqualToString:@"<null>"]) {
+//        NSLog(@"开始状态null");
+//        self.likeCellBtn.islike=NO;
+//    }else
+//    {
+//        self.likeCellBtn.islike=YES;
+//    }
+    if (model.status) {
+       self.likeCellBtn.islike=YES;
+    }else
+    {
+       self.likeCellBtn.islike=NO;
+    }
+    
+    
+    self.likeCellBtn.chambername=model.chambername;
+    //self.likeCellBtn.chamber_id=model.chamber_id;
     
     self.nameLab.text=model.chambername;
     [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",model.image1]]];
     [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",model.image2]]];
     [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",model.image3]]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:model.icon]];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/%@",model.icon]]];
+    
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
     //self.chamberjjLab.text=model.chamberjj;

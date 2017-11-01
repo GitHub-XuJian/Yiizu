@@ -104,8 +104,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CityListModel* model=self.cityArr[indexPath.item];
-    NSString* url=[NSString stringWithFormat:@"http:// 123.207.158.228/yizu/index.php/Mobile/Index/index_district/data/%@",model.cityId];
-    NSLog(@"url====%@",url);
+    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/%@/page/1",model.cityId];
+    NSLog(@"点击行按钮=%@%@",model.name,url);
     if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:)]) {
         [self.delegate HomeCityBtnTitle:model.name url:model.cityId];
     }

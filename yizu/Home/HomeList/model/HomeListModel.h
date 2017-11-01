@@ -32,7 +32,7 @@
 
 + (instancetype)ModelWithDict:(NSDictionary*)dic;
 
-+(void)HomeListWithUrl:(NSString*)url success:(void(^)(NSArray* array))sBlock error:(void(^)())eBlock;
++(void)HomeListWithUrl:(NSString*)url success:(void(^)(NSMutableArray* array))sBlock error:(void(^)())eBlock;
 
 
 
