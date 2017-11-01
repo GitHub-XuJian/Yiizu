@@ -7,6 +7,9 @@
 //
 #define Time_Num 60
 #import "mytimer.h"
+@interface mytimer ()
+@property (nonatomic, strong) NSTimer *myt;
+@end
 
 @implementation mytimer
 static mytimer *timer = nil;
@@ -22,12 +25,13 @@ static mytimer *timer = nil;
     
 }
 -(void)makeTimer{
-
-    
-    
-   NSTimer *myt  =[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(atimer:) userInfo:nil repeats:YES];
+    _myt=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(atimer:) userInfo:nil repeats:YES];
     self.time = Time_Num;
-    [myt fire];
+    [_myt fire];
+}
+-(void)stopTimer
+{
+    [_myt invalidate];
 }
 -(void)atimer:(mytimer *)atimer{
 

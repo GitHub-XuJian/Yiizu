@@ -104,14 +104,13 @@
 /***
  *  登陆数据存储Key
  */
-#define EmailKey @"emailKey"
+#define PhoneKey @"phoneKey"
 #define Password  @"loginPassword"
 #define UserIDKey @"userIDKey"
 #define IsLogin @"isLogin"
-#define UserName @"userName"
-#define enterBackTime @"time"
-
-
+#define UserIconImage @"userIconImage"
+#define VerificationCode @"VerificationCode"
+#define VerificationCodeTime @"VerificationCodeTime"
 
 
 

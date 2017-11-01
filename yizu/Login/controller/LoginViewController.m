@@ -28,14 +28,29 @@
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
     _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
     [_loginView btnClicked:^(BtnloginType buttonType, NSString *password) {
+        
         switch (buttonType) {
             case Login:{
                 NSLog(@"登录");
+                [SVProgressHUD showWithStatus:@"正在登录"];
                 NSDictionary *dict = @{@"tel":_loginView.accountTextField.text,@"password":[EncapsulationMethod md5:password],@"sunshine":[UUID getUUID]};
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/Login",Main_Server];
                 [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                    [SVProgressHUD dismiss];
                     NSLog(@"%@",responseObject);
-                    jxt_showAlertTitle(responseObject[@"msg"]);
+                    jxt_showToastMessage(responseObject[@"msg"], 1);
+                    NSInteger code = [responseObject[@"code"] integerValue];
+                    if (code == 1) {
+                        [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                        [XSaverTool setObject:password forKey:Password];
+                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                        [XSaverTool setBool:code forKey:IsLogin];
+                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIconImage];
+                        _successfulBlock();
+                        [self dismissViewControllerAnimated:YES completion:nil];
+
+                    }
+
                 } fail:^(NSURLSessionDataTask *task, NSError *error) {
                     NSLog(@"%@",error);
                 }];
@@ -56,6 +71,7 @@
             case ForgotPassword:{
                 NSLog(@"忘记密码");
                 SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
+                validationVC.emailStr = _loginView.accountTextField.text;
                 [self presentViewController:validationVC animated:YES completion:nil];
 
                 break;

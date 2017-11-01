@@ -16,4 +16,5 @@
 
 -(void)makeTimer;
 -(BOOL)checkTimer;
+-(void)stopTimer;
 @end

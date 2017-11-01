@@ -21,5 +21,6 @@
 #import "XSaverTool.h"
 #import "UUID.h"
 #import "SFNavView.h"
+#import "SVProgressHUD.h"
 
 #endif

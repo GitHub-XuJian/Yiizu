@@ -9,12 +9,11 @@
 #import "SFValidationEmailViewController.h"
 #import "mytimer.h"
 #import "UUID.h"
+#import "OldAndNewPassWordViewController.h"
 
 @interface SFValidationEmailViewController ()<UITextFieldDelegate>
 {
-    NSString *_verificationCode;
     NSString *_inputVcode;
-    NSString *_timeStampStr;
 }
 @property (nonatomic,strong)UIButton *CodeBtn;//获取验证码
 @property (nonatomic,assign)BOOL isq;
@@ -56,13 +55,13 @@
     UITextField *emailTextField = [[UITextField alloc] init];
     emailTextField.frame = CGRectMake(20,100,kSCREEN_WIDTH-40,40);
     emailTextField.placeholder = @"请输入手机";
-    [emailTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
-    emailTextField.textColor = [UIColor grayColor];
+//    [emailTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
+//    emailTextField.textColor = [UIColor grayColor];
     emailTextField.layer.borderColor= [UIColor blackColor].CGColor;
     emailTextField.layer.borderWidth= 1.0f;
     emailTextField.delegate = self;
     emailTextField.text = self.emailStr;
-    emailTextField.enabled = NO;
+    emailTextField.enabled = YES;
 //    emailTextField.text = @"13898388023@163.com";
     UIView *textView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     emailTextField.leftView = textView;
@@ -87,7 +86,7 @@
     _CodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _CodeBtn.frame = CGRectMake(verificationCodeTextField.x+verificationCodeTextField.width+20, verificationCodeTextField.y, kSCREEN_WIDTH-60-verificationCodeTextField.width, verificationCodeTextField.height);
     self.isq?(_CodeBtn.userInteractionEnabled = NO):(_CodeBtn.userInteractionEnabled = YES);
-    [_CodeBtn setTitle:@"点击获取验证码" forState:UIControlStateNormal];
+    [_CodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_CodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     _CodeBtn.backgroundColor = [UIColor colorWithRed:0.196 green:0.525 blue:0.788 alpha:1.000];
     [_CodeBtn addTarget:self action:@selector(CodeBtnClic:) forControlEvents:UIControlEventTouchUpInside];
@@ -96,7 +95,7 @@
     //登录按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(verificationCodeTextField.x, verificationCodeTextField.y+verificationCodeTextField.height+20, kSCREEN_WIDTH-40, 40);
-    [button setTitle:@"完成" forState:UIControlStateNormal];
+    [button setTitle:@"下一步" forState:UIControlStateNormal];
     button.backgroundColor = [UIColor redColor];
     [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:button];
@@ -105,54 +104,24 @@
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
 
-    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[_timeStampStr doubleValue]/ 1000.0];
+    if (![XSaverTool objectForKey:VerificationCode]) {
+        jxt_showAlertTitle(@"请输入验证码");
+        return;
+    }
+    NSDate* date = [NSDate dateWithTimeIntervalSince1970:[[XSaverTool objectForKey:VerificationCodeTime] doubleValue]];
     NSDate * now = [NSDate date];
     NSTimeInterval timeBetween = [now timeIntervalSinceDate:date];
     NSLog(@"%f",timeBetween);
     NSInteger sec = (NSInteger)timeBetween;
     NSLog(@"%ld",(long)sec);
     
-    if (sec>600) {
+    if (sec>300) {
         jxt_showAlertTitle(@"验证码超时");
     }else{
-        if ([_inputVcode isEqualToString:_verificationCode]) {
-//            NSString *password = [SFSaveTool objectForKey:Password];
-//            NSDictionary *dict = @{@"email":self.emailText.text,@"sessionId":[UUID getUUID],@"passWord":password};
-//            NSString *urlStr = [NSString stringWithFormat:@"%@jsonService/user/yzmlogin.json",Main_Server];
-//            [SFNetWorkManager requestWithType:HttpRequestTypePost withUrlString:urlStr withParaments:dict withSuccessBlock:^(NSDictionary *object) {
-//                NSLog(@"成功 %@",object);
-//
-//                [SFProgressHUD showMessage:[object objectForKey:@"msg"] inView:self.view.window];
-//
-//                NSNumber *ruslt =[object valueForKey:@"code"] ;
-//                NSInteger code = [ruslt integerValue];
-//                if (code == 0) {
-//                    NSDictionary * data = object[@"data"];
-//                    NSString * email = data[@"email"];
-//                    NSString * accountID = data[@"id"];
-//                    NSString * password = data[@"passWord"];
-//                    NSString * name = data[@"name"];
-//                    NSString * iconImageUrl = [NSString stringWithFormat:@"%@%@",Main_Server,data[@"headImg"]];
-//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                        [SFSaveTool setObject:email forKey:EmailKey];
-//                        [SFSaveTool setObject:password forKey:Password];
-//                        [SFSaveTool setObject:accountID forKey:UserIDKey];
-//                        [SFSaveTool setBool:!code forKey:IsLogin];
-//                        [SFSaveTool setObject:name forKey:UserName];
-//                        [SFSaveTool setObject:iconImageUrl forKey:UserIconImage];
-//                        NSLog(@"%@",object);
-//                        NSLog(@"%@-----%@----%@",accountID,email,password);
-//                        [self dismissViewControllerAnimated:YES completion:nil];
-//
-//                    });
-//                }
-//
-//            } withFailureBlock:^(NSError *error) {
-//                NSLog(@"失败 %@",error);
-//                [SFProgressHUD showMessage:@"请求超时" inView:self.view];
-//            } progress:^(float progress) {
-//                NSLog(@"%f",progress);
-//            }];
+        if ([_inputVcode isEqualToString:[XSaverTool objectForKey:VerificationCode]]) {
+            OldAndNewPassWordViewController *onpVC = [[OldAndNewPassWordViewController alloc] init];
+            onpVC.phoneStr = self.emailStr;
+            [self presentViewController:onpVC animated:YES completion:nil];
         }else{
             jxt_showAlertTitle(@"验证码不正确");
         }
@@ -165,26 +134,23 @@
     }else{
         //倒计时
         [[mytimer sharetimer] makeTimer];
-        NSDictionary *dict = @{@"email":self.emailText.text};
-        NSString *urlStr = [NSString stringWithFormat:@"%@jsonService/user/sendCode.json",Main_Server];
-//        [SFNetWorkManager requestWithType:HttpRequestTypePost withUrlString:urlStr withParaments:dict withSuccessBlock:^(NSDictionary *object) {
-//            NSLog(@"成功 %@",object);
-//            
-//            [SFProgressHUD showMessage:[object objectForKey:@"msg"] inView:self.view.window];
-//            
-//            NSNumber *ruslt =[object valueForKey:@"code"] ;
-//            NSInteger code = [ruslt integerValue];
-//            if (code == 0) {
-//                _verificationCode = [[object objectForKey:@"data"] objectForKey:@"vcode"];
-//                _timeStampStr = [[object objectForKey:@"data"] objectForKey:@"sendtime"];
-//            }
-//            
-//        } withFailureBlock:^(NSError *error) {
-//            NSLog(@"失败 %@",error);
-//            [SFProgressHUD showMessage:@"请求超时" inView:self.view];
-//        } progress:^(float progress) {
-//            NSLog(@"%f",progress);
-//        }];
+        NSDictionary *dict = @{@"tel":self.emailText.text};
+        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/trueyzm",Main_Server];
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            jxt_showToastMessage(responseObject[@"msg"], 1);
+            NSInteger code = [responseObject[@"code"] integerValue];
+            if (code == 1) {
+                [XSaverTool setObject:responseObject[@"yzm"] forKey:VerificationCode];
+                [XSaverTool setObject:responseObject[@"sendtime"] forKey:VerificationCodeTime];
+            }else{
+                [[mytimer sharetimer] stopTimer];
+                _CodeBtn.userInteractionEnabled = YES;
+                [_CodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            }
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
 
     }
     
