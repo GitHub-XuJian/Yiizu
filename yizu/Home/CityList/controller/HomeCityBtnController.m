@@ -5,7 +5,6 @@
 //  Created by myMac on 2017/10/26.
 //  Copyright © 2017年 XuJian. All rights reserved.
 //
-
 #import "HomeCityBtnController.h"
 #import "CityListModel.h"
 #import "CityListCell.h"
@@ -35,12 +34,11 @@
     
    
     [self.collectionView registerClass:[CityListCell class] forCellWithReuseIdentifier:@"citycell"];
-    #define DGBColorA(r,g,b,a) [UIColor colorWithRed:(r) / 255.0 green:(g) / 255.0 blue:(b) / 255.0 alpha:(a)]
-    self.collectionView.backgroundColor = DGBColorA(245, 245, 245, 1);
+    self.collectionView.backgroundColor = RGBACOLOR(245, 245, 245, 1);
     //垂直方向反弹是否有效要开启弹簧效果
     self.collectionView.alwaysBounceVertical = YES;
     
-    [CityListModel CityListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_city" success:^(NSArray *array) {
+    [CityListModel CityListWithUrl:[NSString stringWithFormat:@"%@Mobile/Index/index_city",Main_Server] success:^(NSArray *array) {
         self.cityArr=array;
        
     } error:^{
@@ -60,14 +58,13 @@
 - (instancetype)init {
     
     UICollectionViewFlowLayout *collectionFL = [[UICollectionViewFlowLayout alloc] init];
-#define  screenW [UIScreen mainScreen].bounds.size.width
-    CGFloat itemW = screenW / 3 - 10;
+    CGFloat itemW = kSCREEN_WIDTH / 3 - 10;
     CGFloat itemH = 50;
     collectionFL.minimumLineSpacing = 5;
     collectionFL.minimumInteritemSpacing = 5;
     collectionFL.itemSize = CGSizeMake(itemW, itemH);
     collectionFL.sectionInset=UIEdgeInsetsMake(5, 5, 5, 5);
-    collectionFL.headerReferenceSize = CGSizeMake(screenW, 60);
+    collectionFL.headerReferenceSize = CGSizeMake(kSCREEN_WIDTH, 60);
     
     return [super initWithCollectionViewLayout:collectionFL];
 }
@@ -108,12 +105,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CityListModel* model=self.cityArr[indexPath.item];
-    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/%@/page/1",model.cityId];
+    NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/1",Main_Server,model.cityId];
     NSLog(@"点击行按钮=%@%@",model.name,url);
     if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:)]) {
         [self.delegate HomeCityBtnTitle:model.name url:model.cityId];
     }
-    //http:// 123.207.158.228/yizu/index.php/Mobile/Index/index_district/data/73
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark <UICollectionViewDelegate>

@@ -5,6 +5,7 @@
 //  Created by myMac on 2017/10/23.
 //  Copyright © 2017年 XuJian. All rights reserved.
 
+#define ImageAddress
 
 #import "HomeListCell.h"
 #import "HomeListModel.h"
@@ -105,11 +106,10 @@
     //self.likeCellBtn.chamber_id=model.chamber_id;
     
     self.nameLab.text=model.chambername;
-#define IMAURL @"http://47.104.18.18/Public/img/img/%@"
-    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.image1]]];
-    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.image2]]];
-    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.image3]]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.icon]]];
+    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image1]]];
+    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image2]]];
+    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image3]]];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.icon]]];
     
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
@@ -117,10 +117,6 @@
     
     
     [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
-    
-    //self.upUrl=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/1/personid/%@",model.chambername,model.chamber_id];
-    
-    //self.cancelUrl=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/100/personid/%@",model.chambername,model.chamber_id];
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

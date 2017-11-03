@@ -95,17 +95,14 @@
 }
 - (void)searchText:(NSString *)text
 {
-  
     //清空格
     self.currentSeachText = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
-#define SEACHURL @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_name/name/%@/page/1"
-    NSString* str=[NSString stringWithFormat:SEACHURL,text];
+    NSString* str=[NSString stringWithFormat:@"/Mobile/Index/index_name/name/%@/page/1",text];
     //转UTF-8
     NSString *keyword   = [self.currentSeachText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"搜索框输入:%@=%@",keyword,str);
     //static NSString * const searchBaseUrl = @"http://search";
-    NSString *urlString = [NSString stringWithFormat:@"%@?key1=%@&key2=%d&key3=%d",SEACHURL,keyword,20,0];
-    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_name/name/%@/page/1?key1=a&key2=20&key3=0
+    NSString *urlString = [NSString stringWithFormat:@"%@?key1=%@&key2=%d&key3=%d",str,keyword,20,0];
     NSLog(@"pinjiekou%@",urlString);
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"2221v111222=%@",responseObject);

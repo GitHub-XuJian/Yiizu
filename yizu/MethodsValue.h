@@ -12,8 +12,15 @@
 #define Sandbox_Path [(NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)) lastObject]
 
 #define WEAKSELF      __weak __typeof__(self) weakSelf = self;
+/**
+ * 高度
+ */
 #define kSCREEN_HEIGHT  MAX([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)
+/**
+ * 宽度
+ */
 #define kSCREEN_WIDTH   MIN([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)
+
 #define UserDefaults  [NSUserDefaults standardUserDefaults]
 
 #define Project_Name [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleExecutableKey]
@@ -23,6 +30,10 @@
  *  服务器地址
  */
 #define Main_Server @"http://47.104.18.18/index.php/"
+/***
+ *  服务器首页轮播图地址
+ */
+#define Main_ServerImage @"http://47.104.18.18/"
 
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow

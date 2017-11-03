@@ -11,7 +11,6 @@
 
 static NSString * const normalImageName = @"ic_common_praise_normal_15x15_";
 static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
-static NSString * const likeUrl = @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@";
 
 @implementation CellBtn
 
@@ -81,15 +80,10 @@ static NSString * const likeUrl = @"http://123.207.158.228/yizu/index.php/Mobile
     
     NSString *isZan  = self.islike ? @"1" : @"2";  //取消赞2,反则1
        NSLog(@"在里面的按钮方法%@",isZan);
-    NSMutableString *newUrl = [likeUrl mutableCopy];
-    
-    newUrl=[NSMutableString stringWithFormat:likeUrl,self.chambername,isZan,@"3"];
+    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
     NSLog(@"点赞jie口:%@",newUrl);
-
-   
    newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    //newUrl stringByAddingPercentEncodingWithAllowedCharacters:<#(nonnull NSCharacterSet *)#>
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([[responseObject objectForKey:@"dianzan"] isEqualToString:@"success"]) {
             NSLog(@"点赞成功%@",responseObject[@"dianzan"]);
