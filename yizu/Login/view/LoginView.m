@@ -7,6 +7,7 @@
 //
 
 #import "LoginView.h"
+
 @interface LoginView ()<UITextFieldDelegate>
 
 @end
@@ -31,7 +32,7 @@
     UIButton *leftBtn = [self createButtonWithFrame:CGRectMake(10, 20, 44, 44) andImageStr:@"back" andTitleStr:@"" andBtnTag:Back andTitleColor:nil];
     [backImageView addSubview:leftBtn];
     
-    UIButton *rightBtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH-100,20, 90, 44) andImageStr:nil andTitleStr:@"新用户注册" andBtnTag:RegisterBtn andTitleColor:[UIColor whiteColor]];
+    UIButton *rightBtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH-100,20, 90, 44) andImageStr:nil andTitleStr:@"新用户注册" andBtnTag:RegisterBtn andTitleColor:[UIColor blackColor]];
     [backImageView addSubview:rightBtn];
     
     UITextField *accountTextField = [[UITextField alloc] init];
@@ -63,12 +64,12 @@
     loginBtn.backgroundColor = kColorLine;
     [backImageView addSubview:loginBtn];
     
-    UIButton *forgotPasswordBtn = [self createButtonWithFrame:CGRectMake(loginBtn.x,loginBtn.y+loginBtn.height+30, 70, 44) andImageStr:nil andTitleStr:@"忘记密码?" andBtnTag:ForgotPassword andTitleColor:[UIColor whiteColor]];
+    UIButton *forgotPasswordBtn = [self createButtonWithFrame:CGRectMake(loginBtn.x,loginBtn.y+loginBtn.height+30, 70, 44) andImageStr:nil andTitleStr:@"忘记密码?" andBtnTag:ForgotPassword andTitleColor:[UIColor blackColor]];
     [backImageView addSubview:forgotPasswordBtn];
     
     NSArray *array = @[@"微信",@"QQ"];
     for (int i = 0; i < array.count; i++) {
-        UIButton *thirdPartybtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-(44*array.count+20)/2+i*50,kSCREEN_HEIGHT-100, 44, 44) andImageStr:nil andTitleStr:array[i] andBtnTag:i+WeiXin andTitleColor:[UIColor whiteColor]];
+        UIButton *thirdPartybtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-(44*array.count+20)/2+i*50,kSCREEN_HEIGHT-100, 44, 44) andImageStr:nil andTitleStr:array[i] andBtnTag:i+WeiXin andTitleColor:[UIColor blackColor]];
         thirdPartybtn.backgroundColor = [UIColor clearColor];
         [backImageView addSubview:thirdPartybtn];
     }

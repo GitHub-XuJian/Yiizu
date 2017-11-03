@@ -12,4 +12,5 @@ typedef void (^LoginFailedBlock)();
 @interface LoginViewController : UIViewController
 @property (nonatomic, strong) LoginSuccessfulBlock successfulBlock;
 @property (nonatomic, strong) LoginFailedBlock failedBlock;
+
 @end

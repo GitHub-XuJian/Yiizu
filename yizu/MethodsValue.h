@@ -52,7 +52,7 @@
 //导航条颜色
 #define KColor_NavigationBar [UIColor colorWithRed:0.17f green:0.72f blue:0.96f alpha:1.00f]
 //背景颜色
-#define kMAIN_BACKGROUND_COLOR [UIColor colorWithRed:0.90f green:0.89f blue:0.87f alpha:1.00f];
+#define kMAIN_BACKGROUND_COLOR [UIColor colorWithRed:0.95f green:0.95f blue:0.94f alpha:1.00f];;
 //边框颜色
 #define kBORDER_COLOR [UIColor colorWithRed:201/255.0 green:202/255.0 blue:203/255.0 alpha:1.0]
 //比背景色亮一点的颜色
@@ -122,6 +122,7 @@
 #define UserIconImage @"userIconImage"
 #define VerificationCode @"VerificationCode"
 #define VerificationCodeTime @"VerificationCodeTime"
+#define Statevip @"statevip"
 
 /**
  * 微信登录
@@ -136,7 +137,7 @@
 #define WX_UNION_ID @"unionid"
 #define WX_BASE_URL @"https://api.weixin.qq.com/sns"
 
-
+#define USHARE_DEMO_APPKEY @"59fc32c2f29d98168400008f"
 
 
 

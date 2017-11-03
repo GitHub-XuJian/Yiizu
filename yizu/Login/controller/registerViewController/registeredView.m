@@ -22,6 +22,7 @@
 @property (nonatomic,strong)UIButton *CodeBtn;//获取验证码
 @property (nonatomic, strong) UITextField *verificationCodeText;
 @property (nonatomic, strong) UITextField *phoneText;
+@property (nonatomic, strong) UIImageView *backView;
 
 @property (nonatomic,assign)BOOL isq;
 
@@ -54,11 +55,12 @@
 
 - (void)createUI
 {
-    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+    UIImageView *backImageView = [[UIImageView alloc] init];
     backImageView.frame = CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT);
+    backImageView.backgroundColor =[UIColor colorWithRed:0.95f green:0.95f blue:0.94f alpha:1.00f];;
     backImageView.userInteractionEnabled = YES;
     [self addSubview:backImageView];
-    
+    self.backView =backImageView;
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn.frame = CGRectMake(10, 20, 44, 44);
@@ -68,80 +70,81 @@
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:leftBtn];
     
+    UILabel *titleLabel= [[UILabel alloc] init];
+    titleLabel.frame = CGRectMake(kSCREEN_WIDTH/2-224/2/2, 20, 224/2, 44);
+    titleLabel.text = @"新用户注册";
+    titleLabel.font = kFontTopTitleBold;
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [backImageView addSubview:titleLabel];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"iconRegistered"]];
+    imageView.frame = CGRectMake(kSCREEN_WIDTH/2-205/2/2, titleLabel.y+titleLabel.height+86/2, 205/2, 205/2);
+    [backImageView addSubview:imageView];
+    
+    UILabel *yizuLabel= [[UILabel alloc] init];
+    yizuLabel.frame = CGRectMake(kSCREEN_WIDTH/2-224/2/2, imageView.y+imageView.height+34/2, 224/2, 44);
+    yizuLabel.text = @"依足";
+    yizuLabel.textAlignment = NSTextAlignmentCenter;
+    [backImageView addSubview:yizuLabel];
+    
     UITextField *emailTextField = [[UITextField alloc] init];
-    emailTextField.frame = CGRectMake(20,100,kSCREEN_WIDTH-40,40);
-    emailTextField.placeholder = @"请输入手机";
-    [emailTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
-    emailTextField.textColor = [UIColor blackColor];
-    emailTextField.layer.borderColor= [UIColor blackColor].CGColor;
-    emailTextField.layer.borderWidth= 1.0f;
-    emailTextField.delegate = self;
-    emailTextField.text = self.iphoneStr;
-    emailTextField.enabled = YES;
-    UIView *textView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    emailTextField.leftView = textView;
-    emailTextField.leftViewMode = UITextFieldViewModeAlways;
+    emailTextField.frame = CGRectMake(145/3,yizuLabel.y+yizuLabel.height+94/2,kSCREEN_WIDTH-145/3*2,40);
     [backImageView addSubview:emailTextField];
     self.phoneText = emailTextField;
+    [self addtextField:emailTextField Withplaceholder:@"请请输入手机" andTag:0 andTextFieldtext:self.iphoneStr];
     
     UITextField *verificationCodeTextField = [[UITextField alloc] init];
-    verificationCodeTextField.frame = CGRectMake(20,emailTextField.y+emailTextField.height+20,(kSCREEN_WIDTH-60)/2,40);
-    verificationCodeTextField.placeholder = @"请输入验证码";
-    [verificationCodeTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
-    verificationCodeTextField.textColor = [UIColor blackColor];
-    verificationCodeTextField.layer.borderColor= [UIColor blackColor].CGColor;
-    verificationCodeTextField.layer.borderWidth= 1.0f;
-    verificationCodeTextField.delegate = self;
-    UIView *textView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    verificationCodeTextField.leftView = textView1;
-    verificationCodeTextField.leftViewMode = UITextFieldViewModeAlways;
+    verificationCodeTextField.frame = CGRectMake(emailTextField.x,emailTextField.y+emailTextField.height+10,(kSCREEN_WIDTH-60)/2,40);
     [backImageView addSubview:verificationCodeTextField];
     self.verificationCodeText = verificationCodeTextField;
+    [self addtextField:verificationCodeTextField Withplaceholder:@"请输入验证码" andTag:0 andTextFieldtext:@""];
     
     _CodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _CodeBtn.frame = CGRectMake(verificationCodeTextField.x+verificationCodeTextField.width+20, verificationCodeTextField.y, kSCREEN_WIDTH-60-verificationCodeTextField.width, verificationCodeTextField.height);
+    _CodeBtn.frame = CGRectMake(verificationCodeTextField.x+verificationCodeTextField.width+10, verificationCodeTextField.y, kSCREEN_WIDTH-60-verificationCodeTextField.width, verificationCodeTextField.height);
     self.isq?(_CodeBtn.userInteractionEnabled = NO):(_CodeBtn.userInteractionEnabled = YES);
     [_CodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
-    [_CodeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    _CodeBtn.backgroundColor = [UIColor colorWithRed:0.196 green:0.525 blue:0.788 alpha:1.000];
+    [_CodeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    _CodeBtn.titleLabel.font =kFontMini;
+    _CodeBtn.backgroundColor = [UIColor clearColor];
     [_CodeBtn addTarget:self action:@selector(CodeBtnClic:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:_CodeBtn];
     
     UITextField *passwordTextField = [[UITextField alloc] init];
-    passwordTextField.frame = CGRectMake(verificationCodeTextField.x,verificationCodeTextField.y+verificationCodeTextField.height+20,emailTextField.width,verificationCodeTextField.height);
-    passwordTextField.placeholder = @"请输入新密码";
-    [passwordTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
-    passwordTextField.textColor = [UIColor blackColor];
-    passwordTextField.layer.borderColor= [UIColor blackColor].CGColor;
-    passwordTextField.layer.borderWidth= 1.0f;
-    passwordTextField.delegate = self;
-    passwordTextField.tag = PasswordTextFieldTag;
-    UIView *textView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    passwordTextField.leftView = textView2;
-    passwordTextField.leftViewMode = UITextFieldViewModeAlways;
+    passwordTextField.frame = CGRectMake(verificationCodeTextField.x,verificationCodeTextField.y+verificationCodeTextField.height+10,emailTextField.width,verificationCodeTextField.height);
     [backImageView addSubview:passwordTextField];
+    [self addtextField:passwordTextField Withplaceholder:@"请输入新密码" andTag:PasswordTextFieldTag andTextFieldtext:@""];
+
     
     UITextField *passwordTextField2 = [[UITextField alloc] init];
-    passwordTextField2.frame = CGRectMake(passwordTextField.x,passwordTextField.y+passwordTextField.height+20,passwordTextField.width,passwordTextField.height);
-    passwordTextField2.placeholder = @"请确认新密码";
-    [passwordTextField2 setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
-    passwordTextField2.textColor = [UIColor blackColor];
-    passwordTextField2.tag = ConfirmPasswordTextFieldTag;
-    passwordTextField2.layer.borderColor= [UIColor blackColor].CGColor;
-    passwordTextField2.layer.borderWidth= 1.0f;
-    passwordTextField2.delegate = self;
-    UIView *textView3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-    passwordTextField2.leftView = textView3;
-    passwordTextField2.leftViewMode = UITextFieldViewModeAlways;
+    passwordTextField2.frame = CGRectMake(passwordTextField.x,passwordTextField.y+passwordTextField.height+10,passwordTextField.width,passwordTextField.height);
     [backImageView addSubview:passwordTextField2];
-    
+    [self addtextField:passwordTextField2 Withplaceholder:@"请确认新密码" andTag:ConfirmPasswordTextFieldTag andTextFieldtext:@""];
+
     //登录按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(passwordTextField2.x, passwordTextField2.y+passwordTextField2.height+20, passwordTextField2.width, passwordTextField2.height);
     [button setTitle:@"注册" forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor redColor];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"login"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:button];
+}
+- (void)addtextField:(UITextField *)textField Withplaceholder:(NSString *)placeholder andTag:(NSInteger)textFieldTag andTextFieldtext:(NSString *)textStr{
+    
+    textField.text = textStr;
+    textField.placeholder = placeholder;
+    [textField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
+    textField.textColor = [UIColor blackColor];
+    textField.delegate = self;
+    textField.tag = textFieldTag;
+    UIView *textView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+    textField.leftView = textView;
+    textField.leftViewMode = UITextFieldViewModeAlways;
+    
+    UIView *lineView = [[UIView alloc] init];
+    lineView.backgroundColor = [UIColor blackColor];
+    lineView.frame = CGRectMake(textField.x, textField.y+textField.height, kSCREEN_WIDTH-145/3*2, 0.5);
+    [self.backView addSubview:lineView];
 }
 - (void)leftBtnClick
 {
@@ -170,13 +173,17 @@
             [XSaverTool setObject:responseObject[@"yzm"] forKey:VerificationCode];
             [XSaverTool setObject:responseObject[@"sendtime"] forKey:VerificationCodeTime];
         }else{
-            [[mytimer sharetimer] stopTimer];
-            _CodeBtn.userInteractionEnabled = YES;
-            [_CodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
+            [self stopTimer];
         }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self stopTimer];
     }];
+}
+- (void)stopTimer
+{
+    [[mytimer sharetimer] stopTimer];
+    _CodeBtn.userInteractionEnabled = YES;
+    [_CodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -227,6 +234,10 @@
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
     
+    if (!_oldPassword.length||!_newPassword.length) {
+        jxt_showAlertTitle(@"请输入账号或密码");
+        return;
+    }
     if (![XSaverTool objectForKey:VerificationCode]) {
         jxt_showAlertTitle(@"请获取验证码");
         return;
@@ -235,10 +246,7 @@
         jxt_showAlertTitle(@"请输入验证码");
         return;
     }
-    if (!_oldPassword.length||!_newPassword.length) {
-        jxt_showAlertTitle(@"请输入账号或密码");
-        return;
-    }
+    
     if ([_oldPassword isEqualToString:_newPassword]) {
         NSDictionary *dict = @{@"tel":self.iphoneStr,@"password":[EncapsulationMethod md5:_newPassword]};
         NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Register/register",Main_Server];

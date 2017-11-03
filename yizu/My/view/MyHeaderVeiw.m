@@ -75,21 +75,20 @@
 }
 - (void)headPortraitBtnClick:(UIButton *)btn
 {
-    if ([XSaverTool boolForKey:IsLogin]) {
-        
-    }else{
+//    if ([XSaverTool boolForKey:IsLogin]) {
+//
+//    }else{
         LoginViewController *loginViewC = [[LoginViewController alloc] init];
         loginViewC.successfulBlock = ^{
-            self.iconBtn.backgroundColor = [UIColor redColor];
             [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal];
-            self.nameLabel.text = @"大表哥";
-            self.introductionLabel.text =@"12211111111111111";
+            self.nameLabel.text = [XSaverTool objectForKey:PhoneKey];
+            self.introductionLabel.text =[XSaverTool objectForKey:PhoneKey];
         };
         loginViewC.failedBlock = ^{
             
         };
         [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
 
-    }
+//    }
 }
 @end
