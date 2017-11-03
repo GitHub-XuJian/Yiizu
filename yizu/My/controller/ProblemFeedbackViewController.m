@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     [self createView];
 }
 - (void)createView
@@ -36,9 +36,10 @@
     [self.view addSubview:label2];
     
     UITextField *nameTextField = [[UITextField alloc] init];
-    nameTextField.frame = CGRectMake(10, label2.y+label2.height, kSCREEN_WIDTH, 40);
-    nameTextField.placeholder = @"    请输入姓名";
+    nameTextField.frame = CGRectMake(0, label2.y+label2.height, kSCREEN_WIDTH, 40);
+    nameTextField.placeholder = @"       请输入姓名";
     nameTextField.delegate = self;
+    nameTextField.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:nameTextField];
     
     

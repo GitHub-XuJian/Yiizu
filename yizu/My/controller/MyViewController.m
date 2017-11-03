@@ -57,7 +57,7 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.tableView.scrollEnabled = NO;
     [self.view addSubview:self.tableView];
     
@@ -108,10 +108,6 @@
     
     if (cell == nil) {
         cell = [[MyTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        UILabel *lineview = [[UILabel alloc] init];
-        lineview.backgroundColor = kColorLine;
-        lineview.frame = CGRectMake(0, 135/3, kSCREEN_WIDTH, 0.5);
-        [cell.contentView addSubview:lineview];
     }
     cell.textLabel.text = self.dataArray[indexPath.section][indexPath.row];
     cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.section][indexPath.row]];

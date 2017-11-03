@@ -141,6 +141,8 @@
             jxt_showToastMessage(responseObject[@"msg"], 1);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 1) {
+                self.emailText.enabled = NO;
+                self.emailText.textColor = kLightGrayTextColor;
                 [XSaverTool setObject:responseObject[@"yzm"] forKey:VerificationCode];
                 [XSaverTool setObject:responseObject[@"sendtime"] forKey:VerificationCodeTime];
             }else{

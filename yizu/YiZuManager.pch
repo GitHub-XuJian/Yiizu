@@ -22,5 +22,6 @@
 #import "UUID.h"
 #import "SFNavView.h"
 #import "SVProgressHUD.h"
+#import "AppDelegate.h"
 
 #endif

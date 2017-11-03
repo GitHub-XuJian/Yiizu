@@ -8,7 +8,6 @@
 
 #import "LoopImageViewController.h"
 #import "UIImageView+AFNetworking.h"
-#import "XAFNetWork.h"
 #import "HomAreaBtnController.h"
 @interface LoopImageViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;

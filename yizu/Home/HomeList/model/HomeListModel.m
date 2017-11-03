@@ -7,8 +7,7 @@
 //
 
 #import "HomeListModel.h"
-#import "XAFNetWork.h"
-#import "SVProgressHUD.h"
+
 
 @implementation HomeListModel
 

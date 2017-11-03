@@ -112,6 +112,19 @@
 #define VerificationCode @"VerificationCode"
 #define VerificationCodeTime @"VerificationCodeTime"
 
+/**
+ * 微信登录
+ */
+#define WXDoctor_App_ID @"wxc7e3e75f5072d5b7"  // 注册微信时的AppID
+#define WXDoctor_App_Secret @"667ad8dffcc1042b0ccabfe7437c66e7" // 注册时得到的AppSecret
+#define WXPatient_App_ID @"wxc7e3e75f5072d5b7"
+#define WXPatient_App_Secret @"667ad8dffcc1042b0ccabfe7437c66e7"
+#define WX_ACCESS_TOKEN @"access_token"
+#define WX_OPEN_ID @"openid"
+#define WX_REFRESH_TOKEN @"refresh_token"
+#define WX_UNION_ID @"unionid"
+#define WX_BASE_URL @"https://api.weixin.qq.com/sns"
+
 
 
 

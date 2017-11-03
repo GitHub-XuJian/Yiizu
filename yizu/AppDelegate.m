@@ -18,14 +18,18 @@
 
 @implementation AppDelegate
 
-
+//设置单例
++ (AppDelegate *)shareDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     /**
      * 微信
      */
     BOOL isWeixin = [WXApi registerApp:@"wxc7e3e75f5072d5b7"];
-
+    
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
     keyboardManager.enable = YES; // 控制整个功能是否启用
     keyboardManager.shouldResignOnTouchOutside = YES; // 控制点击背景是否收起键盘
@@ -35,7 +39,7 @@
     keyboardManager.shouldShowToolbarPlaceholder = YES; // 是否显示占位文字
     keyboardManager.placeholderFont = [UIFont boldSystemFontOfSize:17]; // 设置占位文字的字体
     keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
- 
+    
     // 1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 2.设置窗口的跟控制器
@@ -51,24 +55,7 @@
 - (void)tabBarDidSelectedRiseButton {
     NSLog(@"激活");
 }
-//授权后回调 WXApiDelegate
--(void)onResp:(BaseReq *)resp
-{
-    /*
-     ErrCode ERR_OK = 0(用户同意)
-     ERR_AUTH_DENIED = -4（用户拒绝授权）
-     ERR_USER_CANCEL = -2（用户取消）
-     code    用户换取access_token的code，仅在ErrCode为0时有效
-     state   第三方程序发送时用来标识其请求的唯一性的标志，由第三方程序调用sendReq时传入，由微信终端回传，state字符串长度不能超过1K
-     lang    微信客户端当前语言
-     country 微信用户当前国家信息
-     */
-    SendAuthResp *aresp = (SendAuthResp *)resp;
-    if (aresp.errCode== 0) {
-        NSString *code = aresp.code;
-        NSDictionary *dic = @{@"code":code};
-    }
-}
+
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     return  [WXApi handleOpenURL:url delegate:self];

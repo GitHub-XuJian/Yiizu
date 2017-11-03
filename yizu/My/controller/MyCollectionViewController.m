@@ -8,20 +8,39 @@
 
 #import "MyCollectionViewController.h"
 #import "MyCollectionTableViewCell.h"
+#import "MyCollectionModel.h"
+
 @interface MyCollectionViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView     *tableView;
-
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end
 
 @implementation MyCollectionViewController
-
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createTableView];
+    [self createDataArray];
 }
-
+- (void)createDataArray
+{
+    for (int i = 0; i < 11; i++) {
+        MyCollectionModel *model = [[MyCollectionModel alloc] init];
+        model.iconImage = @"Mall";
+        model.nameStr = @"美味寿司";
+        model.addressStr = @"!沈阳|排名:15";
+        model.timeStr = @"2017-7-15";
+        [self.dataArray addObject:model];
+    }
+    [self.tableView reloadData];
+}
 - (void)createTableView
 {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64,kSCREEN_WIDTH,kSCREEN_HEIGHT-64) style:UITableViewStylePlain];
@@ -29,7 +48,7 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:self.tableView];
 
 }
@@ -47,7 +66,7 @@
 //设置每个区有多少行共有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataArray.count;
 }
 
 // 构建tableView的单元格
@@ -61,10 +80,7 @@
     if (cell == nil) {
         cell = [[MyCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.iconImage = [UIImage imageNamed:@"Mall"];
-    cell.nameStr = @"美味寿司";
-    cell.addressStr = @"!沈阳|排名:15";
-    cell.timeStr = @"2017-7-15";
+    cell.cellModel = self.dataArray[indexPath.row];
     return cell;
 }
 

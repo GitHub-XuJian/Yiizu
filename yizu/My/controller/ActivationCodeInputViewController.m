@@ -29,7 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     _textFieldTagAdd = 0;
     _codeArray = [[NSMutableArray alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
