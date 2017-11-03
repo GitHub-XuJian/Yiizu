@@ -87,6 +87,10 @@
 
     self.currentPage=1;
     //NSString* urlStr=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/%ld",self.currentPage];
+    
+
+
+    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1
      NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%ld",Main_Server,self.currentPage];
     
     NSLog(@"currentURL:%@",newUrl);
