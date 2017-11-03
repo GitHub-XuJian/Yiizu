@@ -152,7 +152,7 @@
 }
 - (void)loadData:(NSString*)strURL
 {
-    [SVProgressHUD showWithStatus:@"数据加载中..."];
+//    [SVProgressHUD showWithStatus:@"数据加载中..."];
     //http://123.207.158.228//yizu/index.php/Mobile/Index/index_Chamber/data/城市id
     //http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1
 
