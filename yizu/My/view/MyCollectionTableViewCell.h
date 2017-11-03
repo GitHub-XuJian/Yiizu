@@ -11,7 +11,8 @@
 
 @interface MyCollectionTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) MyCollectionModel *cellModel;
+-(void)initWithMyCollectionModel:(MyCollectionModel *)cellmyCollectionModel;
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

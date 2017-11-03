@@ -47,16 +47,26 @@
                     NSLog(@"%@",responseObject);
                     jxt_showToastMessage(responseObject[@"msg"], 1);
                     NSInteger code = [responseObject[@"code"] integerValue];
-                    if (code == 1) {
-                        [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
-                        [XSaverTool setObject:password forKey:Password];
-                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
-                        [XSaverTool setBool:code forKey:IsLogin];
-                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIconImage];
-                        _successfulBlock();
-                        [self dismissViewControllerAnimated:YES completion:nil];
-
+                    switch (code) {
+                        case 1:{
+                            [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                            [XSaverTool setObject:password forKey:Password];
+                            [XSaverTool setBool:code forKey:IsLogin];
+                            [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                            [XSaverTool setBool:code forKey:IsLogin];
+                            [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
+                            _successfulBlock();
+                            [self dismissViewControllerAnimated:YES completion:nil];
+                            break;
+                        }
+                        case 3:{
+                            
+                            break;
+                        }
+                        default:
+                            break;
                     }
+                    
 
                 } fail:^(NSURLSessionDataTask *task, NSError *error) {
                     NSLog(@"%@",error);
@@ -218,14 +228,20 @@
 
             jxt_showToastTitle(responseObject[@"msg"], 1);
             NSInteger code = [responseObject[@"code"] integerValue];
-            if (code) {
-                [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
-                [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
-                [XSaverTool setBool:code forKey:IsLogin];
-                [XSaverTool setObject:responseObject[@"personid"] forKey:UserIconImage];
-                _successfulBlock();
-                [self dismissViewControllerAnimated:YES completion:nil];
+            switch (code) {
+                case 1:{
+                    [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                    [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                    [XSaverTool setBool:code forKey:IsLogin];
+                    [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
+                    _successfulBlock();
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    break;
+                }
+                default:
+                    break;
             }
+            
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];

@@ -45,6 +45,10 @@
        
     } error:^{
         NSLog(@"出错了");
+        [SVProgressHUD dismiss];
+
+        [SVProgressHUD showErrorWithStatus:@"出错了"];
+
     }];
     
     // Do any additional setup after loading the view.

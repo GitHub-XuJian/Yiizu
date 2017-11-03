@@ -15,7 +15,7 @@
 #import "HelpCenterViewController.h"
 #import "AboutUsViewController.h"
 #import "ContactUsViewController.h"
-
+#import "MyWalletViewController.h"
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) MyHeaderVeiw *headerView;
@@ -46,8 +46,8 @@
 }
 - (void)createDataArray
 {
-    self.dataArray = [NSMutableArray arrayWithObjects:@[@"我的收藏",@"我的活动",@"我的激活码"],@[@"帮助中心",@"关于我们",@"联系客服"], nil];
-    self.imageArray = @[@[@"icon_collect",@"icon_activity",@"icon_activation"],@[@"icon_help",@"icon_about",@"icon_call_center"]];
+    self.dataArray = [NSMutableArray arrayWithObjects:@[@"我的激活码",@"我的钱包"],@[@"我的收藏",@"我的活动"],@[@"帮助中心",@"关于我们"], nil];
+    self.imageArray = @[@[@"icon_activation",@"wallet"],@[@"icon_collect",@"icon_activity"],@[@"icon_help",@"icon_about"]];
     [self.tableView reloadData];
 }
 - (void)createTableView
@@ -111,7 +111,7 @@
     }
     cell.textLabel.text = self.dataArray[indexPath.section][indexPath.row];
     cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.section][indexPath.row]];
-    
+    cell.imageView.contentMode = UIViewContentModeScaleToFill;
     return cell;
 }
 
@@ -127,15 +127,12 @@
         case 0:{
             switch (indexPath.row) {
                 case 0:{
-                    viewController = [[MyCollectionViewController alloc] init];
+                    viewController = [[MyActivationCodeViewController alloc] init];
                     break;
                 }
                 case 1:{
-                    viewController = [[MyActivitiesViewController alloc] init];
-                    break;
-                }
-                case 2:{
-                    viewController = [[MyActivationCodeViewController alloc] init];
+                    viewController = [[MyWalletViewController alloc] init];
+
                     break;
                 }
                 default:
@@ -146,6 +143,21 @@
         case 1:{
             switch (indexPath.row) {
                 case 0:{
+                    viewController = [[MyCollectionViewController alloc] init];
+                    break;
+                }
+                case 1:{
+                    viewController = [[MyActivitiesViewController alloc] init];
+                    break;
+                }
+                default:
+                    break;
+            }
+            break;
+        }
+        case 2:{
+            switch (indexPath.row) {
+                case 0:{
                     viewController = [[HelpCenterViewController alloc] init];
                     break;
                 }
@@ -153,10 +165,7 @@
                     viewController = [[AboutUsViewController alloc] init];
                     break;
                 }
-                case 2:{
-                    viewController = [[ContactUsViewController alloc] init];
-                    break;
-                }
+                
                 default:
                     break;
             }

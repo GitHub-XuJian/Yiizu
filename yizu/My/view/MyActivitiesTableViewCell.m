@@ -13,6 +13,9 @@
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *statelabel;
+@property (nonatomic, strong) UIView *lineView;
+
+@property (nonatomic, strong) MyActivitiesModel *activitiesModel;
 @end
 @implementation MyActivitiesTableViewCell
 
@@ -57,29 +60,34 @@
         lineview.backgroundColor = kColorLine;
         lineview.frame = CGRectMake(0, 100, kSCREEN_WIDTH, 0.5);
         [self.contentView addSubview:lineview];
-        
+        self.lineView = lineview;
     }
     return self;
 }
-- (void)setNameStr:(NSString *)nameStr
+-(void)initWithMyActivitiesModel:(MyActivitiesModel *)activitiesModel
 {
-    self.nameLabel.text = nameStr;
+    self.activitiesModel = activitiesModel;
+    [self createData];
+    [self createFrame];
 }
-- (void)setIconImage:(UIImage *)iconImage
+- (void)createData
 {
-    self.iconImageView.image = iconImage;
+    self.nameLabel.text = self.activitiesModel.nameStr;
+    self.iconImageView.image = [UIImage imageNamed:self.activitiesModel.iconImage];
+    self.addressLabel.text = self.activitiesModel.addressStr;
+    self.timeLabel.text = self.activitiesModel.timeStr;
+    self.statelabel.text = self.activitiesModel.stateStr;
+
 }
-- (void)setAddressStr:(NSString *)addressStr
+- (void)createFrame
 {
-    self.addressLabel.text = addressStr;
-}
-- (void)setTimeStr:(NSString *)timeStr
-{
-    self.timeLabel.text = timeStr;
-}
-- (void)setStateStr:(NSString *)stateStr
-{
-    self.statelabel.text = stateStr;
+    self.iconImageView.frame = CGRectMake(10, 20, 100, 100-40);
+    self.nameLabel.frame = CGRectMake(self.iconImageView.x+self.iconImageView.width+10, 10, kSCREEN_WIDTH/2, (135/2-20)/2);
+    self.addressLabel.frame = CGRectMake(self.iconImageView.x+self.iconImageView.width+10, self.nameLabel.y+self.nameLabel.height, kSCREEN_WIDTH/2-50, 100-20-self.nameLabel.height);
+    self.timeLabel.frame = CGRectMake(kSCREEN_WIDTH/2, 10, kSCREEN_WIDTH/2-10, (135/2-20)/2);
+    self.statelabel.frame = CGRectMake(kSCREEN_WIDTH-70,100/2-30/2,70,30);
+    self.lineView.frame = CGRectMake(0, 100, kSCREEN_WIDTH, 0.5);
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

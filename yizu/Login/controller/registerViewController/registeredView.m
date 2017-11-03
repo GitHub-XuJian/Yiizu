@@ -7,6 +7,7 @@
 //
 #define PasswordTextFieldTag    18888888
 #define ConfirmPasswordTextFieldTag    188888881
+#define PassWord_Digits    6
 
 #import "registeredView.h"
 #import "mytimer.h"
@@ -183,6 +184,10 @@
         self.iphoneStr = textField.text;
     }
     if ([textField isEqual:_verificationCodeText]) {
+        if (!textField.text.length) {
+            jxt_showAlertTitle(@"请输入验证码");
+            return;
+        }
             NSDate* date = [NSDate dateWithTimeIntervalSince1970:[[XSaverTool objectForKey:VerificationCodeTime] doubleValue]];
             NSDate * now = [NSDate date];
             NSTimeInterval timeBetween = [now timeIntervalSinceDate:date];
@@ -203,14 +208,14 @@
         _inputVcode = textField.text;
     }
     if (textField.tag == PasswordTextFieldTag) {
-        if (textField.text.length >= 8) {
+        if (textField.text.length >= PassWord_Digits) {
             _oldPassword = textField.text;
         }else if (textField.text.length > 0) {
             jxt_showToastMessage(@"请输入八位密码", 1);
             textField.text = @"";
         }
     }else if (textField.tag == ConfirmPasswordTextFieldTag) {
-        if (textField.text.length >= 8) {
+        if (textField.text.length >= PassWord_Digits) {
             _newPassword = textField.text;
         }else if (textField.text.length > 0) {
             jxt_showToastMessage(@"请输入八位密码", 1);

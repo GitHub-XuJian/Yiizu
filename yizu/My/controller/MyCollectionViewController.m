@@ -35,7 +35,7 @@
         MyCollectionModel *model = [[MyCollectionModel alloc] init];
         model.iconImage = @"Mall";
         model.nameStr = @"美味寿司";
-        model.addressStr = @"!沈阳|排名:15";
+        model.addressStr = [NSString stringWithFormat:@"!沈阳|排名:%d",i];
         model.timeStr = @"2017-7-15";
         [self.dataArray addObject:model];
     }
@@ -70,9 +70,9 @@
 }
 
 // 构建tableView的单元格
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (MyCollectionTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //必须用一个静态字符串
-    static NSString *cellIdentifier = @"cell";
+    static NSString *cellIdentifier = @"MyCollectionTableViewCell";
     
     // 判断是有空闲的cell,有进行重用，没有就创建一个
     MyCollectionTableViewCell  *cell  = [tableView dequeueReusableCellWithIdentifier: cellIdentifier];
@@ -80,10 +80,10 @@
     if (cell == nil) {
         cell = [[MyCollectionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.cellModel = self.dataArray[indexPath.row];
+    MyCollectionModel *model = self.dataArray[indexPath.row];
+    [cell initWithMyCollectionModel:model];
     return cell;
 }
-
 
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

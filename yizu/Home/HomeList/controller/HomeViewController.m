@@ -69,7 +69,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title=@"依足";
     [self setNavBarBtn];
     

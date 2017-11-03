@@ -22,7 +22,7 @@
 /***
  *  服务器地址
  */
-#define Main_Server @"http://123.207.158.228/yizu/index.php/"
+#define Main_Server @"http://47.104.18.18/index.php/"
 //#define Main_Server @"http://192.168.0.112:8080/contactOne/"
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow
