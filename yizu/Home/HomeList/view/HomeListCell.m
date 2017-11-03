@@ -53,6 +53,7 @@
 
 - (IBAction)keepBtn:(UIButton *)sender
 {
+    
      sender.userInteractionEnabled = NO;
     if (sender.selected==NO) {
         sender.selected=YES;
@@ -104,10 +105,10 @@
     //self.likeCellBtn.chamber_id=model.chamber_id;
     
     self.nameLab.text=model.chambername;
-    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",model.image1]]];
-    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",model.image2]]];
-    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",model.image3]]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/%@",model.icon]]];
+    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.image1]]];
+    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.image2]]];
+    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.image3]]];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.icon]]];
     
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
@@ -116,9 +117,9 @@
     
     [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
     
-    self.upUrl=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/1/personid/%@",model.chambername,model.chamber_id];
+    //self.upUrl=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/1/personid/%@",model.chambername,model.chamber_id];
     
-    self.cancelUrl=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/100/personid/%@",model.chambername,model.chamber_id];
+    //self.cancelUrl=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_upvoteAdd/name/%@/number/100/personid/%@",model.chambername,model.chamber_id];
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

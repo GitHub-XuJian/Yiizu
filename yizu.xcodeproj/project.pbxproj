@@ -20,6 +20,7 @@
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
 		1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355E1F9F2E7300713053 /* HomeListCell.m */; };
+		1FF734761FAAFBE0008BE98C /* NoResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF734751FAAFBE0008BE98C /* NoResultView.m */; };
 		AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C51FA828460022E990 /* resetPassword.m */; };
 		AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C81FA828460022E990 /* ForgetViewController.m */; };
 		AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3C91FA828460022E990 /* resetPassword.xib */; };
@@ -216,6 +217,8 @@
 		1FE5355C1F9F2E7300713053 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		1FE5355D1F9F2E7300713053 /* HomeListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListCell.h; sourceTree = "<group>"; };
 		1FE5355E1F9F2E7300713053 /* HomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListCell.m; sourceTree = "<group>"; };
+		1FF734741FAAFBDF008BE98C /* NoResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoResultView.h; sourceTree = "<group>"; };
+		1FF734751FAAFBE0008BE98C /* NoResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoResultView.m; sourceTree = "<group>"; };
 		AF23F3C51FA828460022E990 /* resetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resetPassword.m; sourceTree = "<group>"; };
 		AF23F3C61FA828460022E990 /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		AF23F3C71FA828460022E990 /* resetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resetPassword.h; sourceTree = "<group>"; };
@@ -582,6 +585,8 @@
 				1F4423C61FA6C47E00F8EA95 /* CustomSearchBar.h */,
 				1F4423C71FA6C47E00F8EA95 /* CustomSearchBar.m */,
 				1F4423C91FA6C49000F8EA95 /* CustomSearchBar.xib */,
+				1FF734741FAAFBDF008BE98C /* NoResultView.h */,
+				1FF734751FAAFBE0008BE98C /* NoResultView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1609,6 +1614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF734761FAAFBE0008BE98C /* NoResultView.m in Sources */,
 				1F4423D91FA6F0C200F8EA95 /* SVIndefiniteAnimatedView.m in Sources */,
 				AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */,
 				AF66AE771F9F1AB10079A2CF /* IQUITextFieldView+Additions.m in Sources */,

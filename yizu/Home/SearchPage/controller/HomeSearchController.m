@@ -8,8 +8,17 @@
 
 #import "HomeSearchController.h"
 #import "CustomSearchBar.h"
-@interface HomeSearchController ()
-@property (nonatomic,weak) CustomSearchBar *searchBar;
+#import "XAFNetWork.h"
+#import "HomeListModel.h"
+#import "NoResultView.h"
+
+@interface HomeSearchController ()<UITableViewDelegate,UITableViewDataSource,CustomSearchBarDelegate>
+
+@property (nonatomic,strong) CustomSearchBar *searchBar;
+@property (nonatomic,strong) NoResultView* noResultView;
+@property (nonatomic,copy) NSString *currentSeachText;
+@property (nonatomic,strong) NSMutableArray* seachArr;
+
 @end
 
 @implementation HomeSearchController
@@ -17,8 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
-    [self setupSeachBar];
+    [self createSeachBar];
+    [self createUITableView];
+    [self createNoResult];
     // Do any additional setup after loading the view.
+    
+  
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -31,31 +44,88 @@
     [self.searchBar becomeFirstResponder];
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 #pragma mark 设置子视图
-
-- (void)setupSeachBar {
+- (void)createSeachBar {
     
     CustomSearchBar *searchBar = [CustomSearchBar makeCustomSearchBar];
     
     searchBar.frame=CGRectMake(0, 0, self.view.frame.size.width, 64);
     [self.view addSubview:searchBar];
     
-    //searchBar.delegate = self;
-    
-    //    [searchBar mas_makeConstraints:^(MASConstraintMaker *make) {
-    //        make.top.left.right.equalTo(self.view);
-    //        make.height.equalTo(@(navHeight));
-    //    }];
+    searchBar.delegate = self;
     
     self.searchBar = searchBar;
+}
+- (void)createUITableView
+{
+    UITableView* tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
+    tab.delegate=self;
+    tab.dataSource=self;
+    [self.view addSubview:tab];
+    
+}
+- (void)createNoResult
+{
+    NoResultView* nView=[NoResultView new];
+    nView.hidden=YES;
+    [self.view addSubview:nView];
+    self.noResultView=nView;
+}
+#pragma mark-UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString* identifier=@"cell";
+    UITableViewCell*  cell=[tableView dequeueReusableCellWithIdentifier:identifier];
+    if (!cell) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+    }
+    return cell;
+}
+#pragma mark-UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)searchText:(NSString *)text
+{
+  
+    //清空格
+    self.currentSeachText = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
+#define SEACHURL @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_name/name/%@/page/1"
+    NSString* str=[NSString stringWithFormat:SEACHURL,text];
+    //转UTF-8
+    NSString *keyword   = [self.currentSeachText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"搜索框输入:%@=%@",keyword,str);
+    //static NSString * const searchBaseUrl = @"http://search";
+    NSString *urlString = [NSString stringWithFormat:@"%@?key1=%@&key2=%d&key3=%d",SEACHURL,keyword,20,0];
+    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_name/name/%@/page/1?key1=a&key2=20&key3=0
+    NSLog(@"pinjiekou%@",urlString);
+    [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"2221v111222=%@",responseObject);
+          BOOL hasResult = self.seachArr.count > 0;
+          self.noResultView.hidden = hasResult;
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+#pragma mark SearchBarDelegate
+- (void)customSearchBarDidBeginEditing:(CustomSearchBar *)searchBar {
+    
+}
+
+- (void)customSearchBar:(CustomSearchBar *)searchBar textDidChange:(NSString *)text {
+    [self searchText:text];
+}
+
+- (void)customSearchBarNeedDisMiss:(CustomSearchBar *)searchBar {
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 /*
