@@ -10,7 +10,7 @@
 #import "MembershipActivationCodeViewController.h"
 #import "MembersPayViewController.h"
 #import "ActivationCodeInputViewController.h"
-
+#import "ChartViewController.h"
 @interface MyActivationCodeViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -32,7 +32,7 @@
     [self createDataArray];
 }
 - (void)createDataArray{
-    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"会员支付",@"激活码输入", nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"列队情况",@"激活码输入", nil];
 }
 - (void)createTableView{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64,kSCREEN_WIDTH,kSCREEN_HEIGHT-64) style:UITableViewStylePlain];
@@ -94,7 +94,7 @@
             break;
         }
         case 1:{
-            viewController = [[MembersPayViewController alloc] init];
+            viewController = [[ChartViewController alloc] init];
 
             break;
         }

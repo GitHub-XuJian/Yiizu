@@ -27,6 +27,8 @@
 		AF23F3CF1FA872D30022E990 /* OldAndNewPassWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3CE1FA872D30022E990 /* OldAndNewPassWordViewController.m */; };
 		AF23F3D21FA962490022E990 /* registeredView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3D11FA962490022E990 /* registeredView.m */; };
 		AF23F3D51FA9BACF0022E990 /* MyCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3D41FA9BACF0022E990 /* MyCollectionModel.m */; };
+		AF23F3DA1FAB16570022E990 /* MyActivitiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3D91FAB16570022E990 /* MyActivitiesModel.m */; };
+		AF23F3DD1FAC05C40022E990 /* MyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3DC1FAC05C40022E990 /* MyWalletViewController.m */; };
 		AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */; };
 		AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D011FA1DF9500A1225F /* JXTAlertView.m */; };
 		AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */; };
@@ -228,6 +230,10 @@
 		AF23F3D11FA962490022E990 /* registeredView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = registeredView.m; sourceTree = "<group>"; };
 		AF23F3D31FA9BACF0022E990 /* MyCollectionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyCollectionModel.h; sourceTree = "<group>"; };
 		AF23F3D41FA9BACF0022E990 /* MyCollectionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCollectionModel.m; sourceTree = "<group>"; };
+		AF23F3D81FAB16570022E990 /* MyActivitiesModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyActivitiesModel.h; sourceTree = "<group>"; };
+		AF23F3D91FAB16570022E990 /* MyActivitiesModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyActivitiesModel.m; sourceTree = "<group>"; };
+		AF23F3DB1FAC05C40022E990 /* MyWalletViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyWalletViewController.h; sourceTree = "<group>"; };
+		AF23F3DC1FAC05C40022E990 /* MyWalletViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyWalletViewController.m; sourceTree = "<group>"; };
 		AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
 		AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
 		AF626D001FA1DF9500A1225F /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
@@ -978,6 +984,8 @@
 				AF6C46651FA451E900797125 /* ContactCSViewController.m */,
 				AF6C46671FA4546800797125 /* CSdetailsViewController.h */,
 				AF6C46681FA4546800797125 /* CSdetailsViewController.m */,
+				AF23F3DB1FAC05C40022E990 /* MyWalletViewController.h */,
+				AF23F3DC1FAC05C40022E990 /* MyWalletViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -987,6 +995,8 @@
 			children = (
 				AF23F3D31FA9BACF0022E990 /* MyCollectionModel.h */,
 				AF23F3D41FA9BACF0022E990 /* MyCollectionModel.m */,
+				AF23F3D81FAB16570022E990 /* MyActivitiesModel.h */,
+				AF23F3D91FAB16570022E990 /* MyActivitiesModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1614,6 +1624,7 @@
 				AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				AF66ADB41F9DDD250079A2CF /* UIButton+AFNetworking.m in Sources */,
 				AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */,
+				AF23F3DA1FAB16570022E990 /* MyActivitiesModel.m in Sources */,
 				AF8B6CEE1FA01A4A008DA068 /* SDWebImageDownloaderOperation.m in Sources */,
 				AF66ADAD1F9DDD250079A2CF /* AFURLRequestSerialization.m in Sources */,
 				AF66AE161F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.m in Sources */,
@@ -1649,6 +1660,7 @@
 				AF66AE051F9DE1B60079A2CF /* UIView+MJExtension.m in Sources */,
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
+				AF23F3DD1FAC05C40022E990 /* MyWalletViewController.m in Sources */,
 				AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
 				AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */,

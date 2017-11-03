@@ -55,8 +55,7 @@
     UITextField *emailTextField = [[UITextField alloc] init];
     emailTextField.frame = CGRectMake(20,100,kSCREEN_WIDTH-40,40);
     emailTextField.placeholder = @"请输入手机";
-//    [emailTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
-//    emailTextField.textColor = [UIColor grayColor];
+    [emailTextField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
     emailTextField.layer.borderColor= [UIColor blackColor].CGColor;
     emailTextField.layer.borderWidth= 1.0f;
     emailTextField.delegate = self;
@@ -104,7 +103,7 @@
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
 
-    if (![XSaverTool objectForKey:VerificationCode]) {
+    if (!_inputVcode) {
         jxt_showAlertTitle(@"请输入验证码");
         return;
     }

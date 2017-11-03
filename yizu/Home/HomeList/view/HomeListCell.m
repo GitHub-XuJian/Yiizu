@@ -105,10 +105,11 @@
     //self.likeCellBtn.chamber_id=model.chamber_id;
     
     self.nameLab.text=model.chambername;
-    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.image1]]];
-    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.image2]]];
-    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.image3]]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,model.icon]]];
+#define IMAURL @"http://47.104.18.18/Public/img/img/%@"
+    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.image1]]];
+    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.image2]]];
+    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.image3]]];
+    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:IMAURL,model.icon]]];
     
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];

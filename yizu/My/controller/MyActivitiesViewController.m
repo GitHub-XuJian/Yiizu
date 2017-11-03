@@ -8,18 +8,39 @@
 
 #import "MyActivitiesViewController.h"
 #import "MyActivitiesTableViewCell.h"
+#import "MyActivitiesModel.h"
 @interface MyActivitiesViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView     *tableView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
 @implementation MyActivitiesViewController
-
+- (NSMutableArray *)dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createTableView];
+    [self createDataArray];
+}
+- (void)createDataArray
+{
+    for (int i = 0; i < 11; i++) {
+        MyActivitiesModel *model = [[MyActivitiesModel alloc] init];
+        model.iconImage = @"CN";
+        model.nameStr = @"支付宝商家减免活动";
+        model.addressStr = @"大家来看数据都IE家啦几点啦看时间卡数据都上拉控件打脸萨控件啊蓝思科技上课";
+        model.timeStr = @"2017-7-15";
+        model.stateStr = @"进行中";
+        [self.dataArray addObject:model];
+    }
+    [self.tableView reloadData];
 }
 - (void)createTableView
 {
@@ -60,11 +81,7 @@
     if (cell == nil) {
         cell = [[MyActivitiesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.iconImage = [UIImage imageNamed:@"CN"];
-    cell.nameStr = @"支付宝商家减免活动";
-    cell.addressStr = @"大家来看数据都IE家啦几点啦看时间卡数据都上拉控件打脸萨控件啊蓝思科技上课";
-    cell.timeStr = @"2017-7-15";
-    cell.stateStr = @"进行中";
+    [cell initWithMyActivitiesModel:self.dataArray[indexPath.row]];
     return cell;
 }
 

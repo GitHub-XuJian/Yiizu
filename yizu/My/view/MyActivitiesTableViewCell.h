@@ -7,15 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyActivitiesModel.h"
 
 @interface MyActivitiesTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) UIImage *iconImage;
-@property (nonatomic, strong) NSString *nameStr;
-@property (nonatomic, strong) NSString *addressStr;
-@property (nonatomic, strong) NSString *timeStr;
-@property (nonatomic, strong) NSString *stateStr;
-
+-(void)initWithMyActivitiesModel:(MyActivitiesModel *)activitiesModel;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 

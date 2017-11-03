@@ -27,6 +27,7 @@
 +(void)HomeListWithUrl:(NSString *)url success:(void (^)(NSMutableArray *))sBlock error:(void (^)())eBlock
 {
   
+   
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray* mArr=[NSMutableArray array];
         NSArray* listArr=responseObject[@"list"];
