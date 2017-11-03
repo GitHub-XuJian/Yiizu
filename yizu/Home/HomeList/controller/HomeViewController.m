@@ -36,20 +36,20 @@
 
 @implementation HomeViewController
 
-- (NSMutableArray *)listArr
-{
-    if (_listArr==nil) {
-        _listArr=[[NSMutableArray alloc]init];
-    }
-    return _listArr;
-}
-//- (void)setListArr:(NSMutableArray *)listArr
+//- (NSMutableArray *)listArr
 //{
-//    _listArr=listArr;
-//    [self.tableView reloadData];
-//    [SVProgressHUD dismiss];
-//    [self endRefresh];
+//    if (_listArr==nil) {
+//        _listArr=[[NSMutableArray alloc]init];
+//    }
+//    return _listArr;
 //}
+- (void)setListArr:(NSMutableArray *)listArr
+{
+    _listArr=listArr;
+    [self.tableView reloadData];
+    [SVProgressHUD dismiss];
+    [self endRefresh];
+}
 
 - (void)setHomeListCityId:(NSString *)homeListCityId
 {
@@ -90,6 +90,10 @@
 
     self.currentPage=1;
     //NSString* urlStr=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/%ld",self.currentPage];
+    
+
+
+    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1
      NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%ld",Main_Server,self.currentPage];
     
     NSLog(@"currentURL:%@",newUrl);
@@ -113,12 +117,12 @@
     
     self.tableView.mj_header = header;
     
-    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-
-        //[self loadMore];
-    }];
-
-    self.tableView.mj_footer = footer;
+//    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//
+//        //[self loadMore];
+//    }];
+//
+//    self.tableView.mj_footer = footer;
 }
 #pragma mark-结束刷新方法
 -(void)endRefresh{
@@ -152,9 +156,9 @@
 }
 - (void)loadData:(NSString*)strURL
 {
-//    [SVProgressHUD showWithStatus:@"数据加载中..."];
-    //http://123.207.158.228//yizu/index.php/Mobile/Index/index_Chamber/data/城市id
-    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1
+
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
+    
 
     [HomeListModel HomeListWithUrl:strURL success:^(NSMutableArray *array) {
         self.listArr=array;
