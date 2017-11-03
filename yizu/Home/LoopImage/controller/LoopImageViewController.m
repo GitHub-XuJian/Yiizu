@@ -47,7 +47,7 @@
     for (int i=0; i<self.loopArr.count; i++) {
         
         UIImageView* imaView=[[UIImageView alloc]init];
-        NSString* imaUrl=[NSString stringWithFormat:@"http://47.104.18.18/Public/img/img/%@",self.loopArr[i]];
+        NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,self.loopArr[i]];
         [imaView setImageWithURL:[NSURL URLWithString:imaUrl]];
         imaView.frame=CGRectMake(i*self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
         [self.scrollView addSubview:imaView];

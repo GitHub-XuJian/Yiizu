@@ -54,10 +54,9 @@
 - (void)setHomeListCityId:(NSString *)homeListCityId
 {
     _homeListAreaId=homeListCityId;
-    self.homeURL=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/%@",homeListCityId];
-#define HOMENAVBTNURL @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/%@/page/1"
-    NSString* cityURL=[NSString stringWithFormat:HOMENAVBTNURL,homeListCityId];
-    [self loadData:cityURL];
+    self.homeURL=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@",Main_Server,homeListCityId];
+    NSString* cityURL=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@",Main_Server,homeListCityId];
+    [self loadData:self.homeURL];
     NSLog(@"全部商城接口 %@",cityURL);
 }
 
@@ -89,9 +88,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
 
     self.currentPage=1;
-
      NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%ld",Main_Server,self.currentPage];
-    
     NSLog(@"currentURL:%@",newUrl);
     [self loadData:newUrl];
     
@@ -131,8 +128,6 @@
     [SVProgressHUD showWithStatus:@"数据加载中..."];
 
     NSString* strUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/73/area/843/page/%ld",Main_Server,(long)self.currentPage];
-
-    
     [XAFNetWork GET:strUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         
         NSString* RootKey=responseObject.keyEnumerator.nextObject;
@@ -153,6 +148,7 @@
 }
 - (void)loadData:(NSString*)strURL
 {
+
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     
 
