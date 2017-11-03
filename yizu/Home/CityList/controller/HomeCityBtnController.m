@@ -40,7 +40,7 @@
     //垂直方向反弹是否有效要开启弹簧效果
     self.collectionView.alwaysBounceVertical = YES;
     
-    [CityListModel CityListWithUrl:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_city" success:^(NSArray *array) {
+    [CityListModel CityListWithUrl:[NSString stringWithFormat:@"%@Mobile/Index/index_city",Main_Server] success:^(NSArray *array) {
         self.cityArr=array;
        
     } error:^{
@@ -108,12 +108,12 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CityListModel* model=self.cityArr[indexPath.item];
-    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/%@/page/1",model.cityId];
+    NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/1",Main_Server,model.cityId];
     NSLog(@"点击行按钮=%@%@",model.name,url);
     if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:)]) {
         [self.delegate HomeCityBtnTitle:model.name url:model.cityId];
     }
-    //http:// 123.207.158.228/yizu/index.php/Mobile/Index/index_district/data/73
+  
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark <UICollectionViewDelegate>

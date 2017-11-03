@@ -27,7 +27,7 @@
     self.arr=[[NSMutableArray alloc]init];
     
 
-    NSString* url=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_district/data/%@",self.cityId];
+    NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_district/data/%@",Main_Server,self.cityId];
     //qvyv
         [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
           

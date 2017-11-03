@@ -89,11 +89,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
 
     self.currentPage=1;
-    //NSString* urlStr=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/%ld",self.currentPage];
-    
 
-
-    //http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1
      NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%ld",Main_Server,self.currentPage];
     
     NSLog(@"currentURL:%@",newUrl);
@@ -131,9 +127,10 @@
 }
 - (void)loadMore
 {
+    self.currentPage++;
     [SVProgressHUD showWithStatus:@"数据加载中..."];
-#define MoreHomeList @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/843/page/%d"
-    NSString* strUrl=[NSString stringWithFormat:MoreHomeList,2];
+
+    NSString* strUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/73/area/843/page/%ld",Main_Server,(long)self.currentPage];
 
     
     [XAFNetWork GET:strUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
