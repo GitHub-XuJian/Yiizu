@@ -48,7 +48,8 @@
     for (int i=0; i<self.loopArr.count; i++) {
         
         UIImageView* imaView=[[UIImageView alloc]init];
-        [imaView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://123.207.158.228/yizu/Public/img/img/%@",self.loopArr[i]]]];
+        
+        [imaView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_Server,self.loopArr[i]]]];
         imaView.frame=CGRectMake(i*self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
         [self.scrollView addSubview:imaView];
         if (self.currentNumber==0) {
@@ -91,7 +92,8 @@
     //通知接受数据
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
-    [XAFNetWork GET:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Slideshow" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
+    [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         self.loopArr =responseObject[@"list"];
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {

@@ -18,7 +18,7 @@
 
 @interface HomeViewController ()<HomeCityBtnDelegate>
 @property(nonatomic, strong)NSMutableArray* listArr;
-
+//用于设置navbarbtn的标题
 @property(nonatomic, strong)UIButton* navBtn;
 //用于保存首页拼接城市接口
 @property(nonatomic, copy)NSString* homeListCityId;
@@ -26,6 +26,9 @@
 @property(nonatomic, copy)NSString* homeListAreaId;
 //
 @property(nonatomic, copy)NSString* homeURL;
+
+//首页接口页数
+@property(nonatomic,assign)NSInteger currentPage;
 
 
 
@@ -36,13 +39,20 @@
 
 @implementation HomeViewController
 
-- (void)setListArr:(NSMutableArray *)listArr
+- (NSMutableArray *)listArr
 {
-    _listArr=listArr;
-    [self.tableView reloadData];
-    [SVProgressHUD dismiss];
-    [self endRefresh];
+    if (_listArr==nil) {
+        _listArr=[[NSMutableArray alloc]init];
+    }
+    return _listArr;
 }
+//- (void)setListArr:(NSMutableArray *)listArr
+//{
+//    _listArr=listArr;
+//    [self.tableView reloadData];
+//    [SVProgressHUD dismiss];
+//    [self endRefresh];
+//}
 
 - (void)setHomeListCityId:(NSString *)homeListCityId
 {
@@ -71,39 +81,44 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     self.navigationItem.title=@"依足";
+    
     [self setNavBarBtn];
     
     //接受数据
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
 
-    NSString* urlStr=@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1";
-    [self loadData:urlStr];
+    self.currentPage=1;
+    //NSString* urlStr=[NSString stringWithFormat:@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/%ld",self.currentPage];
+     NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%ld",Main_Server,self.currentPage];
+    
+    NSLog(@"currentURL:%@",newUrl);
+    [self loadData:newUrl];
     
 
-    //【下拉刷新】【上拉加载】
+    
     [self setupRefresh];
 
     
     
     
 }
+//【下拉刷新】【上拉加载】
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSString* urlStr=@"http://123.207.158.228/yizu/index.php/Mobile/Index/index_Chamber/data/73/page/1";
-        [self loadData:urlStr];
+        NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/1",Main_Server];
+      
+        [self loadData:url];
     }];
     
     self.tableView.mj_header = header;
     
-//    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//
-//        [self loadMore];
-//    }];
-//
-//    self.tableView.mj_footer = footer;
+    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+
+        //[self loadMore];
+    }];
+
+    self.tableView.mj_footer = footer;
 }
 #pragma mark-结束刷新方法
 -(void)endRefresh{
@@ -116,8 +131,23 @@
 #define MoreHomeList @"http://123.207.158.228/yizu/index.php/Mobile/Index/index_area/data/73/area/843/page/%d"
     NSString* strUrl=[NSString stringWithFormat:MoreHomeList,2];
 
-    [self endRefresh];
-    [SVProgressHUD dismiss];
+    
+    [XAFNetWork GET:strUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        
+        NSString* RootKey=responseObject.keyEnumerator.nextObject;
+        NSArray* arr=responseObject[RootKey];
+        [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+           
+            HomeListModel* model=[HomeListModel ModelWithDict:obj];
+            [self.listArr addObject:model];
+        }];
+        [self.tableView reloadData];
+        [self endRefresh];
+        [SVProgressHUD dismiss];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
 
 }
 - (void)loadData:(NSString*)strURL

@@ -43,6 +43,10 @@
         }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
+        if (eBlock) {
+            eBlock();
+        }
+        
     }];
 }
 
