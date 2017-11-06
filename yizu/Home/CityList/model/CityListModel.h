@@ -13,6 +13,9 @@
 @property (nonatomic,strong) NSString* cityId;
 @property (nonatomic,strong) NSString* name;
 
+//更改城市id访问区域id接口
+@property (nonatomic,copy,readonly) NSString  *urlString;
+
 + (instancetype)ModelWithDict:(NSDictionary*)dic;
 
 +(void)CityListWithUrl:(NSString*)url success:(void(^)(NSArray* array))sBlock error:(void(^)())eBlock;

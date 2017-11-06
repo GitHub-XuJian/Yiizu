@@ -13,10 +13,6 @@
 #import "UIImageView+WebCache.h"
 #import "CellBtn.h"
 @interface HomeListCell ()
-//点赞接口
-@property(copy, nonatomic) NSString* upUrl;
-//取消点赞接口
-@property(copy, nonatomic) NSString* cancelUrl;
 
 
 
@@ -55,23 +51,20 @@
 - (IBAction)keepBtn:(UIButton *)sender
 {
     
-     sender.userInteractionEnabled = NO;
-    if (sender.selected==NO) {
-        sender.selected=YES;
+    static BOOL isSele=NO;
+    isSele=!isSele;
+    sender.selected=isSele;
+    
+    if (isSele) {
         NSLog(@"收藏1");
         [UIView animateWithDuration:0.25 animations:^{
-    
-            sender.imageView.transform=CGAffineTransformMakeScale(1.5, 1.5);//宽高伸缩比例
+            sender.transform=CGAffineTransformMakeScale(1.5, 1.5);//宽高伸缩比例
         }];
-        
     }else
     {
-        sender.selected=NO;
-         NSLog(@"收藏2");
+        NSLog(@"收藏2");
         [UIView animateWithDuration:0.25 animations:^{
-            sender.imageView.transform = CGAffineTransformIdentity;//变形后复原
-            sender.userInteractionEnabled = YES;
-
+            sender.transform = CGAffineTransformIdentity;//变形后复原
         }];
     }
 }
@@ -100,20 +93,27 @@
     {
        self.likeCellBtn.islike=NO;
     }
+    //改
+    if (model.Turvy) {
+        
+    }
     
+    //改
+    self.likeCellBtn.chambername=model.chambername;//保存店铺名字用于点赞
     
-    self.likeCellBtn.chambername=model.chambername;
-    //self.likeCellBtn.chamber_id=model.chamber_id;
     
     self.nameLab.text=model.chambername;
     [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image1]]];
     [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image2]]];
     [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image3]]];
-    [self.iconView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.icon]]];
+    //改
+    [self.iconView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
     
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
+    //一行时lab字体顶对齐
     //self.chamberjjLab.text=model.chamberjj;
+    
     
     
     [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
