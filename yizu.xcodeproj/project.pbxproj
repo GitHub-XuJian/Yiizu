@@ -44,6 +44,8 @@
 		AF23F40B1FAC66070022E990 /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3FE1FAC66070022E990 /* libUMSocialLog.a */; };
 		AF23F40D1FAC66520022E990 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F40C1FAC66520022E990 /* libsqlite3.tbd */; };
 		AF23F40F1FAC66660022E990 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F40E1FAC665B0022E990 /* CoreGraphics.framework */; };
+		AF23F4121FAD508A0022E990 /* MyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4111FAD508A0022E990 /* MyInformationViewController.m */; };
+		AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4161FB0287C0022E990 /* AgreementView.m */; };
 		AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */; };
 		AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D011FA1DF9500A1225F /* JXTAlertView.m */; };
 		AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */; };
@@ -270,6 +272,10 @@
 		AF23F3FE1FAC66070022E990 /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
 		AF23F40C1FAC66520022E990 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		AF23F40E1FAC665B0022E990 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		AF23F4101FAD508A0022E990 /* MyInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyInformationViewController.h; sourceTree = "<group>"; };
+		AF23F4111FAD508A0022E990 /* MyInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyInformationViewController.m; sourceTree = "<group>"; };
+		AF23F4151FB0287C0022E990 /* AgreementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreementView.h; sourceTree = "<group>"; };
+		AF23F4161FB0287C0022E990 /* AgreementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreementView.m; sourceTree = "<group>"; };
 		AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
 		AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
 		AF626D001FA1DF9500A1225F /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
@@ -914,6 +920,8 @@
 				AF6C46B21FA807E000797125 /* mytimer.m */,
 				AF6C46591FA3187C00797125 /* LoginView.h */,
 				AF6C465A1FA3187C00797125 /* LoginView.m */,
+				AF23F4151FB0287C0022E990 /* AgreementView.h */,
+				AF23F4161FB0287C0022E990 /* AgreementView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1131,6 +1139,8 @@
 				AF6C46681FA4546800797125 /* CSdetailsViewController.m */,
 				AF23F3DB1FAC05C40022E990 /* MyWalletViewController.h */,
 				AF23F3DC1FAC05C40022E990 /* MyWalletViewController.m */,
+				AF23F4101FAD508A0022E990 /* MyInformationViewController.h */,
+				AF23F4111FAD508A0022E990 /* MyInformationViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1817,6 +1827,7 @@
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
 				AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
+				AF23F4121FAD508A0022E990 /* MyInformationViewController.m in Sources */,
 				AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */,
 				AF66AD7A1F9DB5070079A2CF /* HelpCenterViewController.m in Sources */,
 				AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */,
@@ -1913,6 +1924,7 @@
 				AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */,
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
 				1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */,
+				AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

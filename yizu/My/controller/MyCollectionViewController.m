@@ -31,7 +31,7 @@
 }
 - (void)createDataArray
 {
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 20; i++) {
         MyCollectionModel *model = [[MyCollectionModel alloc] init];
         model.iconImage = @"Mall";
         model.nameStr = @"美味寿司";

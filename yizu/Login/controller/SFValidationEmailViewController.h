@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^LoginValidationBlock)(NSDictionary *dict);
 
 @interface SFValidationEmailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *emailStr;
+@property (nonatomic, assign) BOOL isValidation;
+@property (nonatomic, strong) LoginValidationBlock validationBlock;
 
 @end

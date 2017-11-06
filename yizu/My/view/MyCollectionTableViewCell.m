@@ -73,7 +73,7 @@
     self.nameLabel.frame = CGRectMake(self.iconImageView.x+self.iconImageView.width+10, 10, kSCREEN_WIDTH/2, (135/2-20)/2);
     self.addressLabel.frame = CGRectMake(self.iconImageView.x+self.iconImageView.width+10, self.nameLabel.y+self.nameLabel.height, kSCREEN_WIDTH-self.iconImageView.x+self.iconImageView.width, (135/2-20)/2);
     self.timeLabel.frame = CGRectMake(kSCREEN_WIDTH/2, 10, kSCREEN_WIDTH/2-10, (135/2-20)/2);
-    self.lineview.frame = CGRectMake(0, 135/2, kSCREEN_WIDTH, 0.5);
+//    self.lineview.frame = CGRectMake(0, 135/2, kSCREEN_WIDTH, 0.5);
 
 }
 

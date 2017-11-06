@@ -36,6 +36,7 @@
     [super viewWillAppear:YES];
     // 隐藏导航条
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

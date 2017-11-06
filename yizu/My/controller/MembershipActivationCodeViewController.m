@@ -54,7 +54,7 @@
 - (void)createViewUI
 {
     _buttonStr = @"分享";
-    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"可转让",@"已出售",@"已激活", nil];
+    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已分享",@"已激活", nil];
     self.macView = [[MembershipActivationCodeView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 50) andTitleArray:titleArray andClassBlock:^(UIButton *classBtn) {
         NSLog(@"%@",classBtn.titleLabel.text);
         _buttonStr = nil;
@@ -64,7 +64,7 @@
                 break;
             }
             case 1:{
-                _buttonStr = @"转让";
+                _buttonStr = @"已分享";
                 break;
             }
             default:
@@ -81,7 +81,12 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    /**
+     * 去掉多余横线
+     */
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
     [self.view addSubview:self.tableView];
     
 }

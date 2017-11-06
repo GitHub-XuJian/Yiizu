@@ -42,7 +42,6 @@
     backImageView.userInteractionEnabled = YES;
     [self.view addSubview:backImageView];
     
-    
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     leftBtn.frame = CGRectMake(10, 20, 44, 44);
     //            [leftBtn setTitle:leftBtnStr forState:UIControlStateNormal];
@@ -94,7 +93,7 @@
     //登录按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(verificationCodeTextField.x, verificationCodeTextField.y+verificationCodeTextField.height+20, kSCREEN_WIDTH-40, 40);
-    [button setTitle:@"下一步" forState:UIControlStateNormal];
+    [button setTitle:self.isValidation?@"登录":@"下一步" forState:UIControlStateNormal];
     button.backgroundColor = [UIColor redColor];
     [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:button];
@@ -118,9 +117,26 @@
         jxt_showAlertTitle(@"验证码超时");
     }else{
         if ([_inputVcode isEqualToString:[XSaverTool objectForKey:VerificationCode]]) {
-            OldAndNewPassWordViewController *onpVC = [[OldAndNewPassWordViewController alloc] init];
-            onpVC.phoneStr = self.emailStr;
-            [self presentViewController:onpVC animated:YES completion:nil];
+            if (self.isValidation) {
+                NSDictionary *dict = @{@"tel":self.emailText.text,@"openid":            [XSaverTool objectForKey: WXPatient_Openid]};
+                NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/yanzheng",Main_Server];
+                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                    NSLog(@"%@",responseObject);
+                    jxt_showToastMessage(responseObject[@"msg"], 1);
+                    NSInteger code = [responseObject[@"code"] integerValue];
+                    if (code == 1) {
+                        _validationBlock(responseObject);
+                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+                    }
+                } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                    jxt_showToastMessage(@"登录失败",1);
+                }];
+            }else{
+                OldAndNewPassWordViewController *onpVC = [[OldAndNewPassWordViewController alloc] init];
+                onpVC.phoneStr = self.emailStr;
+                [self presentViewController:onpVC animated:YES completion:nil];
+            }
+           
         }else{
             jxt_showAlertTitle(@"验证码不正确");
         }
@@ -129,12 +145,19 @@
 //获取验证码
 -(void)CodeBtnClic:(UIButton*)sender{
     if (_emailText.text.length == 0) {
-        jxt_showAlertTitle(@"邮箱不能为空");
+        jxt_showAlertTitle(@"手机号不能为空");
     }else{
         //倒计时
         [[mytimer sharetimer] makeTimer];
         NSDictionary *dict = @{@"tel":self.emailText.text};
-        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/trueyzm",Main_Server];
+        NSString *yzmStr;
+        if (self.isValidation) {
+            yzmStr = @"Mobile/Login/alteryzm";
+        }else{
+            yzmStr = @"Mobile/Login/trueyzm";
+        }
+        
+        NSString *urlStr = [NSString stringWithFormat:@"%@%@",Main_Server,yzmStr];
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"%@",responseObject);
             jxt_showToastMessage(responseObject[@"msg"], 1);

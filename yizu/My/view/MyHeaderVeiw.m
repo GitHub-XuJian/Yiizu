@@ -81,8 +81,8 @@
         LoginViewController *loginViewC = [[LoginViewController alloc] init];
         loginViewC.successfulBlock = ^{
             [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal];
-            self.nameLabel.text = [XSaverTool objectForKey:PhoneKey];
-            self.introductionLabel.text =[XSaverTool objectForKey:PhoneKey];
+            self.nameLabel.text =                             [XSaverTool objectForKey:WXPatient_Nickname];
+            self.introductionLabel.text =[XSaverTool objectForKey:WXPatient_Personxq];
         };
         loginViewC.failedBlock = ^{
             
