@@ -28,7 +28,8 @@
     
 
     NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_district/data/%@",Main_Server,self.cityId];
-    //qvyv
+  
+    
         [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
           
             for (NSDictionary* dic in responseObject) {
@@ -85,8 +86,11 @@
 {
       AreaListModel* model=self.arr[indexPath.row];
     
-    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId};
+    NSString* urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1",Main_Server,self.cityId,model.areaId];
+    NSLog(@"选择区域后的URL:%@",urlStr);
     
+    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId,@"areaUrl":urlStr};
+
     [[NSNotificationCenter defaultCenter]postNotificationName:@"AreaId" object:nil userInfo:dict];
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -18,10 +18,22 @@
 @property (nonatomic,strong) NoResultView* noResultView;
 @property (nonatomic,copy) NSString *currentSeachText;
 @property (nonatomic,strong) NSMutableArray* seachArr;
+@property (nonatomic,strong) UITableView* tableView;
+
+@property (nonatomic,assign) BOOL showHistory;
 
 @end
 
 @implementation HomeSearchController
+
+- (NSMutableArray *)seachArr
+{
+    if (_seachArr == nil) {
+        _seachArr =[[NSMutableArray alloc]init];
+    }
+    return _seachArr;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,9 +71,12 @@
 - (void)createUITableView
 {
     UITableView* tab=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64) style:UITableViewStylePlain];
+    //拖动tableView隐藏键盘
+    //tab.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     tab.delegate=self;
     tab.dataSource=self;
     [self.view addSubview:tab];
+    self.tableView=tab;
     
 }
 - (void)createNoResult
@@ -74,7 +89,7 @@
 #pragma mark-UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.seachArr.count;
 }
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -83,6 +98,9 @@
     if (!cell) {
         cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
+    HomeListModel* model=self.seachArr[indexPath.row];
+    cell.textLabel.text=model.chambername;
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image1]]];
     return cell;
 }
 #pragma mark-UITableViewDelegate
@@ -93,21 +111,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)setShowHistory:(BOOL)showHistory {
+    _showHistory = showHistory;
+    //self.historyView.hidden = !showHistory;
+}
 - (void)searchText:(NSString *)text
 {
+    
+    self.showHistory = text.length < 1;
+    
+    if (self.showHistory || text.length > 12) return;
+    
     //清空格
     self.currentSeachText = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString* str=[NSString stringWithFormat:@"/Mobile/Index/index_name/name/%@/page/1",text];
+    NSLog(@"清空格后:%@",self.currentSeachText);
     //转UTF-8
     NSString *keyword   = [self.currentSeachText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"搜索框输入:%@=%@",keyword,str);
-    //static NSString * const searchBaseUrl = @"http://search";
-    NSString *urlString = [NSString stringWithFormat:@"%@?key1=%@&key2=%d&key3=%d",str,keyword,20,0];
-    NSLog(@"pinjiekou%@",urlString);
+    NSString* str=[NSString stringWithFormat:@"%@/Mobile/Index/index_name/name/%@/page/1",Main_Server,keyword];
+    
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"2221v111222=%@",responseObject);
-          BOOL hasResult = self.seachArr.count > 0;
-          self.noResultView.hidden = hasResult;
+        NSLog(@"搜索数据=%@",responseObject);
+        NSArray* arr=responseObject[@"list"];
+        for (NSDictionary* dic in arr) {
+            HomeListModel* model=[HomeListModel ModelWithDict:dic];
+            [_seachArr addObject:model];
+        }
+        BOOL hasResult = _seachArr.count > 0;
+         NSLog(@"是否隐藏:%d",hasResult);
+        self.noResultView.hidden = hasResult;
+        if (hasResult) {
+            [self.tableView reloadData];
+        }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

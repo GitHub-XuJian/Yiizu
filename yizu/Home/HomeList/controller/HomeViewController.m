@@ -17,17 +17,18 @@
 @property(nonatomic, strong)NSMutableArray* listArr;
 //用于设置navbarbtn的标题
 @property(nonatomic, strong)UIButton* navBtn;
-//用于保存首页拼接城市接口
+//用于保存首页拼接城市id
 @property(nonatomic, copy)NSString* homeListCityId;
-//用于保存首页拼接区域接口
+//用于保存首页拼接区域id
 @property(nonatomic, copy)NSString* homeListAreaId;
-//
-@property(nonatomic, copy)NSString* homeURL;
 
 //首页接口页数
-@property(nonatomic,assign)NSInteger currentPage;
+@property(nonatomic,assign)int currentPage;
 
-
+//点击选择城市按钮请求城市全部商家接口
+@property(nonatomic,copy)NSString* CityURLstr;
+//点击区域列表内区域按钮请求区域内商家接口
+@property(nonatomic,copy)NSString* homeUrlStr;
 
 
 
@@ -36,6 +37,20 @@
 
 @implementation HomeViewController
 
+- (void)setHomeUrlStr:(NSString *)homeUrlStr
+{
+    _homeUrlStr=homeUrlStr;
+    NSLog(@"点击区域按钮后区域商家接口:%@",homeUrlStr);
+    [self requestData:homeUrlStr];
+}
+- (void)setCityURLstr:(NSString *)CityURLstr
+{
+    _CityURLstr=CityURLstr;
+    NSLog(@"点击导航按钮:%@",CityURLstr);
+    //点击导航按钮请求城市全部商家接口
+    [self requestData:CityURLstr];
+    
+}
 //- (NSMutableArray *)listArr
 //{
 //    if (_listArr==nil) {
@@ -43,43 +58,20 @@
 //    }
 //    return _listArr;
 //}
-- (void)setListArr:(NSMutableArray *)listArr
-{
-    _listArr=listArr;
-    [self.tableView reloadData];
-    [SVProgressHUD dismiss];
-    [self endRefresh];
-}
 
-- (void)setHomeListCityId:(NSString *)homeListCityId
-{
-    _homeListAreaId=homeListCityId;
-    self.homeURL=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@",Main_Server,homeListCityId];
-    NSString* cityURL=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@",Main_Server,homeListCityId];
-    [self loadData:self.homeURL];
-    NSLog(@"全部商城接口 %@",cityURL);
-}
 
--(void)setHomeListAreaId:(NSString *)homeListAreaId
-{
-    _homeListAreaId=homeListAreaId;
-    NSString* areaUrl=[NSString stringWithFormat:@"/area/%@/page/1",homeListAreaId];
-    NSString* url=[self.homeURL stringByAppendingString:areaUrl];
-    
-    NSLog(@"点击城市和区域Url=%@",url);
-
-    [HomeListModel HomeListWithUrl:url success:^(NSMutableArray *array) {
-        self.listArr=array;
-        NSLog(@"再次请求");
-    } error:^{
-        
-    }];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+   
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+   
+//    if (@available(iOS 11.0, *)) {
+//        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    }
+////////////////////////////////
+    self.tableView.estimatedRowHeight =0;
+    self.tableView.estimatedSectionHeaderHeight =0;
+    self.tableView.estimatedSectionFooterHeight =0;
     self.navigationItem.title=@"依足";
     
     [self setNavBarBtn];
@@ -88,82 +80,130 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
 
     self.currentPage=1;
-     NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%ld",Main_Server,self.currentPage];
-    NSLog(@"currentURL:%@",newUrl);
-    [self loadData:newUrl];
+    self.homeListCityId=@"73";
     
+    
+    NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%d",Main_Server,self.currentPage];
+    [self requestData:newUrl];
 
-    
     [self setupRefresh];
+   
 
-    
     
     
 }
 //【下拉刷新】【上拉加载】
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/1",Main_Server];
-      
-        [self loadData:url];
+        
+        NSLog(@"下啦回掉");
+        NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/%d",Main_Server,self.homeListCityId,1];
+        NSLog(@"下啦刷新:%@",newUrl);
+        [self requestData:newUrl];
+        //[self loadData];
+       
     }];
     
     self.tableView.mj_header = header;
     
-//    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//
-//        //[self loadMore];
-//    }];
-//
-//    self.tableView.mj_footer = footer;
+    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        
+        [self loadMore];
+       // NSString* cid=[self.homeListCityId copy];
+        //[self requestMoreData:cid];
+        NSLog(@"上啦回调");
+        
+    }];
+    self.tableView.mj_footer = footer;
+    /////////////////////////////////
+    self.tableView.mj_footer.automaticallyHidden=YES;
 }
-#pragma mark-结束刷新方法
--(void)endRefresh{
-    [self.tableView.mj_header endRefreshing];
-    [self.tableView.mj_footer endRefreshing];
+
+- (void)requestData:(NSString*)url
+{
+    _listArr=[[NSMutableArray alloc]init];
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
+    [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        //NSLog(@"oneData:%@",responseObject);
+        NSArray* arr=responseObject[@"list"];
+        for (NSDictionary* dic in arr) {
+            HomeListModel* model=[HomeListModel ModelWithDict:dic];
+            
+            [_listArr addObject:model];
+            
+        }
+        [self.tableView reloadData];
+        [SVProgressHUD dismiss];
+        [self endRefresh];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        [self endRefresh];
+        [SVProgressHUD dismiss];
+    }];
 }
 - (void)loadMore
 {
-    self.currentPage++;
+    
     [SVProgressHUD showWithStatus:@"数据加载中..."];
+     self.currentPage+=1;
+    NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%d",Main_Server,self.currentPage];
+   
+    [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
 
-    NSString* strUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/73/area/843/page/%ld",Main_Server,(long)self.currentPage];
-    [XAFNetWork GET:strUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        NSArray* arr=responseObject[@"list"];
         
-        NSString* RootKey=responseObject.keyEnumerator.nextObject;
-        NSArray* arr=responseObject[RootKey];
-        [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-           
-            HomeListModel* model=[HomeListModel ModelWithDict:obj];
-            [self.listArr addObject:model];
-        }];
+        if (arr.count==0) {
+            
+            //[self.tableView.mj_footer endRefreshingWithNoMoreData];
+            self.tableView.mj_footer.hidden=YES;
+        }
+        
+        for (NSDictionary* dic in arr) {
+            HomeListModel* model=[HomeListModel ModelWithDict:dic];
+            /////////
+            [_listArr addObject:model];
+            
+        }
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
+        [self endRefresh];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
         [self endRefresh];
         [SVProgressHUD dismiss];
-    } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
     }];
     
-
+    
 }
-- (void)loadData:(NSString*)strURL
+- (void)requestMoreData:(NSString*)cityId
 {
-
     [SVProgressHUD showWithStatus:@"数据加载中..."];
+    self.currentPage+=1;
+    NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/%d",cityId,Main_Server,self.currentPage];
     
-
-    [HomeListModel HomeListWithUrl:strURL success:^(NSMutableArray *array) {
-        self.listArr=array;
-
-    } error:^{
-        [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
-          [self endRefresh];
+    [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+        
+        NSArray* arr=responseObject[@"list"];
+        
+        if (arr.count==0) {
+            
+            //[self.tableView.mj_footer endRefreshingWithNoMoreData];
+            self.tableView.mj_footer.hidden=YES;
+        }
+        
+        for (NSDictionary* dic in arr) {
+            HomeListModel* model=[HomeListModel ModelWithDict:dic];
+            /////////
+            [_listArr addObject:model];
+            
+        }
+        [self.tableView reloadData];
         [SVProgressHUD dismiss];
-
+        [self endRefresh];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        [self endRefresh];
+        [SVProgressHUD dismiss];
     }];
- 
 }
-
 - (void)setNavBarBtn
 {
     UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
@@ -188,12 +228,18 @@
     
     [self presentViewController:nav animated:YES completion:nil];
 }
+#pragma mark-结束刷新方法
+-(void)endRefresh{
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
+
 #pragma mark-通知回传
 - (void)massageCityId:(NSNotification *)notification
 {
     //NSLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"areaId"]);
-    self.homeListAreaId=notification.userInfo[@"areaId"];
-   
+    //self.homeListAreaId=notification.userInfo[@"areaId"];
+    self.homeUrlStr=notification.userInfo[@"areaUrl"];
 }
 #pragma mark-首页导航条按钮
 - (void)navBtnAction
@@ -206,15 +252,14 @@
     
 }
 #pragma mark- homeCityBtnDelegate
--(void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url
+- (void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url cityId:(NSString *)cid
 {
     [self.navBtn setTitle:title forState:UIControlStateNormal];
-    self.homeListCityId=url;
-    NSDictionary *dict = @{@"name":title, @"cityId":url};
+    self.homeListCityId=cid;
+    self.CityURLstr=url;
+        NSDictionary *dict = @{@"name":title, @"cityId":cid};
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"nameId" object:nil userInfo:dict];
-    
-   
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"nameId" object:nil userInfo:dict];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -239,7 +284,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 180;
+    return 190;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -26,6 +26,13 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{}
 
+//更改对应的的路径
+- (NSString *)urlString {
+    //Mobile/Index/index_district/data/城市id
+    return [NSString stringWithFormat:@"%@Mobile/Index/index_district/data/%@",Main_Server,self.cityId];
+}
+
+
 +(void)CityListWithUrl:(NSString *)url success:(void (^)(NSArray *))sBlock error:(void (^)())eBlock
 {
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {

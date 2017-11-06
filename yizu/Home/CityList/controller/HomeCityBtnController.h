@@ -10,7 +10,7 @@
 
 @protocol HomeCityBtnDelegate <NSObject>
 
--(void)HomeCityBtnTitle:(NSString*)title url:(NSString*)url;
+-(void)HomeCityBtnTitle:(NSString*)title url:(NSString*)url cityId:(NSString*)cid;
 
 @end
 

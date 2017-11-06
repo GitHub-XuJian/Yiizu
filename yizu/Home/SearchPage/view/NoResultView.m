@@ -27,7 +27,7 @@
     [self addSubview:imaView];
     
     UILabel* lab=[[UILabel alloc]init];
-    lab.frame=CGRectMake(self.frame.size.width/2, CGRectGetMaxY(imaView.frame), 50, 50);
+    lab.frame=CGRectMake(self.frame.size.width/2, CGRectGetMaxY(imaView.frame), 150, 50);
     lab.text=@"无结果~";
     lab.font=[UIFont systemFontOfSize:15];
     lab.textAlignment=NSTextAlignmentCenter;

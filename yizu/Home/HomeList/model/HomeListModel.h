@@ -30,6 +30,9 @@
 @property (nonatomic, copy) NSString* image3;
 @property (nonatomic, copy) NSString* icon;
 
+//更改收藏状态
+@property (nonatomic, copy) NSString* Turvy;
+
 + (instancetype)ModelWithDict:(NSDictionary*)dic;
 
 +(void)HomeListWithUrl:(NSString*)url success:(void(^)(NSMutableArray* array))sBlock error:(void(^)())eBlock;

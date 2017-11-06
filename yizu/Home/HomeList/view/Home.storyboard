@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="IfV-qk-mkg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
                                 <segue destination="UbQ-BP-CkG" kind="embed" id="imK-gg-BC9"/>
@@ -28,7 +28,7 @@
                         </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" rowHeight="180" id="nbO-IY-kKB" customClass="HomeListCell">
-                                <rect key="frame" x="0.0" y="283" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="328" width="375" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbO-IY-kKB" id="826-4h-n08">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
@@ -103,7 +103,7 @@
                                                 <constraint firstAttribute="width" constant="18" id="r37-K5-7cD"/>
                                             </constraints>
                                             <state key="normal" backgroundImage="ic_me_item_collection_topic_20x20_"/>
-                                            <state key="selected" backgroundImage="ic_me_item_collection_topic_20x20_"/>
+                                            <state key="selected" backgroundImage="ic_details_top_collection_prressed_21x21_"/>
                                             <connections>
                                                 <action selector="keepBtn:" destination="nbO-IY-kKB" eventType="touchUpInside" id="J1I-Fz-yne"/>
                                             </connections>
@@ -162,26 +162,26 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUs-lN-oQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="814" y="-2203"/>
+            <point key="canvasLocation" x="562" y="-2367"/>
         </scene>
         <!--Loop Image View Controller-->
         <scene sceneID="irQ-ld-LFC">
             <objects>
                 <viewController id="UbQ-BP-CkG" customClass="LoopImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GcI-tk-jcY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="255"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crU-f7-Id2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="235"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="Frj-Lj-eqn">
-                                <rect key="frame" x="0.0" y="208" width="375" height="37"/>
+                                <rect key="frame" x="0.0" y="253" width="375" height="37"/>
                                 <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="currentPageIndicatorTintColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuI-yb-NDT">
-                                <rect key="frame" x="16" y="239" width="53" height="12"/>
+                                <rect key="frame" x="16" y="284" width="53" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="区域排布">
@@ -212,11 +212,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4P-Fe-mAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="-1612"/>
+            <point key="canvasLocation" x="1455" y="-2572"/>
         </scene>
     </scenes>
     <resources>
         <image name="Mall" width="22" height="18"/>
+        <image name="ic_details_top_collection_prressed_21x21_" width="21" height="21"/>
         <image name="ic_me_item_collection_topic_20x20_" width="20" height="20"/>
     </resources>
 </document>

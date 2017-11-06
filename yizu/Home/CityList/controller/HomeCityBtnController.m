@@ -106,11 +106,14 @@
 {
     CityListModel* model=self.cityArr[indexPath.item];
     NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/1",Main_Server,model.cityId];
+    
     NSLog(@"点击行按钮=%@%@",model.name,url);
-    if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:)]) {
-        [self.delegate HomeCityBtnTitle:model.name url:model.cityId];
+//    if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:)]) {
+//        [self.delegate HomeCityBtnTitle:model.name url:model.cityId];
+//    }
+    if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:cityId:)]) {
+        [self.delegate HomeCityBtnTitle:model.name url:url cityId:model.cityId];
     }
-
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 #pragma mark <UICollectionViewDelegate>
