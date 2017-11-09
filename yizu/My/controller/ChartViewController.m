@@ -68,22 +68,8 @@
         /**
          * 折现图
          */
-        NSDictionary *codeWeekDict = responseObject[@"codeWeek"];
-        NSNumber *monNum =[NSNumber numberWithInt:[codeWeekDict[@"monNum"] intValue]];
-        [self.brokenLineArray addObject:monNum];
-        NSNumber *tueNum =[NSNumber numberWithInt:[codeWeekDict[@"tueNum"] intValue]];
-        [self.brokenLineArray addObject:tueNum];
-        NSNumber *wedNum =[NSNumber numberWithInt:[codeWeekDict[@"wedNum"] intValue]];
-        [self.brokenLineArray addObject:wedNum];
-        NSNumber *thuNum =[NSNumber numberWithInt:[codeWeekDict[@"thuNum"] intValue]];
-        [self.brokenLineArray addObject:thuNum];
-        NSNumber *friNum =[NSNumber numberWithInt:[codeWeekDict[@"friNum"] intValue]];
-        [self.brokenLineArray addObject:friNum];
-        NSNumber *satNum =[NSNumber numberWithInt:[codeWeekDict[@"satNum"] intValue]];
-        [self.brokenLineArray addObject:satNum];
-        NSNumber *sunNum =[NSNumber numberWithInt:[codeWeekDict[@"sunNum"] intValue]];
-        [self.brokenLineArray addObject:sunNum];
-        [self.brokenLine setValue:self.brokenLineArray withYLineCount:6];
+        
+        [self.brokenLine setValue:[self brokenLineArrayWithDict:responseObject] withYLineCount:6];
 
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -163,6 +149,26 @@
     [[NSScanner scannerWithString:gString] scanHexInt:&g];
     [[NSScanner scannerWithString:bString] scanHexInt:&b];
     return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:alpha];
+}
+- (NSMutableArray *)brokenLineArrayWithDict:(NSDictionary *)dict
+{
+    NSMutableArray *brokenLineArray = [NSMutableArray array];
+    NSDictionary *codeWeekDict = dict[@"codeWeek"];
+    NSNumber *monNum =[NSNumber numberWithInt:[codeWeekDict[@"monNum"] intValue]];
+    [brokenLineArray addObject:monNum];
+    NSNumber *tueNum =[NSNumber numberWithInt:[codeWeekDict[@"tueNum"] intValue]];
+    [brokenLineArray addObject:tueNum];
+    NSNumber *wedNum =[NSNumber numberWithInt:[codeWeekDict[@"wedNum"] intValue]];
+    [brokenLineArray addObject:wedNum];
+    NSNumber *thuNum =[NSNumber numberWithInt:[codeWeekDict[@"thuNum"] intValue]];
+    [brokenLineArray addObject:thuNum];
+    NSNumber *friNum =[NSNumber numberWithInt:[codeWeekDict[@"friNum"] intValue]];
+    [brokenLineArray addObject:friNum];
+    NSNumber *satNum =[NSNumber numberWithInt:[codeWeekDict[@"satNum"] intValue]];
+    [brokenLineArray addObject:satNum];
+    NSNumber *sunNum =[NSNumber numberWithInt:[codeWeekDict[@"sunNum"] intValue]];
+    [brokenLineArray addObject:sunNum];
+    return brokenLineArray;
 }
 
 - (void)didReceiveMemoryWarning {
