@@ -45,12 +45,12 @@
     if (self.viewControllers.count > 0) { // 如果现在push的不是栈底控制器(最先push进来的那个控制器)
         viewController.hidesBottomBarWhenPushed = YES;
         // 设置导航栏按钮
-        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 22, 22)];
-//        [button setImage:[UIImage imageNamed:@"backBtn"] forState:UIControlStateNormal];
-        [button setTitle:@"返回" forState:UIControlStateNormal];
-        [button sizeToFit];
+        UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [button setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+//        [button setTitle:@"返回" forState:UIControlStateNormal];
+//        [button sizeToFit];
         [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        //[button setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
+        [button setImageEdgeInsets:UIEdgeInsetsMake(0, -20, 0, 0)];
         [button addTarget:self action:@selector(popView) forControlEvents:UIControlEventTouchUpInside];
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     }

@@ -123,7 +123,7 @@
 - (void)requestData:(NSString*)url
 {
     _listArr=[[NSMutableArray alloc]init];
-    [SVProgressHUD showWithStatus:@"数据加载中..."];
+//    [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         //NSLog(@"oneData:%@",responseObject);
         NSArray* arr=responseObject[@"list"];
@@ -144,7 +144,7 @@
 - (void)loadMore
 {
     
-    [SVProgressHUD showWithStatus:@"数据加载中..."];
+//    [SVProgressHUD showWithStatus:@"数据加载中..."];
      self.currentPage+=1;
     NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%d",Main_Server,self.currentPage];
    
@@ -176,7 +176,7 @@
 }
 - (void)requestMoreData:(NSString*)cityId
 {
-    [SVProgressHUD showWithStatus:@"数据加载中..."];
+//    [SVProgressHUD showWithStatus:@"数据加载中..."];
     self.currentPage+=1;
     NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/%d",cityId,Main_Server,self.currentPage];
     

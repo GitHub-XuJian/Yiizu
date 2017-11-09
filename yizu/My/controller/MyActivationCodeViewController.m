@@ -87,27 +87,39 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *viewController;
-    switch (indexPath.row) {
-        case 0:{
-            viewController = [[MembershipActivationCodeViewController alloc] init];
-            break;
+    if (IsLoginState) {
+        UIViewController *viewController;
+        switch (indexPath.row) {
+            case 0:{
+                viewController = [[MembershipActivationCodeViewController alloc] init];
+                break;
+            }
+            case 1:{
+                viewController = [[ChartViewController alloc] init];
+                
+                break;
+            }
+            case 2:{
+                viewController = [[ActivationCodeInputViewController alloc] init];
+                
+                break;
+            }
+            default:
+                break;
         }
-        case 1:{
-            viewController = [[ChartViewController alloc] init];
-
-            break;
-        }
-        case 2:{
-            viewController = [[ActivationCodeInputViewController alloc] init];
-
-            break;
-        }
-        default:
-            break;
+        viewController.title = self.dataArray[indexPath.row];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }else{
+        LoginViewController *loginViewC = [[LoginViewController alloc] init];
+        loginViewC.successfulBlock = ^{
+            
+        };
+        loginViewC.failedBlock = ^{
+            
+        };
+        [self presentViewController:loginViewC animated:YES completion:nil];
     }
-    viewController.title = self.dataArray[indexPath.row];
-    [self.navigationController pushViewController:viewController animated:YES];
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

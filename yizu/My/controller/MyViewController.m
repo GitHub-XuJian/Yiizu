@@ -16,7 +16,10 @@
 #import "AboutUsViewController.h"
 #import "ContactUsViewController.h"
 #import "MyWalletViewController.h"
-@interface MyViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "PersonalInformationViewController.h"
+
+
+@interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeaderVeiwDelegate>
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) MyHeaderVeiw *headerView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -36,6 +39,7 @@
     [super viewWillAppear:YES];
     // 隐藏导航条
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.headerView reloadData];
 
 }
 - (void)viewDidLoad {
@@ -45,6 +49,7 @@
     [self createDataArray];
     [self createTableView];
 }
+
 - (void)createDataArray
 {
     self.dataArray = [NSMutableArray arrayWithObjects:@[@"我的激活码",@"我的钱包"],@[@"我的收藏",@"我的活动"],@[@"帮助中心",@"关于我们"], nil];
@@ -63,7 +68,28 @@
     [self.view addSubview:self.tableView];
     
     self.headerView = [[MyHeaderVeiw alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 640/3)];
+    self.headerView.delegate = self;
     self.tableView.tableHeaderView = self.headerView;
+}
+- (void)clickButton:(UIButton *)button
+{
+    if ([XSaverTool boolForKey:IsLogin]) {
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+
+        PersonalInformationViewController *piVC = [[PersonalInformationViewController alloc] init];
+        piVC.title = @"个人信息";
+        [self.navigationController pushViewController:piVC animated:YES];
+    }else{
+        LoginViewController *loginViewC = [[LoginViewController alloc] init];
+        loginViewC.successfulBlock = ^{
+            [self.headerView reloadData];
+        };
+        loginViewC.failedBlock = ^{
+            
+        };
+        [self presentViewController:loginViewC animated:YES completion:nil];
+        
+    }
 }
 //section底部间距
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -112,7 +138,6 @@
     }
     cell.textLabel.text = self.dataArray[indexPath.section][indexPath.row];
     cell.imageView.image = [UIImage imageNamed:self.imageArray[indexPath.section][indexPath.row]];
-    cell.imageView.contentMode = UIViewContentModeScaleToFill;
     return cell;
 }
 

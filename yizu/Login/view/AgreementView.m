@@ -34,12 +34,11 @@
     label.frame = CGRectMake(checkBtn.x+checkBtn.width+5, 0, rect, self.height);
     label.text = @"登陆依足，标识您同意平台";
     label.font = kFontMini;
-    label.backgroundColor = [UIColor redColor];
     label.textColor = kWhiteColor;
     [self addSubview:label];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(label.x+rect, label.y, self.height-label.width, self.height);
+    btn.frame = CGRectMake(label.x+label.width, label.y, self.width-label.width, self.height);
     [btn setTitle:@"《用户协议》" forState:UIControlStateNormal];
     [btn setTitleColor:kColorblue forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(agreementBtnclick:) forControlEvents:UIControlEventTouchUpInside];

@@ -55,8 +55,8 @@
                             [XSaverTool setObject:password forKey:Password];
                             [XSaverTool setBool:code forKey:IsLogin];
                             [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
-                            [XSaverTool setObject:responseObject[@"nickname"] forKey:WXPatient_Nickname];
-                            [XSaverTool setObject:dict[@"personxq"] forKey:WXPatient_Personxq];
+                            [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
+                            [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                             [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
                             _successfulBlock();
@@ -164,8 +164,8 @@
                         [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                         [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
                         [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
-                        [XSaverTool setObject:dict[@"nickname"] forKey:WXPatient_Nickname];
-                        [XSaverTool setObject:dict[@"personxq"] forKey:WXPatient_Personxq];
+                        [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
+                        [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
 
                         [XSaverTool setBool:code forKey:IsLogin];
                         [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
@@ -231,8 +231,12 @@
                         [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                         [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
                         [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
-                        [XSaverTool setObject:dict[@"nickname"] forKey:WXPatient_Nickname];
-                        [XSaverTool setObject:dict[@"personxq"] forKey:WXPatient_Personxq];
+                        if (![dict[@"nickname"] isKindOfClass:[NSNull class]]) {
+                            [XSaverTool setObject:dict[@"nickname"]?dict[@"nickname"]:@"请输入昵称" forKey:Nickname];
+                        }
+                        if (![dict[@"personxq"] isKindOfClass:[NSNull class]]) {
+                            [XSaverTool setObject:dict[@"personxq"]?dict[@"personxq"]:@"请输入简介" forKey:Personxq];
+                        }
 
                         [XSaverTool setBool:code forKey:IsLogin];
                         [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
@@ -247,9 +251,8 @@
                         validationVC.validationBlock = ^(NSDictionary *dict) {
                             [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
                             [XSaverTool setObject:dict[@"personid"] forKey:UserIDKey];
-                            [XSaverTool setObject:dict[@"nickname"] forKey:WXPatient_Nickname];
-                            [XSaverTool setObject:dict[@"personxq"] forKey:WXPatient_Personxq];
-
+                            [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
+                            [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
                             [XSaverTool setBool:[dict[@"statevip"] integerValue] forKey:Statevip];
                             [XSaverTool setBool:1 forKey:IsLogin];

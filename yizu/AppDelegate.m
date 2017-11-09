@@ -27,6 +27,8 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear]; //设置HUD背景图层的样式
+
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
     keyboardManager.enable = YES; // 控制整个功能是否启用
     keyboardManager.shouldResignOnTouchOutside = YES; // 控制点击背景是否收起键盘

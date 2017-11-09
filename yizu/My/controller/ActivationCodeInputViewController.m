@@ -33,7 +33,7 @@
     _textFieldTagAdd = 0;
     _codeArray = [[NSMutableArray alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.dataDict =[NSMutableDictionary dictionaryWithDictionary: @{@"pername": @"",@"tel":@"",@"paynum":@"", @"code":@[]}];
+    self.dataDict =[NSMutableDictionary dictionaryWithDictionary: @{@"personid":@"",@"statevip":@"",@"pername": @"",@"tel":@"",@"paynum":@"", @"code":@[]}];
     [self createViewUI];
 }
 - (void)createViewUI
@@ -88,7 +88,7 @@
     [self createActivationBtn];
     // 设置UIScrollView的滚动范围（内容大小）
     self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+50);
-
+    
 }
 - (void)createActivationBtn
 {
@@ -142,7 +142,7 @@
     addBtn.titleLabel.font = kFontOther;
     [self.scrollView addSubview:addBtn];
     _scrollerContentSize_H = (addBtn.y+addBtn.height);
-
+    
 }
 - (void)addBtnClick:(UIButton *)btn
 {
@@ -152,7 +152,7 @@
         NSDictionary *dict = @{ @"0": _validationStr,@"1":_activationStr};
         NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
         NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-
+        
         [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             jxt_showAlertTitle([responseObject objectForKey:@"message"]);
             if ([[responseObject objectForKey:@"result"] integerValue]) {
@@ -186,7 +186,9 @@
 - (void)activationBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-
+    [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
+    [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
+    
     if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
         jxt_showAlertTitle(@"请输入真实姓名");
         return;
@@ -205,16 +207,18 @@
     }
     NSLog(@"%@ %@ %@",btn.titleLabel.text,self.dataDict,_codeArray);
     
-    NSDictionary *dict = @{ @"0": _validationStr,@"1":_activationStr};
+    NSDictionary *dict = @{@"0": _validationStr,@"1":_activationStr};
     [_codeArray addObject:dict];
     [self.dataDict setObject:_codeArray forKey:@"code"];
     NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:self.dataDict];
     NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/CodeApi/data/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    [SVProgressHUD showWithStatus:@"正在激活"];
     [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [SVProgressHUD dismiss];
         jxt_showAlertTitle([responseObject objectForKey:@"message"]);
         [self.navigationController popViewControllerAnimated:YES];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-    
+        
     }];
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField

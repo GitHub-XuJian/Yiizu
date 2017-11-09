@@ -9,6 +9,7 @@
 #import "ContactUsViewController.h"
 #import "ProblemFeedbackViewController.h"
 #import "ContactCSViewController.h"
+#import "WebViewController.h"
 
 @interface ContactUsViewController ()<UITableViewDelegate,UITableViewDataSource>
 

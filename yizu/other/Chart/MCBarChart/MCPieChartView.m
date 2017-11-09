@@ -87,8 +87,28 @@
     label.frame = CGRectMake(5, 5, 20, 70);
     label.numberOfLines = 0;
     label.font = kFontOther;
-    label.text = @"队列总量";
+    label.text = self.titleStr;
     [self addSubview:label];
+    
+   UIColor *label2Color = [self.delegate pieChartView:self colorOfPieAtIndex:0];
+
+    UILabel *label2 = [[UILabel alloc] init];
+    label2.frame = CGRectMake(5, self.height-20-5, (self.width-15)/2, 20);
+    label2.numberOfLines = 0;
+    label2.textAlignment = NSTextAlignmentCenter;
+    label2.font = kFontMini;
+    label2.backgroundColor = self.pieBackgroundColor;
+    label2.text = self.subTitleStr;
+    [self addSubview:label2];
+    
+    UILabel *label3 = [[UILabel alloc] init];
+    label3.frame = CGRectMake(label2.x+label2.width+5, self.height-20-5, (self.width-15)/2, 20);
+    label3.numberOfLines = 0;
+    label3.textAlignment = NSTextAlignmentCenter;
+    label3.font = kFontMini;
+    label3.backgroundColor = label2Color;
+    label3.text = self.subTitleStr2;
+    [self addSubview:label3];
     
     
     NSAssert([self.dataSource respondsToSelector:@selector(numberOfPieInPieChartView:)], @"You must implemetation the 'numberOfPieInPieChartView:' method");

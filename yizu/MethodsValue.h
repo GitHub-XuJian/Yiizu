@@ -38,6 +38,7 @@
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow
 
+#define IsLoginState [XSaverTool objectForKey:UserIDKey]
 //各种颜色宏定义
 //rgb颜色
 #define kSetColor(a, b, c) [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:1.0]
@@ -123,7 +124,8 @@
 #define VerificationCode @"VerificationCode"
 #define VerificationCodeTime @"VerificationCodeTime"
 #define Statevip @"statevip"
-
+#define Nickname @"Nickname"
+#define Personxq @"Personxq"
 /**
  * 微信登录
  */
@@ -132,8 +134,7 @@
 #define WXPatient_App_ID @"wxc7e3e75f5072d5b7"
 #define WXPatient_App_Secret @"667ad8dffcc1042b0ccabfe7437c66e7"
 #define WXPatient_Openid @"WXPatient_Openid"
-#define WXPatient_Nickname @"WXPatient_Nickname"
-#define WXPatient_Personxq @"WXPatient_Personxq"
+
 
 /**
  * 友盟

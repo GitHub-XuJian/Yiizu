@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol MyHeaderVeiwDelegate <NSObject>
 
+-(void)clickButton:(UIButton *)button;
+
+@end
 @interface MyHeaderVeiw : UIView
+@property (nonatomic,weak) id<MyHeaderVeiwDelegate>delegate;
+
+-(void)reloadData;
+
 
 @end

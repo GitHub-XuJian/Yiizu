@@ -46,6 +46,10 @@
 		AF23F40F1FAC66660022E990 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F40E1FAC665B0022E990 /* CoreGraphics.framework */; };
 		AF23F4121FAD508A0022E990 /* MyInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4111FAD508A0022E990 /* MyInformationViewController.m */; };
 		AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4161FB0287C0022E990 /* AgreementView.m */; };
+		AF23F41A1FB1445E0022E990 /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4191FB1445E0022E990 /* PersonalInformationViewController.m */; };
+		AF23F4201FB148D50022E990 /* AboutusView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F41F1FB148D50022E990 /* AboutusView.m */; };
+		AF23F4231FB15DCF0022E990 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4221FB15DCF0022E990 /* WebViewController.m */; };
+		AF23F4261FB1676C0022E990 /* RankingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F4251FB1676C0022E990 /* RankingView.m */; };
 		AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */; };
 		AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D011FA1DF9500A1225F /* JXTAlertView.m */; };
 		AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AF626D0C1FA2D1AB00A1225F /* XSaverTool.m */; };
@@ -177,19 +181,16 @@
 		AF8B6CF71FA01A4A008DA068 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CE71FA01A4A008DA068 /* UIView+WebCacheOperation.m */; };
 		AF8B6CFD1FA01D7A008DA068 /* EncapsulationMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */; };
 		AF8B6D001FA04424008DA068 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CFF1FA04424008DA068 /* ChartViewController.m */; };
+		AFB214C41FB1954D006DD630 /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214C31FB1954D006DD630 /* PieChartView.m */; };
+		AFB214C71FB19A9B006DD630 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214C61FB19A9B006DD630 /* LineChartView.m */; };
+		AFB214CA1FB2B8AC006DD630 /* MCChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214C81FB2B8AC006DD630 /* MCChartInformationView.m */; };
+		AFB214CD1FB2F2D8006DD630 /* HXLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214CC1FB2F2D8006DD630 /* HXLineChart.m */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
 		AFC62F131FA1B5C600A3F3F5 /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0F1FA1B5C600A3F3F5 /* UIView+Common.m */; };
 		AFC62F271FA1B5D500A3F3F5 /* MCBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F161FA1B5D500A3F3F5 /* MCBarChartView.m */; };
-		AFC62F281FA1B5D500A3F3F5 /* MCChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */; };
-		AFC62F291FA1B5D500A3F3F5 /* MCCircleChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F1A1FA1B5D500A3F3F5 /* MCCircleChartView.m */; };
-		AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F1C1FA1B5D500A3F3F5 /* MCCoverageChartView.m */; };
-		AFC62F2B1FA1B5D500A3F3F5 /* MCCoverageLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F1E1FA1B5D500A3F3F5 /* MCCoverageLayer.m */; };
-		AFC62F2C1FA1B5D500A3F3F5 /* MCLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F201FA1B5D500A3F3F5 /* MCLineChartView.m */; };
 		AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */; };
-		AFC62F2E1FA1B5D500A3F3F5 /* MCRadarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F241FA1B5D500A3F3F5 /* MCRadarChartView.m */; };
-		AFC62F2F1FA1B5D500A3F3F5 /* MCRadarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F261FA1B5D500A3F3F5 /* MCRadarLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -276,6 +277,14 @@
 		AF23F4111FAD508A0022E990 /* MyInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyInformationViewController.m; sourceTree = "<group>"; };
 		AF23F4151FB0287C0022E990 /* AgreementView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AgreementView.h; sourceTree = "<group>"; };
 		AF23F4161FB0287C0022E990 /* AgreementView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AgreementView.m; sourceTree = "<group>"; };
+		AF23F4181FB1445E0022E990 /* PersonalInformationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInformationViewController.h; sourceTree = "<group>"; };
+		AF23F4191FB1445E0022E990 /* PersonalInformationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
+		AF23F41E1FB148D50022E990 /* AboutusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutusView.h; sourceTree = "<group>"; };
+		AF23F41F1FB148D50022E990 /* AboutusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutusView.m; sourceTree = "<group>"; };
+		AF23F4211FB15DCF0022E990 /* WebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		AF23F4221FB15DCF0022E990 /* WebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		AF23F4241FB1676C0022E990 /* RankingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RankingView.h; sourceTree = "<group>"; };
+		AF23F4251FB1676C0022E990 /* RankingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RankingView.m; sourceTree = "<group>"; };
 		AF626CFD1FA1DF9500A1225F /* JXTAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertController.h; sourceTree = "<group>"; };
 		AF626CFE1FA1DF9500A1225F /* JXTAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXTAlertController.m; sourceTree = "<group>"; };
 		AF626D001FA1DF9500A1225F /* JXTAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXTAlertView.h; sourceTree = "<group>"; };
@@ -541,6 +550,14 @@
 		AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncapsulationMethod.m; sourceTree = "<group>"; };
 		AF8B6CFE1FA04424008DA068 /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
 		AF8B6CFF1FA04424008DA068 /* ChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartViewController.m; sourceTree = "<group>"; };
+		AFB214C21FB1954D006DD630 /* PieChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PieChartView.h; sourceTree = "<group>"; };
+		AFB214C31FB1954D006DD630 /* PieChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PieChartView.m; sourceTree = "<group>"; };
+		AFB214C51FB19A9B006DD630 /* LineChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
+		AFB214C61FB19A9B006DD630 /* LineChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
+		AFB214C81FB2B8AC006DD630 /* MCChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChartInformationView.m; sourceTree = "<group>"; };
+		AFB214C91FB2B8AC006DD630 /* MCChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChartInformationView.h; sourceTree = "<group>"; };
+		AFB214CB1FB2F2D8006DD630 /* HXLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLineChart.h; sourceTree = "<group>"; };
+		AFB214CC1FB2F2D8006DD630 /* HXLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLineChart.m; sourceTree = "<group>"; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -551,22 +568,8 @@
 		AFC62F0F1FA1B5C600A3F3F5 /* UIView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Common.m"; sourceTree = "<group>"; };
 		AFC62F151FA1B5D500A3F3F5 /* MCBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCBarChartView.h; sourceTree = "<group>"; };
 		AFC62F161FA1B5D500A3F3F5 /* MCBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCBarChartView.m; sourceTree = "<group>"; };
-		AFC62F171FA1B5D500A3F3F5 /* MCChartInformationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCChartInformationView.h; sourceTree = "<group>"; };
-		AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChartInformationView.m; sourceTree = "<group>"; };
-		AFC62F191FA1B5D500A3F3F5 /* MCCircleChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCircleChartView.h; sourceTree = "<group>"; };
-		AFC62F1A1FA1B5D500A3F3F5 /* MCCircleChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCircleChartView.m; sourceTree = "<group>"; };
-		AFC62F1B1FA1B5D500A3F3F5 /* MCCoverageChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCoverageChartView.h; sourceTree = "<group>"; };
-		AFC62F1C1FA1B5D500A3F3F5 /* MCCoverageChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCoverageChartView.m; sourceTree = "<group>"; };
-		AFC62F1D1FA1B5D500A3F3F5 /* MCCoverageLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCCoverageLayer.h; sourceTree = "<group>"; };
-		AFC62F1E1FA1B5D500A3F3F5 /* MCCoverageLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCCoverageLayer.m; sourceTree = "<group>"; };
-		AFC62F1F1FA1B5D500A3F3F5 /* MCLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCLineChartView.h; sourceTree = "<group>"; };
-		AFC62F201FA1B5D500A3F3F5 /* MCLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCLineChartView.m; sourceTree = "<group>"; };
 		AFC62F211FA1B5D500A3F3F5 /* MCPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPieChartView.h; sourceTree = "<group>"; };
 		AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPieChartView.m; sourceTree = "<group>"; };
-		AFC62F231FA1B5D500A3F3F5 /* MCRadarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRadarChartView.h; sourceTree = "<group>"; };
-		AFC62F241FA1B5D500A3F3F5 /* MCRadarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRadarChartView.m; sourceTree = "<group>"; };
-		AFC62F251FA1B5D500A3F3F5 /* MCRadarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCRadarLayer.h; sourceTree = "<group>"; };
-		AFC62F261FA1B5D500A3F3F5 /* MCRadarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCRadarLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1141,6 +1144,12 @@
 				AF23F3DC1FAC05C40022E990 /* MyWalletViewController.m */,
 				AF23F4101FAD508A0022E990 /* MyInformationViewController.h */,
 				AF23F4111FAD508A0022E990 /* MyInformationViewController.m */,
+				AF23F4181FB1445E0022E990 /* PersonalInformationViewController.h */,
+				AF23F4191FB1445E0022E990 /* PersonalInformationViewController.m */,
+				AF23F4211FB15DCF0022E990 /* WebViewController.h */,
+				AF23F4221FB15DCF0022E990 /* WebViewController.m */,
+				AF8B6CFE1FA04424008DA068 /* ChartViewController.h */,
+				AF8B6CFF1FA04424008DA068 /* ChartViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1171,6 +1180,14 @@
 				AF66AE121F9EDE540079A2CF /* MembershipActivationCodeView.m */,
 				AF66AE141F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.h */,
 				AF66AE151F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.m */,
+				AF23F41E1FB148D50022E990 /* AboutusView.h */,
+				AF23F41F1FB148D50022E990 /* AboutusView.m */,
+				AF23F4241FB1676C0022E990 /* RankingView.h */,
+				AF23F4251FB1676C0022E990 /* RankingView.m */,
+				AFB214C21FB1954D006DD630 /* PieChartView.h */,
+				AFB214C31FB1954D006DD630 /* PieChartView.m */,
+				AFB214C51FB19A9B006DD630 /* LineChartView.h */,
+				AFB214C61FB19A9B006DD630 /* LineChartView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1190,8 +1207,6 @@
 			children = (
 				AF66AD491F9D82570079A2CF /* ActivityViewController.h */,
 				AF66AD4A1F9D82570079A2CF /* ActivityViewController.m */,
-				AF8B6CFE1FA04424008DA068 /* ChartViewController.h */,
-				AF8B6CFF1FA04424008DA068 /* ChartViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1601,6 +1616,8 @@
 		AFC62F071FA1B5A100A3F3F5 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				AFB214CB1FB2F2D8006DD630 /* HXLineChart.h */,
+				AFB214CC1FB2F2D8006DD630 /* HXLineChart.m */,
 				AFC62F141FA1B5D500A3F3F5 /* MCBarChart */,
 			);
 			path = Chart;
@@ -1609,24 +1626,12 @@
 		AFC62F141FA1B5D500A3F3F5 /* MCBarChart */ = {
 			isa = PBXGroup;
 			children = (
+				AFB214C91FB2B8AC006DD630 /* MCChartInformationView.h */,
+				AFB214C81FB2B8AC006DD630 /* MCChartInformationView.m */,
 				AFC62F151FA1B5D500A3F3F5 /* MCBarChartView.h */,
 				AFC62F161FA1B5D500A3F3F5 /* MCBarChartView.m */,
-				AFC62F171FA1B5D500A3F3F5 /* MCChartInformationView.h */,
-				AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */,
-				AFC62F191FA1B5D500A3F3F5 /* MCCircleChartView.h */,
-				AFC62F1A1FA1B5D500A3F3F5 /* MCCircleChartView.m */,
-				AFC62F1B1FA1B5D500A3F3F5 /* MCCoverageChartView.h */,
-				AFC62F1C1FA1B5D500A3F3F5 /* MCCoverageChartView.m */,
-				AFC62F1D1FA1B5D500A3F3F5 /* MCCoverageLayer.h */,
-				AFC62F1E1FA1B5D500A3F3F5 /* MCCoverageLayer.m */,
-				AFC62F1F1FA1B5D500A3F3F5 /* MCLineChartView.h */,
-				AFC62F201FA1B5D500A3F3F5 /* MCLineChartView.m */,
 				AFC62F211FA1B5D500A3F3F5 /* MCPieChartView.h */,
 				AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */,
-				AFC62F231FA1B5D500A3F3F5 /* MCRadarChartView.h */,
-				AFC62F241FA1B5D500A3F3F5 /* MCRadarChartView.m */,
-				AFC62F251FA1B5D500A3F3F5 /* MCRadarLayer.h */,
-				AFC62F261FA1B5D500A3F3F5 /* MCRadarLayer.m */,
 			);
 			path = MCBarChart;
 			sourceTree = "<group>";
@@ -1793,6 +1798,7 @@
 				AF66AE7F1F9F1AB10079A2CF /* IQPreviousNextView.m in Sources */,
 				AF626D131FA2D92D00A1225F /* LoopImageViewController.m in Sources */,
 				AF66AD801F9DB5460079A2CF /* ContactUsViewController.m in Sources */,
+				AFB214CA1FB2B8AC006DD630 /* MCChartInformationView.m in Sources */,
 				AF626D261FA2D97D00A1225F /* CityListCell.m in Sources */,
 				AF66AE781F9F1AB10079A2CF /* IQUIView+Hierarchy.m in Sources */,
 				AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */,
@@ -1823,7 +1829,6 @@
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
 				AF23F3DD1FAC05C40022E990 /* MyWalletViewController.m in Sources */,
-				AFC62F2A1FA1B5D500A3F3F5 /* MCCoverageChartView.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
 				AF6C46661FA451E900797125 /* ContactCSViewController.m in Sources */,
 				AF66AD411F9D82060079A2CF /* MallViewController.m in Sources */,
@@ -1833,8 +1838,9 @@
 				AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */,
 				AF66AE7D1F9F1AB10079A2CF /* IQTextView.m in Sources */,
 				1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */,
-				AFC62F2F1FA1B5D500A3F3F5 /* MCRadarLayer.m in Sources */,
+				AF23F4261FB1676C0022E990 /* RankingView.m in Sources */,
 				AF66AE0D1F9EDD2F0079A2CF /* MembersPayViewController.m in Sources */,
+				AF23F4231FB15DCF0022E990 /* WebViewController.m in Sources */,
 				AF66ADC11F9DDFB50079A2CF /* XAFNetWork.m in Sources */,
 				AF66AD771F9DB4F40079A2CF /* MyActivationCodeViewController.m in Sources */,
 				AF6C46AE1FA8073C00797125 /* registerViewController.m in Sources */,
@@ -1849,7 +1855,6 @@
 				1F4423DA1FA6F0C200F8EA95 /* SVProgressAnimatedView.m in Sources */,
 				AF66ADB11F9DDD250079A2CF /* AFImageDownloader.m in Sources */,
 				AF66AD711F9DB4240079A2CF /* MyCollectionViewController.m in Sources */,
-				AFC62F281FA1B5D500A3F3F5 /* MCChartInformationView.m in Sources */,
 				AF66ADB21F9DDD250079A2CF /* AFNetworkActivityIndicatorManager.m in Sources */,
 				AF66AE7E1F9F1AB10079A2CF /* IQBarButtonItem.m in Sources */,
 				AF66AE041F9DE1B60079A2CF /* UIScrollView+MJRefresh.m in Sources */,
@@ -1865,11 +1870,11 @@
 				AF66ADB51F9DDD250079A2CF /* UIImageView+AFNetworking.m in Sources */,
 				AF66ADFA1F9DE1B60079A2CF /* MJRefreshBackGifFooter.m in Sources */,
 				AF66ADF21F9DE1B60079A2CF /* MJRefreshAutoFooter.m in Sources */,
-				AFC62F2B1FA1B5D500A3F3F5 /* MCCoverageLayer.m in Sources */,
 				AF8B6CEF1FA01A4A008DA068 /* SDWebImageManager.m in Sources */,
 				AF8B6CEB1FA01A4A008DA068 /* SDWebImageCompat.m in Sources */,
 				AF66AD281F9D80410079A2CF /* SFRootVC.m in Sources */,
 				AF66ADF41F9DE1B60079A2CF /* MJRefreshComponent.m in Sources */,
+				AFB214C41FB1954D006DD630 /* PieChartView.m in Sources */,
 				AF66AE791F9F1AB10079A2CF /* IQUIViewController+Additions.m in Sources */,
 				AF8B6D001FA04424008DA068 /* ChartViewController.m in Sources */,
 				1F4423DD1FA6F0C200F8EA95 /* SVRadialGradientLayer.m in Sources */,
@@ -1882,14 +1887,14 @@
 				AF6C46931FA6F7B600797125 /* LLTabBarItem.m in Sources */,
 				AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */,
 				AF8B6CF41FA01A4A008DA068 /* UIImage+WebP.m in Sources */,
+				AFB214CD1FB2F2D8006DD630 /* HXLineChart.m in Sources */,
 				AF66AE761F9F1AB10079A2CF /* IQUIScrollView+Additions.m in Sources */,
 				AF66AE7B1F9F1AB10079A2CF /* IQKeyboardManager.m in Sources */,
+				AFB214C71FB19A9B006DD630 /* LineChartView.m in Sources */,
 				AF66AD741F9DB4D80079A2CF /* MyActivitiesViewController.m in Sources */,
-				AFC62F2E1FA1B5D500A3F3F5 /* MCRadarChartView.m in Sources */,
+				AF23F41A1FB1445E0022E990 /* PersonalInformationViewController.m in Sources */,
 				AF6C46941FA6F7B600797125 /* LLTabBar.m in Sources */,
-				AFC62F2C1FA1B5D500A3F3F5 /* MCLineChartView.m in Sources */,
 				AF66AD6B1F9D99E60079A2CF /* UIView+Extension.m in Sources */,
-				AFC62F291FA1B5D500A3F3F5 /* MCCircleChartView.m in Sources */,
 				AF66ADAC1F9DDD250079A2CF /* AFSecurityPolicy.m in Sources */,
 				AF66ADFE1F9DE1B60079A2CF /* MJRefreshNormalHeader.m in Sources */,
 				1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */,
@@ -1924,6 +1929,7 @@
 				AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */,
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
 				1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */,
+				AF23F4201FB148D50022E990 /* AboutusView.m in Sources */,
 				AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
