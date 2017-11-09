@@ -24,5 +24,6 @@
 #import "SFNavView.h"
 #import "SVProgressHUD.h"
 #import "AppDelegate.h"
+#import "LoginViewController.h"
 
 #endif

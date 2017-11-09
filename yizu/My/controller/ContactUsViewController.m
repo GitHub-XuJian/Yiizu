@@ -9,6 +9,7 @@
 #import "ContactUsViewController.h"
 #import "ProblemFeedbackViewController.h"
 #import "ContactCSViewController.h"
+#import "WebViewController.h"
 
 @interface ContactUsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -33,7 +34,12 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    /**
+     * 去掉多余横线
+     */
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
     [self.view addSubview:self.tableView];
     
 }
@@ -62,10 +68,6 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        UILabel *lineview = [[UILabel alloc] init];
-        lineview.backgroundColor = kColorLine;
-        lineview.frame = CGRectMake(0, 135/3, kSCREEN_WIDTH, 0.5);
-        [cell.contentView addSubview:lineview];
     }
     cell.textLabel.text = self.dataArray[indexPath.row];
     

@@ -8,7 +8,7 @@
 
 #import "MyHeaderVeiw.h"
 #import "LoginViewController.h"
-
+#import "PersonalInformationViewController.h"
 @interface MyHeaderVeiw ()
 @property (nonatomic, strong) UIButton *iconBtn;
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -24,6 +24,12 @@
         [self createHeaderView];
     }
     return self;
+}
+- (void)reloadData
+{
+    [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal];
+    self.nameLabel.text =                             [XSaverTool objectForKey:Nickname];
+    self.introductionLabel.text =[XSaverTool objectForKey:Personxq];
 }
 - (void)createHeaderView
 {
@@ -75,20 +81,6 @@
 }
 - (void)headPortraitBtnClick:(UIButton *)btn
 {
-//    if ([XSaverTool boolForKey:IsLogin]) {
-//
-//    }else{
-        LoginViewController *loginViewC = [[LoginViewController alloc] init];
-        loginViewC.successfulBlock = ^{
-            [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal];
-            self.nameLabel.text = [XSaverTool objectForKey:PhoneKey];
-            self.introductionLabel.text =[XSaverTool objectForKey:PhoneKey];
-        };
-        loginViewC.failedBlock = ^{
-            
-        };
-        [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
-
-//    }
+    [_delegate clickButton:btn];
 }
 @end

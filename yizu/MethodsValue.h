@@ -38,6 +38,7 @@
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow
 
+#define IsLoginState [XSaverTool objectForKey:UserIDKey]
 //各种颜色宏定义
 //rgb颜色
 #define kSetColor(a, b, c) [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:1.0]
@@ -101,7 +102,7 @@
 //其他（加粗）
 #define kFontOtherBold [UIFont boldSystemFontOfSize:13.0]
 //小字（常规）
-#define kFontMini [UIFont systemFontOfSize:9.0]
+#define kFontMini [UIFont systemFontOfSize:10.0]
 //小字（加粗）
 #define kFontMiniBold [UIFont boldSystemFontOfSize:10.0]
 
@@ -123,7 +124,8 @@
 #define VerificationCode @"VerificationCode"
 #define VerificationCodeTime @"VerificationCodeTime"
 #define Statevip @"statevip"
-
+#define Nickname @"Nickname"
+#define Personxq @"Personxq"
 /**
  * 微信登录
  */
@@ -131,13 +133,20 @@
 #define WXDoctor_App_Secret @"667ad8dffcc1042b0ccabfe7437c66e7" // 注册时得到的AppSecret
 #define WXPatient_App_ID @"wxc7e3e75f5072d5b7"
 #define WXPatient_App_Secret @"667ad8dffcc1042b0ccabfe7437c66e7"
-#define WX_ACCESS_TOKEN @"access_token"
-#define WX_OPEN_ID @"openid"
-#define WX_REFRESH_TOKEN @"refresh_token"
-#define WX_UNION_ID @"unionid"
-#define WX_BASE_URL @"https://api.weixin.qq.com/sns"
+#define WXPatient_Openid @"WXPatient_Openid"
 
+
+/**
+ * 友盟
+ */
 #define USHARE_DEMO_APPKEY @"59fc32c2f29d98168400008f"
+/**
+ * QQ登录
+ */
+#define QQDoctor_App_ID @"1106508032"  // 注册QQ时的AppID
+#define QQDoctor_App_Secret @"r3RZ6S5CjQFowl3m" // 注册时得到的AppSecret
+#define QQPatient_App_ID @"1106508032"
+#define QQPatient_App_Secret @"r3RZ6S5CjQFowl3m"
 
 
 

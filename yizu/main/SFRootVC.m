@@ -60,7 +60,7 @@
     
     tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"UnHome", kLLTabBarItemAttributeSelectedImageName : @"Home", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
                                     @{kLLTabBarItemAttributeTitle : @"活动", kLLTabBarItemAttributeNormalImageName : @"UnActivity", kLLTabBarItemAttributeSelectedImageName : @"Activity", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
-                                    @{kLLTabBarItemAttributeTitle : @"激活", kLLTabBarItemAttributeNormalImageName : @"post_normal", kLLTabBarItemAttributeSelectedImageName : @"post_normal", kLLTabBarItemAttributeType : @(LLTabBarItemRise)},
+                                    @{kLLTabBarItemAttributeTitle : @"激活", kLLTabBarItemAttributeNormalImageName : @"middleIcon", kLLTabBarItemAttributeSelectedImageName : @"middleIcon", kLLTabBarItemAttributeType : @(LLTabBarItemRise)},
                                     @{kLLTabBarItemAttributeTitle : @"商城", kLLTabBarItemAttributeNormalImageName : @"UnMall", kLLTabBarItemAttributeSelectedImageName : @"Mall", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
                                     @{kLLTabBarItemAttributeTitle : @"我的", kLLTabBarItemAttributeNormalImageName : @"UnMy", kLLTabBarItemAttributeSelectedImageName : @"My", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)}];
     

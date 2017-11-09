@@ -40,7 +40,12 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    /**
+     * 去掉多余横线
+     */
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
     [self.view addSubview:self.tableView];
     
 }
@@ -71,11 +76,6 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        UILabel *lineview = [[UILabel alloc] init];
-        lineview.backgroundColor = kColorLine;
-        lineview.frame = CGRectMake(0, 60, kSCREEN_WIDTH, 0.5);
-        [cell.contentView addSubview:lineview];
-
     }
     cell.textLabel.text = self.dataArray[indexPath.row];
     return cell;
@@ -87,27 +87,39 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    UIViewController *viewController;
-    switch (indexPath.row) {
-        case 0:{
-            viewController = [[MembershipActivationCodeViewController alloc] init];
-            break;
+    if (IsLoginState) {
+        UIViewController *viewController;
+        switch (indexPath.row) {
+            case 0:{
+                viewController = [[MembershipActivationCodeViewController alloc] init];
+                break;
+            }
+            case 1:{
+                viewController = [[ChartViewController alloc] init];
+                
+                break;
+            }
+            case 2:{
+                viewController = [[ActivationCodeInputViewController alloc] init];
+                
+                break;
+            }
+            default:
+                break;
         }
-        case 1:{
-            viewController = [[ChartViewController alloc] init];
-
-            break;
-        }
-        case 2:{
-            viewController = [[ActivationCodeInputViewController alloc] init];
-
-            break;
-        }
-        default:
-            break;
+        viewController.title = self.dataArray[indexPath.row];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }else{
+        LoginViewController *loginViewC = [[LoginViewController alloc] init];
+        loginViewC.successfulBlock = ^{
+            
+        };
+        loginViewC.failedBlock = ^{
+            
+        };
+        [self presentViewController:loginViewC animated:YES completion:nil];
     }
-    viewController.title = self.dataArray[indexPath.row];
-    [self.navigationController pushViewController:viewController animated:YES];
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

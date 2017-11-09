@@ -218,14 +218,14 @@
         if (textField.text.length >= PassWord_Digits) {
             _oldPassword = textField.text;
         }else if (textField.text.length > 0) {
-            jxt_showToastMessage(@"请输入八位密码", 1);
+            jxt_showToastMessage(@"请输入六位密码", 1);
             textField.text = @"";
         }
     }else if (textField.tag == ConfirmPasswordTextFieldTag) {
         if (textField.text.length >= PassWord_Digits) {
             _newPassword = textField.text;
         }else if (textField.text.length > 0) {
-            jxt_showToastMessage(@"请输入八位密码", 1);
+            jxt_showToastMessage(@"请输入六位密码", 1);
             textField.text = @"";
         }
     }

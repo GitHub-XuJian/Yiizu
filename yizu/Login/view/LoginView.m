@@ -7,6 +7,7 @@
 //
 
 #import "LoginView.h"
+#import "AgreementView.h"
 
 @interface LoginView ()<UITextFieldDelegate>
 
@@ -24,21 +25,23 @@
 }
 - (void)createUI
 {
-    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"background"]];
+    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"beijing1"]];
     backImageView.frame = CGRectMake(0, 0, self.width, self.height);
     backImageView.userInteractionEnabled = YES;
     [self addSubview:backImageView];
     
-    UIButton *leftBtn = [self createButtonWithFrame:CGRectMake(10, 20, 44, 44) andImageStr:@"back" andTitleStr:@"" andBtnTag:Back andTitleColor:nil];
+    UIButton *leftBtn = [self createButtonWithFrame:CGRectMake(10, 20, 44, 44) andImageStr:@"arrow-L - Assistor" andTitleStr:@"" andBtnTag:Back andTitleColor:nil];
     [backImageView addSubview:leftBtn];
     
-    UIButton *rightBtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH-100,20, 90, 44) andImageStr:nil andTitleStr:@"新用户注册" andBtnTag:RegisterBtn andTitleColor:[UIColor blackColor]];
+    UIButton *rightBtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH-100,20, 90, 44) andImageStr:nil andTitleStr:@"新用户注册" andBtnTag:RegisterBtn andTitleColor:[UIColor whiteColor]];
     [backImageView addSubview:rightBtn];
     
     UITextField *accountTextField = [[UITextField alloc] init];
-    accountTextField.frame = CGRectMake(50, kSCREEN_HEIGHT/2-80/2, kSCREEN_WIDTH-100, 40);
+    accountTextField.frame = CGRectMake(50, 806/3, kSCREEN_WIDTH-100, 40);
     accountTextField.placeholder = @"请输入手机号";
+    [accountTextField setValue:kColorLine forKeyPath:@"_placeholderLabel.textColor"];
     accountTextField.delegate = self;
+    accountTextField.textColor = [UIColor whiteColor];
 //    accountTextField.text = @"13898388023";
     [backImageView addSubview:accountTextField];
     self.accountTextField = accountTextField;
@@ -50,7 +53,9 @@
     UITextField *passwordTextField = [[UITextField alloc] init];
     passwordTextField.frame = CGRectMake(accountTextField.x, accountTextField.y+accountTextField.height+5, accountTextField.width, accountTextField.height);
     passwordTextField.placeholder = @"请输入密码";
+    [passwordTextField setValue:kColorLine forKeyPath:@"_placeholderLabel.textColor"];
     passwordTextField.delegate = self;
+    passwordTextField.textColor = [UIColor whiteColor];
 //    passwordTextField.text = @"1394";
     passwordTextField.secureTextEntry = YES;
     [backImageView addSubview:passwordTextField];
@@ -60,20 +65,26 @@
     lineView2.backgroundColor = kColorLine;
     [backImageView addSubview:lineView2];
     
-    UIButton *loginBtn = [self createButtonWithFrame:CGRectMake(lineView2.x,lineView2.y+lineView2.height+40, lineView2.width, passwordTextField.height) andImageStr:nil andTitleStr:@"登录" andBtnTag:Login andTitleColor:[UIColor blackColor]];
+    UIButton *loginBtn = [self createButtonWithFrame:CGRectMake(lineView2.x,lineView2.y+lineView2.height+82/3, lineView2.width, passwordTextField.height) andImageStr:nil andTitleStr:@"登录" andBtnTag:Login andTitleColor:[UIColor blackColor]];
     loginBtn.backgroundColor = kColorLine;
     [backImageView addSubview:loginBtn];
     
-    UIButton *forgotPasswordBtn = [self createButtonWithFrame:CGRectMake(loginBtn.x,loginBtn.y+loginBtn.height+30, 70, 44) andImageStr:nil andTitleStr:@"忘记密码?" andBtnTag:ForgotPassword andTitleColor:[UIColor blackColor]];
+    UIButton *forgotPasswordBtn = [self createButtonWithFrame:CGRectMake(loginBtn.x,loginBtn.y+loginBtn.height+101/3, 70, 44) andImageStr:nil andTitleStr:@"忘记密码?" andBtnTag:ForgotPassword andTitleColor:[UIColor whiteColor]];
     [backImageView addSubview:forgotPasswordBtn];
     
-    NSArray *array = @[@"微信",@"QQ"];
-    for (int i = 0; i < array.count; i++) {
-        UIButton *thirdPartybtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-(44*array.count+20)/2+i*50,kSCREEN_HEIGHT-100, 44, 44) andImageStr:nil andTitleStr:array[i] andBtnTag:i+WeiXin andTitleColor:[UIColor blackColor]];
-        thirdPartybtn.backgroundColor = [UIColor clearColor];
-        [backImageView addSubview:thirdPartybtn];
-    }
+    UIButton *weixinbtn = [self createButtonWithFrame:CGRectMake(kSCREEN_WIDTH/2-128/2,kSCREEN_HEIGHT-226/3-44, 44, 44) andImageStr:@"button_WeiXin2" andTitleStr:nil andBtnTag:WeiXin andTitleColor:[UIColor blackColor]];
+    weixinbtn.backgroundColor = [UIColor clearColor];
+    [backImageView addSubview:weixinbtn];
+    
+    UIButton *qqbtn = [self createButtonWithFrame:CGRectMake(weixinbtn.x+weixinbtn.width+120/3,weixinbtn.y, 44, 44) andImageStr:@"button_QQ2" andTitleStr:nil andBtnTag:QQ andTitleColor:[UIColor blackColor]];
+    qqbtn.backgroundColor = [UIColor clearColor];
+    [backImageView addSubview:qqbtn];
+
+    AgreementView *view = [[AgreementView alloc] initWithFrame:CGRectMake(kSCREEN_WIDTH/2-200/2, kSCREEN_HEIGHT-147/3-22, 200, 20)];
+    [backImageView addSubview:view];
+    
 }
+
 - (void)btnClickedAction:(UIButton *)btn
 {
     if (_block) {

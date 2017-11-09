@@ -46,7 +46,7 @@
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/Login",Main_Server];
                 [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                     [SVProgressHUD dismiss];
-                    NSLog(@"%@",responseObject);
+                     NSLog(@"%@",responseObject);
                     jxt_showToastMessage(responseObject[@"msg"], 1);
                     NSInteger code = [responseObject[@"code"] integerValue];
                     switch (code) {
@@ -55,6 +55,8 @@
                             [XSaverTool setObject:password forKey:Password];
                             [XSaverTool setBool:code forKey:IsLogin];
                             [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
+                            [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
+                            [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                             [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
                             _successfulBlock();
@@ -62,14 +64,17 @@
                             break;
                         }
                         case 3:{
-                            
+                            SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
+                            validationVC.emailStr = _loginView.accountTextField.text;
+                            validationVC.isValidation = YES;
+                            [self presentViewController:validationVC animated:YES completion:nil];
                             break;
                         }
                         default:
                             break;
                     }
                     
-
+                    
                 } fail:^(NSURLSessionDataTask *task, NSError *error) {
                     NSLog(@"%@",error);
                 }];
@@ -84,7 +89,6 @@
             }
             case Back:{
                 NSLog(@"返回");
-
                 [self dismissViewControllerAnimated:YES completion:nil];
                 break;
             }
@@ -92,18 +96,19 @@
                 NSLog(@"忘记密码");
                 SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
                 validationVC.emailStr = _loginView.accountTextField.text;
+                validationVC.isValidation = NO;
                 [self presentViewController:validationVC animated:YES completion:nil];
-
+                
                 break;
             }
             case QQ:{
                 NSLog(@"QQ");
-
+                [self QQLogin];
                 break;
             }
             case WeiXin:{
                 NSLog(@"微信");
-                    [self wechatLogin];
+                [self wechatLogin];
                 break;
             }
             default:
@@ -111,6 +116,72 @@
         }
     }];
     [self.view addSubview:_loginView];
+}
+- (void)QQLogin
+{
+    [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
+        if (error) {
+            NSLog(@"%@",error);
+            jxt_showAlertTitle(@"已取消授权");
+
+        } else {
+            UMSocialUserInfoResponse *resp = result;
+            
+            // 授权信息
+            NSLog(@"QQ uid: %@", resp.uid);
+            NSLog(@"QQ openid: %@", resp.openid);
+            NSLog(@"QQ unionid: %@", resp.unionId);
+            NSLog(@"QQ accessToken: %@", resp.accessToken);
+            NSLog(@"QQ expiration: %@", resp.expiration);
+            
+            // 用户信息
+            NSLog(@"QQ name: %@", resp.name);
+            NSLog(@"QQ iconurl: %@", resp.iconurl);
+            NSLog(@"QQ gender: %@", resp.unionGender);
+            
+            // 第三方平台SDK源数据
+            NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+            
+            /**
+             * 获取完数据登录自己平台
+             */
+            NSDictionary *dict = @{@"nickname":resp.name,
+                                   @"sex":resp.unionGender,
+                                   @"openid":resp.openid,
+                                   @"headimgurl":resp.iconurl,
+                                   @"city":resp.originalResponse[@"city"]};
+            NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/weixinreceive", Main_Server];
+            [SVProgressHUD showWithStatus:@"正在登录"];
+            [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"%@",responseObject);
+                [SVProgressHUD dismiss];
+                
+                jxt_showToastTitle(responseObject[@"msg"], 1);
+                NSInteger code = [responseObject[@"code"] integerValue];
+                switch (code) {
+                    case 1:{
+                        [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                        [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
+                        [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
+                        [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
+                        [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
+
+                        [XSaverTool setBool:code forKey:IsLogin];
+                        [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
+                        _successfulBlock();
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                        break;
+                    }
+                    default:
+                        break;
+                }
+                
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+        }
+    }];
 }
 - (void)wechatLogin
 {
@@ -133,6 +204,8 @@
             NSLog(@"Wechat iconurl: %@", resp.iconurl);
             NSLog(@"Wechat gender: %@", resp.unionGender);
             
+            [XSaverTool setObject:resp.openid forKey:WXPatient_Openid];
+
             // 第三方平台SDK源数据
             NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
             
@@ -145,6 +218,7 @@
                                    @"headimgurl":resp.iconurl,
                                    @"city":resp.originalResponse[@"city"]};
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/weixinreceive", Main_Server];
+            [SVProgressHUD showWithStatus:@"正在登录"];
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSLog(@"%@",responseObject);
                 [SVProgressHUD dismiss];
@@ -157,10 +231,37 @@
                         [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                         [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
                         [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
+                        if (![dict[@"nickname"] isKindOfClass:[NSNull class]]) {
+                            [XSaverTool setObject:dict[@"nickname"]?dict[@"nickname"]:@"请输入昵称" forKey:Nickname];
+                        }
+                        if (![dict[@"personxq"] isKindOfClass:[NSNull class]]) {
+                            [XSaverTool setObject:dict[@"personxq"]?dict[@"personxq"]:@"请输入简介" forKey:Personxq];
+                        }
+
                         [XSaverTool setBool:code forKey:IsLogin];
                         [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
                         _successfulBlock();
                         [self dismissViewControllerAnimated:YES completion:nil];
+                        break;
+                    }
+                    case 3:{
+                        SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
+                        validationVC.emailStr = _loginView.accountTextField.text;
+                        
+                        validationVC.validationBlock = ^(NSDictionary *dict) {
+                            [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                            [XSaverTool setObject:dict[@"personid"] forKey:UserIDKey];
+                            [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
+                            [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
+                            [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
+                            [XSaverTool setBool:[dict[@"statevip"] integerValue] forKey:Statevip];
+                            [XSaverTool setBool:1 forKey:IsLogin];
+                            [XSaverTool setObject:dict[@"headimgurl"] forKey:UserIconImage];
+                            
+                            _successfulBlock();
+                        };
+                        validationVC.isValidation = YES;
+                        [self presentViewController:validationVC animated:YES completion:nil];
                         break;
                     }
                     default:

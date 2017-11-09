@@ -32,45 +32,64 @@
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     [self createViewUI];
     [self createTableView];
-    [self createDataArray];
+    [self createDataArray:@"notShareApi"];
     
 }
-- (void)createDataArray
+- (void)createDataArray:(NSString *)str
 {
-    //随机数从这里边产生
-    NSMutableArray *startArray=[[NSMutableArray alloc] initWithObjects:@0,@1,@2,@3,@4,@5,@6,@7,@"1233123133",@"99231239",@"4dsfsfsdf453",@"1233123133",@"99231239",@"4dsfsfsdf453", nil];
-    //随机数产生结果
-    _dataArray=[[NSMutableArray alloc] initWithCapacity:0];
-    //随机数个数
-    NSInteger m=arc4random()%startArray.count;
-    for (int i=0; i<m; i++) {
-        int t=arc4random()%startArray.count;
-        _dataArray[i]=startArray[t];
-        startArray[t]=[startArray lastObject]; //为更好的乱序，故交换下位置
-        [startArray removeLastObject];
-    }
-    [self.tableView reloadData];
+  
+    NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/%@",Main_Server,str];
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        self.dataArray = responseObject;
+        [self.tableView reloadData];
+
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+//    //随机数从这里边产生
+//    NSMutableArray *startArray=[[NSMutableArray alloc] initWithObjects:@0,@1,@2,@3,@4,@5,@6,@7,@"1233123133",@"99231239",@"4dsfsfsdf453",@"1233123133",@"99231239",@"4dsfsfsdf453", nil];
+//    //随机数产生结果
+//    _dataArray=[[NSMutableArray alloc] initWithCapacity:0];
+//    //随机数个数
+//    NSInteger m=arc4random()%startArray.count;
+//    for (int i=0; i<m; i++) {
+//        int t=arc4random()%startArray.count;
+//        _dataArray[i]=startArray[t];
+//        startArray[t]=[startArray lastObject]; //为更好的乱序，故交换下位置
+//        [startArray removeLastObject];
+//    }
 }
 - (void)createViewUI
 {
     _buttonStr = @"分享";
-    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"可转让",@"已出售",@"已激活", nil];
+    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已分享",@"已激活", nil];
     self.macView = [[MembershipActivationCodeView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 50) andTitleArray:titleArray andClassBlock:^(UIButton *classBtn) {
         NSLog(@"%@",classBtn.titleLabel.text);
         _buttonStr = nil;
         switch (classBtn.tag) {
             case 0:{
                 _buttonStr = @"分享";
+                [self createDataArray:@"notShareApi"];
+
                 break;
             }
             case 1:{
-                _buttonStr = @"转让";
+                _buttonStr = @"已分享";
+                [self createDataArray:@"Share"];
+
+                break;
+            }
+            case 2:{
+                _buttonStr = @"";
+                [self createDataArray:@"activate"];
+                
                 break;
             }
             default:
                 break;
         }
-        [self createDataArray];
     }];
     [self.view addSubview:self.macView];
     
@@ -81,7 +100,12 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    /**
+     * 去掉多余横线
+     */
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+
     [self.view addSubview:self.tableView];
     
 }
@@ -113,7 +137,8 @@
     if (cell == nil) {
         cell = [[MembershipActivationCodeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.nameStr = [NSString stringWithFormat:@"%@",self.dataArray[indexPath.row]];
+    NSDictionary *dict = self.dataArray[indexPath.row];
+    cell.nameStr = dict[@"code"];
     cell.buttonStr = _buttonStr;
     return cell;
 }

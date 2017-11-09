@@ -8,6 +8,7 @@
 
 #define PasswordTextFieldTag   10000000
 #define ConfirmPasswordTextFieldTag   10000001
+#define PassWord_Digits   6
 
 #import "OldAndNewPassWordViewController.h"
 
@@ -124,17 +125,17 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     if (textField.tag == PasswordTextFieldTag) {
-        if (textField.text.length >= 8) {
+        if (textField.text.length >= PassWord_Digits) {
             _oldPassword = textField.text;
         }else if (textField.text.length > 0) {
-            jxt_showToastMessage(@"请输入八位密码", 1);
+            jxt_showToastMessage(@"请输入六位密码", 1);
             textField.text = @"";
         }
     }else if (textField.tag == ConfirmPasswordTextFieldTag) {
-        if (textField.text.length >= 8) {
+        if (textField.text.length >= PassWord_Digits) {
             _newPassword = textField.text;
         }else if (textField.text.length > 0) {
-            jxt_showToastMessage(@"请输入八位密码", 1);
+            jxt_showToastMessage(@"请输入六位密码", 1);
             textField.text = @"";
         }
     }

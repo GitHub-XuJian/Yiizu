@@ -34,31 +34,41 @@
         [self.contentView addSubview:classBtn];
         self.classBtn = classBtn;
         
-        UILabel *lineview = [[UILabel alloc] init];
-        lineview.backgroundColor = kColorLine;
-        [self.contentView addSubview:lineview];
-        self.lineView = lineview;
+//        UILabel *lineview = [[UILabel alloc] init];
+//        lineview.backgroundColor = kColorLine;
+//        [self.contentView addSubview:lineview];
+//        self.lineView = lineview;
     }
     return self;
 }
 - (void)btnClick:(UIButton *)btn
 {
-    
+    NSLog(@"%@",btn.titleLabel.text);
 }
 - (void)setNameStr:(NSString *)nameStr
 {
     self.nameLabel.frame = CGRectMake(65/3, 0, kSCREEN_WIDTH/2, self.height);
-    self.lineView.frame = CGRectMake(0, kTableViewCell_HEIGHT, kSCREEN_WIDTH, 0.5);
+//    self.lineView.frame = CGRectMake(0, kTableViewCell_HEIGHT, kSCREEN_WIDTH, 0.5);
     self.nameLabel.text = nameStr;
 }
 - (void)setButtonStr:(NSString *)buttonStr
 {
     if (buttonStr.length) {
-        self.classBtn.hidden = NO;
-        self.classBtn.frame = CGRectMake(kSCREEN_WIDTH - 70, kTableViewCell_HEIGHT/2-30/2, 50, 30);
-        [self.classBtn setTitle:buttonStr forState:UIControlStateNormal];
-        //设置圆角
-        self.classBtn.layer.cornerRadius = 10 / 2;
+        if ([buttonStr isEqualToString:@"已分享"]) {
+            self.classBtn.hidden = NO;
+            self.classBtn.enabled = NO;
+            self.classBtn.frame = CGRectMake(kSCREEN_WIDTH - 90, kTableViewCell_HEIGHT/2-30/2, 70, 30);
+            [self.classBtn setTitle:buttonStr forState:UIControlStateNormal];
+            //设置圆角
+            self.classBtn.layer.cornerRadius = 10 / 2;
+        }else{
+            self.classBtn.hidden = NO;
+            self.classBtn.frame = CGRectMake(kSCREEN_WIDTH - 70, kTableViewCell_HEIGHT/2-30/2, 50, 30);
+            [self.classBtn setTitle:buttonStr forState:UIControlStateNormal];
+            //设置圆角
+            self.classBtn.layer.cornerRadius = 10 / 2;
+        }
+        
     }else{
         self.classBtn.hidden = YES;
     }

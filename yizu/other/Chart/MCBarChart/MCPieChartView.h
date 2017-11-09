@@ -45,6 +45,11 @@
 
 @property (nonatomic, assign) BOOL circle;
 
+@property (nonatomic, strong) NSString *titleStr;
+@property (nonatomic, strong) NSString *subTitleStr;
+@property (nonatomic, strong) NSString *subTitleStr2;
+
+
 - (void)reloadData;
 - (void)reloadDataWithAnimate:(BOOL)animate;
 
