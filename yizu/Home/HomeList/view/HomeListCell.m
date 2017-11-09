@@ -57,16 +57,25 @@
     
     if (isSele) {
         NSLog(@"收藏1");
-        [UIView animateWithDuration:0.25 animations:^{
-            sender.transform=CGAffineTransformMakeScale(1.5, 1.5);//宽高伸缩比例
-        }];
+       
     }else
     {
         NSLog(@"收藏2");
+        
+    }
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        sender.transform = CGAffineTransformMakeScale(1.5, 1.5);//宽高伸缩比例
+        
+    } completion:^(BOOL finished) {
+        
         [UIView animateWithDuration:0.25 animations:^{
             sender.transform = CGAffineTransformIdentity;//变形后复原
+    
         }];
-    }
+        
+    }];
 }
 
 
@@ -103,9 +112,9 @@
     
     
     self.nameLab.text=model.chambername;
-    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image1]]];
-    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image2]]];
-    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.image3]]];
+    [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.image1]]];
+    [self.ima2 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.image2]]];
+    [self.ima3 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.image3]]];
     //改
     [self.iconView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
     

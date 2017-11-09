@@ -26,6 +26,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         [self setup];
     }
     return self;

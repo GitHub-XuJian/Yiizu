@@ -37,10 +37,15 @@
     
     //self.backgroundColor = subjectColor;
     self.textField.delegate = self;
+    self.textField.clearButtonMode=UITextFieldViewModeAlways;
     //[self setTextFieldLeftPadding:self.textField forWidth:25];
     
 }
-
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];    //主要是[receiver resignFirstResponder]在哪调用就能把receiver对应的键盘往下收
+    return YES;
+}
 #pragma mark-搜索框输入内容
 - (IBAction)searchTextDidChanged:(UITextField *)sender
 {
