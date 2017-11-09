@@ -162,7 +162,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUs-lN-oQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="562" y="-2367"/>
+            <point key="canvasLocation" x="551" y="-2428"/>
         </scene>
         <!--Loop Image View Controller-->
         <scene sceneID="irQ-ld-LFC">

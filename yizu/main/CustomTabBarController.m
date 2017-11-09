@@ -13,6 +13,8 @@
 #import "MyViewController.h"
 
 #import "CustomNavigationController.h"
+
+#import "ActivityPageController.h"
 @interface CustomTabBarController ()
 
 @end

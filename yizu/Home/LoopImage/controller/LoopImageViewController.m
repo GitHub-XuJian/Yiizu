@@ -94,7 +94,7 @@
     NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         self.loopArr =responseObject[@"list"];
-        
+        //NSLog(@"loopData==%@",responseObject[@"list"]);
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
                 NSLog(@"出错了");
         [SVProgressHUD dismiss];

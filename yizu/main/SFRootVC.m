@@ -15,6 +15,7 @@
 #import "ActivityViewController.h"
 #import "MallViewController.h"
 #import "MyViewController.h"
+#import "ActivityPageController.h"
 
 @interface SFRootVC()
 @end
@@ -30,8 +31,10 @@
     CustomNavigationController *nav1 = [[CustomNavigationController alloc] initWithRootViewController:homeVC];
 
     // 4.活动
-    ActivityViewController *activityVC = [[ActivityViewController alloc] init];
-    activityVC.title = @"活动";
+//    ActivityViewController *activityVC = [[ActivityViewController alloc] init];
+//    activityVC.title = @"活动";
+    UIStoryboard* sb2=[UIStoryboard storyboardWithName:@"Activity" bundle:nil];
+    UIViewController* activityVC=[sb2 instantiateInitialViewController];
     CustomNavigationController *nav2 = [[CustomNavigationController alloc] initWithRootViewController:activityVC];
 
     // 2.商城
