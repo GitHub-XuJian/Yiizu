@@ -666,6 +666,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F165BAF1FB92C7300E201F7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		1F165BB01FB92C7D00E201F7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		1F1767231FB3F91200BB5026 /* ActivityPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +734,8 @@
 		1F1767331FB3F91200BB5026 /* ActivityLoopIma */ = {
 			isa = PBXGroup;
 			children = (
+				1F165BAF1FB92C7300E201F7 /* model */,
+				1F165BB01FB92C7D00E201F7 /* view */,
 				1F1767341FB3F91200BB5026 /* controller */,
 			);
 			path = ActivityLoopIma;

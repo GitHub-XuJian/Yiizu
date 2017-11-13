@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CustomCellScrollView : UIScrollView
+@class ActivityLsitModel;
 
+@interface CustomCellScrollView : UIScrollView
+@property (nonatomic,strong) NSArray* imaArr;
 @end

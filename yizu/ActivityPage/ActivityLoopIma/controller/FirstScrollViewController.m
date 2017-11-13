@@ -25,14 +25,22 @@
 
 @implementation FirstScrollViewController
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self loadData];
+    [self loadCityData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _loopIma=[[NSMutableArray alloc]init];
     _cityArr=[[NSMutableArray alloc]init];
     
-    [self loadData];
     
-    [self loadCityData];
+    
+    
     
 
     
@@ -56,7 +64,7 @@
 
 - (void)initCycleScrollView
 {
-    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 240) delegate:self placeholderImage:nil];
+    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 220) delegate:self placeholderImage:nil];
     cycleScrollView.imageURLStringsGroup=_loopIma;
     cycleScrollView.autoScrollTimeInterval=2.0;
     cycleScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
@@ -85,25 +93,47 @@
 
 - (void)updateCityUI:(NSMutableArray*)arr
 {
-    CGFloat x=35;
+    CGFloat x=50;
     CGFloat w=(kSCREEN_WIDTH-x*5)/4;
+    UIView* backVie=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.SDCScrollView.frame), kSCREEN_WIDTH, w+25+20)];
+    backVie.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    [self.view addSubview:backVie];
+  
+    UIView* whiteView=[[UIView alloc]initWithFrame:CGRectMake(0, 10, kSCREEN_WIDTH, 25+w)];
+    whiteView.backgroundColor=[UIColor whiteColor];
+    [backVie addSubview:whiteView];
+    
     for (int i=0; i<4; i++) {
         ActivityPageModel* model=arr[i];
         UIButton* btn=[[UIButton alloc]init];
+       
+        [btn addTarget:self action:@selector(cityBtn:) forControlEvents:UIControlEventTouchUpInside];
+
         [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.citypic]] forState:UIControlStateNormal];
         //self.SDCScrollView.frame获取不到frame
-        btn.frame=CGRectMake(x+i*(w+x), CGRectGetMaxY(self.SDCScrollView.frame)+20,w, w);
         
-        [self.view addSubview:btn];
-        
+        btn.frame=CGRectMake(x+i*(w+x), 10,w, w);
+
+        [whiteView addSubview:btn];
+
         UILabel* lab=[[UILabel alloc]init];
-    
+        //UILabel* lab=[[UILabel alloc]initWithFrame:CGRectMake(x+i*(w+x), CGRectGetMaxY(btn.frame), 0, 0)];
+//        lab.backgroundColor=[UIColor yellowColor];
         lab.text=model.word;
         lab.textAlignment=NSTextAlignmentCenter;
         [lab setFont:[UIFont systemFontOfSize:10]];
-        lab.frame=CGRectMake(x+i*(w+x), CGRectGetMaxY(btn.frame), w, 25);
-        [self.view addSubview:lab];
+        [lab sizeToFit];
+        lab.frame=CGRectMake(x+i*(w+x), CGRectGetMaxY(btn.frame), w, 10);
+        [whiteView addSubview:lab];
     }
+}
+
+- (void)cityBtn:(UIButton*)btn
+{
+//    ActivityDetailController* dVC=[[ActivityDetailController alloc]init];
+//
+//    [self.navigationController pushViewController:dVC animated:YES];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
