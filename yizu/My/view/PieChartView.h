@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface PieChartView : UIView
-@property (nonatomic, strong) NSString *pieChartStr;
-@property (nonatomic, strong) NSMutableArray *pieChartArray;
 
+
+- (void)reloadWithDict:(NSDictionary *)dict;
 @end

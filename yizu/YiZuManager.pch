@@ -19,6 +19,7 @@
 #import "UIButton+WebCache.h"
 #import "EncapsulationMethod.h"     // 自定义方法集合
 #import "JXTAlertManagerHeader.h"   // 弹框
+#import "WXApi.h"
 #import "XSaverTool.h"
 #import "UUID.h"
 #import "SFNavView.h"

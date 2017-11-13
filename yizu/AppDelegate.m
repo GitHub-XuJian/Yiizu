@@ -10,7 +10,6 @@
 #import "SFRootVC.h"
 #import "IQKeyboardManager.h"
 #import "LLTabBar.h"
-#import "WXApi.h"
 #import "LoginViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
 
@@ -38,7 +37,9 @@
     keyboardManager.shouldShowToolbarPlaceholder = YES; // 是否显示占位文字
     keyboardManager.placeholderFont = [UIFont boldSystemFontOfSize:17]; // 设置占位文字的字体
     keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
+    [WXApi registerApp:WXDoctor_App_ID];
     
+
     /**
      * 友盟
      */
@@ -155,8 +156,21 @@
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
     if (!result) {
         // 其他如支付等SDK的回调
+        NSLog(@"支付");
+        return [WXApi handleOpenURL:url delegate:self];
     }
     return result;
+}
+/**
+ * 微信支付返回结果，通知在商城类里做操作
+ */
+-(void)onResp:(BaseResp*)resp{
+    if ([resp isKindOfClass:[PayResp class]]){
+        PayResp*response=(PayResp*)resp;
+        NSLog(@"%@",response.returnKey);
+        NSNotification *notification =[NSNotification notificationWithName:@"WeiXinPayNotification" object:resp userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

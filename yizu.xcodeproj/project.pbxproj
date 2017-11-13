@@ -28,7 +28,6 @@
 		1F17675B1FB3F9AF00BB5026 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767561FB3F9AE00BB5026 /* ChartViewController.m */; };
 		1F17675C1FB3F9AF00BB5026 /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */; };
 		1F17675D1FB3F9AF00BB5026 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17675A1FB3F9AF00BB5026 /* WebViewController.m */; };
-		1F1767601FB3F9CB00BB5026 /* HXLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17675E1FB3F9CA00BB5026 /* HXLineChart.m */; };
 		1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C01FA6B78E00F8EA95 /* CellBtn.m */; };
 		1F4423C51FA6C3CE00F8EA95 /* HomeSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C41FA6C3CE00F8EA95 /* HomeSearchController.m */; };
 		1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C71FA6C47E00F8EA95 /* CustomSearchBar.m */; };
@@ -57,9 +56,6 @@
 		AF23F4021FAC66070022E990 /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3E81FAC66070022E990 /* UMSocialSDKPromptResources.bundle */; };
 		AF23F4031FAC66070022E990 /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3E91FAC66070022E990 /* UMSocialCore.framework */; };
 		AF23F4041FAC66070022E990 /* libSocialUniqueId.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3ED1FAC66070022E990 /* libSocialUniqueId.a */; };
-		AF23F4051FAC66070022E990 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3EF1FAC66070022E990 /* libSocialWeChat.a */; };
-		AF23F4061FAC66070022E990 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3F41FAC66070022E990 /* README.txt */; };
-		AF23F4071FAC66070022E990 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3F61FAC66070022E990 /* libWeChatSDK.a */; };
 		AF23F4081FAC66070022E990 /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3F91FAC66070022E990 /* libSocialQQ.a */; };
 		AF23F4091FAC66070022E990 /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3FB1FAC66070022E990 /* TencentOpenApi_IOS_Bundle.bundle */; };
 		AF23F40A1FAC66070022E990 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF23F3FC1FAC66070022E990 /* TencentOpenAPI.framework */; };
@@ -173,7 +169,6 @@
 		AF6C46AE1FA8073C00797125 /* registerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46A81FA8073C00797125 /* registerViewController.m */; };
 		AF6C46B31FA807E000797125 /* mytimer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46B21FA807E000797125 /* mytimer.m */; };
 		AF6C46B61FA808EC00797125 /* SFNavView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C46B51FA808EC00797125 /* SFNavView.m */; };
-		AF6C46BC1FA80D6100797125 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */; };
 		AF6C46BF1FA80DBF00797125 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46BE1FA80DB700797125 /* SystemConfiguration.framework */; };
 		AF6C46C11FA80DD000797125 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C01FA80DD000797125 /* libz.tbd */; };
 		AF6C46C31FA80DDB00797125 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C21FA80DDB00797125 /* libsqlite3.0.tbd */; };
@@ -198,6 +193,15 @@
 		AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CE51FA01A4A008DA068 /* UIImageView+WebCache.m */; };
 		AF8B6CF71FA01A4A008DA068 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CE71FA01A4A008DA068 /* UIView+WebCacheOperation.m */; };
 		AF8B6CFD1FA01D7A008DA068 /* EncapsulationMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */; };
+		AFB214D31FB40CE1006DD630 /* MembersView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214D21FB40CE1006DD630 /* MembersView.m */; };
+		AFB214D61FB40CF7006DD630 /* TradingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214D51FB40CF7006DD630 /* TradingView.m */; };
+		AFB214F01FB44D81006DD630 /* HXLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214EF1FB44D81006DD630 /* HXLineChart.m */; };
+		AFB214F31FB532AF006DD630 /* MembersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214F21FB532AF006DD630 /* MembersTableViewCell.m */; };
+		AFB214F61FB53315006DD630 /* MembersHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214F51FB53315006DD630 /* MembersHeadView.m */; };
+		AFB214FC1FB5473C006DD630 /* PWCustomSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB214FA1FB5473B006DD630 /* PWCustomSheet.m */; };
+		AFB215061FB954EE006DD630 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB214FE1FB954EE006DD630 /* libSocialWeChat.a */; };
+		AFB215071FB954EE006DD630 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFB215031FB954EE006DD630 /* README.txt */; };
+		AFB215081FB954EE006DD630 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB215051FB954EE006DD630 /* libWeChatSDK.a */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
@@ -266,8 +270,6 @@
 		1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
 		1F1767591FB3F9AE00BB5026 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		1F17675A1FB3F9AF00BB5026 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
-		1F17675E1FB3F9CA00BB5026 /* HXLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLineChart.m; sourceTree = "<group>"; };
-		1F17675F1FB3F9CB00BB5026 /* HXLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLineChart.h; sourceTree = "<group>"; };
 		1F4423BF1FA6B78E00F8EA95 /* CellBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellBtn.h; sourceTree = "<group>"; };
 		1F4423C01FA6B78E00F8EA95 /* CellBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellBtn.m; sourceTree = "<group>"; };
 		1F4423C31FA6C3CE00F8EA95 /* HomeSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchController.h; sourceTree = "<group>"; };
@@ -316,13 +318,6 @@
 		AF23F3E91FAC66070022E990 /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
 		AF23F3EC1FAC66070022E990 /* UMSocialUniqueIdHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialUniqueIdHandler.h; sourceTree = "<group>"; };
 		AF23F3ED1FAC66070022E990 /* libSocialUniqueId.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialUniqueId.a; sourceTree = "<group>"; };
-		AF23F3EF1FAC66070022E990 /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
-		AF23F3F01FAC66070022E990 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
-		AF23F3F21FAC66070022E990 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		AF23F3F31FAC66070022E990 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		AF23F3F41FAC66070022E990 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
-		AF23F3F51FAC66070022E990 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		AF23F3F61FAC66070022E990 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		AF23F3F81FAC66070022E990 /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
 		AF23F3F91FAC66070022E990 /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
 		AF23F3FB1FAC66070022E990 /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
@@ -551,10 +546,6 @@
 		AF6C46B21FA807E000797125 /* mytimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mytimer.m; sourceTree = "<group>"; };
 		AF6C46B41FA808EC00797125 /* SFNavView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNavView.h; sourceTree = "<group>"; };
 		AF6C46B51FA808EC00797125 /* SFNavView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNavView.m; sourceTree = "<group>"; };
-		AF6C46B81FA80D6100797125 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
-		AF6C46B91FA80D6100797125 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
-		AF6C46BA1FA80D6100797125 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
-		AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		AF6C46BE1FA80DB700797125 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AF6C46C01FA80DD000797125 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		AF6C46C21FA80DDB00797125 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
@@ -597,6 +588,25 @@
 		AF8B6CE71FA01A4A008DA068 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		AF8B6CFB1FA01D7A008DA068 /* EncapsulationMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncapsulationMethod.h; sourceTree = "<group>"; };
 		AF8B6CFC1FA01D7A008DA068 /* EncapsulationMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncapsulationMethod.m; sourceTree = "<group>"; };
+		AFB214D11FB40CE1006DD630 /* MembersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersView.h; sourceTree = "<group>"; };
+		AFB214D21FB40CE1006DD630 /* MembersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersView.m; sourceTree = "<group>"; };
+		AFB214D41FB40CF7006DD630 /* TradingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TradingView.h; sourceTree = "<group>"; };
+		AFB214D51FB40CF7006DD630 /* TradingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TradingView.m; sourceTree = "<group>"; };
+		AFB214EE1FB44D81006DD630 /* HXLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXLineChart.h; sourceTree = "<group>"; };
+		AFB214EF1FB44D81006DD630 /* HXLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXLineChart.m; sourceTree = "<group>"; };
+		AFB214F11FB532AF006DD630 /* MembersTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersTableViewCell.h; sourceTree = "<group>"; };
+		AFB214F21FB532AF006DD630 /* MembersTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersTableViewCell.m; sourceTree = "<group>"; };
+		AFB214F41FB53315006DD630 /* MembersHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MembersHeadView.h; sourceTree = "<group>"; };
+		AFB214F51FB53315006DD630 /* MembersHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MembersHeadView.m; sourceTree = "<group>"; };
+		AFB214FA1FB5473B006DD630 /* PWCustomSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PWCustomSheet.m; sourceTree = "<group>"; };
+		AFB214FB1FB5473B006DD630 /* PWCustomSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PWCustomSheet.h; sourceTree = "<group>"; };
+		AFB214FE1FB954EE006DD630 /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
+		AFB214FF1FB954EE006DD630 /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		AFB215011FB954EE006DD630 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		AFB215021FB954EE006DD630 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		AFB215031FB954EE006DD630 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		AFB215041FB954EE006DD630 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		AFB215051FB954EE006DD630 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -626,16 +636,15 @@
 				AF23F40F1FAC66660022E990 /* CoreGraphics.framework in Frameworks */,
 				AF23F4081FAC66070022E990 /* libSocialQQ.a in Frameworks */,
 				AF23F40A1FAC66070022E990 /* TencentOpenAPI.framework in Frameworks */,
-				AF23F4071FAC66070022E990 /* libWeChatSDK.a in Frameworks */,
 				AF6C46CB1FA80E1700797125 /* CFNetwork.framework in Frameworks */,
-				AF23F4051FAC66070022E990 /* libSocialWeChat.a in Frameworks */,
 				AF23F40B1FAC66070022E990 /* libUMSocialLog.a in Frameworks */,
 				AF23F4011FAC66070022E990 /* UMSocialNetwork.framework in Frameworks */,
 				AF6C46C71FA80DF500797125 /* Security.framework in Frameworks */,
+				AFB215081FB954EE006DD630 /* libWeChatSDK.a in Frameworks */,
 				AF23F4041FAC66070022E990 /* libSocialUniqueId.a in Frameworks */,
 				AF23F4031FAC66070022E990 /* UMSocialCore.framework in Frameworks */,
 				AF6C46C31FA80DDB00797125 /* libsqlite3.0.tbd in Frameworks */,
-				AF6C46BC1FA80D6100797125 /* libWeChatSDK.a in Frameworks */,
+				AFB215061FB954EE006DD630 /* libSocialWeChat.a in Frameworks */,
 				AF23F4001FAC66070022E990 /* UShareUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -929,8 +938,8 @@
 		AF23F3EA1FAC66070022E990 /* SocialLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				AFB214FD1FB954EE006DD630 /* WeChat */,
 				AF23F3EB1FAC66070022E990 /* UniqueId */,
-				AF23F3EE1FAC66070022E990 /* WeChat */,
 				AF23F3F71FAC66070022E990 /* QQ */,
 			);
 			path = SocialLibraries;
@@ -943,28 +952,6 @@
 				AF23F3ED1FAC66070022E990 /* libSocialUniqueId.a */,
 			);
 			path = UniqueId;
-			sourceTree = "<group>";
-		};
-		AF23F3EE1FAC66070022E990 /* WeChat */ = {
-			isa = PBXGroup;
-			children = (
-				AF23F3EF1FAC66070022E990 /* libSocialWeChat.a */,
-				AF23F3F01FAC66070022E990 /* UMSocialWechatHandler.h */,
-				AF23F3F11FAC66070022E990 /* WechatSDK */,
-			);
-			path = WeChat;
-			sourceTree = "<group>";
-		};
-		AF23F3F11FAC66070022E990 /* WechatSDK */ = {
-			isa = PBXGroup;
-			children = (
-				AF23F3F21FAC66070022E990 /* WXApi.h */,
-				AF23F3F31FAC66070022E990 /* WXApiObject.h */,
-				AF23F3F41FAC66070022E990 /* README.txt */,
-				AF23F3F51FAC66070022E990 /* WechatAuthSDK.h */,
-				AF23F3F61FAC66070022E990 /* libWeChatSDK.a */,
-			);
-			path = WechatSDK;
 			sourceTree = "<group>";
 		};
 		AF23F3F71FAC66070022E990 /* QQ */ = {
@@ -1234,6 +1221,14 @@
 		AF66AD351F9D81D20079A2CF /* view */ = {
 			isa = PBXGroup;
 			children = (
+				AFB214D11FB40CE1006DD630 /* MembersView.h */,
+				AFB214D21FB40CE1006DD630 /* MembersView.m */,
+				AFB214D41FB40CF7006DD630 /* TradingView.h */,
+				AFB214D51FB40CF7006DD630 /* TradingView.m */,
+				AFB214F11FB532AF006DD630 /* MembersTableViewCell.h */,
+				AFB214F21FB532AF006DD630 /* MembersTableViewCell.m */,
+				AFB214F41FB53315006DD630 /* MembersHeadView.h */,
+				AFB214F51FB53315006DD630 /* MembersHeadView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1251,12 +1246,6 @@
 		AF66AD371F9D81D20079A2CF /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F1767571FB3F9AE00BB5026 /* ChartViewController.h */,
-				1F1767561FB3F9AE00BB5026 /* ChartViewController.m */,
-				1F1767551FB3F9AE00BB5026 /* PersonalInformationViewController.h */,
-				1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */,
-				1F1767591FB3F9AE00BB5026 /* WebViewController.h */,
-				1F17675A1FB3F9AF00BB5026 /* WebViewController.m */,
 				AF66AD421F9D82100079A2CF /* MyViewController.h */,
 				AF66AD431F9D82100079A2CF /* MyViewController.m */,
 				AF66AD6F1F9DB4240079A2CF /* MyCollectionViewController.h */,
@@ -1289,6 +1278,12 @@
 				AF23F3DC1FAC05C40022E990 /* MyWalletViewController.m */,
 				AF23F4101FAD508A0022E990 /* MyInformationViewController.h */,
 				AF23F4111FAD508A0022E990 /* MyInformationViewController.m */,
+				1F1767571FB3F9AE00BB5026 /* ChartViewController.h */,
+				1F1767561FB3F9AE00BB5026 /* ChartViewController.m */,
+				1F1767551FB3F9AE00BB5026 /* PersonalInformationViewController.h */,
+				1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */,
+				1F1767591FB3F9AE00BB5026 /* WebViewController.h */,
+				1F17675A1FB3F9AF00BB5026 /* WebViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1367,9 +1362,9 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AFB214F91FB5473B006DD630 /* PWCustomSheet */,
 				1F17673E1FB3F93300BB5026 /* SDCycleScrollView */,
 				AF23F3E21FAC66070022E990 /* UMSocial */,
-				AF6C46B71FA80D6100797125 /* Wechat */,
 				1F4423CE1FA6F0C100F8EA95 /* SVProgressHUD */,
 				AF6C46971FA71BC800797125 /* UUIDAndKeychain */,
 				AF6C468D1FA6F7B600797125 /* CustomView */,
@@ -1677,17 +1672,6 @@
 			path = registerViewController;
 			sourceTree = "<group>";
 		};
-		AF6C46B71FA80D6100797125 /* Wechat */ = {
-			isa = PBXGroup;
-			children = (
-				AF6C46B81FA80D6100797125 /* WXApi.h */,
-				AF6C46B91FA80D6100797125 /* WXApiObject.h */,
-				AF6C46BA1FA80D6100797125 /* WechatAuthSDK.h */,
-				AF6C46BB1FA80D6100797125 /* libWeChatSDK.a */,
-			);
-			path = Wechat;
-			sourceTree = "<group>";
-		};
 		AF6C46BD1FA80DB700797125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,11 +1737,42 @@
 			path = CustomMethod;
 			sourceTree = "<group>";
 		};
+		AFB214F91FB5473B006DD630 /* PWCustomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				AFB214FA1FB5473B006DD630 /* PWCustomSheet.m */,
+				AFB214FB1FB5473B006DD630 /* PWCustomSheet.h */,
+			);
+			path = PWCustomSheet;
+			sourceTree = "<group>";
+		};
+		AFB214FD1FB954EE006DD630 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				AFB214FE1FB954EE006DD630 /* libSocialWeChat.a */,
+				AFB214FF1FB954EE006DD630 /* UMSocialWechatHandler.h */,
+				AFB215001FB954EE006DD630 /* WechatSDK */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		AFB215001FB954EE006DD630 /* WechatSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AFB215011FB954EE006DD630 /* WXApi.h */,
+				AFB215021FB954EE006DD630 /* WXApiObject.h */,
+				AFB215031FB954EE006DD630 /* README.txt */,
+				AFB215041FB954EE006DD630 /* WechatAuthSDK.h */,
+				AFB215051FB954EE006DD630 /* libWeChatSDK.a */,
+			);
+			path = WechatSDK;
+			sourceTree = "<group>";
+		};
 		AFC62F071FA1B5A100A3F3F5 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				1F17675F1FB3F9CB00BB5026 /* HXLineChart.h */,
-				1F17675E1FB3F9CA00BB5026 /* HXLineChart.m */,
+				AFB214EE1FB44D81006DD630 /* HXLineChart.h */,
+				AFB214EF1FB44D81006DD630 /* HXLineChart.m */,
 				AFC62F141FA1B5D500A3F3F5 /* MCBarChart */,
 			);
 			path = Chart;
@@ -1896,7 +1911,7 @@
 				AF66AE831F9F1AB10079A2CF /* IQKeyboardManager.bundle in Resources */,
 				AF66AE001F9DE1B60079A2CF /* MJRefresh.bundle in Resources */,
 				1F17673A1FB3F91200BB5026 /* Activity.storyboard in Resources */,
-				AF23F4061FAC66070022E990 /* README.txt in Resources */,
+				AFB215071FB954EE006DD630 /* README.txt in Resources */,
 				AF23F3FF1FAC66070022E990 /* UMSocialSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1929,12 +1944,14 @@
 				AF66ADFD1F9DE1B60079A2CF /* MJRefreshGifHeader.m in Sources */,
 				AF8B6CFD1FA01D7A008DA068 /* EncapsulationMethod.m in Sources */,
 				1F17673C1FB3F91200BB5026 /* CustomCellScrollView.m in Sources */,
+				AFB214F31FB532AF006DD630 /* MembersTableViewCell.m in Sources */,
 				AF66AE131F9EDE540079A2CF /* MembershipActivationCodeView.m in Sources */,
 				AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				AF66ADB41F9DDD250079A2CF /* UIButton+AFNetworking.m in Sources */,
 				AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */,
 				AF23F3DA1FAB16570022E990 /* MyActivitiesModel.m in Sources */,
 				AF8B6CEE1FA01A4A008DA068 /* SDWebImageDownloaderOperation.m in Sources */,
+				AFB214D61FB40CF7006DD630 /* TradingView.m in Sources */,
 				1F1767541FB3F93400BB5026 /* UIView+SDExtension.m in Sources */,
 				AF66ADAD1F9DDD250079A2CF /* AFURLRequestSerialization.m in Sources */,
 				1F1767391FB3F91200BB5026 /* ActivityPageModel.m in Sources */,
@@ -1952,10 +1969,12 @@
 				AF66AD861F9DC55D0079A2CF /* MyActivitiesTableViewCell.m in Sources */,
 				AF66ADB61F9DDD250079A2CF /* UIProgressView+AFNetworking.m in Sources */,
 				AF66ADB31F9DDD250079A2CF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				AFB214F01FB44D81006DD630 /* HXLineChart.m in Sources */,
 				AF66AD7D1F9DB51F0079A2CF /* AboutUsViewController.m in Sources */,
 				AF6C469C1FA71BC900797125 /* UUID.m in Sources */,
 				AF66ADB71F9DDD250079A2CF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF66ADFB1F9DE1B60079A2CF /* MJRefreshBackNormalFooter.m in Sources */,
+				AFB214D31FB40CE1006DD630 /* MembersView.m in Sources */,
 				AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */,
 				1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */,
 				AF66ACF61F9D7E540079A2CF /* AppDelegate.m in Sources */,
@@ -2024,6 +2043,7 @@
 				AF66ADB51F9DDD250079A2CF /* UIImageView+AFNetworking.m in Sources */,
 				AF66ADFA1F9DE1B60079A2CF /* MJRefreshBackGifFooter.m in Sources */,
 				AF66ADF21F9DE1B60079A2CF /* MJRefreshAutoFooter.m in Sources */,
+				AFB214F61FB53315006DD630 /* MembersHeadView.m in Sources */,
 				AF8B6CEF1FA01A4A008DA068 /* SDWebImageManager.m in Sources */,
 				AF8B6CEB1FA01A4A008DA068 /* SDWebImageCompat.m in Sources */,
 				AF66AD281F9D80410079A2CF /* SFRootVC.m in Sources */,
@@ -2075,7 +2095,6 @@
 				AF6C46A21FA806E700797125 /* SFValidationEmailViewController.m in Sources */,
 				AF66AD4B1F9D82570079A2CF /* ActivityViewController.m in Sources */,
 				AF66ADAE1F9DDD250079A2CF /* AFURLResponseSerialization.m in Sources */,
-				1F1767601FB3F9CB00BB5026 /* HXLineChart.m in Sources */,
 				AF66ADFF1F9DE1B60079A2CF /* MJRefreshStateHeader.m in Sources */,
 				AF8B6CF71FA01A4A008DA068 /* UIView+WebCacheOperation.m in Sources */,
 				AF6C465E1FA4197C00797125 /* HelpDetailsViewController.m in Sources */,
@@ -2083,6 +2102,7 @@
 				1F4423C51FA6C3CE00F8EA95 /* HomeSearchController.m in Sources */,
 				AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */,
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
+				AFB214FC1FB5473C006DD630 /* PWCustomSheet.m in Sources */,
 				1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */,
 				AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */,
 			);

@@ -39,7 +39,7 @@
 {
   
     NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/%@",Main_Server,str];
-    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+    NSDictionary *dict = @{@"personid":@"3"};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
         self.dataArray = responseObject;
@@ -64,7 +64,7 @@
 - (void)createViewUI
 {
     _buttonStr = @"分享";
-    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已分享",@"已激活", nil];
+    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已分享",@"已激活",@"可回购", nil];
     self.macView = [[MembershipActivationCodeView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 50) andTitleArray:titleArray andClassBlock:^(UIButton *classBtn) {
         NSLog(@"%@",classBtn.titleLabel.text);
         _buttonStr = nil;
@@ -84,6 +84,12 @@
             case 2:{
                 _buttonStr = @"";
                 [self createDataArray:@"activate"];
+                
+                break;
+            }
+            case 3:{
+                _buttonStr = @"回购";
+                [self createDataArray:@"backCodeApi"];
                 
                 break;
             }
@@ -138,8 +144,15 @@
         cell = [[MembershipActivationCodeTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     NSDictionary *dict = self.dataArray[indexPath.row];
-    cell.nameStr = dict[@"code"];
+    cell.dict = dict;
     cell.buttonStr = _buttonStr;
+    cell.block = ^{
+        /**
+         * 回购成功刷新界面
+         */
+        [self createDataArray:@"backCodeApi"];
+
+    };
     return cell;
 }
 

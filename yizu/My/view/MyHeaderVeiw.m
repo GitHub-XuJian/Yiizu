@@ -27,9 +27,17 @@
 }
 - (void)reloadData
 {
-    [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal];
-    self.nameLabel.text =                             [XSaverTool objectForKey:Nickname];
-    self.introductionLabel.text =[XSaverTool objectForKey:Personxq];
+    [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+    if ([XSaverTool objectForKey:Nickname]) {
+        self.nameLabel.text = [XSaverTool objectForKey:Nickname];
+    }else{
+        self.nameLabel.text = @"请输入昵称";
+    }
+    if ([XSaverTool objectForKey:Personxq]) {
+        self.introductionLabel.text = [XSaverTool objectForKey:Personxq];
+    }else{
+        self.introductionLabel.text = @"请输入简介";
+    }
 }
 - (void)createHeaderView
 {

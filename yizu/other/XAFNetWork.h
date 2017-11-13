@@ -31,6 +31,7 @@ typedef void (^LHProgress)(NSProgress *progress);
 
 
 @interface XAFNetWork : NSObject
+
 /**
  *  普通get方法请求网络数据
  *

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^ReloadBlock)();
 
 @interface MembershipActivationCodeTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) NSString *nameStr;
+@property (nonatomic, strong) NSDictionary *dict;
 @property (nonatomic, strong) NSString *buttonStr;
-
+@property (nonatomic, strong) ReloadBlock block;
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 
 @end

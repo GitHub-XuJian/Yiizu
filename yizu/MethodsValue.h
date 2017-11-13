@@ -31,7 +31,7 @@
  */
 #define Main_Server @"http://47.104.18.18/index.php/"
 /***
- *  服务器首页轮播图地址
+ *  服务器根地址
  */
 #define Main_ServerImage @"http://47.104.18.18/"
 

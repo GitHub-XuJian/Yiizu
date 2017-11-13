@@ -10,11 +10,21 @@
 #import "MCPieChartView.h"
 
 @interface PieChartView ()<MCPieChartViewDataSource, MCPieChartViewDelegate>
+{
+    int _number;
+}
 @property (nonatomic, strong) MCPieChartView *pieChartView;
-
+@property (nonatomic, strong) NSString *pieChartStr;
+@property (nonatomic, strong) NSMutableArray *pieChartArray;
 @end
 @implementation PieChartView
-
+- (NSMutableArray *)pieChartArray
+{
+    if (!_pieChartArray) {
+        _pieChartArray = [NSMutableArray array];
+    }
+    return _pieChartArray;
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -23,14 +33,17 @@
     }
     return self;
 }
+- (void)reloadWithDict:(NSDictionary *)dict;
+{
+    _pieChartStr = [NSString stringWithFormat:@"待返：%@\n已返：%@",dict[@"num"],dict[@"ennum"]];
+    _pieChartView.subTitleStr = [NSString stringWithFormat:@"平均持有：%@",dict[@"codenumstate"]];
+    _pieChartView.subTitleStr2 = [NSString stringWithFormat:@"平均待返：%@",dict[@"personnumstate"]];
+    _number = [dict[@"ennum"] intValue] + [dict[@"num"] intValue];
+    [self.pieChartArray addObject:[NSNumber numberWithInt:[dict[@"ennum"] intValue]]];
+    [_pieChartView reloadData];
+}
 - (void)createUIViwe
 {
-    NSMutableArray *mutableArray = [NSMutableArray array];
-    for (NSInteger i = 0; i < 1; i ++) {
-        [mutableArray addObject:@50];
-    }
-    _pieChartArray = [NSMutableArray arrayWithArray:mutableArray];
-    
     _pieChartView = [[MCPieChartView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
     _pieChartView.dataSource = self;
     _pieChartView.delegate = self;
@@ -39,8 +52,6 @@
     //    _pieChartView.ringTitle = @"我拥有\n15张";
     _pieChartView.ringWidth = 20;
     _pieChartView.titleStr = @"队列总量";
-    _pieChartView.subTitleStr = @"队列总量";
-    _pieChartView.subTitleStr2 = @"队列总量";
     
     //边框宽度
     [_pieChartView.layer setBorderWidth:0.5];
@@ -62,13 +73,13 @@
  * 圆最大值
  */
 - (id)sumValueInPieChartView:(MCPieChartView *)pieChartView {
-    return @100;
+    return [NSNumber numberWithInt:_number];
 }
 /**
  * 圆中心文字
  */
 - (NSAttributedString *)ringTitleInPieChartView:(MCPieChartView *)pieChartView {
-    return [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"我拥有\n%@张",self.pieChartStr] attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:13], NSForegroundColorAttributeName: [UIColor blackColor]}];
+    return [[NSAttributedString alloc] initWithString:self.pieChartStr?self.pieChartStr:@"" attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:13], NSForegroundColorAttributeName: [UIColor blackColor]}];
 }
 
 - (UIColor *)pieChartView:(MCPieChartView *)pieChartView colorOfPieAtIndex:(NSInteger)index {

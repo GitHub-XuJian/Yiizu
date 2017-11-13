@@ -18,7 +18,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         _classClock = classBlock;
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = kMAIN_BACKGROUND_COLOR;
         CGFloat btn_W = kSCREEN_WIDTH/titleArray.count;
         for (int i = 0 ; i < titleArray.count; i++) {
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -32,6 +32,7 @@
             [self addSubview:btn];
             if (i == 0) {
                 btn.selected = YES;
+                [self classClick:btn];
             }
         }
         UIView *lineView = [[UIView alloc] init];

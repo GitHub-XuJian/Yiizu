@@ -149,7 +149,7 @@
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
     NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
     if (_activationStr.length>0 && _validationStr.length>0) {
-        NSDictionary *dict = @{ @"0": _validationStr,@"1":_activationStr};
+        NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
         NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
         NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         
@@ -168,7 +168,8 @@
                  * 没点击一次验证码和激活码tag值加一
                  */
                 _textFieldTagAdd++;
-                
+                _activationStr = @"";
+                _validationStr = @"";
                 [self createActivationCode];
                 self.activationButton.frame = CGRectMake(90/3, _scrollerContentSize_H, kSCREEN_WIDTH-60, 40);
                 self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+50);
@@ -199,16 +200,25 @@
         jxt_showAlertTitle(@"请输入支付宝账号");
         return;
     }else if (!_validationStr.length){
-        jxt_showAlertTitle(@"请输入验证码");
-        return;
+        if (![self.dataDict objectForKey:@"code"]) {
+            jxt_showAlertTitle(@"请输入验证码");
+            return;
+        }
     }else if (!_activationStr.length){
-        jxt_showAlertTitle(@"请输入激活码");
-        return;
+        if (![self.dataDict objectForKey:@"code"]) {
+            jxt_showAlertTitle(@"请输入激活码");
+            return;
+        }
     }
     NSLog(@"%@ %@ %@",btn.titleLabel.text,self.dataDict,_codeArray);
+    if (_validationStr.length && _activationStr.length) {
+        NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
+        NSDictionary *arrayDict = [_codeArray lastObject];
+        if (![arrayDict isEqual:dict]) {
+            [_codeArray addObject:dict];
+        }
+    }
     
-    NSDictionary *dict = @{@"0": _validationStr,@"1":_activationStr};
-    [_codeArray addObject:dict];
     [self.dataDict setObject:_codeArray forKey:@"code"];
     NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:self.dataDict];
     NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/CodeApi/data/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -216,7 +226,10 @@
     [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
         jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-        [self.navigationController popViewControllerAnimated:YES];
+        if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -237,16 +250,14 @@
             [self.dataDict setObject:textField.text forKey:@"paynum"];
             break;
         }
-        case ValidationTextFieldTag:{
-            _validationStr = textField.text;
-            break;
-        }
-        case ActivationTextFieldTag:{
-            _activationStr = textField.text;
-            break;
-        }
         default:
             break;
+    }
+
+    if (textField.tag == ValidationTextFieldTag +_textFieldTagAdd) {
+        _validationStr = textField.text;
+    }else if (textField.tag == ActivationTextFieldTag +_textFieldTagAdd) {
+        _activationStr = textField.text;
     }
     
 }

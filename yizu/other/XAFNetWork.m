@@ -9,6 +9,7 @@
 #import "XAFNetWork.h"
 
 @implementation XAFNetWork
+
 +(void)GET:(NSString *)url params:(NSDictionary *)params
    success:(LHResponseSuccess)success fail:(LHResponseFail)fail{
     
@@ -174,6 +175,7 @@
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
+
     return manager;
 }
 

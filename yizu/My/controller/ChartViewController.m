@@ -22,6 +22,7 @@
  */
 @property (nonatomic, strong) NSMutableArray *pieChartArray;
 @property (nonatomic, strong) NSString *pieChartStr;
+@property (nonatomic, strong) PieChartView *pieView;
 /**
  * 横线图数据
  */
@@ -60,17 +61,21 @@
          */
         if (responseObject) {
             self.rankingArray = [NSMutableArray arrayWithObject:responseObject];
+            /**
+             * 饼图
+             */
+            [self.pieView reloadWithDict:responseObject];
+            /**
+             * 横线图
+             */
+            [self.lineView reloadWith:responseObject[@"Recently"] and:responseObject[@"Farthest"]];
+            /**
+             * 折现图
+             */
+            [self.brokenLine setValue:[self brokenLineArrayWithDict:responseObject] withYLineCount:6];
+            self.brokenLine.lineColor = [UIColor redColor];
         }
-        /**
-         * 横线图
-         */
-        [self.lineView reloadWith:responseObject[@"Recently"] and:responseObject[@"Farthest"]];
-        /**
-         * 折现图
-         */
-        
-        [self.brokenLine setValue:[self brokenLineArrayWithDict:responseObject] withYLineCount:6];
-
+       
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -85,24 +90,25 @@
     /**
      * 圆饼图
      */
-    PieChartView *pieView = [[PieChartView alloc] initWithFrame:CGRectMake(rankingView.x, rankingView.y+rankingView.height+5, (kSCREEN_WIDTH-20)/2-5, 210)];
-    [self.view addSubview:pieView];
+    self.pieView = [[PieChartView alloc] initWithFrame:CGRectMake(rankingView.x, rankingView.y+rankingView.height+5, (kSCREEN_WIDTH-20)/2-5, 210)];
+    [self.view addSubview:self.pieView];
     /**
      * 线线图
      */
-    self.lineView = [[LineChartView alloc] initWithFrame:CGRectMake(pieView.x+pieView.width+5, pieView.y, (kSCREEN_WIDTH-20)/2-5, 210)];
+    self.lineView = [[LineChartView alloc] initWithFrame:CGRectMake(self.pieView.x+self.pieView.width+5, self.pieView.y, (kSCREEN_WIDTH-20)/2-5, 210)];
     [self.view addSubview:self.lineView];
     /**
      * 折线图
      */
-    self.brokenLine = [[HXLineChart alloc] initWithFrame:CGRectMake(10, self.lineView.y+self.lineView.height+5, kSCREEN_WIDTH-20, kSCREEN_HEIGHT-64-rankingView.height-pieView.height-20)];
+    
+    self.brokenLine = [[HXLineChart alloc] initWithFrame:CGRectMake(10, self.lineView.y+self.lineView.height+5, kSCREEN_WIDTH-20, kSCREEN_HEIGHT-64-rankingView.height-self.pieView.height-20)];
     [self.brokenLine setTitleArray:@[@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日"]];
-    self.brokenLine.lineColor = [self colorWithHexString:@"#43befa" alpha:1];
+    self.brokenLine.lineColor = [UIColor redColor];
     self.brokenLine.fillColor = [self colorWithHexString:@"#2e3f53" alpha:0.5];
-    //边框宽度
-    [self.brokenLine.layer setBorderWidth:0.5];
-    self.brokenLine.layer.borderColor=kColorLine.CGColor;
     self.brokenLine.backgroundLineColor = [self colorWithHexString:@"#4b4e52" alpha:1];
+    //边框宽度
+    [_brokenLine.layer setBorderWidth:0.5];
+    _brokenLine.layer.borderColor=kColorLine.CGColor;
     [self.view addSubview:self.brokenLine];
 }
 #pragma mark 设置16进制颜色
