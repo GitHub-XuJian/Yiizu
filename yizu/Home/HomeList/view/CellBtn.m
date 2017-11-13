@@ -48,22 +48,36 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     
     self.titleLabel.font = [UIFont systemFontOfSize:10];
     
-    //NSLog(@"%d",self.islike);
     
-    /////////
-    //self.islike = NO;
+//    self.islike = YES;
     
     
 }
+
+
 - (void)like {
-    
+ 
+
+
  
     self.userInteractionEnabled = NO;
     
     self.islike = !self.islike;
     
-    if (self.onClick) {
-        self.onClick(self);
+//    NSString *isZan  = self.islike ? @"1" : @"2";  //取消赞2,反则1
+//    NSLog(@"在里面的按钮方法%d",self.islike);
+//    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
+//
+//    newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString* isZan=@"";
+    if (self.islike) {
+        self.likeCount=self.likeCount+1;
+        isZan=@"1";
+    }else
+    {
+        self.likeCount=self.likeCount-1;
+        isZan=@"2";
     }
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -79,12 +93,9 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
         
     }];
     
-    NSString *isZan  = self.islike ? @"1" : @"2";  //取消赞2,反则1
-       NSLog(@"在里面的按钮方法%@",isZan);
-    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
-    NSLog(@"点赞jie口:%@",newUrl);
-   newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
     
+        newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([[responseObject objectForKey:@"dianzan"] isEqualToString:@"success"]) {
             NSLog(@"点赞成功%@",responseObject[@"dianzan"]);
@@ -99,16 +110,20 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
 
     }];
+   
+    
+}
+
+- (void)loadDataUrl:(NSString*)str
+{
     
 }
 //设置点赞图片
 - (void)setIslike:(BOOL)islike {
     _islike = islike;
-   
-    int upCount = islike ? 1 : -1;
-    // NSLog(@"当前状态%d==%d",islike,upCount);
-    self.likeCount = self.likeCount + upCount;
-    
+//    int upCount = islike ? 1 : -1;
+//     NSLog(@"当前状态==%d",upCount);
+//    self.likeCount = self.likeCount + upCount;
     NSString *imageName = self.islike ? pressedImageName : normalImageName;
     
     [self setImage:[[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] forState:UIControlStateNormal];
@@ -121,8 +136,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 //设置点赞数
 - (void)setLikeCount:(NSInteger)likeCount {
     _likeCount = likeCount;
-#define MyWidth 30.0f
-    //CGFloat width = MyWidth;
+
     
     //NSLog(@"点赞数set方法%ld",(long)likeCount);
     
@@ -131,7 +145,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
         [self setTitle:nil forState:UIControlStateNormal];
 
     }else {
-        [self setTitle:[NSString stringWithFormat:@"%ld",(long)likeCount-1] forState:UIControlStateNormal];
+        [self setTitle:[NSString stringWithFormat:@"%ld",(long)likeCount] forState:UIControlStateNormal];
         
         
     }

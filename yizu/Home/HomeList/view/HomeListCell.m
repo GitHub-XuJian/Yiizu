@@ -100,7 +100,9 @@
        self.likeCellBtn.islike=YES;
     }else
     {
+        
        self.likeCellBtn.islike=NO;
+        NSLog(@"00000000000");
     }
     //改
     if (model.Turvy) {
@@ -122,8 +124,6 @@
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
     //一行时lab字体顶对齐
     //self.chamberjjLab.text=model.chamberjj;
-    
-    
     
     [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
 

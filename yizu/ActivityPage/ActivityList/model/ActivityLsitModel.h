@@ -28,12 +28,56 @@
 //title = 2142142;
 //writingpic = 321321321;
 
+//activityid
+//"活动id"
+//title
+//"活动名字"
+//sort
+//"活动分类"
+//city_id
+//"活动城市id"
+//locus_id
+//"活动区域id"
+//movable
+//"活动简介"
+//writingpic
+//活动标题文字说明
+//mainpic
+//"2017-11-07/5a01408e022a5.png"
+//pic1
+//"2017-10-17/59e5c15544de3.jpg"
+//pic2
+//"2017-10-17/59e5c1554693b.jpg"
+//pic3
+//"2017-10-17/59e5c155474f3.jpg"
+//
+//
+//attention
+//"关注没用的 以后用的"
+//chamberid
+//null
+//chambername
+//null
+//start_time
+//"开始时间图片"
+//end_time
+//"结束时间图片"
+//specific
+//"A"
+//region
+//"  2"
+
+//大图
 @property (nonatomic, copy) NSString* mainpic;
-@property (nonatomic, copy) NSString* writingpic ;
+
+////活动城市id
 @property (nonatomic, copy) NSString* city_id;
-//@property (nonatomic, copy) NSString* ;
-//@property (nonatomic, copy) NSString* ;
-//@property (nonatomic, copy) NSString* ;
+////小图数组
+@property (nonatomic, strong) NSArray* pic;
+//活动标题文字说明
+@property (nonatomic, copy) NSString* writingpic;
+//每行标题
+@property (nonatomic, copy) NSString* caption1;
 
 +(instancetype)modelWithDict:(NSDictionary*)dic;
 

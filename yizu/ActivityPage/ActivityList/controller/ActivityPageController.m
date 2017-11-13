@@ -10,36 +10,45 @@
 #import "ActivityCell.h"
 #import "ActivityLsitModel.h"
 
+
 @interface ActivityPageController ()
 
 @property (nonatomic,strong) NSMutableArray* tabSource;
-
+    
 @end
 
 @implementation ActivityPageController
 
-- (NSMutableArray *)tabSource
-{
-    if (_tabSource==nil) {
-        _tabSource=[[NSMutableArray alloc]init];
-    }
-    return _tabSource;
-}
+//-(BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
+//
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear: animated];
+//    self.navigationController.navigationBarHidden=YES;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    _tabSource=[[NSMutableArray alloc]init];
     
     [self loadData];
 }
 
 - (void)loadData
 {
-   
-    [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigetheme/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+   //http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/
+    [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
-        
-        
+        for (NSDictionary* dic in responseObject) {
+            NSLog(@"data:%@",responseObject);
+            ActivityLsitModel * model=[ActivityLsitModel modelWithDict:dic];
+            [_tabSource addObject:model];
+        }
+      
+        [self.tableView reloadData];
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -55,7 +64,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return _tabSource.count;
    
 }
 
@@ -63,6 +72,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellA" forIndexPath:indexPath];
     
+    cell.model=_tabSource[indexPath.row];
     
     return cell;
 }

@@ -125,7 +125,7 @@
     _listArr=[[NSMutableArray alloc]init];
 //    [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        //NSLog(@"oneData:%@",responseObject);
+        NSLog(@"默认Data:%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         for (NSDictionary* dic in arr) {
             HomeListModel* model=[HomeListModel ModelWithDict:dic];
