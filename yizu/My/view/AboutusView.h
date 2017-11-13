@@ -7,12 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol AboutusViewDelegate <NSObject>
 
--(void)clickButton:(id)recognizer;
-
-@end
 @interface AboutusView : UIView
-@property (nonatomic,weak) id<AboutusViewDelegate>delegate;
 
 @end

@@ -43,6 +43,7 @@
             self.mView = [[MembersView alloc] initWithFrame:CGRectMake(0, 64+50, kSCREEN_WIDTH, kSCREEN_HEIGHT-64-50-50)];
             self.mView.backgroundColor = kMAIN_BACKGROUND_COLOR;
             [self.view addSubview:self.mView];
+            [self.mView reloadData];
         }else{
             if (self.tView) {
                 [self.tView removeFromSuperview];

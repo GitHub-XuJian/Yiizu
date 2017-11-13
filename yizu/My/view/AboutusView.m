@@ -9,8 +9,10 @@
 #define ViewTag 1234567
 
 #import "AboutusView.h"
-@interface AboutusView ()
+#import "WebViewController.h"
 
+@interface AboutusView ()
+@property (nonatomic, strong) NSArray *array2;
 @end
 @implementation AboutusView
 
@@ -37,7 +39,7 @@
     [self addSubview:versionNumberLabel];
     
     NSArray *array = @[@"用户协议",@"联系电话",@"我的微信",@"我的邮箱"];
-    NSArray *array2 = @[@"",@"024-1234 5678",@"jinbaibei",@"1234567890@qq.com"];
+    _array2 = @[@"",@"024-12345678",@"jinbaibei",@"1234567890@qq.com"];
     for (int i = 0; i < array.count; i++) {
         UIView * view = [[UIView alloc] init];
         view.frame = CGRectMake(0, 770/3+i*41, kSCREEN_WIDTH, 40);
@@ -57,7 +59,7 @@
         
         UILabel *label2 = [[UILabel alloc] init];
         label2.frame = CGRectMake(kSCREEN_WIDTH - 40/3 - kSCREEN_WIDTH/2, 0, kSCREEN_WIDTH/2, 40);
-        label2.text = array2[i];
+        label2.text = _array2[i];
         label2.textAlignment = NSTextAlignmentRight;
         label2.font = kFontOther;
         [view addSubview:label2];
@@ -84,10 +86,22 @@
     label4.font = kFontOther;
     [self addSubview:label4];
 }
+
 //调用方法
 -(void)mTitlePress:(id)recognizer{
     NSLog(@"View点击事件");
-    [_delegate clickButton:recognizer];
+    if ([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
+        UITapGestureRecognizer *tempLP = (UITapGestureRecognizer *)recognizer;
+        if (tempLP.view.tag == ViewTag) {   // 用户协议
+            WebViewController *webViewVC = [[WebViewController alloc] init];
+            [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
+        }else if (tempLP.view.tag == ViewTag+1) {   // 联系电话
+            [EncapsulationMethod callPhoneStr:_array2[tempLP.view.tag-ViewTag]];
+        }
+    }else if([recognizer isKindOfClass:[UIButton class]]){
+        WebViewController *webViewVC = [[WebViewController alloc] init];
+        [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
+    }
 }
 
 @end

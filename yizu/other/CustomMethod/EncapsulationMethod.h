@@ -95,6 +95,10 @@
  */
 + (NSString *) md5:(NSString *) input;
 /**
+ * 打电话
+ */
++ (void)callPhoneStr:(NSString*)phoneStr;
+/**
  * 邮箱正则表达式
  */
 + (BOOL)isValidateEmail:(NSString *)email;

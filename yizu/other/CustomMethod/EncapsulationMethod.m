@@ -481,6 +481,17 @@
     CGSize size = [str boundingRectWithSize:CGSizeMake(width, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:dic context:nil].size;
     return size.height;
 }
++ (void)callPhoneStr:(NSString*)phoneStr{
+    NSString *callPhone = [NSString stringWithFormat:@"telprompt://%@", phoneStr];
+    NSComparisonResult compare = [[UIDevice currentDevice].systemVersion compare:@"10.0"];
+    if (compare == NSOrderedDescending || compare == NSOrderedSame) {
+        /// 大于等于10.0系统使用此openURL方法
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone] options:@{} completionHandler:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:callPhone]];
+    }
+    
+}
 //邮箱地址的正则表达式
 + (BOOL)isValidateEmail:(NSString *)email{
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";

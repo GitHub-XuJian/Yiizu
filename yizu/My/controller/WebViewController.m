@@ -24,8 +24,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //    [self loadFile];
-    [self loadString:[NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server]];
+    [self loadFile];
+//    [self loadString:[NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server]];
 }
 #pragma mark - 加载本地文件
 - (void)loadFile
