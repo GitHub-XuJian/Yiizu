@@ -17,6 +17,7 @@
 #import "ContactUsViewController.h"
 #import "MyWalletViewController.h"
 #import "PersonalInformationViewController.h"
+#import "SetUpViewController.h"
 
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeaderVeiwDelegate>
@@ -37,19 +38,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    // 隐藏导航条
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self navigationBarHidden:YES];
     [self.headerView reloadData];
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
-//    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self createDataArray];
     [self createTableView];
 }
-
 - (void)createDataArray
 {
     self.dataArray = [NSMutableArray arrayWithObjects:@[@"我的激活码",@"我的钱包"],@[@"我的收藏",@"我的活动"],@[@"帮助中心",@"关于我们"], nil];
@@ -58,7 +57,7 @@
 }
 - (void)createTableView
 {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0,kSCREEN_WIDTH,kSCREEN_HEIGHT-50) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20,kSCREEN_WIDTH,kSCREEN_HEIGHT-70) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
@@ -73,23 +72,31 @@
 }
 - (void)clickButton:(UIButton *)button
 {
-    if ([XSaverTool boolForKey:IsLogin]) {
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-
-        PersonalInformationViewController *piVC = [[PersonalInformationViewController alloc] init];
-        piVC.title = @"个人信息";
-        [self.navigationController pushViewController:piVC animated:YES];
+    [self navigationBarHidden:NO];
+    if (button.tag == 111111) {
+        SetUpViewController *setUpVC = [[SetUpViewController alloc] init];
+        setUpVC.title = @"设置";
+        [self.navigationController pushViewController:setUpVC animated:YES];
     }else{
-        LoginViewController *loginViewC = [[LoginViewController alloc] init];
-        loginViewC.successfulBlock = ^{
-            [self.headerView reloadData];
-        };
-        loginViewC.failedBlock = ^{
+        if ([XSaverTool boolForKey:IsLogin]) {
+            [self.navigationController setNavigationBarHidden:NO animated:NO];
             
-        };
-        [self presentViewController:loginViewC animated:YES completion:nil];
-        
+            PersonalInformationViewController *piVC = [[PersonalInformationViewController alloc] init];
+            piVC.title = @"个人信息";
+            [self.navigationController pushViewController:piVC animated:YES];
+        }else{
+            LoginViewController *loginViewC = [[LoginViewController alloc] init];
+            loginViewC.successfulBlock = ^{
+                [self.headerView reloadData];
+            };
+            loginViewC.failedBlock = ^{
+                
+            };
+            [self presentViewController:loginViewC animated:YES completion:nil];
+            
+        }
     }
+   
 }
 //section底部间距
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -147,7 +154,8 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self navigationBarHidden:NO];
+
     UIViewController *viewController;
     switch (indexPath.section) {
         case 0:{
@@ -202,13 +210,18 @@
     }
     viewController.title = self.dataArray[indexPath.section][indexPath.row];
     [self.navigationController pushViewController:viewController animated:YES];
+    
+}
+- (void)navigationBarHidden:(BOOL)isHidden
+{
     // 显示导航条
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    [self.navigationController setNavigationBarHidden:isHidden animated:NO];
 }
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:YES];
-    
+    // 显示导航条
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

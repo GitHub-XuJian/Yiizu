@@ -12,6 +12,7 @@
 #import "LLTabBar.h"
 #import "LoginViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "ActivationCodeInputViewController.h"
 
 @interface AppDelegate ()<UIApplicationDelegate,LLTabBarDelegate,WXApiDelegate>
 
@@ -69,9 +70,33 @@
 
 - (void)tabBarDidSelectedRiseButton {
     NSLog(@"激活");
+   
+    ActivationCodeInputViewController *activationVC = [[ActivationCodeInputViewController alloc] init];
+    activationVC.title = @"激活";
+    [[self currentViewController].navigationController pushViewController:activationVC animated:YES];
 }
 
-
+//获取Window当前显示的ViewController
+- (UIViewController*)currentViewController{
+    //获得当前活动窗口的根视图
+    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (1)
+    {
+        //根据不同的页面切换方式，逐步取得最上层的viewController
+        if ([vc isKindOfClass:[UITabBarController class]]) {
+            vc = ((UITabBarController*)vc).selectedViewController;
+        }
+        if ([vc isKindOfClass:[UINavigationController class]]) {
+            vc = ((UINavigationController*)vc).visibleViewController;
+        }
+        if (vc.presentedViewController) {
+            vc = vc.presentedViewController;
+        }else{
+            break;
+        }
+    }
+    return vc;
+}
 - (void)confitUShareSettings
 {
     /*

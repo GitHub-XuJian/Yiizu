@@ -10,6 +10,7 @@
 #import "MembershipActivationCodeView.h"
 #import "MembersView.h"
 #import "TradingView.h"
+#import "ActivationCodeInputViewController.h"
 
 @interface MallViewController ()
 @property (nonatomic, strong) MembershipActivationCodeView *macView;
@@ -77,6 +78,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:@"WeiXinPayNotification" name:nil object:self];
 
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

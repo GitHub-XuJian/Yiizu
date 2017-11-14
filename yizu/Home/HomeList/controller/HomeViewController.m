@@ -87,8 +87,6 @@
     [self requestData:newUrl];
 
     [self setupRefresh];
-   
-
     
     
 }

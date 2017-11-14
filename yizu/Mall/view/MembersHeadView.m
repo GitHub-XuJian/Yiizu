@@ -61,10 +61,20 @@
     }else{
         self.nameLabel.text = @"我的昵称";
     }
-    if ([XSaverTool objectForKey:Personxq]) {
-        self.introductionLabel.text = [XSaverTool objectForKey:Personxq];
+    NSString *statevipStr = [XSaverTool objectForKey:Statevip];
+    if ([statevipStr isEqualToString:@"1"]) {
+        NSString *timeStr = [XSaverTool objectForKey:VipEndtime];
+        NSDate *currentDate = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
+        //用于格式化NSDate对象
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        //设置格式：zzz表示时区
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        //NSDate转NSString
+        NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
+        
+        self.introductionLabel.text = [NSString stringWithFormat:@"会员截止日期:%@",currentDateString];
     }else{
-        self.introductionLabel.text = @"您还不是会员/会员截止日期 2017-12-24";
+        self.introductionLabel.text = @"您还不是会员";
     }
 }
 - (void)headPortraitBtnClick:(UIButton *)btn
