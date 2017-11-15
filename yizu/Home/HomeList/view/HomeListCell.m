@@ -102,7 +102,7 @@
     {
         
        self.likeCellBtn.islike=NO;
-        NSLog(@"00000000000");
+        //NSLog(@"00000000000");
     }
     //改
     if (model.Turvy) {

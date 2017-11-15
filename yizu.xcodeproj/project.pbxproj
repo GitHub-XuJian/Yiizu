@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F0CEAB91FBA7E3300D06C8E /* ActivityDetailLoopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEAB81FBA7E3300D06C8E /* ActivityDetailLoopView.m */; };
+		1F0CEABC1FBA926B00D06C8E /* ActivityDetailLabmodel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEABB1FBA926B00D06C8E /* ActivityDetailLabmodel.m */; };
+		1F0CEAC01FBA9CAA00D06C8E /* ActivityDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEABE1FBA9CAA00D06C8E /* ActivityDetailCell.m */; };
+		1F0CEAC11FBA9CAA00D06C8E /* ActivityDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CEABF1FBA9CAA00D06C8E /* ActivityDetailCell.xib */; };
+		1F0CEAC51FBAB73800D06C8E /* HomeDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEAC41FBAB73700D06C8E /* HomeDetailController.m */; };
+		1F0CEACA1FBABD4C00D06C8E /* HomeDetailLoop.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEAC91FBABD4C00D06C8E /* HomeDetailLoop.m */; };
+		1F0CEACE1FBAC9EA00D06C8E /* HomeDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEACC1FBAC9EA00D06C8E /* HomeDetailCell.m */; };
+		1F0CEACF1FBAC9EA00D06C8E /* HomeDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CEACD1FBAC9EA00D06C8E /* HomeDetailCell.xib */; };
+		1F0CEAD21FBADC9700D06C8E /* HomeDetailFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0CEAD11FBADC9700D06C8E /* HomeDetailFooter.m */; };
+		1F0CEAD41FBADCAD00D06C8E /* HomeDetailFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0CEAD31FBADCAD00D06C8E /* HomeDetailFooter.xib */; };
 		1F17671F1FB3F8D100BB5026 /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767171FB3F8CF00BB5026 /* PieChartView.m */; };
 		1F1767201FB3F8D100BB5026 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767191FB3F8D000BB5026 /* LineChartView.m */; };
 		1F1767211FB3F8D100BB5026 /* AboutusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17671D1FB3F8D000BB5026 /* AboutusView.m */; };
@@ -37,6 +47,7 @@
 		1F4423DB1FA6F0C200F8EA95 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F4423D41FA6F0C100F8EA95 /* SVProgressHUD.bundle */; };
 		1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423D61FA6F0C100F8EA95 /* SVProgressHUD.m */; };
 		1F4423DD1FA6F0C200F8EA95 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423D81FA6F0C100F8EA95 /* SVRadialGradientLayer.m */; };
+		1F47A4701FB9A33200679995 /* ActivityDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F47A46F1FB9A33200679995 /* ActivityDetailController.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
@@ -229,6 +240,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F0CEAB71FBA7E3300D06C8E /* ActivityDetailLoopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailLoopView.h; sourceTree = "<group>"; };
+		1F0CEAB81FBA7E3300D06C8E /* ActivityDetailLoopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailLoopView.m; sourceTree = "<group>"; };
+		1F0CEABA1FBA926A00D06C8E /* ActivityDetailLabmodel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailLabmodel.h; sourceTree = "<group>"; };
+		1F0CEABB1FBA926B00D06C8E /* ActivityDetailLabmodel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailLabmodel.m; sourceTree = "<group>"; };
+		1F0CEABD1FBA9CAA00D06C8E /* ActivityDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailCell.h; sourceTree = "<group>"; };
+		1F0CEABE1FBA9CAA00D06C8E /* ActivityDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailCell.m; sourceTree = "<group>"; };
+		1F0CEABF1FBA9CAA00D06C8E /* ActivityDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityDetailCell.xib; sourceTree = "<group>"; };
+		1F0CEAC31FBAB73700D06C8E /* HomeDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailController.h; sourceTree = "<group>"; };
+		1F0CEAC41FBAB73700D06C8E /* HomeDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailController.m; sourceTree = "<group>"; };
+		1F0CEAC81FBABD4C00D06C8E /* HomeDetailLoop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailLoop.h; sourceTree = "<group>"; };
+		1F0CEAC91FBABD4C00D06C8E /* HomeDetailLoop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailLoop.m; sourceTree = "<group>"; };
+		1F0CEACB1FBAC9EA00D06C8E /* HomeDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailCell.h; sourceTree = "<group>"; };
+		1F0CEACC1FBAC9EA00D06C8E /* HomeDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailCell.m; sourceTree = "<group>"; };
+		1F0CEACD1FBAC9EA00D06C8E /* HomeDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetailCell.xib; sourceTree = "<group>"; };
+		1F0CEAD01FBADC9700D06C8E /* HomeDetailFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailFooter.h; sourceTree = "<group>"; };
+		1F0CEAD11FBADC9700D06C8E /* HomeDetailFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailFooter.m; sourceTree = "<group>"; };
+		1F0CEAD31FBADCAD00D06C8E /* HomeDetailFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeDetailFooter.xib; sourceTree = "<group>"; };
 		1F1767171FB3F8CF00BB5026 /* PieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartView.m; sourceTree = "<group>"; };
 		1F1767181FB3F8D000BB5026 /* AboutusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutusView.h; sourceTree = "<group>"; };
 		1F1767191FB3F8D000BB5026 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
@@ -287,6 +315,8 @@
 		1F4423D61FA6F0C100F8EA95 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		1F4423D71FA6F0C100F8EA95 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		1F4423D81FA6F0C100F8EA95 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		1F47A46E1FB9A33200679995 /* ActivityDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailController.h; sourceTree = "<group>"; };
+		1F47A46F1FB9A33200679995 /* ActivityDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailController.m; sourceTree = "<group>"; };
 		1FE535561F9F2E7300713053 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1FE535571F9F2E7300713053 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		1FE535591F9F2E7300713053 /* HomeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListModel.h; sourceTree = "<group>"; };
@@ -666,6 +696,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F0CEAB41FBA7DCE00D06C8E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CEAB71FBA7E3300D06C8E /* ActivityDetailLoopView.h */,
+				1F0CEAB81FBA7E3300D06C8E /* ActivityDetailLoopView.m */,
+				1F0CEABD1FBA9CAA00D06C8E /* ActivityDetailCell.h */,
+				1F0CEABE1FBA9CAA00D06C8E /* ActivityDetailCell.m */,
+				1F0CEABF1FBA9CAA00D06C8E /* ActivityDetailCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		1F0CEAB51FBA7DD900D06C8E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F47A46E1FB9A33200679995 /* ActivityDetailController.h */,
+				1F47A46F1FB9A33200679995 /* ActivityDetailController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1F0CEAB61FBA7DE100D06C8E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CEABA1FBA926A00D06C8E /* ActivityDetailLabmodel.h */,
+				1F0CEABB1FBA926B00D06C8E /* ActivityDetailLabmodel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		1F0CEAC21FBAB63400D06C8E /* HomeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CEAC71FBABD3200D06C8E /* view */,
+				1F0CEAC61FBABCA300D06C8E /* controller */,
+			);
+			path = HomeDetail;
+			sourceTree = "<group>";
+		};
+		1F0CEAC61FBABCA300D06C8E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CEAC31FBAB73700D06C8E /* HomeDetailController.h */,
+				1F0CEAC41FBAB73700D06C8E /* HomeDetailController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1F0CEAC71FBABD3200D06C8E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CEAC81FBABD4C00D06C8E /* HomeDetailLoop.h */,
+				1F0CEAC91FBABD4C00D06C8E /* HomeDetailLoop.m */,
+				1F0CEACB1FBAC9EA00D06C8E /* HomeDetailCell.h */,
+				1F0CEACC1FBAC9EA00D06C8E /* HomeDetailCell.m */,
+				1F0CEACD1FBAC9EA00D06C8E /* HomeDetailCell.xib */,
+				1F0CEAD01FBADC9700D06C8E /* HomeDetailFooter.h */,
+				1F0CEAD11FBADC9700D06C8E /* HomeDetailFooter.m */,
+				1F0CEAD31FBADCAD00D06C8E /* HomeDetailFooter.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		1F165BAF1FB92C7300E201F7 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +776,7 @@
 		1F1767231FB3F91200BB5026 /* ActivityPage */ = {
 			isa = PBXGroup;
 			children = (
+				1F47A46D1FB9A2BD00679995 /* ActivityDetail */,
 				1F1767241FB3F91200BB5026 /* ActivityList */,
 				1F1767331FB3F91200BB5026 /* ActivityLoopIma */,
 			);
@@ -832,6 +926,16 @@
 				1F4423D81FA6F0C100F8EA95 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		1F47A46D1FB9A2BD00679995 /* ActivityDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1F0CEAB61FBA7DE100D06C8E /* model */,
+				1F0CEAB51FBA7DD900D06C8E /* controller */,
+				1F0CEAB41FBA7DCE00D06C8E /* view */,
+			);
+			path = ActivityDetail;
 			sourceTree = "<group>";
 		};
 		1FE535541F9F2E7300713053 /* HomeList */ = {
@@ -1200,6 +1304,7 @@
 		AF66AD291F9D81D20079A2CF /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1F0CEAC21FBAB63400D06C8E /* HomeDetail */,
 				1F4423C21FA6C38E00F8EA95 /* SearchPage */,
 				AF626D141FA2D97D00A1225F /* CityList */,
 				1FE535541F9F2E7300713053 /* HomeList */,
@@ -1915,10 +2020,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F0CEAC11FBA9CAA00D06C8E /* ActivityDetailCell.xib in Resources */,
 				AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */,
 				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				1F4423DB1FA6F0C200F8EA95 /* SVProgressHUD.bundle in Resources */,
 				1F4423CA1FA6C49000F8EA95 /* CustomSearchBar.xib in Resources */,
+				1F0CEAD41FBADCAD00D06C8E /* HomeDetailFooter.xib in Resources */,
 				AF23F4021FAC66070022E990 /* UMSocialSDKPromptResources.bundle in Resources */,
 				AF66AD541F9D8BF90079A2CF /* Assets.xcassets in Resources */,
 				1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */,
@@ -1929,6 +2036,7 @@
 				1F17673A1FB3F91200BB5026 /* Activity.storyboard in Resources */,
 				AFB215071FB954EE006DD630 /* README.txt in Resources */,
 				AF23F3FF1FAC66070022E990 /* UMSocialSDKResources.bundle in Resources */,
+				1F0CEACF1FBAC9EA00D06C8E /* HomeDetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1977,6 +2085,7 @@
 				1F17675C1FB3F9AF00BB5026 /* PersonalInformationViewController.m in Sources */,
 				AF626D131FA2D92D00A1225F /* LoopImageViewController.m in Sources */,
 				1F1767501FB3F93400BB5026 /* TADotView.m in Sources */,
+				1F0CEAD21FBADC9700D06C8E /* HomeDetailFooter.m in Sources */,
 				AF66AD801F9DB5460079A2CF /* ContactUsViewController.m in Sources */,
 				AF626D261FA2D97D00A1225F /* CityListCell.m in Sources */,
 				AF66AE781F9F1AB10079A2CF /* IQUIView+Hierarchy.m in Sources */,
@@ -1984,6 +2093,7 @@
 				1F17673B1FB3F91200BB5026 /* ActivityCell.m in Sources */,
 				AF66AD861F9DC55D0079A2CF /* MyActivitiesTableViewCell.m in Sources */,
 				AF66ADB61F9DDD250079A2CF /* UIProgressView+AFNetworking.m in Sources */,
+				1F0CEACA1FBABD4C00D06C8E /* HomeDetailLoop.m in Sources */,
 				AF66ADB31F9DDD250079A2CF /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				AFB214F01FB44D81006DD630 /* HXLineChart.m in Sources */,
 				AF66AD7D1F9DB51F0079A2CF /* AboutUsViewController.m in Sources */,
@@ -2001,6 +2111,7 @@
 				AF6C465B1FA3187C00797125 /* LoginView.m in Sources */,
 				AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */,
 				1F17673D1FB3F91200BB5026 /* FirstScrollViewController.m in Sources */,
+				1F0CEACE1FBAC9EA00D06C8E /* HomeDetailCell.m in Sources */,
 				AF8B6CEC1FA01A4A008DA068 /* SDWebImageDecoder.m in Sources */,
 				AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */,
 				AF626D241FA2D97D00A1225F /* AreaListModel.m in Sources */,
@@ -2008,6 +2119,7 @@
 				AF66ACF31F9D7E540079A2CF /* main.m in Sources */,
 				AF66AD271F9D80410079A2CF /* CustomTabBarController.m in Sources */,
 				AF6C46691FA4546800797125 /* CSdetailsViewController.m in Sources */,
+				1F0CEAC51FBAB73800D06C8E /* HomeDetailController.m in Sources */,
 				AF66AE051F9DE1B60079A2CF /* UIView+MJExtension.m in Sources */,
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
 				1F17675B1FB3F9AF00BB5026 /* ChartViewController.m in Sources */,
@@ -2023,6 +2135,7 @@
 				AF66AE7D1F9F1AB10079A2CF /* IQTextView.m in Sources */,
 				1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */,
 				1F1767221FB3F8D100BB5026 /* RankingView.m in Sources */,
+				1F0CEAB91FBA7E3300D06C8E /* ActivityDetailLoopView.m in Sources */,
 				1F17674F1FB3F93400BB5026 /* TAAnimatedDotView.m in Sources */,
 				AF66AE0D1F9EDD2F0079A2CF /* MembersPayViewController.m in Sources */,
 				AF66ADC11F9DDFB50079A2CF /* XAFNetWork.m in Sources */,
@@ -2051,6 +2164,7 @@
 				AF6C46B61FA808EC00797125 /* SFNavView.m in Sources */,
 				1F1767371FB3F91200BB5026 /* ActivityPageController.m in Sources */,
 				AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */,
+				1F0CEAC01FBA9CAA00D06C8E /* ActivityDetailCell.m in Sources */,
 				AF66ADAA1F9DDD250079A2CF /* AFHTTPSessionManager.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,
 				AF66AD6E1F9DACB10079A2CF /* MyTableViewCell.m in Sources */,
@@ -2087,6 +2201,7 @@
 				AF66ADAC1F9DDD250079A2CF /* AFSecurityPolicy.m in Sources */,
 				AF66ADFE1F9DE1B60079A2CF /* MJRefreshNormalHeader.m in Sources */,
 				1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */,
+				1F0CEABC1FBA926B00D06C8E /* ActivityDetailLabmodel.m in Sources */,
 				AF23F3D51FA9BACF0022E990 /* MyCollectionModel.m in Sources */,
 				AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */,
 				1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */,
@@ -2108,6 +2223,7 @@
 				AF8B6CED1FA01A4A008DA068 /* SDWebImageDownloader.m in Sources */,
 				AF66ADB81F9DDD250079A2CF /* UIWebView+AFNetworking.m in Sources */,
 				AF66AE7A1F9F1AB10079A2CF /* IQUIWindow+Hierarchy.m in Sources */,
+				1F47A4701FB9A33200679995 /* ActivityDetailController.m in Sources */,
 				AF6C46A21FA806E700797125 /* SFValidationEmailViewController.m in Sources */,
 				AF66AD4B1F9D82570079A2CF /* ActivityViewController.m in Sources */,
 				AF66ADAE1F9DDD250079A2CF /* AFURLResponseSerialization.m in Sources */,

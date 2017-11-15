@@ -14,6 +14,8 @@
 
 @property (nonatomic, copy) NSString* citypic;
 
+@property (nonatomic, copy) NSString* idq;
+
 + (instancetype)modelWithDict:(NSDictionary*)dic;
 
 @end

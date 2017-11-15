@@ -43,7 +43,7 @@
     [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
         for (NSDictionary* dic in responseObject) {
-            NSLog(@"data:%@",responseObject);
+            //NSLog(@"dataListLoop:%@",responseObject);
             ActivityLsitModel * model=[ActivityLsitModel modelWithDict:dic];
             [_tabSource addObject:model];
         }

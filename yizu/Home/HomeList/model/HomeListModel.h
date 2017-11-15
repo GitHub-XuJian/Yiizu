@@ -33,6 +33,15 @@
 //更改收藏状态
 @property (nonatomic, copy) NSString* Turvy;
 
+//营业开始时间
+@property (nonatomic, copy) NSString* starttime;
+//营业结束时间
+@property (nonatomic, copy) NSString* endtime;
+//电话
+@property (nonatomic, copy) NSString* chammobile;
+//full
+@property (nonatomic, copy) NSString* full;
+
 + (instancetype)ModelWithDict:(NSDictionary*)dic;
 
 +(void)HomeListWithUrl:(NSString*)url success:(void(^)(NSMutableArray* array))sBlock error:(void(^)())eBlock;
