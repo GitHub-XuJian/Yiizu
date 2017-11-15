@@ -213,6 +213,10 @@
 		AFB215061FB954EE006DD630 /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB214FE1FB954EE006DD630 /* libSocialWeChat.a */; };
 		AFB215071FB954EE006DD630 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = AFB215031FB954EE006DD630 /* README.txt */; };
 		AFB215081FB954EE006DD630 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB215051FB954EE006DD630 /* libWeChatSDK.a */; };
+		AFB2150D1FB9920B006DD630 /* SetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2150C1FB9920B006DD630 /* SetUpViewController.m */; };
+		AFB215101FB99B67006DD630 /* SetUpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2150F1FB99B67006DD630 /* SetUpTableViewCell.m */; };
+		AFB215151FBA96F5006DD630 /* ActivationCodePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215141FBA96F5006DD630 /* ActivationCodePayViewController.m */; };
+		AFB215181FBAB664006DD630 /* ActivationCodePayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
@@ -637,6 +641,14 @@
 		AFB215031FB954EE006DD630 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		AFB215041FB954EE006DD630 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		AFB215051FB954EE006DD630 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		AFB2150B1FB9920B006DD630 /* SetUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetUpViewController.h; sourceTree = "<group>"; };
+		AFB2150C1FB9920B006DD630 /* SetUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUpViewController.m; sourceTree = "<group>"; };
+		AFB2150E1FB99B67006DD630 /* SetUpTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetUpTableViewCell.h; sourceTree = "<group>"; };
+		AFB2150F1FB99B67006DD630 /* SetUpTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SetUpTableViewCell.m; sourceTree = "<group>"; };
+		AFB215131FBA96F5006DD630 /* ActivationCodePayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivationCodePayViewController.h; sourceTree = "<group>"; };
+		AFB215141FBA96F5006DD630 /* ActivationCodePayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivationCodePayViewController.m; sourceTree = "<group>"; };
+		AFB215161FBAB664006DD630 /* ActivationCodePayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivationCodePayTableViewCell.h; sourceTree = "<group>"; };
+		AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivationCodePayTableViewCell.m; sourceTree = "<group>"; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -1328,6 +1340,8 @@
 			children = (
 				AF66AD3F1F9D82060079A2CF /* MallViewController.h */,
 				AF66AD401F9D82060079A2CF /* MallViewController.m */,
+				AFB215131FBA96F5006DD630 /* ActivationCodePayViewController.h */,
+				AFB215141FBA96F5006DD630 /* ActivationCodePayViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1350,6 +1364,8 @@
 				AFB214F21FB532AF006DD630 /* MembersTableViewCell.m */,
 				AFB214F41FB53315006DD630 /* MembersHeadView.h */,
 				AFB214F51FB53315006DD630 /* MembersHeadView.m */,
+				AFB215161FBAB664006DD630 /* ActivationCodePayTableViewCell.h */,
+				AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1405,6 +1421,8 @@
 				1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */,
 				1F1767591FB3F9AE00BB5026 /* WebViewController.h */,
 				1F17675A1FB3F9AF00BB5026 /* WebViewController.m */,
+				AFB2150B1FB9920B006DD630 /* SetUpViewController.h */,
+				AFB2150C1FB9920B006DD630 /* SetUpViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1443,6 +1461,8 @@
 				AF66AE121F9EDE540079A2CF /* MembershipActivationCodeView.m */,
 				AF66AE141F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.h */,
 				AF66AE151F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.m */,
+				AFB2150E1FB99B67006DD630 /* SetUpTableViewCell.h */,
+				AFB2150F1FB99B67006DD630 /* SetUpTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2071,6 +2091,7 @@
 				AFB214F31FB532AF006DD630 /* MembersTableViewCell.m in Sources */,
 				AF66AE131F9EDE540079A2CF /* MembershipActivationCodeView.m in Sources */,
 				AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */,
+				AFB215181FBAB664006DD630 /* ActivationCodePayTableViewCell.m in Sources */,
 				AF66ADB41F9DDD250079A2CF /* UIButton+AFNetworking.m in Sources */,
 				AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */,
 				AF23F3DA1FAB16570022E990 /* MyActivitiesModel.m in Sources */,
@@ -2146,6 +2167,7 @@
 				AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */,
 				AF66ADB01F9DDD250079A2CF /* AFAutoPurgingImageCache.m in Sources */,
 				AF626D0D1FA2D1AB00A1225F /* XSaverTool.m in Sources */,
+				AFB215151FBA96F5006DD630 /* ActivationCodePayViewController.m in Sources */,
 				AF66AD831F9DB9D30079A2CF /* MyCollectionTableViewCell.m in Sources */,
 				AFC62F131FA1B5C600A3F3F5 /* UIView+Common.m in Sources */,
 				AF66AD601F9D947F0079A2CF /* MyHeaderVeiw.m in Sources */,
@@ -2165,6 +2187,7 @@
 				1F1767371FB3F91200BB5026 /* ActivityPageController.m in Sources */,
 				AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */,
 				1F0CEAC01FBA9CAA00D06C8E /* ActivityDetailCell.m in Sources */,
+				AFB2150D1FB9920B006DD630 /* SetUpViewController.m in Sources */,
 				AF66ADAA1F9DDD250079A2CF /* AFHTTPSessionManager.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,
 				AF66AD6E1F9DACB10079A2CF /* MyTableViewCell.m in Sources */,
@@ -2204,6 +2227,7 @@
 				1F0CEABC1FBA926B00D06C8E /* ActivityDetailLabmodel.m in Sources */,
 				AF23F3D51FA9BACF0022E990 /* MyCollectionModel.m in Sources */,
 				AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */,
+				AFB215101FB99B67006DD630 /* SetUpTableViewCell.m in Sources */,
 				1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */,
 				AF23F3D21FA962490022E990 /* registeredView.m in Sources */,
 				AF6C46B31FA807E000797125 /* mytimer.m in Sources */,

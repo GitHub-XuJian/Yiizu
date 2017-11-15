@@ -8,6 +8,7 @@
 
 #import "MembersTableViewCell.h"
 #import "PWCustomSheet.h"
+#import "ActivationCodePayViewController.h"
 
 @interface MembersTableViewCell()<PWCustomSheetDelegate,WXApiDelegate>
 {
@@ -58,10 +59,15 @@
 
 - (void)btnClick:(UIButton *)btn
 {
-    NSArray * ar = @[@"微信支付",@"支付宝支付",@"激活码支付"];
-    PWCustomSheet * sheet = [[PWCustomSheet alloc]initWithButtons:ar];
-    sheet.delegate =self;
-    [self.window addSubview:sheet];
+    if (IsLoginState) {
+        NSArray * ar = @[@"微信支付",@"支付宝支付",@"激活码支付"];
+        PWCustomSheet * sheet = [[PWCustomSheet alloc]initWithButtons:ar];
+        sheet.delegate =self;
+        [self.window addSubview:sheet];
+    }else{
+        jxt_showAlertTitle(@"请登录");
+    }
+    
 }
 -(void)clickButton:(UIButton *)button
 {
@@ -87,7 +93,10 @@
             break;
         }
         case 2:{            // 激活码支付
-            
+            ActivationCodePayViewController *acpVC = [[ActivationCodePayViewController alloc] init];
+            acpVC.title = @"激活码支付";
+            acpVC.moneyDict = _cellDict;
+            [[EncapsulationMethod viewController:self].navigationController pushViewController:acpVC animated:YES];
             break;
         }
         default:

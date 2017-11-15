@@ -187,52 +187,58 @@
 - (void)activationBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
-    [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
-    
-    if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
-        jxt_showAlertTitle(@"请输入真实姓名");
-        return;
-    }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
-        jxt_showAlertTitle(@"请输入常用手机号");
-        return;
-    }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
-        jxt_showAlertTitle(@"请输入支付宝账号");
-        return;
-    }else if (!_validationStr.length){
-        if (![self.dataDict objectForKey:@"code"]) {
-            jxt_showAlertTitle(@"请输入验证码");
-            return;
-        }
-    }else if (!_activationStr.length){
-        if (![self.dataDict objectForKey:@"code"]) {
-            jxt_showAlertTitle(@"请输入激活码");
-            return;
-        }
-    }
-    NSLog(@"%@ %@ %@",btn.titleLabel.text,self.dataDict,_codeArray);
-    if (_validationStr.length && _activationStr.length) {
-        NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
-        NSDictionary *arrayDict = [_codeArray lastObject];
-        if (![arrayDict isEqual:dict]) {
-            [_codeArray addObject:dict];
-        }
-    }
-    
-    [self.dataDict setObject:_codeArray forKey:@"code"];
-    NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:self.dataDict];
-    NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/CodeApi/data/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    [SVProgressHUD showWithStatus:@"正在激活"];
-    [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        [SVProgressHUD dismiss];
-        jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-        if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
-            
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+    if ([XSaverTool boolForKey:IsLogin]) {
+       
+        [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
+        [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
         
-    }];
+        if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
+            jxt_showAlertTitle(@"请输入真实姓名");
+            return;
+        }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
+            jxt_showAlertTitle(@"请输入常用手机号");
+            return;
+        }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
+            jxt_showAlertTitle(@"请输入支付宝账号");
+            return;
+        }else if (!_validationStr.length){
+            if (![self.dataDict objectForKey:@"code"]) {
+                jxt_showAlertTitle(@"请输入验证码");
+                return;
+            }
+        }else if (!_activationStr.length){
+            if (![self.dataDict objectForKey:@"code"]) {
+                jxt_showAlertTitle(@"请输入激活码");
+                return;
+            }
+        }
+        NSLog(@"%@ %@ %@",btn.titleLabel.text,self.dataDict,_codeArray);
+        if (_validationStr.length && _activationStr.length) {
+            NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
+            NSDictionary *arrayDict = [_codeArray lastObject];
+            if (![arrayDict isEqual:dict]) {
+                [_codeArray addObject:dict];
+            }
+        }
+        
+        [self.dataDict setObject:_codeArray forKey:@"code"];
+        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:self.dataDict];
+        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/CodeApi/data/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        [SVProgressHUD showWithStatus:@"正在激活"];
+        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            [SVProgressHUD dismiss];
+            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
+            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+                
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }else{
+        jxt_showAlertTitle(@"请登录");
+    }
+    
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {

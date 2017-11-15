@@ -93,34 +93,32 @@
 }
 - (void)timerAction
 {
-    [UIView animateWithDuration:1 animations:^{
-        if (i<[self CalculatePercentage:_recentlyDict]) {
-            UIView *backLeftView = [[UIView alloc] init];
-            backLeftView.frame = CGRectMake(10, self.height-30-i*10, self.width/2-15, 5);
-            //设置圆角
-            backLeftView.layer.cornerRadius = 5;
-            //将多余的部分切掉
-            backLeftView.layer.masksToBounds = YES;
-            backLeftView.backgroundColor = [UIColor greenColor];
-            [self addSubview:backLeftView];
-        }
-        if (i<[self CalculatePercentage:_farthestDict]) {
-            
-            UIView *backRightView = [[UIView alloc] init];
-            backRightView.frame = CGRectMake(self.width/2+5, self.height-30-i*10, self.width/2-15, 5);
-            //设置圆角
-            backRightView.layer.cornerRadius = 5;
-            //将多余的部分切掉
-            backRightView.layer.masksToBounds = YES;
-            backRightView.backgroundColor = [UIColor redColor];
-            [self addSubview:backRightView];
-        }
+    if (i<[self CalculatePercentage:_recentlyDict]) {
+        UIView *backLeftView = [[UIView alloc] init];
+        backLeftView.frame = CGRectMake(10, self.height-30-i*10, self.width/2-15, 5);
+        //设置圆角
+        backLeftView.layer.cornerRadius = 5;
+        //将多余的部分切掉
+        backLeftView.layer.masksToBounds = YES;
+        backLeftView.backgroundColor = [UIColor greenColor];
+        [self addSubview:backLeftView];
+    }
+    if (i<[self CalculatePercentage:_farthestDict]) {
         
-        if (i>=[self CalculatePercentage:_farthestDict]) {
-            [_timer invalidate];
-        }
-        i++;
-    }];
+        UIView *backRightView = [[UIView alloc] init];
+        backRightView.frame = CGRectMake(self.width/2+5, self.height-30-i*10, self.width/2-15, 5);
+        //设置圆角
+        backRightView.layer.cornerRadius = 5;
+        //将多余的部分切掉
+        backRightView.layer.masksToBounds = YES;
+        backRightView.backgroundColor = [UIColor redColor];
+        [self addSubview:backRightView];
+    }
+    
+    if (i>=[self CalculatePercentage:_farthestDict]) {
+        [_timer invalidate];
+    }
+    i++;
 }
 - (void)createCoverView
 {

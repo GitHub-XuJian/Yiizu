@@ -32,7 +32,7 @@
     [self createDataArray];
 }
 - (void)createDataArray{
-    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"列队情况",@"激活码输入", nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"列队情况", nil];
 }
 - (void)createTableView{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64,kSCREEN_WIDTH,kSCREEN_HEIGHT-64) style:UITableViewStylePlain];

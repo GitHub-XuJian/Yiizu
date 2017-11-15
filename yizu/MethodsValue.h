@@ -38,7 +38,7 @@
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow
 
-#define IsLoginState [XSaverTool objectForKey:UserIDKey]
+#define IsLoginState [XSaverTool objectForKey:IsLogin]
 //各种颜色宏定义
 //rgb颜色
 #define kSetColor(a, b, c) [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:1.0]
@@ -126,6 +126,16 @@
 #define Statevip @"statevip"
 #define Nickname @"Nickname"
 #define Personxq @"Personxq"
+
+#define VipBegintime @"VipBegintime"
+#define VipEndtime @"VipBegintime"
+#define Pername @"Pername"
+/**
+ * 是否补全了信息
+ */
+#define Identity @"Identity"
+
+
 /**
  * 微信登录
  */
@@ -147,8 +157,6 @@
 #define QQDoctor_App_Secret @"r3RZ6S5CjQFowl3m" // 注册时得到的AppSecret
 #define QQPatient_App_ID @"1106508032"
 #define QQPatient_App_Secret @"r3RZ6S5CjQFowl3m"
-
-
 
 
 

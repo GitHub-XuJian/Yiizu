@@ -54,11 +54,14 @@
                             [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
                             [XSaverTool setObject:password forKey:Password];
                             [XSaverTool setBool:code forKey:IsLogin];
-                            [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
+                            [XSaverTool setObject:responseObject[@"vipendtime"] forKey:VipEndtime];
+
                             [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
                             [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                             [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
+                            [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
+
                             _successfulBlock();
                             [self dismissViewControllerAnimated:YES completion:nil];
                             break;
@@ -161,14 +164,14 @@
                 switch (code) {
                     case 1:{
                         [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
-                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
-                        [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
-                        [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
-                        [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
-                        [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
-
                         [XSaverTool setBool:code forKey:IsLogin];
+                        [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
+                        [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
+                        [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
+                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                         [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
+                        [XSaverTool setObject:responseObject[@"vipendtime"] forKey:VipEndtime];
+
                         _successfulBlock();
                         [self dismissViewControllerAnimated:YES completion:nil];
                         break;
@@ -227,10 +230,14 @@
                 NSInteger code = [responseObject[@"code"] integerValue];
                 switch (code) {
                     case 1:{
+                        [XSaverTool setObject:responseObject[@"vipendtime"] forKey:VipEndtime];
+
                         [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
                         [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
                         [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
-                        [XSaverTool setBool:[responseObject[@"statevip"] integerValue] forKey:Statevip];
+                        [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
+                        [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];
+
                         if (![dict[@"nickname"] isKindOfClass:[NSNull class]]) {
                             [XSaverTool setObject:dict[@"nickname"]?dict[@"nickname"]:@"请输入昵称" forKey:Nickname];
                         }
@@ -254,7 +261,7 @@
                             [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
                             [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
-                            [XSaverTool setBool:[dict[@"statevip"] integerValue] forKey:Statevip];
+                            [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
                             [XSaverTool setBool:1 forKey:IsLogin];
                             [XSaverTool setObject:dict[@"headimgurl"] forKey:UserIconImage];
                             

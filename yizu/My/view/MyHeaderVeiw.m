@@ -9,6 +9,7 @@
 #import "MyHeaderVeiw.h"
 #import "LoginViewController.h"
 #import "PersonalInformationViewController.h"
+
 @interface MyHeaderVeiw ()
 @property (nonatomic, strong) UIButton *iconBtn;
 @property (nonatomic, strong) UILabel *nameLabel;
@@ -48,15 +49,17 @@
 
     UIButton *setUpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     setUpBtn.frame = CGRectMake(kSCREEN_WIDTH-50, 20, 44, 44);
-    [setUpBtn setImage:[UIImage imageNamed:@"Setup"] forState:UIControlStateNormal];
+    [setUpBtn setImage:[UIImage imageNamed:@"settingsNavIcon"] forState:UIControlStateNormal];
+    setUpBtn.tag = 111111;
     setUpBtn.backgroundColor = [UIColor blackColor];
-    [setUpBtn addTarget:self action:@selector(setUpBtnBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [setUpBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:setUpBtn];
     
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(self.width/2-60/2, self.height/2-60/2, 120/2,120/2);
     [button setImage:[UIImage imageNamed:@"icon_default_avatar"] forState:UIControlStateNormal];
+    button.tag = 222222;
     button.backgroundColor = [UIColor blackColor];
     [button addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     button.clipsToBounds=YES;
@@ -83,10 +86,7 @@
     [self addSubview:introductionLabel];
     self.introductionLabel = introductionLabel;
 }
-- (void)setUpBtnBtnClick
-{
-    NSLog(@"设置");
-}
+
 - (void)headPortraitBtnClick:(UIButton *)btn
 {
     [_delegate clickButton:btn];
