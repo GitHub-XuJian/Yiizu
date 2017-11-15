@@ -13,4 +13,6 @@
 //根据idq查询轮播图底下文字
 @property (nonatomic, copy)NSString * idq;
 
+@property (nonatomic, copy)NSString * townId;
+
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class ActivityDetailListModel;
+
 @interface ActivityDetailCell : UITableViewCell
+
+@property (nonatomic,strong) ActivityDetailListModel* model;
 
 @end

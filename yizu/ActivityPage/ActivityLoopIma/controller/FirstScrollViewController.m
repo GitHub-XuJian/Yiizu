@@ -73,7 +73,7 @@
 - (void)loadCityData
 {
     [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Bridge/Brigetext/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-
+        //NSLog(@"city_id===%@",responseObject);
        
         for (NSDictionary* dic in responseObject) {
             
@@ -108,7 +108,8 @@
         int value= [model.idq intValue];
         btn.tag=10+value;
         [btn addTarget:self action:@selector(cityBtn:) forControlEvents:UIControlEventTouchUpInside];
-
+        [btn setTitle:model.town forState:UIControlStateNormal];
+        
         [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.citypic]] forState:UIControlStateNormal];
         //self.SDCScrollView.frame获取不到frame
         
@@ -133,6 +134,8 @@
    ActivityDetailController* dVC=[[ActivityDetailController alloc]init];
     NSString * idq=[NSString stringWithFormat:@"%ld",btn.tag-10];
     dVC.idq=idq;
+    dVC.townId=btn.currentTitle;
+    
     [self.navigationController pushViewController:dVC animated:YES];
     
 }

@@ -48,6 +48,7 @@
 		1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423D61FA6F0C100F8EA95 /* SVProgressHUD.m */; };
 		1F4423DD1FA6F0C200F8EA95 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423D81FA6F0C100F8EA95 /* SVRadialGradientLayer.m */; };
 		1F47A4701FB9A33200679995 /* ActivityDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F47A46F1FB9A33200679995 /* ActivityDetailController.m */; };
+		1F5497331FBC232600C00257 /* ActivityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5497321FBC232500C00257 /* ActivityDetailListModel.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
@@ -321,6 +322,8 @@
 		1F4423D81FA6F0C100F8EA95 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		1F47A46E1FB9A33200679995 /* ActivityDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailController.h; sourceTree = "<group>"; };
 		1F47A46F1FB9A33200679995 /* ActivityDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailController.m; sourceTree = "<group>"; };
+		1F5497311FBC232500C00257 /* ActivityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailListModel.h; sourceTree = "<group>"; };
+		1F5497321FBC232500C00257 /* ActivityDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListModel.m; sourceTree = "<group>"; };
 		1FE535561F9F2E7300713053 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1FE535571F9F2E7300713053 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		1FE535591F9F2E7300713053 /* HomeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListModel.h; sourceTree = "<group>"; };
@@ -734,6 +737,8 @@
 			children = (
 				1F0CEABA1FBA926A00D06C8E /* ActivityDetailLabmodel.h */,
 				1F0CEABB1FBA926B00D06C8E /* ActivityDetailLabmodel.m */,
+				1F5497311FBC232500C00257 /* ActivityDetailListModel.h */,
+				1F5497321FBC232500C00257 /* ActivityDetailListModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2152,6 +2157,7 @@
 				AF23F4121FAD508A0022E990 /* MyInformationViewController.m in Sources */,
 				AF626D041FA1DF9500A1225F /* JXTAlertView.m in Sources */,
 				AF66AD7A1F9DB5070079A2CF /* HelpCenterViewController.m in Sources */,
+				1F5497331FBC232600C00257 /* ActivityDetailListModel.m in Sources */,
 				AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */,
 				AF66AE7D1F9F1AB10079A2CF /* IQTextView.m in Sources */,
 				1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */,

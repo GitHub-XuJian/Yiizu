@@ -53,19 +53,22 @@
 //        UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg",i]];
 //        [imageArray addObject:image];
 //    }
+   
 
     self.SDScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 200) delegate:self placeholderImage:nil];
     //self.SDScrollView.imageURLStringsGroup=self.imaUrlArr;
     self.SDScrollView.autoScrollTimeInterval=2.0;
     self.SDScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
     [self addSubview:self.SDScrollView];
+    
+    
 }
 
 - (void)setIma1:(NSString *)ima1
 {
     _ima1=ima1;
     [_imaUrlArr addObject:ima1];
-    //NSLog(@"loopURL===%@",ima1);
+    [self updateUI];
 
 }
 
@@ -73,11 +76,18 @@
 {
     _ima2=ima2;
     [_imaUrlArr addObject:ima2];
+    [self updateUI];
 }
 - (void)setIma3:(NSString *)ima3
 {
     _ima3=ima3;
     [_imaUrlArr addObject:ima3];
+    [self updateUI];
+    //
+}
+
+- (void)updateUI
+{
     self.SDScrollView.imageURLStringsGroup=self.imaUrlArr;
 }
 @end

@@ -78,6 +78,8 @@
 @property (nonatomic, copy) NSString* writingpic;
 //每行标题
 @property (nonatomic, copy) NSString* caption1;
+//活动id
+@property (nonatomic, copy) NSString* activityid;
 
 +(instancetype)modelWithDict:(NSDictionary*)dic;
 
