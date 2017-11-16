@@ -31,6 +31,7 @@
         
         UILabel *lineview = [[UILabel alloc] init];
         lineview.backgroundColor = kColorLine;
+        lineview.frame = CGRectMake(0, 0, kSCREEN_WIDTH, indexPath.row==0?80:60);
         [self.contentView addSubview:lineview];
         self.lineView = lineview;
         

@@ -2017,6 +2017,7 @@
 				TargetAttributes = {
 					AF66ACED1F9D7E540079A2CF = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = R4485X89UR;
 						ProvisioningStyle = Automatic;
 					};
 					AF66AD001F9D7E550079A2CF = {
@@ -2423,7 +2424,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
@@ -2457,7 +2458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
