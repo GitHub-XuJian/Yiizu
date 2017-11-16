@@ -12,6 +12,7 @@
 #import "HomeListModel.h"
 #import "LoopImageViewController.h"
 #import "HomeSearchController.h"
+#import "HomeDetailController.h"
 
 @interface HomeViewController ()<HomeCityBtnDelegate>
 @property(nonatomic, strong)NSMutableArray* listArr;
@@ -123,7 +124,7 @@
     _listArr=[[NSMutableArray alloc]init];
 //    [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        NSLog(@"默认Data:%@",responseObject);
+        //NSLog(@"默认Data:%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         for (NSDictionary* dic in arr) {
             HomeListModel* model=[HomeListModel ModelWithDict:dic];
@@ -275,9 +276,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
     cell.model=self.listArr[indexPath.row];
-    
-
-    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -287,7 +285,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //
+    HomeDetailController* dVC=[[HomeDetailController alloc]init];
+    
+    HomeListModel* model=self.listArr[indexPath.row];
+    
+    dVC.model=model;
+    
+    [self.navigationController pushViewController:dVC animated:YES];
+    
 }
 
 /*

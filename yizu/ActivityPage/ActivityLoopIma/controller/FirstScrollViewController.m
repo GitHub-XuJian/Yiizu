@@ -11,6 +11,8 @@
 #import "XAFNetWork.h"
 #import "ActivityPageModel.h"
 
+#import "ActivityDetailController.h"
+
 
 
 
@@ -25,13 +27,7 @@
 
 @implementation FirstScrollViewController
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    
-    [self loadData];
-    [self loadCityData];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +35,8 @@
     _cityArr=[[NSMutableArray alloc]init];
     
     
-    
+    [self loadData];
+    [self loadCityData];
     
     
 
@@ -76,9 +73,11 @@
 - (void)loadCityData
 {
     [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Bridge/Brigetext/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-
-      
+        //NSLog(@"city_id===%@",responseObject);
+       
         for (NSDictionary* dic in responseObject) {
+            
+            
             ActivityPageModel* model=[ActivityPageModel modelWithDict:dic];
 
             [_cityArr addObject:model];
@@ -106,9 +105,11 @@
     for (int i=0; i<4; i++) {
         ActivityPageModel* model=arr[i];
         UIButton* btn=[[UIButton alloc]init];
-       
+        int value= [model.idq intValue];
+        btn.tag=10+value;
         [btn addTarget:self action:@selector(cityBtn:) forControlEvents:UIControlEventTouchUpInside];
-
+        [btn setTitle:model.town forState:UIControlStateNormal];
+        
         [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.citypic]] forState:UIControlStateNormal];
         //self.SDCScrollView.frame获取不到frame
         
@@ -130,9 +131,12 @@
 
 - (void)cityBtn:(UIButton*)btn
 {
-//    ActivityDetailController* dVC=[[ActivityDetailController alloc]init];
-//
-//    [self.navigationController pushViewController:dVC animated:YES];
+   ActivityDetailController* dVC=[[ActivityDetailController alloc]init];
+    NSString * idq=[NSString stringWithFormat:@"%ld",btn.tag-10];
+    dVC.idq=idq;
+    dVC.townId=btn.currentTitle;
+    
+    [self.navigationController pushViewController:dVC animated:YES];
     
 }
 - (void)didReceiveMemoryWarning {

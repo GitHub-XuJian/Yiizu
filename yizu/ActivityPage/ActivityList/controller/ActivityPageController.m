@@ -43,7 +43,7 @@
     [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
         for (NSDictionary* dic in responseObject) {
-            NSLog(@"data:%@",responseObject);
+            NSLog(@"dataListLoop:%@",responseObject);
             ActivityLsitModel * model=[ActivityLsitModel modelWithDict:dic];
             [_tabSource addObject:model];
         }
@@ -81,6 +81,14 @@
     return 260;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"点击了:%ld",(long)indexPath.row);
+    
+    //ActivityLsitModel* model=_tabSource[indexPath.row];
+    //model.activityid
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
