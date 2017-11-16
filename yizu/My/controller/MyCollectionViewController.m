@@ -31,15 +31,28 @@
 }
 - (void)createDataArray
 {
-    for (int i = 0; i < 20; i++) {
-        MyCollectionModel *model = [[MyCollectionModel alloc] init];
-        model.iconImage = @"Mall";
-        model.nameStr = @"美味寿司";
-        model.addressStr = [NSString stringWithFormat:@"!沈阳|排名:%d",i];
-        model.timeStr = @"2017-7-15";
-        [self.dataArray addObject:model];
-    }
-    [self.tableView reloadData];
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/keepaw",Main_Server];
+    NSDictionary *dict = @{@"personid":@"3"};
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        /**
+         * 结束刷新
+         */
+        [self.tableView.mj_header endRefreshing];
+        for (NSDictionary *dict in responseObject) {
+            MyCollectionModel *model = [[MyCollectionModel alloc] init];
+            model.iconImage = [NSString stringWithFormat:@"%@public/%@",Main_ServerImage,dict[@"icon"]];
+            model.nameStr = dict[@"chambername"];
+            model.addressStr = [NSString stringWithFormat:@"!%@|点赞总数:%@",dict[@"city_id"],dict[@"keep"]];
+            model.timeStr = [EncapsulationMethod timeStrWithTimeStamp:dict[@"keeptime"]];
+            [self.dataArray addObject:model];
+            [self.tableView reloadData];
+
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
 }
 - (void)createTableView
 {
@@ -48,9 +61,16 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
-
+    
+    //默认【下拉刷新】
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
+}
+- (void)refresh
+{
+    [self.dataArray removeAllObjects];
+    [self createDataArray];
 }
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

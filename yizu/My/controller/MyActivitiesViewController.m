@@ -31,16 +31,27 @@
 }
 - (void)createDataArray
 {
-    for (int i = 0; i < 11; i++) {
-        MyActivitiesModel *model = [[MyActivitiesModel alloc] init];
-        model.iconImage = @"CN";
-        model.nameStr = @"支付宝商家减免活动";
-        model.addressStr = @"大家来看数据都IE家啦几点啦看时间卡数据都上拉控件打脸萨控件啊蓝思科技上课";
-        model.timeStr = @"2017-7-15";
-        model.stateStr = @"进行中";
-        [self.dataArray addObject:model];
-    }
-    [self.tableView reloadData];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/Mobile/Mine/movable",Main_Server];
+    NSDictionary *dict = @{@"personid":@"3"};
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        /**
+         * 结束刷新
+         */
+        [self.tableView.mj_header endRefreshing];
+        for (NSDictionary *dict in responseObject) {
+            MyActivitiesModel *model = [[MyActivitiesModel alloc] init];
+            model.iconImage = [NSString stringWithFormat:@"%@public/img/img/%@",Main_ServerImage,dict[@"mainpic"]];
+            model.nameStr = dict[@"title"];
+            model.addressStr = dict[@"movable"];
+            model.timeStr = [EncapsulationMethod timeStrWithTimeStamp:dict[@"attentiontime"]];;
+            model.stateStr = @"";
+            [self.dataArray addObject:model];
+            [self.tableView reloadData];
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (void)createTableView
 {
@@ -49,7 +60,7 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     
 }
@@ -58,7 +69,6 @@
     
     return 100;
 }
-
 //分区
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -67,9 +77,8 @@
 //设置每个区有多少行共有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.dataArray.count;
 }
-
 // 构建tableView的单元格
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //必须用一个静态字符串
@@ -84,8 +93,6 @@
     [cell initWithMyActivitiesModel:self.dataArray[indexPath.row]];
     return cell;
 }
-
-
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -93,7 +100,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

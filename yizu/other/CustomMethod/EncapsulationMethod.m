@@ -380,6 +380,17 @@
     
     return [NSString stringWithFormat:@"%ld",(long)numberDays];
 }
++(NSString *)timeStrWithTimeStamp:(NSString *)timeStr
+{
+    NSDate *currentDate = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
+    //用于格式化NSDate对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设置格式：zzz表示时区
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //NSDate转NSString
+    NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
+    return currentDateString;
+}
 //获取当前的时间
 +(NSString*)getCurrentTimes{
     

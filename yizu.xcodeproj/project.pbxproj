@@ -206,6 +206,7 @@
 		AFB215101FB99B67006DD630 /* SetUpTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2150F1FB99B67006DD630 /* SetUpTableViewCell.m */; };
 		AFB215151FBA96F5006DD630 /* ActivationCodePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215141FBA96F5006DD630 /* ActivationCodePayViewController.m */; };
 		AFB215181FBAB664006DD630 /* ActivationCodePayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */; };
+		AFB2151D1FBD215C006DD630 /* PersonalInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
@@ -619,6 +620,8 @@
 		AFB215141FBA96F5006DD630 /* ActivationCodePayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivationCodePayViewController.m; sourceTree = "<group>"; };
 		AFB215161FBAB664006DD630 /* ActivationCodePayTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivationCodePayTableViewCell.h; sourceTree = "<group>"; };
 		AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivationCodePayTableViewCell.m; sourceTree = "<group>"; };
+		AFB2151B1FBD215C006DD630 /* PersonalInformationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInformationTableViewCell.h; sourceTree = "<group>"; };
+		AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationTableViewCell.m; sourceTree = "<group>"; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -1358,6 +1361,8 @@
 				AF66AE151F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.m */,
 				AFB2150E1FB99B67006DD630 /* SetUpTableViewCell.h */,
 				AFB2150F1FB99B67006DD630 /* SetUpTableViewCell.m */,
+				AFB2151B1FBD215C006DD630 /* PersonalInformationTableViewCell.h */,
+				AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2089,6 +2094,7 @@
 				AF66ADF41F9DE1B60079A2CF /* MJRefreshComponent.m in Sources */,
 				AF66AE791F9F1AB10079A2CF /* IQUIViewController+Additions.m in Sources */,
 				1F4423DD1FA6F0C200F8EA95 /* SVRadialGradientLayer.m in Sources */,
+				AFB2151D1FBD215C006DD630 /* PersonalInformationTableViewCell.m in Sources */,
 				AF66AE811F9F1AB10079A2CF /* IQToolbar.m in Sources */,
 				AF66ADFC1F9DE1B60079A2CF /* MJRefreshBackStateFooter.m in Sources */,
 				AF8B6CF51FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m in Sources */,

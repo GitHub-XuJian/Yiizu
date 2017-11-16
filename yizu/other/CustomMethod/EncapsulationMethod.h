@@ -75,6 +75,10 @@
  */
 +(NSString *)stringWithDate:(NSDate *)date;
 /**
+ * 时间戳转字符串
+ */
++(NSString *)timeStrWithTimeStamp:(NSString *)timeStr;
+/**
  * 字符串转date
  */
 +(NSDate *)dateWithString:(NSString *)str;
