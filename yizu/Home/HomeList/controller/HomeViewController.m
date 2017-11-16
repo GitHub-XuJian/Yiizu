@@ -122,7 +122,7 @@
 - (void)requestData:(NSString*)url
 {
     _listArr=[[NSMutableArray alloc]init];
-//    [SVProgressHUD showWithStatus:@"数据加载中..."];
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         //NSLog(@"默认Data:%@",responseObject);
         NSArray* arr=responseObject[@"list"];

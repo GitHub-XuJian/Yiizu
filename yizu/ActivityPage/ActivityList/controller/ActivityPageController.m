@@ -10,7 +10,6 @@
 #import "ActivityCell.h"
 #import "ActivityLsitModel.h"
 
-
 @interface ActivityPageController ()
 
 @property (nonatomic,strong) NSMutableArray* tabSource;
@@ -43,7 +42,7 @@
     [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
         for (NSDictionary* dic in responseObject) {
-            NSLog(@"dataListLoop:%@",responseObject);
+            //NSLog(@"dataListLoop:%@",responseObject);
             ActivityLsitModel * model=[ActivityLsitModel modelWithDict:dic];
             [_tabSource addObject:model];
         }
@@ -88,6 +87,9 @@
     
     //ActivityLsitModel* model=_tabSource[indexPath.row];
     //model.activityid
+    
+
+    
 }
 /*
 // Override to support conditional editing of the table view.

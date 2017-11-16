@@ -162,7 +162,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUs-lN-oQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="551" y="-2428"/>
+            <point key="canvasLocation" x="858" y="-2494"/>
         </scene>
         <!--Loop Image View Controller-->
         <scene sceneID="irQ-ld-LFC">
@@ -212,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4P-Fe-mAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="-2572"/>
+            <point key="canvasLocation" x="1524" y="-2659"/>
         </scene>
     </scenes>
     <resources>
