@@ -67,7 +67,7 @@
 - (void)createData
 {
     self.nameLabel.text = self.activitiesModel.nameStr;
-    self.iconImageView.image = [UIImage imageNamed:self.activitiesModel.iconImage];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:self.activitiesModel.iconImage]];
     self.addressLabel.text = self.activitiesModel.addressStr;
     self.timeLabel.text = self.activitiesModel.timeStr;
     self.statelabel.text = self.activitiesModel.stateStr;
@@ -80,7 +80,7 @@
     self.addressLabel.frame = CGRectMake(self.iconImageView.x+self.iconImageView.width+10, self.nameLabel.y+self.nameLabel.height, kSCREEN_WIDTH/2-50, 100-20-self.nameLabel.height);
     self.timeLabel.frame = CGRectMake(kSCREEN_WIDTH/2, 10, kSCREEN_WIDTH/2-10, (135/2-20)/2);
     self.statelabel.frame = CGRectMake(kSCREEN_WIDTH-70,100/2-30/2,70,30);
-//    self.lineView.frame = CGRectMake(0, 100, kSCREEN_WIDTH, 0.5);
+    self.lineView.frame = CGRectMake(0, 100, kSCREEN_WIDTH, 0.5);
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

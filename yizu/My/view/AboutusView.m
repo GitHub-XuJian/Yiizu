@@ -94,12 +94,14 @@
         UITapGestureRecognizer *tempLP = (UITapGestureRecognizer *)recognizer;
         if (tempLP.view.tag == ViewTag) {   // 用户协议
             WebViewController *webViewVC = [[WebViewController alloc] init];
+            webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
             [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
         }else if (tempLP.view.tag == ViewTag+1) {   // 联系电话
             [EncapsulationMethod callPhoneStr:_array2[tempLP.view.tag-ViewTag]];
         }
     }else if([recognizer isKindOfClass:[UIButton class]]){
         WebViewController *webViewVC = [[WebViewController alloc] init];
+        webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
         [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
     }
 }
