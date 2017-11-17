@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^AgreementViewBlock)(UIButton *classBtn);
 
 @interface AgreementView : UIView
+
+@property (nonatomic, strong) AgreementViewBlock block;
+- (instancetype)initWithFrame:(CGRect)frame andTitleColor:(UIColor *)titleColor;
 
 @end

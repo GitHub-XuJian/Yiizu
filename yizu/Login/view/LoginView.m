@@ -10,7 +10,9 @@
 #import "AgreementView.h"
 
 @interface LoginView ()<UITextFieldDelegate>
-
+{
+    BOOL _isAgreement;
+}
 @end
 
 @implementation LoginView
@@ -20,6 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self createUI];
+        _isAgreement = YES;
     }
     return self;
 }
@@ -42,7 +45,7 @@
     [accountTextField setValue:kColorLine forKeyPath:@"_placeholderLabel.textColor"];
     accountTextField.delegate = self;
     accountTextField.textColor = [UIColor whiteColor];
-//    accountTextField.text = @"13898388023";
+    accountTextField.text = @"13898388023";
     [backImageView addSubview:accountTextField];
     self.accountTextField = accountTextField;
     
@@ -80,15 +83,29 @@
     qqbtn.backgroundColor = [UIColor clearColor];
     [backImageView addSubview:qqbtn];
 
-    AgreementView *view = [[AgreementView alloc] initWithFrame:CGRectMake(kSCREEN_WIDTH/2-200/2, kSCREEN_HEIGHT-147/3-22, 200, 20)];
+    AgreementView *view = [[AgreementView alloc] initWithFrame:CGRectMake(kSCREEN_WIDTH/2-200/2, kSCREEN_HEIGHT-147/3-22, 200, 20) andTitleColor:[UIColor whiteColor]];
+    view.block = ^(UIButton *classBtn) {
+        _isAgreement = classBtn.selected;
+    };
     [backImageView addSubview:view];
     
 }
 
 - (void)btnClickedAction:(UIButton *)btn
 {
-    if (_block) {
-        _block((int)btn.tag,self.passWordTextField.text);
+    if (btn.tag == Login) {
+        if (_isAgreement) {
+            if (_block) {
+                _block((int)btn.tag,self.passWordTextField.text);
+            }
+            
+        }else{
+            jxt_showAlertTitle(@"请同意协议");
+        }
+    }else{
+        if (_block) {
+            _block((int)btn.tag,self.passWordTextField.text);
+        }
     }
 }
 - (void)btnClicked:(btnClicked)block

@@ -6,7 +6,10 @@
 //  Copyright © 2017年 XuJian. All rights reserved.
 //
 
+#define BtnTag   12345678
+
 #import "MyWalletViewController.h"
+#import "WalletView.h"
 
 @interface MyWalletViewController ()
 
@@ -18,22 +21,52 @@
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     
+    [self createRightBtn];
     [self createViewUI];
+    
+}
+- (void)createRightBtn
+{
+    UIButton *releaseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [releaseButton setTitle:@"交易明细" forState:normal];
+    [releaseButton addTarget:self action:@selector(TransactionDetails) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *releaseButtonItem = [[UIBarButtonItem alloc] initWithCustomView:releaseButton];
+    self.navigationItem.rightBarButtonItem = releaseButtonItem;
+}
+- (void)TransactionDetails
+{
+    
 }
 - (void)createViewUI
 {
-    UIView *view = [[UIView alloc] init];
-    view.frame = CGRectMake(0, 64, kSCREEN_WIDTH, 661/3);
+    WalletView *view = [[WalletView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 661/3)];
     view.backgroundColor =[UIColor colorWithRed:0.30f green:0.30f blue:0.30f alpha:1.00f];
     [self.view addSubview:view];
     
-    UILabel *accountLabel = [[UILabel alloc] init];
-    accountLabel.frame = CGRectMake(0, 126/3, view.width, 43/3);
-    accountLabel.text = @"账户余额";
-    accountLabel.font = [UIFont systemFontOfSize:18];
-    accountLabel.textAlignment =NSTextAlignmentCenter;
-    accountLabel.textColor = [UIColor whiteColor];
-    [view addSubview:accountLabel];
+    NSArray *array = @[@"提现",@"银行卡"];
+    for (int i = 0; i < array.count; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(0+i*kSCREEN_WIDTH/2, view.y+view.height, kSCREEN_WIDTH/2, 185/3);
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitle:array[i] forState:UIControlStateNormal];
+        btn.tag = BtnTag+i;
+        [btn setTitleColor:kTITLETEXTCOLOR forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+        if (i == 0) {
+            UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(btn.x+btn.width-0.5, 16/3, 0.5, btn.height-16/3-16/3)];
+            lineView.backgroundColor = kColorLine;
+            [btn addSubview:lineView];
+        }
+    }
+}
+- (void)btnClick:(UIButton *)btn
+{
+    if (btn.tag == BtnTag) {
+        NSLog(@"提现");
+    }else{
+        NSLog(@"银行卡");
+    }
 }
 
 - (void)didReceiveMemoryWarning {

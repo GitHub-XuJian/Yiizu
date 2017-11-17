@@ -52,7 +52,7 @@
         for (int i = 0; i < _selectorPatnArray.count; i++) {
             NSDictionary *dict = _selectorPatnArray[i];
             [allcodeIdarray addObject:@{@"codeid":dict[@"codeid"]}];
-            NSInteger money = [dict[@"paymoney"] integerValue];
+            NSInteger money = [dict[@"payzong"] integerValue];
             allMoney += money;
         }
         NSLog(@"%ld",allMoney);

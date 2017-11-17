@@ -29,12 +29,12 @@
 - (void)reloadData
 {
     [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
-    if ([XSaverTool objectForKey:Nickname]) {
+    if ([[XSaverTool objectForKey:Nickname] length]) {
         self.nameLabel.text = [XSaverTool objectForKey:Nickname];
     }else{
         self.nameLabel.text = @"请输入昵称";
     }
-    if ([XSaverTool objectForKey:Personxq]) {
+    if ([[XSaverTool objectForKey:Personxq] length]) {
         self.introductionLabel.text = [XSaverTool objectForKey:Personxq];
     }else{
         self.introductionLabel.text = @"请输入简介";

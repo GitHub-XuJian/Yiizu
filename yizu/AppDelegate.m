@@ -15,7 +15,7 @@
 #import "ActivationCodeInputViewController.h"
 
 @interface AppDelegate ()<UIApplicationDelegate,LLTabBarDelegate,WXApiDelegate>
-
+@property (nonatomic, strong) LLTabBar *tabbar;
 @end
 
 @implementation AppDelegate
@@ -34,10 +34,13 @@
     keyboardManager.shouldResignOnTouchOutside = YES; // 控制点击背景是否收起键盘
     keyboardManager.shouldToolbarUsesTextFieldTintColor = YES; // 控制键盘上的工具条文字颜色是否用户自定义
     keyboardManager.toolbarManageBehaviour = IQAutoToolbarBySubviews; // 有多个输入框时，可以通过点击Toolbar 上的“前一个”“后一个”按钮来实现移动到不同的输入框
-    keyboardManager.enableAutoToolbar = NO; // 控制是否显示键盘上的工具条
+    keyboardManager.enableAutoToolbar = YES; // 控制是否显示键盘上的工具条
     keyboardManager.shouldShowToolbarPlaceholder = YES; // 是否显示占位文字
     keyboardManager.placeholderFont = [UIFont boldSystemFontOfSize:17]; // 设置占位文字的字体
-    keyboardManager.keyboardDistanceFromTextField = 10.0f; // 输入框距离键盘的距离
+    keyboardManager.keyboardDistanceFromTextField = 30.0f; // 输入框距离键盘的距离
+    /**
+     * 微信APPID
+     */
     [WXApi registerApp:WXDoctor_App_ID];
     
 
@@ -59,13 +62,17 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     // 2.设置窗口的跟控制器
     UITabBarController *tabbarController = [SFRootVC chooseWindowRootVC];
-    LLTabBar *tabbar = [SFRootVC tabbarinitWithController:tabbarController];
-    tabbar.delegate = self;
+    _tabbar = [SFRootVC tabbarinitWithController:tabbarController];
+    _tabbar.delegate = self;
     self.window.rootViewController = tabbarController;
     // 3,让窗口显示
     [self.window makeKeyAndVisible];
     
     return YES;
+}
+- (void)tabbarSelectedWithIndex:(NSInteger)index
+{
+    [_tabbar setSelectedIndex:index];
 }
 
 - (void)tabBarDidSelectedRiseButton {

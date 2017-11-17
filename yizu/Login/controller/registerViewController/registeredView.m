@@ -11,13 +11,14 @@
 
 #import "registeredView.h"
 #import "mytimer.h"
+#import "AgreementView.h"
 
 @interface registeredView ()<UITextFieldDelegate>
 {
     NSString *_inputVcode;
     NSString *_oldPassword;
     NSString *_newPassword;
-
+    BOOL _isAgreement;
 }
 @property (nonatomic,strong)UIButton *CodeBtn;//获取验证码
 @property (nonatomic, strong) UITextField *verificationCodeText;
@@ -37,6 +38,7 @@
         [self createUI];
         //注册通知
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tongzhi:) name:@"mytimertongzhi" object:nil];
+        _isAgreement = YES;
     }
     return self;
 }
@@ -88,23 +90,23 @@
     [backImageView addSubview:yizuLabel];
     
     UITextField *emailTextField = [[UITextField alloc] init];
-    emailTextField.frame = CGRectMake(145/3,yizuLabel.y+yizuLabel.height+94/2,kSCREEN_WIDTH-145/3*2,40);
+    emailTextField.frame = CGRectMake(kSCREEN_WIDTH/2-(kSCREEN_WIDTH-145/3*2)/2,yizuLabel.y+yizuLabel.height+94/2,kSCREEN_WIDTH-145/3*2,40);
     [backImageView addSubview:emailTextField];
     self.phoneText = emailTextField;
     [self addtextField:emailTextField Withplaceholder:@"请请输入手机" andTag:0 andTextFieldtext:self.iphoneStr];
     
     UITextField *verificationCodeTextField = [[UITextField alloc] init];
-    verificationCodeTextField.frame = CGRectMake(emailTextField.x,emailTextField.y+emailTextField.height+10,(kSCREEN_WIDTH-60)/2,40);
+    verificationCodeTextField.frame = CGRectMake(emailTextField.x,emailTextField.y+emailTextField.height+10,emailTextField.width,40);
     [backImageView addSubview:verificationCodeTextField];
     self.verificationCodeText = verificationCodeTextField;
     [self addtextField:verificationCodeTextField Withplaceholder:@"请输入验证码" andTag:0 andTextFieldtext:@""];
     
     _CodeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _CodeBtn.frame = CGRectMake(verificationCodeTextField.x+verificationCodeTextField.width+10, verificationCodeTextField.y, kSCREEN_WIDTH-60-verificationCodeTextField.width, verificationCodeTextField.height);
+    _CodeBtn.frame = CGRectMake(verificationCodeTextField.x+verificationCodeTextField.width-80, verificationCodeTextField.y, 80, verificationCodeTextField.height);
     self.isq?(_CodeBtn.userInteractionEnabled = NO):(_CodeBtn.userInteractionEnabled = YES);
     [_CodeBtn setTitle:@"获取验证码" forState:UIControlStateNormal];
     [_CodeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    _CodeBtn.titleLabel.font =kFontMini;
+    _CodeBtn.titleLabel.font =kFontBodySubtitle;
     _CodeBtn.backgroundColor = [UIColor clearColor];
     [_CodeBtn addTarget:self action:@selector(CodeBtnClic:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:_CodeBtn];
@@ -120,7 +122,7 @@
     [backImageView addSubview:passwordTextField2];
     [self addtextField:passwordTextField2 Withplaceholder:@"请确认新密码" andTag:ConfirmPasswordTextFieldTag andTextFieldtext:@""];
 
-    //登录按钮
+    //注册按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(passwordTextField2.x, passwordTextField2.y+passwordTextField2.height+20, passwordTextField2.width, passwordTextField2.height);
     [button setTitle:@"注册" forState:UIControlStateNormal];
@@ -128,6 +130,12 @@
     [button setBackgroundImage:[UIImage imageNamed:@"login"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:button];
+    
+    AgreementView *view = [[AgreementView alloc] initWithFrame:CGRectMake(kSCREEN_WIDTH/2-200/2, kSCREEN_HEIGHT-147/3-22, 200, 20) andTitleColor:[UIColor blackColor]];
+    view.block = ^(UIButton *classBtn) {
+        _isAgreement = classBtn.selected;
+    };
+    [backImageView addSubview:view];
 }
 - (void)addtextField:(UITextField *)textField Withplaceholder:(NSString *)placeholder andTag:(NSInteger)textFieldTag andTextFieldtext:(NSString *)textStr{
     
@@ -143,7 +151,7 @@
     
     UIView *lineView = [[UIView alloc] init];
     lineView.backgroundColor = [UIColor blackColor];
-    lineView.frame = CGRectMake(textField.x, textField.y+textField.height, kSCREEN_WIDTH-145/3*2, 0.5);
+    lineView.frame = CGRectMake(textField.x, textField.y+textField.height, textField.width, 0.5);
     [self.backView addSubview:lineView];
 }
 - (void)leftBtnClick
@@ -233,37 +241,40 @@
 - (void)onClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    
-    if (!_oldPassword.length||!_newPassword.length) {
-        jxt_showAlertTitle(@"请输入账号或密码");
-        return;
-    }
-    if (![XSaverTool objectForKey:VerificationCode]) {
-        jxt_showAlertTitle(@"请获取验证码");
-        return;
-    }
-    if (!_inputVcode) {
-        jxt_showAlertTitle(@"请输入验证码");
-        return;
-    }
-    
-    if ([_oldPassword isEqualToString:_newPassword]) {
-        NSDictionary *dict = @{@"tel":self.iphoneStr,@"password":[EncapsulationMethod md5:_newPassword]};
-        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Register/register",Main_Server];
-        [XAFNetWork POST:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
-            jxt_showToastMessage(responseObject[@"msg"], 1);
-            if ([responseObject[@"code"] integerValue]) {
-                
-                [[UIApplication sharedApplication].keyWindow endEditing:NO];
-                [[EncapsulationMethod viewController:self] dismissViewControllerAnimated:NO completion:nil];
-                
-            }
-        } fail:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error);
-        }];
+    if (_isAgreement) {
+        if (!_oldPassword.length||!_newPassword.length) {
+            jxt_showAlertTitle(@"请输入账号或密码");
+            return;
+        }
+        if (![XSaverTool objectForKey:VerificationCode]) {
+            jxt_showAlertTitle(@"请获取验证码");
+            return;
+        }
+        if (!_inputVcode) {
+            jxt_showAlertTitle(@"请输入验证码");
+            return;
+        }
+        
+        if ([_oldPassword isEqualToString:_newPassword]) {
+            NSDictionary *dict = @{@"tel":self.iphoneStr,@"password":[EncapsulationMethod md5:_newPassword]};
+            NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Register/register",Main_Server];
+            [XAFNetWork POST:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"%@",responseObject);
+                jxt_showToastMessage(responseObject[@"msg"], 1);
+                if ([responseObject[@"code"] integerValue]) {
+                    
+                    [[UIApplication sharedApplication].keyWindow endEditing:NO];
+                    [[EncapsulationMethod viewController:self] dismissViewControllerAnimated:NO completion:nil];
+                    
+                }
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"%@",error);
+            }];
+        }else{
+            jxt_showToastMessage(@"两次密码不一致", 1);
+        }
     }else{
-        jxt_showToastMessage(@"两次密码不一致", 1);
+        jxt_showAlertTitle(@"请同意协议");
     }
     
 }
