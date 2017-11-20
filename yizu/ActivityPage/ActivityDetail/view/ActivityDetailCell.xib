@@ -43,8 +43,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-p8-MVG">
                         <rect key="frame" x="15" y="135" width="290" height="25"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-7h-6Q7">
-                                <rect key="frame" x="219" y="0.0" width="52" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-7h-6Q7" customClass="FollowBtn">
+                                <rect key="frame" x="219" y="0.0" width="52" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="➕关注"/>
                             </button>
@@ -74,9 +74,10 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="bigIma" destination="wgS-8d-evY" id="pmf-BK-vbk"/>
+                <outlet property="followBtn" destination="0YC-7h-6Q7" id="cS9-JN-8GY"/>
                 <outlet property="movableLab" destination="M6g-0J-WOC" id="UsW-be-2Hp"/>
             </connections>
-            <point key="canvasLocation" x="-356" y="70"/>
+            <point key="canvasLocation" x="-690" y="147"/>
         </tableViewCell>
     </objects>
 </document>

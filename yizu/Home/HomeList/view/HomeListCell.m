@@ -12,6 +12,8 @@
 #import "UIImageView+AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "CellBtn.h"
+#import "favoriteBtn.h"
+
 @interface HomeListCell ()
 
 
@@ -30,6 +32,7 @@
 //排名
 @property (weak, nonatomic) IBOutlet UIButton *upView;
 
+@property (weak, nonatomic) IBOutlet favoriteBtn *favBtn;
 
 
 
@@ -48,35 +51,6 @@
 }
 
 
-- (IBAction)keepBtn:(UIButton *)sender
-{
-    
-    static BOOL isSele=NO;
-    isSele=!isSele;
-    sender.selected=isSele;
-    
-    if (isSele) {
-        NSLog(@"收藏1");
-       
-    }else
-    {
-        NSLog(@"收藏2");
-        
-    }
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        sender.transform = CGAffineTransformMakeScale(1.5, 1.5);//宽高伸缩比例
-        
-    } completion:^(BOOL finished) {
-        
-        [UIView animateWithDuration:0.25 animations:^{
-            sender.transform = CGAffineTransformIdentity;//变形后复原
-    
-        }];
-        
-    }];
-}
 
 
 
@@ -84,11 +58,10 @@
 -(void)setModel:(HomeListModel *)model
 {
     _model=model;
-    //更改
+    
     self.likeCellBtn.likeCount=model.upvote.integerValue;
     //NSLog(@"开始点赞%ld",(long)model.upvote.integerValue);
     //self.likeCellBtn.islike=model.status;
-    //NSLog(@"开始点赞%@",model.status);
 //    if ([model.status isEqualToString:@"<null>"]) {
 //        NSLog(@"开始状态null");
 //        self.likeCellBtn.islike=NO;
@@ -104,14 +77,16 @@
        self.likeCellBtn.islike=NO;
         //NSLog(@"00000000000");
     }
-    //改
+    
     if (model.Turvy) {
-        
+        self.favBtn.issc=YES;
+    }else
+    {
+        self.favBtn.issc=NO;
     }
     
-    //改
     self.likeCellBtn.chambername=model.chambername;//保存店铺名字用于点赞
-    
+    self.favBtn.chambername=model.chambername;
     
     self.nameLab.text=model.chambername;
     [self.ima1 setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.image1]]];

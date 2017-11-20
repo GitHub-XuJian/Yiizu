@@ -12,6 +12,9 @@
 static NSString * const normalImageName = @"ic_common_praise_normal_15x15_";
 static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 
+
+
+
 @implementation CellBtn
 
 + (instancetype)likeCountViewWithCount:(NSInteger)count requestID:(NSString *)ID {
@@ -48,10 +51,6 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     
     self.titleLabel.font = [UIFont systemFontOfSize:10];
     
-    
-//    self.islike = YES;
-    
-    
 }
 
 
@@ -71,13 +70,16 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 //    newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSString* isZan=@"";
+ 
     if (self.islike) {
         self.likeCount=self.likeCount+1;
         isZan=@"1";
+    
     }else
     {
         self.likeCount=self.likeCount-1;
         isZan=@"2";
+       
     }
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -95,16 +97,15 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     
         NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
     
+    
         newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+       
         if ([[responseObject objectForKey:@"dianzan"] isEqualToString:@"success"]) {
             NSLog(@"点赞成功%@",responseObject[@"dianzan"]);
-        }else if ([[responseObject objectForKey:@"dianzan"] isEqualToString:@"failed"])
+        }else if ([[responseObject objectForKey:@"quxidianzan"] isEqualToString:@"success"])
         {
-            NSLog(@"取消点赞%@",responseObject[@"dianzan"]);
-        }else if ([[responseObject objectForKey:@"dianzan"] isEqualToString:@"already"])
-        {
-            NSLog(@"已经点赞%@",responseObject[@"dianzan"]);
+            NSLog(@"取消点赞成功%@",responseObject[@"quxidianzan"]);
         }
 
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
@@ -114,10 +115,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     
 }
 
-- (void)loadDataUrl:(NSString*)str
-{
-    
-}
+
 //设置点赞图片
 - (void)setIslike:(BOOL)islike {
     _islike = islike;
@@ -137,7 +135,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 - (void)setLikeCount:(NSInteger)likeCount {
     _likeCount = likeCount;
 
-    
+
     //NSLog(@"点赞数set方法%ld",(long)likeCount);
     
     if (likeCount < 1) {

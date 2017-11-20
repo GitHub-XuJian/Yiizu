@@ -29,7 +29,7 @@
     }
     return self;
 }
-
+//轮播
 - (void)loadData
 {
 
@@ -53,13 +53,9 @@
     self.SDScrollView.autoScrollTimeInterval=2.0;
     self.SDScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
     [self addSubview:self.SDScrollView];
-}
-
-- (void)setIdq:(NSString *)idq
-{
-    _idq=idq;
     
-    NSString* str=[NSString stringWithFormat:@"%@Mobile/Bridge/Bridgeword/id/%@",Main_Server,idq];
+    
+    NSString* str=[NSString stringWithFormat:@"%@Mobile/Bridge/Bridgeword/id/%@",Main_Server,self.idq];
     
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -70,8 +66,8 @@
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
 }
+
 
 - (void)initTitleLab:(ActivityDetailLabmodel*)model
 {
@@ -95,6 +91,8 @@
     [backView addSubview:lab2];
     
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

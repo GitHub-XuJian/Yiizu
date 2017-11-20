@@ -7,6 +7,7 @@
 //
 
 #import "CityListModel.h"
+#import "SmallCityListModel.h"
 
 @implementation CityListModel
 
@@ -19,6 +20,12 @@
     model.cityId=dic[@"id"];
     model.name=dic[@"name"];
     //[model setValuesForKeysWithDictionary:dic];
+     NSMutableArray* arrModel=[NSMutableArray array];
+    for (NSDictionary* small_dic in dic[@"list"]) {
+        SmallCityListModel* sModel=[SmallCityListModel ModelWithDict:small_dic];
+        [arrModel addObject:sModel];
+    }
+    model.list=arrModel;
     
     return model;
     
