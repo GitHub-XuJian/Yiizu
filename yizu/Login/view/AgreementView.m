@@ -7,18 +7,19 @@
 //
 
 #import "AgreementView.h"
+#import "WebViewController.h"
 
 @implementation AgreementView
 
-- (instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame andTitleColor:(UIColor *)titleColor
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self createUI];
+        [self createUI:titleColor];
     }
     return self;
 }
-- (void)createUI
+- (void)createUI:(UIColor *)titleColor
 {
     UIButton *checkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     checkBtn.frame = CGRectMake(0, self.height/2-11/2, 11, 11);
@@ -34,7 +35,7 @@
     label.frame = CGRectMake(checkBtn.x+checkBtn.width+5, 0, rect, self.height);
     label.text = @"登陆依足，标识您同意平台";
     label.font = kFontMini;
-    label.textColor = kWhiteColor;
+    label.textColor = titleColor;
     [self addSubview:label];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -47,10 +48,14 @@
 }
 - (void)agreementBtnclick:(UIButton *)btn
 {
+    WebViewController *webViewVC = [[WebViewController alloc] init];
+    webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
+    [[EncapsulationMethod viewController:self] presentViewController:webViewVC animated:YES completion:nil];
     
 }
 - (void)checkBtnClick:(UIButton *)btn
 {
     btn.selected =! btn.selected;
+    _block(btn);
 }
 @end

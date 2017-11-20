@@ -39,7 +39,7 @@
 
     // 2.商城
     MallViewController *mallVC = [[MallViewController alloc] init];
-    mallVC.title = @"商城";
+    mallVC.title = @"特权";
     CustomNavigationController *nav3 = [[CustomNavigationController alloc] initWithRootViewController:mallVC];
 
     // 3.我的
@@ -59,9 +59,9 @@
     LLTabBar *tabBar = [[LLTabBar alloc] initWithFrame:controller.tabBar.bounds];
     
     tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"UnHome", kLLTabBarItemAttributeSelectedImageName : @"Home", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
-                                    @{kLLTabBarItemAttributeTitle : @"活动", kLLTabBarItemAttributeNormalImageName : @"UnActivity", kLLTabBarItemAttributeSelectedImageName : @"Activity", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+                                    @{kLLTabBarItemAttributeTitle : @"热门", kLLTabBarItemAttributeNormalImageName : @"UnActivity", kLLTabBarItemAttributeSelectedImageName : @"Activity", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
                                     @{kLLTabBarItemAttributeTitle : @"激活", kLLTabBarItemAttributeNormalImageName : @"middleIcon", kLLTabBarItemAttributeSelectedImageName : @"middleIcon", kLLTabBarItemAttributeType : @(LLTabBarItemRise)},
-                                    @{kLLTabBarItemAttributeTitle : @"商城", kLLTabBarItemAttributeNormalImageName : @"UnMall", kLLTabBarItemAttributeSelectedImageName : @"Mall", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
+                                    @{kLLTabBarItemAttributeTitle : @"特权", kLLTabBarItemAttributeNormalImageName : @"UnMall", kLLTabBarItemAttributeSelectedImageName : @"Mall", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
                                     @{kLLTabBarItemAttributeTitle : @"我的", kLLTabBarItemAttributeNormalImageName : @"UnMy", kLLTabBarItemAttributeSelectedImageName : @"My", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)}];
     
     

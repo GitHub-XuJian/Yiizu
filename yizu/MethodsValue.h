@@ -126,6 +126,8 @@
 #define Statevip @"statevip"
 #define Nickname @"Nickname"
 #define Personxq @"Personxq"
+#define Sex @"Sex"
+#define Identity @"Identity"
 
 #define VipBegintime @"VipBegintime"
 #define VipEndtime @"VipBegintime"
@@ -134,7 +136,10 @@
  * 是否补全了信息
  */
 #define Identity @"Identity"
-
+/**
+ * 手机
+ */
+#define isPhone   @"isPhone"
 
 /**
  * 微信登录
@@ -144,6 +149,10 @@
 #define WXPatient_App_ID @"wxc7e3e75f5072d5b7"
 #define WXPatient_App_Secret @"667ad8dffcc1042b0ccabfe7437c66e7"
 #define WXPatient_Openid @"WXPatient_Openid"
+/**
+ * 微信支付
+ */
+#define WXOut_trade_no @"WXOut_trade_no"
 
 
 /**

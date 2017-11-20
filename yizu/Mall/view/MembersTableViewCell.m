@@ -7,7 +7,6 @@
 //
 
 #import "MembersTableViewCell.h"
-#import "PWCustomSheet.h"
 #import "ActivationCodePayViewController.h"
 
 @interface MembersTableViewCell()<PWCustomSheetDelegate,WXApiDelegate>
@@ -74,7 +73,7 @@
     NSLog(@"%@",button.titleLabel.text);
     switch (button.tag) {
         case 0:{            // 微信支付
-            NSDictionary *dict =@{@"total":@"1",@"subject":@"购买会员"};
+            NSDictionary *dict =@{@"tian":_cellDict[@"tian"],@"total":_cellDict[@"money"],@"subject":@"购买会员"};
             NSString *urlStr = [NSString stringWithFormat:@"%@weixin/index.php",Main_ServerImage];
             [SVProgressHUD showWithStatus:@"正在转到微信支付..."];
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -82,6 +81,7 @@
                 [SVProgressHUD dismiss];
                 if (responseObject) {
                     [self createWXPayReq:responseObject];
+                    [XSaverTool setObject:responseObject[@"out_trade_no"] forKey:WXOut_trade_no];
                 }
             } fail:^(NSURLSessionDataTask *task, NSError *error) {
                 NSLog(@"%@",error);

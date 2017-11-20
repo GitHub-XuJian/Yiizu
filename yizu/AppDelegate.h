@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 + (AppDelegate *)shareDelegate;
-
+- (void)tabbarSelectedWithIndex:(NSInteger)index;
 @end
 

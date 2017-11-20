@@ -8,7 +8,9 @@
 
 #import "PersonalInformationViewController.h"
 #import "PersonalInformationTableViewCell.h"
-@interface PersonalInformationViewController ()<UITableViewDelegate,UITableViewDataSource>
+#import "ZZYPhotoHelper.h"
+
+@interface PersonalInformationViewController ()<UITableViewDelegate,UITableViewDataSource,PWCustomSheetDelegate>
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 
@@ -24,7 +26,7 @@
 }
 - (void)createDataArray
 {
-    self.dataArray = [NSMutableArray arrayWithObjects:@"头像",@"昵称",@"性别",@"实名验证",@"个性签名", nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@"头像",@"昵称",@"性别",@"个性签名", nil];
     [self.tableView reloadData];
 }
 
@@ -35,7 +37,7 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.scrollEnabled = NO;
     [self.view addSubview:self.tableView];
 }
@@ -93,12 +95,44 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"清除缓存"]) {
-        [[SDImageCache sharedImageCache] clearDisk];
-        jxt_showAlertTitle(@"清除成功");
-        [self.tableView reloadData];
+    switch (indexPath.row) {
+        case 0:{
+            NSLog(@"更改头像");
+            [[ZZYPhotoHelper shareHelper] showImageViewSelcteWithResultBlock:^(id data) {
+                UIImage *image = (UIImage *)data;
+                NSLog(@"%@",image);
+            }];
+            break;
+        }
+        case 2:{
+            NSLog(@"更改性别");
+            NSArray * ar = @[@"男",@"女"];
+            PWCustomSheet * sheet = [[PWCustomSheet alloc]initWithButtons:ar];
+            sheet.delegate =self;
+            [self.view addSubview:sheet];
+            break;
+        }
+        case 3:{
+            NSLog(@"实名认证");
+            break;
+        }
+        default:
+            break;
     }
-    
+}
+-(void)clickButton:(UIButton *)button
+{
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"sex":[NSString stringWithFormat:@"%ld",button.tag+1]};
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifydata",Main_Server];
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"code"] integerValue]) {
+            [XSaverTool setObject:[NSString stringWithFormat:@"%ld",button.tag+1] forKey:Sex];
+            [self.tableView reloadData];
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

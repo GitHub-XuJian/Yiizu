@@ -63,25 +63,26 @@
     titleLabel.text = titleStr;
     [self.scrollView addSubview:titleLabel];
     _scrollerContentSize_H += (titleLabel.x+titleLabel.height);
-    
-    NSArray *array = @[@"真实姓名",@"常用手机号",@"支付宝账号"];
-    for (int i = 0; i < array.count; i++) {
-        CGFloat label_W = kSCREEN_WIDTH-60;
-        UILabel *label = [[UILabel alloc] init];
-        label.frame = CGRectMake(90/3,_scrollerContentSize_H+(75/3), label_W, 30);
-        label.text = array[i];
-        label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor whiteColor];
-        label.font = kFontOther;
-        [self.scrollView addSubview:label];
-        
-        UITextField *textField = [[UITextField alloc] init];
-        textField.frame = CGRectMake(label.x, label.y+label.height+5, label.width, 40);
-        textField.delegate = self;
-        textField.tag = TextFieldTag+i;
-        textField.background = [UIImage imageNamed:@"asd"];
-        [self.scrollView addSubview:textField];
-        _scrollerContentSize_H += 80;
+    if ([[XSaverTool objectForKey:Identity] integerValue] == 0) {
+        NSArray *array = @[@"真实姓名",@"常用手机号",@"支付宝账号"];
+        for (int i = 0; i < array.count; i++) {
+            CGFloat label_W = kSCREEN_WIDTH-60;
+            UILabel *label = [[UILabel alloc] init];
+            label.frame = CGRectMake(90/3,_scrollerContentSize_H+(75/3), label_W, 30);
+            label.text = array[i];
+            label.backgroundColor = [UIColor clearColor];
+            label.textColor = [UIColor whiteColor];
+            label.font = kFontOther;
+            [self.scrollView addSubview:label];
+            
+            UITextField *textField = [[UITextField alloc] init];
+            textField.frame = CGRectMake(label.x, label.y+label.height+5, label.width, 40);
+            textField.delegate = self;
+            textField.tag = TextFieldTag+i;
+            textField.background = [UIImage imageNamed:@"asd"];
+            [self.scrollView addSubview:textField];
+            _scrollerContentSize_H += 80;
+        }
     }
     _scrollerContentSize_H += (75/3);
     [self createActivationCode];

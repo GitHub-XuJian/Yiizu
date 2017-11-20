@@ -32,7 +32,7 @@
     [self createDataArray];
 }
 - (void)createDataArray{
-    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"列队情况", nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"补贴进度", nil];
 }
 - (void)createTableView{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64,kSCREEN_WIDTH,kSCREEN_HEIGHT-64) style:UITableViewStylePlain];
@@ -110,7 +110,7 @@
     }else{
         LoginViewController *loginViewC = [[LoginViewController alloc] init];
         loginViewC.successfulBlock = ^{
-            
+            self.tabBarController.selectedIndex = 0;
         };
         loginViewC.failedBlock = ^{
             

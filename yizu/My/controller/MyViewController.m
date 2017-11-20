@@ -18,6 +18,7 @@
 #import "MyWalletViewController.h"
 #import "PersonalInformationViewController.h"
 #import "SetUpViewController.h"
+#import "HomeViewController.h"
 
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeaderVeiwDelegate>
@@ -51,7 +52,7 @@
 }
 - (void)createDataArray
 {
-    self.dataArray = [NSMutableArray arrayWithObjects:@[@"我的激活码",@"我的钱包"],@[@"我的收藏",@"我的活动"],@[@"帮助中心",@"关于我们"], nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@[@"我的卡券",@"我的钱包"],@[@"我的收藏",@"我的活动"],@[@"帮助中心",@"关于我们"], nil];
     self.imageArray = @[@[@"icon_activation",@"wallet"],@[@"icon_collect",@"icon_activity"],@[@"icon_help",@"icon_about"]];
     [self.tableView reloadData];
 }
@@ -72,12 +73,20 @@
 }
 - (void)clickButton:(UIButton *)button
 {
-    [self navigationBarHidden:NO];
     if (button.tag == 111111) {
-        SetUpViewController *setUpVC = [[SetUpViewController alloc] init];
-        setUpVC.title = @"设置";
-        [self.navigationController pushViewController:setUpVC animated:YES];
+        if ([XSaverTool boolForKey:IsLogin]) {
+            [self navigationBarHidden:NO];
+
+            SetUpViewController *setUpVC = [[SetUpViewController alloc] init];
+            setUpVC.title = @"设置";
+            [self.navigationController pushViewController:setUpVC animated:YES];
+        }else{
+            jxt_showAlertTitle(@"请登录");
+        }
+        
     }else{
+        [self navigationBarHidden:NO];
+
         if ([XSaverTool boolForKey:IsLogin]) {
             [self.navigationController setNavigationBarHidden:NO animated:NO];
             
@@ -87,7 +96,8 @@
         }else{
             LoginViewController *loginViewC = [[LoginViewController alloc] init];
             loginViewC.successfulBlock = ^{
-                [self.headerView reloadData];
+                self.tabBarController.selectedIndex = 0;
+                [[AppDelegate shareDelegate] tabbarSelectedWithIndex:0];
             };
             loginViewC.failedBlock = ^{
                 

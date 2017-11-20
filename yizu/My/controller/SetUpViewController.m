@@ -8,11 +8,16 @@
 
 #import "SetUpViewController.h"
 #import "SetUpTableViewCell.h"
+#import "PasswordManagementViewController.h"
 
 @interface SetUpViewController ()<UITableViewDelegate,UITableViewDataSource>
+{
+    NSDictionary *_dict;
+}
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, strong) NSDictionary *dataDict;
+@property (nonatomic, strong) UIButton *rightBtn;
 @end
 
 @implementation SetUpViewController
@@ -21,18 +26,52 @@
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     
+    [self createRightBtn];
     [self createDataArray];
     [self createTableView];
     [self createBottomView];
 }
+- (void)createRightBtn
+{
+    UIButton *releaseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [releaseButton setTitle:@"提交" forState:normal];
+    [releaseButton addTarget:self action:@selector(rightBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [releaseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    UIBarButtonItem *releaseButtonItem = [[UIBarButtonItem alloc] initWithCustomView:releaseButton];
+    self.rightBtn = releaseButton;
+    self.navigationItem.rightBarButtonItem = releaseButtonItem;
+}
+- (void)rightBtnClick:(UIButton *)btn
+{
+    NSLog(@"%@",self.dataDict);
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifytruth",Main_Server];
+    [XAFNetWork GET:urlStr params:_dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 - (void)createDataArray
 {
-    self.dataArray = [NSMutableArray arrayWithObjects:@[@"手机",@"QQ",@"微信"],@[@"密码管理",@"消息推送通知",@"清除缓存"], nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@[@"手机",@"真实姓名"],@[@"密码管理",@"消息推送通知",@"清除缓存"], nil];
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/truth",Main_Server];
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        if ([responseObject[@"pername"] length]) {
+            self.rightBtn.hidden = YES;
+        }else{
+            self.rightBtn.hidden = NO;
+        }
+        self.dataDict = responseObject;
+        [self.tableView reloadData];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
     [self.tableView reloadData];
 }
 - (void)createBottomView
 {
-    
     UIButton *bottomBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     bottomBtn.frame = CGRectMake(0, kSCREEN_HEIGHT-60, kSCREEN_WIDTH, 60);
     bottomBtn.backgroundColor = [UIColor colorWithRed:0.40f green:0.40f blue:0.40f alpha:1.00f];
@@ -54,7 +93,9 @@
             [XSaverTool removeDataForKey:Nickname];
             [XSaverTool removeDataForKey:Personxq];
             [XSaverTool removeDataForKey:Password];
-            
+            [XSaverTool removeDataForKey:Sex];
+            [XSaverTool removeDataForKey:Identity];
+            [XSaverTool removeAllDatas];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }, @"取消", ^(NSInteger buttonIndex) {
             
@@ -135,6 +176,20 @@
         cell = [[SetUpTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier andIndexPath:indexPath];
     }
     cell.titleStr = self.dataArray[indexPath.section][indexPath.row];
+    if (indexPath.section == 0) {
+        if ([[XSaverTool objectForKey:isPhone] integerValue] == 0) {
+            cell.rightLabelStr = @"未绑定";
+        }else{
+            if (indexPath.row == 0) {
+                cell.rightLabelStr = [XSaverTool objectForKey:isPhone];
+            }else{
+                cell.cellDict = _dataDict;
+            }
+        }
+    }
+    cell.block = ^(NSDictionary *dict) {
+        _dict = dict;
+    };
     return cell;
 }
 
@@ -144,7 +199,11 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"清除缓存"]) {
+    if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"密码管理"]) {
+        PasswordManagementViewController *pmVC = [[PasswordManagementViewController alloc] init];
+        pmVC.title = _dataArray[indexPath.section][indexPath.row];
+        [self.navigationController pushViewController:pmVC animated:YES];
+    }else if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"清除缓存"]) {
         [[SDImageCache sharedImageCache] clearDisk];
         jxt_showAlertTitle(@"清除成功");
         [self.tableView reloadData];

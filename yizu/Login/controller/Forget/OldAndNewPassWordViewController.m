@@ -111,9 +111,13 @@
             NSLog(@"%@",responseObject);
             jxt_showToastMessage(responseObject[@"msg"], 1);
             if ([responseObject[@"code"] integerValue]) {
-
-                [self.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
                 
+                if (self.navigationController) {
+                    [XSaverTool setObject:_newPassword forKey:Password];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else{
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }
             }
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"%@",error);

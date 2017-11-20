@@ -32,7 +32,7 @@
 - (void)createDataArray
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@/Mobile/Mine/movable",Main_Server];
-    NSDictionary *dict = @{@"personid":@"3"};
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
         /**

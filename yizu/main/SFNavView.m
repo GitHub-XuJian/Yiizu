@@ -38,7 +38,7 @@
             titleLabel.frame = CGRectMake(kSCREEN_WIDTH/2-200/2, 20, 200, imageView.frame.size.height-20);
             titleLabel.text = titleStr;
             [titleLabel setFont:[UIFont systemFontOfSize:20]];
-            titleLabel.textColor = [UIColor whiteColor];
+            titleLabel.textColor = [UIColor blackColor];
             titleLabel.textAlignment = NSTextAlignmentCenter;
             [self addSubview:titleLabel];
         }
@@ -46,7 +46,7 @@
             UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             leftBtn.frame = CGRectMake(0, 20, imageView.frame.size.height, imageView.frame.size.height-20);
 //            [leftBtn setTitle:leftBtnStr forState:UIControlStateNormal];
-            [leftBtn setImage:[UIImage imageNamed:@"Cancel"] forState:UIControlStateNormal];
+            [leftBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
             [leftBtn setTitleColor:[UIColor lightTextColor] forState:UIControlStateHighlighted];
             leftBtn.titleLabel.font = [UIFont systemFontOfSize:20];
             [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];

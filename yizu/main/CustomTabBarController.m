@@ -29,10 +29,10 @@
     [self addChildVC:homeVC title:@"首页" image:@"UnHome" selectedImage:@"Home"];
     // 4.活动
     ActivityViewController *activityVC = [[ActivityViewController alloc] init];
-    [self addChildVC:activityVC title:@"活动" image:@"UnActivity" selectedImage:@"Activity"];
+    [self addChildVC:activityVC title:@"热门" image:@"UnActivity" selectedImage:@"Activity"];
     // 2.商城
     MallViewController *mallVC = [[MallViewController alloc] init];
-    [self addChildVC:mallVC title:@"商城" image:@"UnMall" selectedImage:@"Mall"];
+    [self addChildVC:mallVC title:@"特权" image:@"UnMall" selectedImage:@"Mall"];
     // 3.我的
     MyViewController *myVC = [[MyViewController alloc] init];
     [self addChildVC:myVC title:@"我的" image:@"UnMy" selectedImage:@"My"];

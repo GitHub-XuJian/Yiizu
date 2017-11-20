@@ -6,10 +6,16 @@
 //  Copyright © 2017年 XuJian. All rights reserved.
 //
 
+#define NameTextfieldTag  112211
+
+
 #import "SetUpTableViewCell.h"
-@interface SetUpTableViewCell()
+@interface SetUpTableViewCell()<UITextFieldDelegate>
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *cacheLabel;
+@property (nonatomic, strong) UILabel *rightLabel;
+@property (nonatomic, strong) UITextField *nameTextField;
+
 @end
 @implementation SetUpTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier andIndexPath:(NSIndexPath *)indexPath;
@@ -28,10 +34,23 @@
             self.cacheLabel =label;
         }else{
             if (indexPath.section == 0) {
-                UILabel *rightLabel = [[UILabel alloc] init];
-                rightLabel.frame = CGRectMake(kSCREEN_WIDTH-90, 0, 60, 60);
-                rightLabel.text = @"未绑定";
-                [self.contentView addSubview:rightLabel];
+                if (indexPath.row == 0) {
+                    UILabel *rightLabel = [[UILabel alloc] init];
+                    rightLabel.textAlignment = NSTextAlignmentRight;
+                    [self.contentView addSubview:rightLabel];
+                    self.rightLabel = rightLabel;
+                }
+                
+                if (indexPath.row == 1) {
+                    UITextField *textfield = [[UITextField alloc] init];
+                    textfield.frame = CGRectMake(kSCREEN_WIDTH-kSCREEN_WIDTH/2-30, 0, kSCREEN_WIDTH/2, 60);
+                    textfield.textAlignment = NSTextAlignmentRight;
+                    textfield.delegate = self;
+                    textfield.tag = NameTextfieldTag;
+                    textfield.placeholder = @"请输入真实姓名";
+                    [self.contentView addSubview:textfield];
+                    self.nameTextField = textfield;
+                }
             }
             UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_details_top_collection_prressed_21x21_"]];
             if (indexPath.section == 1 && indexPath.row == 2) {
@@ -43,6 +62,33 @@
         
     }
     return self;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    [dict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
+    switch (textField.tag) {
+        case NameTextfieldTag:{
+            [dict setValue:textField.text forKey:@"pername"];
+            break;
+        }
+        default:
+            break;
+    }
+    _block(dict);
+}
+- (void)setCellDict:(NSDictionary *)cellDict
+{
+    _cellDict = cellDict;
+    if ([cellDict[@"pername"] length]) {
+        self.nameTextField.text = cellDict[@"pername"];
+        self.nameTextField.enabled = NO;
+    }
+}
+- (void)setRightLabelStr:(NSString *)rightLabelStr
+{
+    self.rightLabel.frame = CGRectMake(kSCREEN_WIDTH-kSCREEN_WIDTH/2-30, 0, kSCREEN_WIDTH/2, 60);
+    self.rightLabel.text = rightLabelStr;
 }
 - (void)setTitleStr:(NSString *)titleStr
 {

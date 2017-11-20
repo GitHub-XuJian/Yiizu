@@ -19,5 +19,6 @@
 
 @property (nonatomic, copy) NSArray<NSDictionary *> *tabBarItemAttributes;
 @property (nonatomic, weak) id <LLTabBarDelegate> delegate;
+- (void)setSelectedIndex:(NSInteger)index;
 
 @end

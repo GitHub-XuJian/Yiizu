@@ -128,7 +128,9 @@
 }
 - (float)CalculatePercentage:(NSDictionary *)dict
 {
-    float num = [dict[@"time"] longValue]*16/[dict[@"numtime"] longValue];
+    float time = [dict[@"time"] longValue];
+    float numtime =[dict[@"numtime"] longValue];
+    float num = time*16/numtime;
     return num;
 }
 @end

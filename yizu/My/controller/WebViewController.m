@@ -16,7 +16,7 @@
 - (UIWebView *)webView
 {
     if (!_webView) {
-        _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+        _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
         _webView.dataDetectorTypes = UIDataDetectorTypeAll;
         [self.view addSubview:_webView];
     }
@@ -25,7 +25,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self loadFile];
+    if (!self.navigationController) {
+        [self createBackBtn];
+    }
     [self loadString:self.urlStr];
+
+}
+- (void)createBackBtn
+{
+    SFNavView *navView = [[SFNavView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 64) andTitle:@"用户使用协议" andLeftBtnTitle:@"返回" andRightBtnTitle:nil andLeftBtnBlock:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } andRightBtnBlock:^{
+        
+    }];
+    [self.view addSubview:navView];
 }
 #pragma mark - 加载本地文件
 - (void)loadFile

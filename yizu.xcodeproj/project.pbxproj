@@ -223,6 +223,10 @@
 		AFB215151FBA96F5006DD630 /* ActivationCodePayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215141FBA96F5006DD630 /* ActivationCodePayViewController.m */; };
 		AFB215181FBAB664006DD630 /* ActivationCodePayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */; };
 		AFB2151D1FBD215C006DD630 /* PersonalInformationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */; };
+		AFB215261FBD6B5C006DD630 /* PasswordManagementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215251FBD6B5C006DD630 /* PasswordManagementViewController.m */; };
+		AFB215291FBD7374006DD630 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215281FBD7374006DD630 /* ChangePasswordViewController.m */; };
+		AFB215521FBD9051006DD630 /* ZZYPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215501FBD9051006DD630 /* ZZYPhotoHelper.m */; };
+		AFB215551FBE7886006DD630 /* WalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215541FBE7886006DD630 /* WalletView.m */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
@@ -667,6 +671,14 @@
 		AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivationCodePayTableViewCell.m; sourceTree = "<group>"; };
 		AFB2151B1FBD215C006DD630 /* PersonalInformationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInformationTableViewCell.h; sourceTree = "<group>"; };
 		AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationTableViewCell.m; sourceTree = "<group>"; };
+		AFB215241FBD6B5C006DD630 /* PasswordManagementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordManagementViewController.h; sourceTree = "<group>"; };
+		AFB215251FBD6B5C006DD630 /* PasswordManagementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordManagementViewController.m; sourceTree = "<group>"; };
+		AFB215271FBD7374006DD630 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		AFB215281FBD7374006DD630 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		AFB215501FBD9051006DD630 /* ZZYPhotoHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZYPhotoHelper.m; sourceTree = "<group>"; };
+		AFB215511FBD9051006DD630 /* ZZYPhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZYPhotoHelper.h; sourceTree = "<group>"; };
+		AFB215531FBE7886006DD630 /* WalletView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletView.h; sourceTree = "<group>"; };
+		AFB215541FBE7886006DD630 /* WalletView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletView.m; sourceTree = "<group>"; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -1459,6 +1471,10 @@
 				1F17675A1FB3F9AF00BB5026 /* WebViewController.m */,
 				AFB2150B1FB9920B006DD630 /* SetUpViewController.h */,
 				AFB2150C1FB9920B006DD630 /* SetUpViewController.m */,
+				AFB215241FBD6B5C006DD630 /* PasswordManagementViewController.h */,
+				AFB215251FBD6B5C006DD630 /* PasswordManagementViewController.m */,
+				AFB215271FBD7374006DD630 /* ChangePasswordViewController.h */,
+				AFB215281FBD7374006DD630 /* ChangePasswordViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1501,6 +1517,8 @@
 				AFB2150F1FB99B67006DD630 /* SetUpTableViewCell.m */,
 				AFB2151B1FBD215C006DD630 /* PersonalInformationTableViewCell.h */,
 				AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */,
+				AFB215531FBE7886006DD630 /* WalletView.h */,
+				AFB215541FBE7886006DD630 /* WalletView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1541,6 +1559,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AFB2154F1FBD9051006DD630 /* Phone */,
 				AFB214F91FB5473B006DD630 /* PWCustomSheet */,
 				1F17673E1FB3F93300BB5026 /* SDCycleScrollView */,
 				AF23F3E21FAC66070022E990 /* UMSocial */,
@@ -1947,6 +1966,15 @@
 			path = WechatSDK;
 			sourceTree = "<group>";
 		};
+		AFB2154F1FBD9051006DD630 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				AFB215501FBD9051006DD630 /* ZZYPhotoHelper.m */,
+				AFB215511FBD9051006DD630 /* ZZYPhotoHelper.h */,
+			);
+			path = Phone;
+			sourceTree = "<group>";
+		};
 		AFC62F071FA1B5A100A3F3F5 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -2037,6 +2065,7 @@
 				TargetAttributes = {
 					AF66ACED1F9D7E540079A2CF = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = R4485X89UR;
 						ProvisioningStyle = Automatic;
 					};
 					AF66AD001F9D7E550079A2CF = {
@@ -2161,6 +2190,7 @@
 				AF66ADB71F9DDD250079A2CF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF66ADFB1F9DE1B60079A2CF /* MJRefreshBackNormalFooter.m in Sources */,
 				AFB214D31FB40CE1006DD630 /* MembersView.m in Sources */,
+				AFB215291FBD7374006DD630 /* ChangePasswordViewController.m in Sources */,
 				AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */,
 				1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */,
 				AF66ACF61F9D7E540079A2CF /* AppDelegate.m in Sources */,
@@ -2182,6 +2212,7 @@
 				AF6C46691FA4546800797125 /* CSdetailsViewController.m in Sources */,
 				1F0CEAC51FBAB73800D06C8E /* HomeDetailController.m in Sources */,
 				AF66AE051F9DE1B60079A2CF /* UIView+MJExtension.m in Sources */,
+				AFB215521FBD9051006DD630 /* ZZYPhotoHelper.m in Sources */,
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
 				1F17675B1FB3F9AF00BB5026 /* ChartViewController.m in Sources */,
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
@@ -2267,6 +2298,7 @@
 				AF66ADAC1F9DDD250079A2CF /* AFSecurityPolicy.m in Sources */,
 				AF66ADFE1F9DE1B60079A2CF /* MJRefreshNormalHeader.m in Sources */,
 				1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */,
+				AFB215551FBE7886006DD630 /* WalletView.m in Sources */,
 				1F0CEABC1FBA926B00D06C8E /* ActivityDetailLabmodel.m in Sources */,
 				AF23F3D51FA9BACF0022E990 /* MyCollectionModel.m in Sources */,
 				AF8B6CF61FA01A4A008DA068 /* UIImageView+WebCache.m in Sources */,
@@ -2303,6 +2335,7 @@
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
 				AFB214FC1FB5473C006DD630 /* PWCustomSheet.m in Sources */,
 				1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */,
+				AFB215261FBD6B5C006DD630 /* PasswordManagementViewController.m in Sources */,
 				AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2447,7 +2480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
@@ -2481,7 +2514,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",

@@ -43,7 +43,7 @@
 - (void)createData
 {
     self.titleLabel.text = _dictCell[@"code"];
-    self.subTitleLabel.text = _dictCell[@"paymoney"];
+    self.subTitleLabel.text = _dictCell[@"payzong"];
 }
 - (void)createFrame
 {
