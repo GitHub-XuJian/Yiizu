@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="IfV-qk-mkg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
                                 <segue destination="UbQ-BP-CkG" kind="embed" id="imK-gg-BC9"/>
@@ -28,7 +28,7 @@
                         </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" rowHeight="180" id="nbO-IY-kKB" customClass="HomeListCell">
-                                <rect key="frame" x="0.0" y="328" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="378" width="375" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbO-IY-kKB" id="826-4h-n08">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
@@ -96,17 +96,12 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="Button"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQU-fk-eIz">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQU-fk-eIz" customClass="favoriteBtn">
                                             <rect key="frame" x="278" y="156.5" width="18" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Wvq-b4-JEm"/>
                                                 <constraint firstAttribute="width" constant="18" id="r37-K5-7cD"/>
                                             </constraints>
-                                            <state key="normal" backgroundImage="ic_me_item_collection_topic_20x20_"/>
-                                            <state key="selected" backgroundImage="ic_details_top_collection_prressed_21x21_"/>
-                                            <connections>
-                                                <action selector="keepBtn:" destination="nbO-IY-kKB" eventType="touchUpInside" id="J1I-Fz-yne"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -142,6 +137,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="chamberjjLab" destination="INl-lY-oH9" id="GrK-aa-fX2"/>
+                                    <outlet property="favBtn" destination="NQU-fk-eIz" id="xBj-8c-EAa"/>
                                     <outlet property="iconView" destination="drr-KL-ai3" id="XMF-WT-Vda"/>
                                     <outlet property="ima1" destination="D7Y-iN-1GP" id="FOI-oL-69J"/>
                                     <outlet property="ima2" destination="LXV-Em-5b1" id="CGv-wF-3QA"/>
@@ -162,26 +158,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VUs-lN-oQG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="858" y="-2494"/>
+            <point key="canvasLocation" x="577" y="-2517"/>
         </scene>
         <!--Loop Image View Controller-->
         <scene sceneID="irQ-ld-LFC">
             <objects>
                 <viewController id="UbQ-BP-CkG" customClass="LoopImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GcI-tk-jcY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crU-f7-Id2">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
-                            </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="6" translatesAutoresizingMaskIntoConstraints="NO" id="Frj-Lj-eqn">
-                                <rect key="frame" x="0.0" y="253" width="375" height="37"/>
-                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <color key="currentPageIndicatorTintColor" red="0.43529412150000002" green="0.4431372583" blue="0.47450980539999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuI-yb-NDT">
-                                <rect key="frame" x="16" y="284" width="53" height="12"/>
+                                <rect key="frame" x="16" y="337" width="53" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="区域排布">
@@ -193,31 +181,18 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Frj-Lj-eqn" firstAttribute="leading" secondItem="09O-DN-20h" secondAttribute="leading" id="9y9-OG-CZW"/>
-                            <constraint firstItem="09O-DN-20h" firstAttribute="trailing" secondItem="crU-f7-Id2" secondAttribute="trailing" id="Kgl-wI-y8l"/>
-                            <constraint firstItem="09O-DN-20h" firstAttribute="bottom" secondItem="Frj-Lj-eqn" secondAttribute="bottom" constant="10" id="Lk2-AG-xfg"/>
-                            <constraint firstItem="09O-DN-20h" firstAttribute="bottom" secondItem="crU-f7-Id2" secondAttribute="bottom" constant="20" id="NCd-fC-dlW"/>
-                            <constraint firstItem="crU-f7-Id2" firstAttribute="top" secondItem="09O-DN-20h" secondAttribute="top" id="Srt-wK-KHT"/>
-                            <constraint firstItem="crU-f7-Id2" firstAttribute="leading" secondItem="09O-DN-20h" secondAttribute="leading" id="cEx-ZE-FVr"/>
-                            <constraint firstItem="09O-DN-20h" firstAttribute="trailing" secondItem="Frj-Lj-eqn" secondAttribute="trailing" id="yhC-Da-8Wq"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="09O-DN-20h"/>
                     </view>
                     <connections>
                         <outlet property="btn" destination="iuI-yb-NDT" id="ONS-z7-GIm"/>
-                        <outlet property="pageCon" destination="Frj-Lj-eqn" id="5rf-ES-Djs"/>
-                        <outlet property="scrollView" destination="crU-f7-Id2" id="eRi-rT-Sr4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4P-Fe-mAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="-2659"/>
+            <point key="canvasLocation" x="1296.8" y="-2652.7736131934034"/>
         </scene>
     </scenes>
     <resources>
         <image name="Mall" width="22" height="18"/>
-        <image name="ic_details_top_collection_prressed_21x21_" width="21" height="21"/>
-        <image name="ic_me_item_collection_topic_20x20_" width="20" height="20"/>
     </resources>
 </document>

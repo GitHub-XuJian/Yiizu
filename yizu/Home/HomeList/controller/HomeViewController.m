@@ -42,6 +42,7 @@
 {
     _homeUrlStr=homeUrlStr;
     NSLog(@"点击区域按钮后区域商家接口:%@",homeUrlStr);
+    //http://47.104.18.18/index.php/Mobile/Index/index_area/data/73/area/843/page/1/personid/3/sequence/
     [self requestData:homeUrlStr];
 }
 - (void)setCityURLstr:(NSString *)CityURLstr
@@ -64,9 +65,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    self.automaticallyAdjustsScrollViewInsets = NO;
+    //self.automaticallyAdjustsScrollViewInsets = NO;
    
-//    if (@available(iOS 11.0, *)) {
+//    if (@available(iOS 10.0, *)) {
 //        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
 //    }
 ////////////////////////////////
@@ -95,9 +96,11 @@
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        NSLog(@"下啦回掉");
-        NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/%d",Main_Server,self.homeListCityId,1];
-        NSLog(@"下啦刷新:%@",newUrl);
+        
+      //全城商户列表
+      //http://47.104.18.18/index.php/Mobile/Index/index_Chamber/data/城/personid/3/sequence/（增加）默认是0 如果是1按照 点赞数排序/page/页数/
+        NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/%d",Main_Server,self.homeListCityId,1];
+        NSLog(@"下啦刷新回调:%@",newUrl);
         [self requestData:newUrl];
         //[self loadData];
        
@@ -125,13 +128,23 @@
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         //NSLog(@"默认Data:%@",responseObject);
-        NSArray* arr=responseObject[@"list"];
-        for (NSDictionary* dic in arr) {
-            HomeListModel* model=[HomeListModel ModelWithDict:dic];
+       
+        
+        //if ([responseObject[@"list"] isEqualToString:@"<null>"]) {
             
-            [_listArr addObject:model];
-            
-        }
+        
+        //}else
+        //{
+            NSArray* arr=responseObject[@"list"];
+            for (NSDictionary* dic in arr) {
+                HomeListModel* model=[HomeListModel ModelWithDict:dic];
+                
+                [_listArr addObject:model];
+                
+            }
+        //}
+
+        
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
         [self endRefresh];
@@ -143,7 +156,7 @@
 - (void)loadMore
 {
     
-//    [SVProgressHUD showWithStatus:@"数据加载中..."];
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
      self.currentPage+=1;
     NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%d",Main_Server,self.currentPage];
    
@@ -253,6 +266,7 @@
 #pragma mark- homeCityBtnDelegate
 - (void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url cityId:(NSString *)cid
 {
+    NSLog(@"首页返回的url：%@",url);
     [self.navBtn setTitle:title forState:UIControlStateNormal];
     self.homeListCityId=cid;
     self.CityURLstr=url;
@@ -275,6 +289,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
+    //HomeListModel* model
     cell.model=self.listArr[indexPath.row];
     return cell;
 }

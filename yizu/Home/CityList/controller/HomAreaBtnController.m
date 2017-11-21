@@ -86,7 +86,10 @@
 {
       AreaListModel* model=self.arr[indexPath.row];
     
-    NSString* urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1",Main_Server,self.cityId,model.areaId];
+    NSString* urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1/personid/3/sequence/0",Main_Server,self.cityId,model.areaId];
+    
+    ////////////Mobile/Index/index_area/data/%@/area/%@/page/1/
+    
     NSLog(@"选择区域后的URL:%@",urlStr);
     
     NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId,@"areaUrl":urlStr};

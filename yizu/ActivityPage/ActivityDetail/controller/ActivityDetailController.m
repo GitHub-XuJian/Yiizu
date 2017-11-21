@@ -10,6 +10,7 @@
 #import "ActivityDetailLoopView.h"
 #import "ActivityDetailCell.h"
 #import "ActivityDetailListModel.h"
+#import "HomeDetailController.h"
 
 @interface ActivityDetailController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -74,6 +75,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 170;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

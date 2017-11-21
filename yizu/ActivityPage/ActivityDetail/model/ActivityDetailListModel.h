@@ -18,6 +18,11 @@
 @property (nonatomic, copy) NSString* activityid;
 //图片文字
 @property (nonatomic, copy) NSString* movable;
+//status
+@property (nonatomic, copy) NSString* status;
+
+//attention
+@property (nonatomic, copy) NSString* attention;
 
 + (instancetype)modelWithDict:(NSDictionary*)dic;
 

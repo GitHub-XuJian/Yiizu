@@ -36,10 +36,8 @@
     
     
     [self loadData];
-    [self loadCityData];
     
     
-
     
     // Do any additional setup after loading the view.
 }
@@ -47,7 +45,7 @@
 - (void)loadData
 {
     [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Bridge/BrigeSlide" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        //NSLog(@"image====%@",responseObject);
         for (NSDictionary* dic in responseObject) {
             NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,dic[@"picnpath"]];
             [_loopIma addObject:imaUrl];
@@ -67,7 +65,7 @@
     cycleScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
     [self.view addSubview:cycleScrollView];
     self.SDCScrollView=cycleScrollView;
-    
+    [self loadCityData];
 }
 
 - (void)loadCityData

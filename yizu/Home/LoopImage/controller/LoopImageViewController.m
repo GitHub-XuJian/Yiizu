@@ -9,14 +9,18 @@
 #import "LoopImageViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "HomAreaBtnController.h"
-@interface LoopImageViewController ()<UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+#import "SDCycleScrollView.h"
+
+@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIButton *btn;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageCon;
 
-@property (strong, nonatomic) NSArray* loopArr;
 
-@property (strong, nonatomic)NSTimer* timer;
+@property (strong, nonatomic) UICollectionView* collectionView;
+
+@property (strong, nonatomic) NSMutableArray* loopArr;
+
+
 @property (assign, nonatomic)int currentNumber;
 
 @end
@@ -35,66 +39,38 @@
     
 }
 
-- (void)setLoopArr:(NSArray *)loopArr
+- (NSMutableArray *)loopArr
 {
-    _loopArr=loopArr;
-    [self updateUI];
+    if (_loopArr==nil) {
+        _loopArr=[[NSMutableArray alloc]init];
+    }
+    return _loopArr;
 }
 
-- (void)updateUI
-{
- self.scrollView.contentSize=CGSizeMake(self.loopArr.count*self.view.bounds.size.width, 0);
-    for (int i=0; i<self.loopArr.count; i++) {
-        
-        UIImageView* imaView=[[UIImageView alloc]init];
-        NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,self.loopArr[i]];
-        [imaView setImageWithURL:[NSURL URLWithString:imaUrl]];
-        imaView.frame=CGRectMake(i*self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-        [self.scrollView addSubview:imaView];
-        if (self.currentNumber==0) {
-            self.currentNumber++;
-            
-            //设置定时器让_scrollView 无限滚动播放
-            self.timer =[NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(svRun) userInfo:nil repeats:YES];
-        }
-    }
-    
-}
--(void)svRun
-{
-    
-    
-    self.currentNumber++;
-    
-    if (self.currentNumber==self.loopArr.count) {
-        self.currentNumber=0;
-    }
-    
-    [UIView animateWithDuration:1 animations:^{
-        self.scrollView.contentOffset=CGPointMake( self.view.frame.size.width*self.currentNumber-1, 0);
-        [self updatePageControl:self.scrollView];
-    }];
-    //动画
-//    [self.scrollView
-//     scrollRectToVisible:CGRectMake(self.view.frame.size.width*self.currentNumber-1, 0, self.view.frame.size.width, 0) animated:YES];
-    
-    
-    
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //设置第一次点击区域按钮
     self.cityID=@"73";
    
-    [self setScrollViewStyle];
+    
     
     //通知接受数据
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
     NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.loopArr =responseObject[@"list"];
-        //NSLog(@"loopData==%@",responseObject[@"list"]);
+        //NSLog(@"ima====%@",responseObject);
+        NSArray* arr=responseObject[@"list"];
+        
+        [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,arr[idx]];
+            
+            [self.loopArr addObject:imaUrl];
+        }];
+        
+        [self initCycleScrollView];
+       
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
                 NSLog(@"出错了");
         [SVProgressHUD dismiss];
@@ -102,43 +78,45 @@
         [SVProgressHUD showErrorWithStatus:@"出错了"];
 
     }];
- 
-}
-#pragma mark-scrollView相关设置
-- (void)setScrollViewStyle
-{
-    self.scrollView.pagingEnabled=YES;
-    self.scrollView.showsHorizontalScrollIndicator=NO;
-    self.scrollView.bounces=NO;
-    self.scrollView.delegate=self;
-    self.pageCon.currentPage=0;
-}
-#pragma mark-通知回传
-- (void)massageCityId:(NSNotification *)notification
-{
-    //NSLog(@"loopIma接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"cityId"]);
-    self.cityID=notification.userInfo[@"cityId"];
-}
-- (void)updatePageControl:(UIScrollView*)srollView
-{
-    CGPoint point=srollView.contentOffset;
-    int numPage=point.x/srollView.bounds.size.width;
-    self.pageCon.currentPage=numPage;
-}
-#pragma mark-UIScrollViewDelegate
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    //NSLog(@"拖拽完成，减速%d",decelerate);
-    if (!decelerate) {
-        [self updatePageControl:scrollView];
-    }
-}
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    //NSLog(@"减速完成");
-    [self updatePageControl:scrollView];
+    
+    
+    
     
 }
+
+- (void)initCycleScrollView
+{
+    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 180) delegate:self placeholderImage:nil];
+    cycleScrollView.imageURLStringsGroup=self.loopArr;
+    cycleScrollView.autoScrollTimeInterval=2.0;
+    cycleScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
+    [self.view addSubview:cycleScrollView];
+    
+    //行业类别
+    
+    [self createCollection:cycleScrollView];
+}
+
+
+- (void)createCollection:(SDCycleScrollView*)SDScrollView
+{
+
+    UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
+    
+    flowLayout.itemSize=CGSizeMake(30, 30);
+    flowLayout.minimumLineSpacing=2;
+    flowLayout.minimumInteritemSpacing=2;
+    flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
+    
+    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 150) collectionViewLayout:flowLayout];
+    
+    
+    
+    [self.view addSubview:self.collectionView];
+    
+}
+#pragma mark-scrollView相关设置
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

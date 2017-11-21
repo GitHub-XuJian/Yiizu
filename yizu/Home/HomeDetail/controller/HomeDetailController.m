@@ -52,6 +52,9 @@
     foot.time=[NSString stringWithFormat:@"%@ - %@",_model.starttime,_model.endtime];
     foot.full=_model.full;
     foot.phone=_model.chammobile;
+    foot.status=_model.status;
+    foot.upvote=_model.upvote;
+    foot.turvy=_model.Turvy;
     [self.view addSubview:self.tabView];
     
   

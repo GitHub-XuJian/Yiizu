@@ -12,6 +12,12 @@
 
 @property (nonatomic,strong) NSString* cityId;
 @property (nonatomic,strong) NSString* name;
+@property (nonatomic,strong) NSArray* list;
+
+//表示列表分组是否可见（开启，合上）
+@property(nonatomic,assign,getter=isVisible)BOOL visible;
+
+
 
 //更改城市id访问区域id接口
 @property (nonatomic,copy,readonly) NSString  *urlString;
