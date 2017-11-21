@@ -39,6 +39,7 @@
 		1F17675B1FB3F9AF00BB5026 /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767561FB3F9AE00BB5026 /* ChartViewController.m */; };
 		1F17675C1FB3F9AF00BB5026 /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */; };
 		1F17675D1FB3F9AF00BB5026 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17675A1FB3F9AF00BB5026 /* WebViewController.m */; };
+		1F32971E1FC2C71E00BCF94D /* HomeCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32971D1FC2C71E00BCF94D /* HomeCategoryCell.m */; };
 		1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C01FA6B78E00F8EA95 /* CellBtn.m */; };
 		1F4423C51FA6C3CE00F8EA95 /* HomeSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C41FA6C3CE00F8EA95 /* HomeSearchController.m */; };
 		1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C71FA6C47E00F8EA95 /* CustomSearchBar.m */; };
@@ -319,6 +320,8 @@
 		1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalInformationViewController.m; sourceTree = "<group>"; };
 		1F1767591FB3F9AE00BB5026 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		1F17675A1FB3F9AF00BB5026 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		1F32971C1FC2C71E00BCF94D /* HomeCategoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCategoryCell.h; sourceTree = "<group>"; };
+		1F32971D1FC2C71E00BCF94D /* HomeCategoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCategoryCell.m; sourceTree = "<group>"; };
 		1F4423BF1FA6B78E00F8EA95 /* CellBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellBtn.h; sourceTree = "<group>"; };
 		1F4423C01FA6B78E00F8EA95 /* CellBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellBtn.m; sourceTree = "<group>"; };
 		1F4423C31FA6C3CE00F8EA95 /* HomeSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchController.h; sourceTree = "<group>"; };
@@ -1077,6 +1080,8 @@
 		1FE535661F9F2E7300713053 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				1F32971C1FC2C71E00BCF94D /* HomeCategoryCell.h */,
+				1F32971D1FC2C71E00BCF94D /* HomeCategoryCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2253,6 +2258,7 @@
 				1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */,
 				1F1767221FB3F8D100BB5026 /* RankingView.m in Sources */,
 				1F0CEAB91FBA7E3300D06C8E /* ActivityDetailLoopView.m in Sources */,
+				1F32971E1FC2C71E00BCF94D /* HomeCategoryCell.m in Sources */,
 				1F17674F1FB3F93400BB5026 /* TAAnimatedDotView.m in Sources */,
 				AF66AE0D1F9EDD2F0079A2CF /* MembersPayViewController.m in Sources */,
 				AF66ADC11F9DDFB50079A2CF /* XAFNetWork.m in Sources */,
