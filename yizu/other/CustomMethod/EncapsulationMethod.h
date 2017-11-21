@@ -107,6 +107,10 @@
  */
 + (BOOL)isValidateEmail:(NSString *)email;
 /**
+ * 银行卡正则表达式
+ */
++ (BOOL)isValidateBankCard:(NSString *)bankCard;
+/**
  * @brief 把对象（Model）转换成字典
  * @param model 模型对象
  * @return 返回字典

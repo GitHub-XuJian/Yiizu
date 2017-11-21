@@ -187,5 +187,75 @@
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
     return dic;
 }
+#pragma mark - 多图上传
+/**
+ *  上传图片
+ *
+ *  @param operations   上传图片等预留参数---视具体情况而定 可移除
+ *  @param imageArray   上传的图片数组
+ *  @parm width      图片要被压缩到的宽度
+ *  @param urlString    上传的url---请填写完整的url
+ *  @param successBlock 上传成功的回调
+ *  @param failureBlock 上传失败的回调
+ *  @param progress     上传进度
+ *  @param imageName    参数名
+ *
+ */
++(void)uploadImageWithOperations:(NSDictionary *)operations
+                  withImageArray:(NSArray *)imageArray
+                 withtargetWidth:(CGFloat )width
+                   withUrlString:(NSString *)urlString
+                   withImageName:(NSString *)imageName
+                withSuccessBlock:(LHResponseSuccess)successBlock
+                 withFailurBlock:(LHResponseFail)failureBlock
+              withUpLoadProgress:(LHProgress)progress;
+{
+    
+    
+    //1.创建管理者对象
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    [manager POST:urlString parameters:operations constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        int i = 1 ;
+        
+        /**出于性能考虑,将上传图片进行压缩*/
+        for (UIImage * image in imageArray) {
+            
+            //image的分类方法
+            UIImage *  resizedImage =  [UIImage IMGCompressed:image targetWidth:image.size.width];
+            
+            NSData * imgData = UIImageJPEGRepresentation(resizedImage, .5);
+            NSString *imageDataName;
+            if (imageArray.count == 1) {
+                imageDataName = imageName;
+            }else{
+                imageDataName = [NSString stringWithFormat:@"%@",imageName];
+            }
+            //拼接data
+            [formData appendPartWithFileData:imgData name:imageDataName fileName:@"image.png" mimeType:@" image/jpeg"];
+            
+            i++;
+        }
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        progress(uploadProgress);
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary *  _Nullable responseObject) {
+        id dic = [XAFNetWork responseConfiguration:responseObject];
+
+        successBlock(task,dic);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        failureBlock(task,error);
+        
+    }];
+}
+
 
 @end

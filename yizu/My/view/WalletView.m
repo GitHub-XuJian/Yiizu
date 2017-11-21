@@ -7,6 +7,9 @@
 //
 
 #import "WalletView.h"
+@interface WalletView ()
+@property (nonatomic, strong) UILabel *moneyLabel;
+@end
 
 @implementation WalletView
 
@@ -17,6 +20,10 @@
         [self createUIView];
     }
     return self;
+}
+- (void)reloadMonay:(NSString *)monayStr
+{
+    self.moneyLabel.text = [NSString stringWithFormat:@"￥%@", monayStr];
 }
 - (void)createUIView
 {
@@ -35,5 +42,6 @@
     moneyLabel.textAlignment =NSTextAlignmentCenter;
     moneyLabel.textColor = [UIColor whiteColor];
     [self addSubview:moneyLabel];
+    self.moneyLabel = moneyLabel;
 }
 @end

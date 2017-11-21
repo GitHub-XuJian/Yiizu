@@ -223,6 +223,11 @@
 		AFB215291FBD7374006DD630 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215281FBD7374006DD630 /* ChangePasswordViewController.m */; };
 		AFB215521FBD9051006DD630 /* ZZYPhotoHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215501FBD9051006DD630 /* ZZYPhotoHelper.m */; };
 		AFB215551FBE7886006DD630 /* WalletView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215541FBE7886006DD630 /* WalletView.m */; };
+		AFB2155C1FC2664A006DD630 /* AddBankCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2155B1FC2664A006DD630 /* AddBankCardViewController.m */; };
+		AFB215611FC27303006DD630 /* UIImage+compressIMG.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2155F1FC27302006DD630 /* UIImage+compressIMG.m */; };
+		AFB215651FC28C46006DD630 /* bank.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFB215641FC28C46006DD630 /* bank.plist */; };
+		AFB215681FC2BA6A006DD630 /* BankCardNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215671FC2BA6A006DD630 /* BankCardNextViewController.m */; };
+		AFB2156B1FC3B7B7006DD630 /* WithdrawalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2156A1FC3B7B7006DD630 /* WithdrawalViewController.m */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
@@ -667,6 +672,15 @@
 		AFB215511FBD9051006DD630 /* ZZYPhotoHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZYPhotoHelper.h; sourceTree = "<group>"; };
 		AFB215531FBE7886006DD630 /* WalletView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WalletView.h; sourceTree = "<group>"; };
 		AFB215541FBE7886006DD630 /* WalletView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WalletView.m; sourceTree = "<group>"; };
+		AFB2155A1FC2664A006DD630 /* AddBankCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddBankCardViewController.h; sourceTree = "<group>"; };
+		AFB2155B1FC2664A006DD630 /* AddBankCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddBankCardViewController.m; sourceTree = "<group>"; };
+		AFB2155F1FC27302006DD630 /* UIImage+compressIMG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+compressIMG.m"; sourceTree = "<group>"; };
+		AFB215601FC27302006DD630 /* UIImage+compressIMG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+compressIMG.h"; sourceTree = "<group>"; };
+		AFB215641FC28C46006DD630 /* bank.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bank.plist; sourceTree = "<group>"; };
+		AFB215661FC2BA6A006DD630 /* BankCardNextViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BankCardNextViewController.h; sourceTree = "<group>"; };
+		AFB215671FC2BA6A006DD630 /* BankCardNextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardNextViewController.m; sourceTree = "<group>"; };
+		AFB215691FC3B7B7006DD630 /* WithdrawalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalViewController.h; sourceTree = "<group>"; };
+		AFB2156A1FC3B7B7006DD630 /* WithdrawalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalViewController.m; sourceTree = "<group>"; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -1296,6 +1310,7 @@
 		AF66ACF11F9D7E540079A2CF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AFB215641FC28C46006DD630 /* bank.plist */,
 				AF66AD531F9D8BF90079A2CF /* Assets.xcassets */,
 				AF66AD4D1F9D83080079A2CF /* YiZuManager.pch */,
 				AF66AD4C1F9D82D20079A2CF /* MethodsValue.h */,
@@ -1455,6 +1470,12 @@
 				AFB215251FBD6B5C006DD630 /* PasswordManagementViewController.m */,
 				AFB215271FBD7374006DD630 /* ChangePasswordViewController.h */,
 				AFB215281FBD7374006DD630 /* ChangePasswordViewController.m */,
+				AFB2155A1FC2664A006DD630 /* AddBankCardViewController.h */,
+				AFB2155B1FC2664A006DD630 /* AddBankCardViewController.m */,
+				AFB215661FC2BA6A006DD630 /* BankCardNextViewController.h */,
+				AFB215671FC2BA6A006DD630 /* BankCardNextViewController.m */,
+				AFB215691FC3B7B7006DD630 /* WithdrawalViewController.h */,
+				AFB2156A1FC3B7B7006DD630 /* WithdrawalViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1601,6 +1622,8 @@
 		AF66AD951F9DDD250079A2CF /* UIKit+AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				AFB215601FC27302006DD630 /* UIImage+compressIMG.h */,
+				AFB2155F1FC27302006DD630 /* UIImage+compressIMG.m */,
 				AF66AD961F9DDD250079A2CF /* AFAutoPurgingImageCache.h */,
 				AF66AD971F9DDD250079A2CF /* AFAutoPurgingImageCache.m */,
 				AF66AD981F9DDD250079A2CF /* AFImageDownloader.h */,
@@ -2100,6 +2123,7 @@
 				AF66AE831F9F1AB10079A2CF /* IQKeyboardManager.bundle in Resources */,
 				AF66AE001F9DE1B60079A2CF /* MJRefresh.bundle in Resources */,
 				1F17673A1FB3F91200BB5026 /* Activity.storyboard in Resources */,
+				AFB215651FC28C46006DD630 /* bank.plist in Resources */,
 				AFB215071FB954EE006DD630 /* README.txt in Resources */,
 				AF23F3FF1FAC66070022E990 /* UMSocialSDKResources.bundle in Resources */,
 				1F0CEACF1FBAC9EA00D06C8E /* HomeDetailCell.xib in Resources */,
@@ -2222,6 +2246,7 @@
 				AF66AD601F9D947F0079A2CF /* MyHeaderVeiw.m in Sources */,
 				AF8B6CF31FA01A4A008DA068 /* UIImage+MultiFormat.m in Sources */,
 				1F4423DA1FA6F0C200F8EA95 /* SVProgressAnimatedView.m in Sources */,
+				AFB215611FC27303006DD630 /* UIImage+compressIMG.m in Sources */,
 				AF66ADB11F9DDD250079A2CF /* AFImageDownloader.m in Sources */,
 				AF66AD711F9DB4240079A2CF /* MyCollectionViewController.m in Sources */,
 				AFC62F281FA1B5D500A3F3F5 /* MCChartInformationView.m in Sources */,
@@ -2234,10 +2259,12 @@
 				AF6C469D1FA71BC900797125 /* KeyChainStore.m in Sources */,
 				AF6C46B61FA808EC00797125 /* SFNavView.m in Sources */,
 				1F1767371FB3F91200BB5026 /* ActivityPageController.m in Sources */,
+				AFB2155C1FC2664A006DD630 /* AddBankCardViewController.m in Sources */,
 				AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */,
 				1F0CEAC01FBA9CAA00D06C8E /* ActivityDetailCell.m in Sources */,
 				AFB2150D1FB9920B006DD630 /* SetUpViewController.m in Sources */,
 				AF66ADAA1F9DDD250079A2CF /* AFHTTPSessionManager.m in Sources */,
+				AFB2156B1FC3B7B7006DD630 /* WithdrawalViewController.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,
 				AF66AD6E1F9DACB10079A2CF /* MyTableViewCell.m in Sources */,
 				AFC62F271FA1B5D500A3F3F5 /* MCBarChartView.m in Sources */,
@@ -2307,6 +2334,7 @@
 				AF6C465E1FA4197C00797125 /* HelpDetailsViewController.m in Sources */,
 				AF8B6CF11FA01A4A008DA068 /* UIButton+WebCache.m in Sources */,
 				1F4423C51FA6C3CE00F8EA95 /* HomeSearchController.m in Sources */,
+				AFB215681FC2BA6A006DD630 /* BankCardNextViewController.m in Sources */,
 				AF66AD691F9D99E60079A2CF /* Foundation+Log.m in Sources */,
 				AF66ADF61F9DE1B60079A2CF /* MJRefreshHeader.m in Sources */,
 				AFB214FC1FB5473C006DD630 /* PWCustomSheet.m in Sources */,

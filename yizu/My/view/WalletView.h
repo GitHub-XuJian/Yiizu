@@ -10,4 +10,5 @@
 
 @interface WalletView : UIView
 
+- (void)reloadMonay:(NSString *)monayStr;
 @end

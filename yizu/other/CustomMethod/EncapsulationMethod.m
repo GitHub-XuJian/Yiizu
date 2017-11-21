@@ -509,6 +509,12 @@
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:email];
 }
+//银行卡的正则表达式
++ (BOOL)isValidateBankCard:(NSString *)bankCard{
+    NSString *bankCardRegex = @"^\\d{19}$";
+    NSPredicate *bankCardTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", bankCardRegex];
+    return [bankCardTest evaluateWithObject:bankCard];
+}
 + (NSString *) md5:(NSString *) input {
     const char *cStr = [input UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];

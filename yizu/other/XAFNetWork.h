@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AFNetworking/AFNetworking.h"
+#import "UIImage+compressIMG.h"
+
 /**
  *  宏定义请求成功的block
  *
@@ -146,6 +148,26 @@ typedef void (^LHProgress)(NSProgress *progress);
                                     progress:(LHProgress )progress
                                      success:(void (^)(NSURLResponse *, NSURL *))success
                                         fail:(void (^)(NSError *))fail;
+/**
+ *  上传图片
+ *
+ *  @param operations   上传图片预留参数---视具体情况而定 可移除
+ *  @param imageArray   上传的图片数组
+ *  @parm width      图片要被压缩到的宽度
+ *  @param urlString    上传的url
+ *  @param successBlock 上传成功的回调
+ *  @param failureBlock 上传失败的回调
+ *  @param progress     上传进度
+ */
+
++(void)uploadImageWithOperations:(NSDictionary *)operations
+                  withImageArray:(NSArray *)imageArray
+                 withtargetWidth:(CGFloat )width
+                   withUrlString:(NSString *)urlString
+                   withImageName:(NSString *)imageName
+                withSuccessBlock:(LHResponseSuccess)successBlock
+                 withFailurBlock:(LHResponseFail)failureBlock
+              withUpLoadProgress:(LHProgress)progress;
 
 
 @end

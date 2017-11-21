@@ -101,6 +101,24 @@
             [[ZZYPhotoHelper shareHelper] showImageViewSelcteWithResultBlock:^(id data) {
                 UIImage *image = (UIImage *)data;
                 NSLog(@"%@",image);
+                
+                NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Headpic/headpicApi",Main_Server];
+                NSMutableArray *imageDataArray = [[NSMutableArray alloc] init];
+                [imageDataArray addObject:image];
+                
+                NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+                
+                [XAFNetWork uploadImageWithOperations:dict withImageArray:imageDataArray withtargetWidth:image.size.width withUrlString:urlStr withImageName:@"headpic" withSuccessBlock:^(NSURLSessionDataTask *task, id responseObject) {
+                    NSLog(@"%@",responseObject);
+                    jxt_showAlertTitle(responseObject[@"message"]);
+                    if ([responseObject[@"result"] integerValue]) {
+                        [XSaverTool setObject:responseObject[@"url"] forKey:UserIconImage];
+                    }
+                } withFailurBlock:^(NSURLSessionDataTask *task, NSError *error) {
+                    NSLog(@"%@",error);
+                } withUpLoadProgress:^(NSProgress *progress) {
+                    
+                }];
             }];
             break;
         }
@@ -134,6 +152,7 @@
         
     }];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
