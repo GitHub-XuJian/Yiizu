@@ -10,8 +10,11 @@
 #import "UIImageView+AFNetworking.h"
 #import "HomAreaBtnController.h"
 #import "SDCycleScrollView.h"
+#import "HomeCategoryCell.h"
+#import "HomeCategoryCell.h"
 
-@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate>
+
+@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIButton *btn;
 
@@ -100,23 +103,49 @@
 
 - (void)createCollection:(SDCycleScrollView*)SDScrollView
 {
-
-    UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
     
-    flowLayout.itemSize=CGSizeMake(30, 30);
-    flowLayout.minimumLineSpacing=2;
-    flowLayout.minimumInteritemSpacing=2;
-    flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
-    
+      UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
     self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 150) collectionViewLayout:flowLayout];
+
+  
     
+    CGFloat itemW = (kSCREEN_WIDTH - 50)/5;
+    CGFloat itemH = (self.collectionView.frame.size.height-2)/2;
+    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
     
+    flowLayout.itemSize=CGSizeMake(itemW, itemH);
+    flowLayout.minimumLineSpacing=12;//竖间距
+   
+    flowLayout.minimumInteritemSpacing=2;
+     NSLog(@"%f",flowLayout.minimumInteritemSpacing);
+    
+    flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
+   
+//    collectionFL.sectionInset=UIEdgeInsetsMake(5, 10, 5, 10);
+
+    self.collectionView.delegate=self;
+    self.collectionView.dataSource=self;
+    self.collectionView.backgroundColor=[UIColor cyanColor];
+    self.collectionView.showsHorizontalScrollIndicator=NO;
+    [self.collectionView registerClass:[HomeCategoryCell class] forCellWithReuseIdentifier:@"catecell"];
     
     [self.view addSubview:self.collectionView];
     
 }
-#pragma mark-scrollView相关设置
 
+#pragma mark-UIcollectionViewDelegate
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return 11;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeCategoryCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"catecell" forIndexPath:indexPath];
+    //cell.backgroundColor=[UIColor yellowColor];
+    return cell;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
