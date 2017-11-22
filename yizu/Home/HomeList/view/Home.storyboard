@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="IfV-qk-mkg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
                                 <segue destination="UbQ-BP-CkG" kind="embed" id="imK-gg-BC9"/>
@@ -28,7 +28,7 @@
                         </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" rowHeight="180" id="nbO-IY-kKB" customClass="HomeListCell">
-                                <rect key="frame" x="0.0" y="378" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="398" width="375" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbO-IY-kKB" id="826-4h-n08">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
@@ -165,27 +165,11 @@
             <objects>
                 <viewController id="UbQ-BP-CkG" customClass="LoopImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GcI-tk-jcY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="350"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuI-yb-NDT">
-                                <rect key="frame" x="16" y="337" width="53" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="区域排布">
-                                    <color key="titleColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="btnAction:" destination="UbQ-BP-CkG" eventType="touchUpInside" id="ZYH-Kv-g9V"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="09O-DN-20h"/>
                     </view>
-                    <connections>
-                        <outlet property="btn" destination="iuI-yb-NDT" id="ONS-z7-GIm"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j4P-Fe-mAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

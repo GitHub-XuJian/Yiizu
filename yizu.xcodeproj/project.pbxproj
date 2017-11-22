@@ -40,6 +40,10 @@
 		1F17675C1FB3F9AF00BB5026 /* PersonalInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1767581FB3F9AE00BB5026 /* PersonalInformationViewController.m */; };
 		1F17675D1FB3F9AF00BB5026 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F17675A1FB3F9AF00BB5026 /* WebViewController.m */; };
 		1F32971E1FC2C71E00BCF94D /* HomeCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F32971D1FC2C71E00BCF94D /* HomeCategoryCell.m */; };
+		1F43F9B71FC3BF8500AF2F27 /* HomeCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43F9B61FC3BF8400AF2F27 /* HomeCategoryModel.m */; };
+		1F43F9BB1FC3FACD00AF2F27 /* HomeCategoryDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43F9BA1FC3FACD00AF2F27 /* HomeCategoryDetailController.m */; };
+		1F43F9BE1FC401E300AF2F27 /* HomeCateDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F43F9BD1FC401E300AF2F27 /* HomeCateDetailCell.m */; };
+		1F43F9C21FC4028D00AF2F27 /* HomeCateDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F43F9C11FC4028D00AF2F27 /* HomeCateDetailCell.xib */; };
 		1F4423C11FA6B78E00F8EA95 /* CellBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C01FA6B78E00F8EA95 /* CellBtn.m */; };
 		1F4423C51FA6C3CE00F8EA95 /* HomeSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C41FA6C3CE00F8EA95 /* HomeSearchController.m */; };
 		1F4423C81FA6C47E00F8EA95 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4423C71FA6C47E00F8EA95 /* CustomSearchBar.m */; };
@@ -322,6 +326,13 @@
 		1F17675A1FB3F9AF00BB5026 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		1F32971C1FC2C71E00BCF94D /* HomeCategoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCategoryCell.h; sourceTree = "<group>"; };
 		1F32971D1FC2C71E00BCF94D /* HomeCategoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCategoryCell.m; sourceTree = "<group>"; };
+		1F43F9B51FC3BF8400AF2F27 /* HomeCategoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCategoryModel.h; sourceTree = "<group>"; };
+		1F43F9B61FC3BF8400AF2F27 /* HomeCategoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCategoryModel.m; sourceTree = "<group>"; };
+		1F43F9B91FC3FACD00AF2F27 /* HomeCategoryDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCategoryDetailController.h; sourceTree = "<group>"; };
+		1F43F9BA1FC3FACD00AF2F27 /* HomeCategoryDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCategoryDetailController.m; sourceTree = "<group>"; };
+		1F43F9BC1FC401E300AF2F27 /* HomeCateDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCateDetailCell.h; sourceTree = "<group>"; };
+		1F43F9BD1FC401E300AF2F27 /* HomeCateDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCateDetailCell.m; sourceTree = "<group>"; };
+		1F43F9C11FC4028D00AF2F27 /* HomeCateDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCateDetailCell.xib; sourceTree = "<group>"; };
 		1F4423BF1FA6B78E00F8EA95 /* CellBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CellBtn.h; sourceTree = "<group>"; };
 		1F4423C01FA6B78E00F8EA95 /* CellBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CellBtn.m; sourceTree = "<group>"; };
 		1F4423C31FA6C3CE00F8EA95 /* HomeSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeSearchController.h; sourceTree = "<group>"; };
@@ -937,6 +948,18 @@
 			path = PageControl;
 			sourceTree = "<group>";
 		};
+		1F43F9B81FC3F98200AF2F27 /* HomeCateGoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1F43F9B91FC3FACD00AF2F27 /* HomeCategoryDetailController.h */,
+				1F43F9BA1FC3FACD00AF2F27 /* HomeCategoryDetailController.m */,
+				1F43F9BC1FC401E300AF2F27 /* HomeCateDetailCell.h */,
+				1F43F9BD1FC401E300AF2F27 /* HomeCateDetailCell.m */,
+				1F43F9C11FC4028D00AF2F27 /* HomeCateDetailCell.xib */,
+			);
+			path = HomeCateGoryDetail;
+			sourceTree = "<group>";
+		};
 		1F4423C21FA6C38E00F8EA95 /* SearchPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,6 +1077,7 @@
 		1FE5355F1F9F2E7300713053 /* LoopImage */ = {
 			isa = PBXGroup;
 			children = (
+				1F43F9B81FC3F98200AF2F27 /* HomeCateGoryDetail */,
 				1FE535601F9F2E7300713053 /* controller */,
 				1FE535631F9F2E7300713053 /* model */,
 				1FE535661F9F2E7300713053 /* view */,
@@ -1073,6 +1097,8 @@
 		1FE535631F9F2E7300713053 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				1F43F9B51FC3BF8400AF2F27 /* HomeCategoryModel.h */,
+				1F43F9B61FC3BF8400AF2F27 /* HomeCategoryModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2138,6 +2164,7 @@
 				AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */,
 				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				1F4423DB1FA6F0C200F8EA95 /* SVProgressHUD.bundle in Resources */,
+				1F43F9C21FC4028D00AF2F27 /* HomeCateDetailCell.xib in Resources */,
 				1F4423CA1FA6C49000F8EA95 /* CustomSearchBar.xib in Resources */,
 				1F0CEAD41FBADCAD00D06C8E /* HomeDetailFooter.xib in Resources */,
 				AF23F4021FAC66070022E990 /* UMSocialSDKPromptResources.bundle in Resources */,
@@ -2196,6 +2223,7 @@
 				AF66ADAD1F9DDD250079A2CF /* AFURLRequestSerialization.m in Sources */,
 				1F1767391FB3F91200BB5026 /* ActivityPageModel.m in Sources */,
 				AF66AE161F9EE78A0079A2CF /* MembershipActivationCodeTableViewCell.m in Sources */,
+				1F43F9BE1FC401E300AF2F27 /* HomeCateDetailCell.m in Sources */,
 				1F17671F1FB3F8D100BB5026 /* PieChartView.m in Sources */,
 				1F58909F1FBEBB3A0026ABCA /* FollowBtn.m in Sources */,
 				AF66AE7F1F9F1AB10079A2CF /* IQPreviousNextView.m in Sources */,
@@ -2231,6 +2259,7 @@
 				AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */,
 				1F17673D1FB3F91200BB5026 /* FirstScrollViewController.m in Sources */,
 				1F0CEACE1FBAC9EA00D06C8E /* HomeDetailCell.m in Sources */,
+				1F43F9BB1FC3FACD00AF2F27 /* HomeCategoryDetailController.m in Sources */,
 				AF8B6CEC1FA01A4A008DA068 /* SDWebImageDecoder.m in Sources */,
 				1F4A31861FBFE81F00DC384D /* SmallCityListModel.m in Sources */,
 				AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */,
@@ -2370,6 +2399,7 @@
 				AFB214FC1FB5473C006DD630 /* PWCustomSheet.m in Sources */,
 				1F4423DC1FA6F0C200F8EA95 /* SVProgressHUD.m in Sources */,
 				AFB215261FBD6B5C006DD630 /* PasswordManagementViewController.m in Sources */,
+				1F43F9B71FC3BF8500AF2F27 /* HomeCategoryModel.m in Sources */,
 				AF23F4171FB0287C0022E990 /* AgreementView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

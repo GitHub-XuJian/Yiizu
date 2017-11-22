@@ -10,6 +10,10 @@
 
 @interface HomeListModel : NSObject
 
+
+//距离
+@property (nonatomic, copy) NSString* distance;
+
 //商户名称
 @property (nonatomic, copy) NSString* chambername;
 //已售

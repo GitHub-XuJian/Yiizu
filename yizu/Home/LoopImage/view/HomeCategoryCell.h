@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomeCategoryModel;
+
 @interface HomeCategoryCell : UICollectionViewCell
+
+@property (nonatomic, strong) HomeCategoryModel* model;
+
 
 @end
