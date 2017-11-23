@@ -8,6 +8,8 @@
 
 #import "HomeCateDetailCell.h"
 #import "HomeListModel.h"
+#import "CellBtn.h"
+#import "favoriteBtn.h"
 
 
 @interface HomeCateDetailCell ()
@@ -58,8 +60,38 @@
     
     self.rankingLab .text=[NSString stringWithFormat:@"| 排名：%@",model.up];
     
-    self.distanceLab.text=[NSString stringWithFormat:@"%@m",model.distance];
+    if (model.distance.integerValue>=100000) {
+        
+        NSInteger value= model.distance.integerValue/1000;
+        self.distanceLab.text=[NSString stringWithFormat:@"%ld Km",(long)value];
+    }else
+    {
+        self.distanceLab.text=[NSString stringWithFormat:@"%@ m",model.distance];
+    }
+    
+    
 
+    
+    self.likeBtn.likeCount=model.upvote.integerValue;
+    
+    if (model.status) {
+        self.likeBtn.islike=YES;
+    }else
+    {
+        
+        self.likeBtn.islike=NO;
+      
+    }
+    
+    if (model.Turvy) {
+        self.favBtn.issc=YES;
+    }else
+    {
+        self.favBtn.issc=NO;
+    }
+    
+    self.likeBtn.chambername=model.chambername;//保存店铺名字用于点赞
+    self.favBtn.chambername=model.chambername;
     
 }
 

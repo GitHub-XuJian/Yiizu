@@ -64,14 +64,18 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9So-S5-RKI">
-                        <rect key="frame" x="255" y="169" width="46" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9So-S5-RKI" customClass="favoriteBtn">
+                        <rect key="frame" x="285" y="160.5" width="20" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="EF9-ly-tEV"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWZ-FD-VcU">
-                        <rect key="frame" x="323" y="169" width="46" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWZ-FD-VcU" customClass="CellBtn">
+                        <rect key="frame" x="320" y="158" width="50" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="be6-yT-Yto"/>
+                        </constraints>
                         <state key="normal" title="Button"/>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2sg-zo-q4Q">
@@ -92,6 +96,7 @@
                     <constraint firstItem="36b-eq-Vw6" firstAttribute="top" secondItem="sIM-CK-jAj" secondAttribute="bottom" constant="2" id="0r4-w5-KAN"/>
                     <constraint firstItem="sIM-CK-jAj" firstAttribute="leading" secondItem="6XE-K5-ChX" secondAttribute="trailing" constant="5" id="1ah-So-bhs"/>
                     <constraint firstItem="6XE-K5-ChX" firstAttribute="top" secondItem="fPD-Vu-dLh" secondAttribute="top" constant="20" id="23X-jh-gfm"/>
+                    <constraint firstItem="2sg-zo-q4Q" firstAttribute="top" secondItem="HWZ-FD-VcU" secondAttribute="bottom" constant="5" id="2lp-Ws-Hfd"/>
                     <constraint firstItem="s1U-Ds-M7U" firstAttribute="top" secondItem="XCK-AY-ykJ" secondAttribute="bottom" constant="6" id="4hi-in-wsQ"/>
                     <constraint firstItem="d7i-O1-y09" firstAttribute="height" secondItem="kxI-9l-GQ0" secondAttribute="height" id="5Ur-LA-g0o"/>
                     <constraint firstItem="d7i-O1-y09" firstAttribute="top" secondItem="kxI-9l-GQ0" secondAttribute="top" id="5YK-qu-XvC"/>
@@ -114,23 +119,28 @@
                     <constraint firstItem="d7i-O1-y09" firstAttribute="leading" secondItem="kxI-9l-GQ0" secondAttribute="trailing" id="enw-mu-OQp"/>
                     <constraint firstItem="6XE-K5-ChX" firstAttribute="leading" secondItem="fPD-Vu-dLh" secondAttribute="leading" constant="20" id="f2m-6g-aDp"/>
                     <constraint firstItem="s1U-Ds-M7U" firstAttribute="leading" secondItem="XCK-AY-ykJ" secondAttribute="leading" id="f80-ab-Ovy"/>
+                    <constraint firstAttribute="bottom" secondItem="9So-S5-RKI" secondAttribute="bottom" constant="5" id="jTP-fF-0xB"/>
                     <constraint firstItem="qlU-fo-yg5" firstAttribute="top" secondItem="6XE-K5-ChX" secondAttribute="bottom" constant="5" id="mh9-FR-zzk"/>
+                    <constraint firstItem="HWZ-FD-VcU" firstAttribute="leading" secondItem="9So-S5-RKI" secondAttribute="trailing" constant="15" id="nVP-IX-MyV"/>
                     <constraint firstItem="d7i-O1-y09" firstAttribute="width" secondItem="kxI-9l-GQ0" secondAttribute="width" id="pbE-Dd-f78"/>
+                    <constraint firstAttribute="trailing" secondItem="HWZ-FD-VcU" secondAttribute="trailing" constant="5" id="prW-x3-6h7"/>
                     <constraint firstItem="kxI-9l-GQ0" firstAttribute="top" secondItem="qlU-fo-yg5" secondAttribute="top" id="vA3-iV-TCH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="chamberjjLabel" destination="XCK-AY-ykJ" id="Hui-zX-4rD"/>
                 <outlet property="distanceLab" destination="qcn-JG-TR1" id="9cq-1n-kqk"/>
+                <outlet property="favBtn" destination="9So-S5-RKI" id="Wox-d9-fGR"/>
                 <outlet property="iconIma" destination="6XE-K5-ChX" id="xG8-TM-mcm"/>
                 <outlet property="iconTitle" destination="sIM-CK-jAj" id="ENy-y8-0nV"/>
                 <outlet property="ima1" destination="qlU-fo-yg5" id="7Z1-oV-pnG"/>
                 <outlet property="ima2" destination="kxI-9l-GQ0" id="XMo-c8-GCT"/>
                 <outlet property="ima3" destination="d7i-O1-y09" id="4Qg-qz-nQ2"/>
+                <outlet property="likeBtn" destination="HWZ-FD-VcU" id="lyN-lC-yzF"/>
                 <outlet property="rankingLab" destination="36b-eq-Vw6" id="X0F-CS-ntI"/>
                 <outlet property="upLabel" destination="s1U-Ds-M7U" id="7s0-Xs-k6V"/>
             </connections>
-            <point key="canvasLocation" x="-884" y="63"/>
+            <point key="canvasLocation" x="-1012" y="62"/>
         </tableViewCell>
     </objects>
 </document>

@@ -13,8 +13,9 @@
 #import "LoopImageViewController.h"
 #import "HomeSearchController.h"
 #import "HomeDetailController.h"
+#import "PopMenuView.h"
 
-@interface HomeViewController ()<HomeCityBtnDelegate>
+@interface HomeViewController ()<HomeCityBtnDelegate,PopmenuViewDelegate>
 @property(nonatomic, strong)NSMutableArray* listArr;
 //用于设置navbarbtn的标题
 @property(nonatomic, strong)UIButton* navBtn;
@@ -81,6 +82,12 @@
     //接受数据
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"AreaId" object:nil];
 
+    //
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saixuanId:) name:@"saixuan" object:nil];
+    
+
+    
+    
     self.currentPage=1;
     self.homeListCityId=@"73";
     
@@ -308,6 +315,16 @@
     
     [self.navigationController pushViewController:dVC animated:YES];
     
+}
+
+
+
+- (void)saixuanId:(NSNotification *)notification
+{
+    NSString* newStr=notification.userInfo[@"areaUrl"];
+    
+    NSLog(@"homeNewStr===%@",newStr);
+    [self requestData:newStr];
 }
 
 /*

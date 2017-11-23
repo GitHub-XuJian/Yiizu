@@ -30,14 +30,20 @@
 {
     _model= model;
     [self.bigIma sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,model.mainpic]]];
+    
     self.movableLab.text=model.movable;
     
-    if (model.status) {
+    NSLog(@"%@",model.status);
+    
+    if ([model.status isEqualToString:@"1"]) {
         self.followBtn.isFollow=YES;
+       
     }else
     {
         self.followBtn.isFollow=NO;
+      
     }
+    
     
     self.followBtn.activityid=model.activityid;
     self.followBtn.followCount=model.attention.integerValue;

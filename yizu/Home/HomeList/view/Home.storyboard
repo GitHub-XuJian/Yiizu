@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="IfV-qk-mkg">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <connections>
                                 <segue destination="UbQ-BP-CkG" kind="embed" id="imK-gg-BC9"/>
@@ -28,7 +28,7 @@
                         </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="home" rowHeight="180" id="nbO-IY-kKB" customClass="HomeListCell">
-                                <rect key="frame" x="0.0" y="398" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="408" width="375" height="180"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbO-IY-kKB" id="826-4h-n08">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179.5"/>
@@ -165,7 +165,7 @@
             <objects>
                 <viewController id="UbQ-BP-CkG" customClass="LoopImageViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GcI-tk-jcY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="370"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="09O-DN-20h"/>

@@ -8,10 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
 @class HomeListModel;
+@class CellBtn;
+@class favoriteBtn;
 
 @interface HomeCateDetailCell : UITableViewCell
 
 @property (nonatomic, strong) HomeListModel* model;
+@property (weak, nonatomic) IBOutlet CellBtn *likeBtn;
+@property (weak, nonatomic) IBOutlet favoriteBtn *favBtn;
 
 @end

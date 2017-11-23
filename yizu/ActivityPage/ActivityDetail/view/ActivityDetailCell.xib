@@ -43,15 +43,16 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-p8-MVG">
                         <rect key="frame" x="15" y="135" width="290" height="25"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-7h-6Q7" customClass="FollowBtn">
-                                <rect key="frame" x="219" y="0.0" width="52" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-7h-6Q7" customClass="FollowBtn">
+                                <rect key="frame" x="210" y="8" width="61" height="17"/>
                                 <state key="normal" title="➕关注"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="1kx-vR-DhX"/>
+                            <constraint firstAttribute="bottom" secondItem="0YC-7h-6Q7" secondAttribute="bottom" id="DEO-Bw-abe"/>
+                            <constraint firstAttribute="trailing" secondItem="0YC-7h-6Q7" secondAttribute="trailing" constant="19" id="QNF-f3-JBn"/>
                         </constraints>
                     </view>
                 </subviews>

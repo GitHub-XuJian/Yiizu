@@ -14,9 +14,10 @@
 #import "HomeCategoryCell.h"
 #import "HomeCategoryModel.h"
 #import "HomeCategoryDetailController.h"
+#import "PopMenuView.h"
 
 
-@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,HomAreaBtnDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btn;
 
@@ -28,6 +29,11 @@
 
 
 @property (strong, nonatomic) UIView*  grayColorView;
+
+@property (strong, nonatomic) UIView* btnView;
+
+
+@property (copy, nonatomic) NSString* areaid;
 
 @end
 
@@ -114,7 +120,7 @@
 {
     
     UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
-    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 160) collectionViewLayout:flowLayout];
+    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 170) collectionViewLayout:flowLayout];
 
   
     
@@ -156,13 +162,13 @@
 
 - (void)createBtnView
 {
-    UIView* btnView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.grayColorView.frame), kSCREEN_WIDTH, 30)];
-    //btnView.backgroundColor=[UIColor cyanColor];
-    [self.view addSubview:btnView];
+    self.btnView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.grayColorView.frame), kSCREEN_WIDTH, 30)];
+    //self.btnView.backgroundColor=[UIColor cyanColor];
+    [self.view addSubview:self.btnView];
     
     CGFloat x=50;
     CGFloat W=(kSCREEN_WIDTH-100)/3;
-    NSArray* btnTitle=@[@"综合排序",@"区域分布",@"筛选"];
+    NSArray* btnTitle=@[@"综合排序",@"区域分布",@"离我最近"];
     for (int i=0; i<3; i++) {
         UIButton* btn=[[UIButton alloc]init];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -170,18 +176,73 @@
         btn.titleLabel.font=[UIFont systemFontOfSize:13];
         btn.frame=CGRectMake(i*(W+x), 0, W, 30);
         [btn addTarget:self action:@selector(btnViewAction:) forControlEvents:UIControlEventTouchUpInside];
-        [btnView addSubview:btn];
+        [self.btnView addSubview:btn];
     }
 }
 
 - (void)btnViewAction:(UIButton*)btn
 {
+    
+    if ([btn.currentTitle isEqualToString:@"离我最近"]) {
+        
+       
+        [PopMenuView showWithItems:@[@{@"title":@"离我最近",@"imageName":@"ic_common_praise_pressed_15x15_"},
+                                     @{@"title":@"热度排序",@"imageName":@"ic_common_praise_pressed_15x15_"},]
+                               width:130
+                    triangleLocation:CGPointMake(kSCREEN_WIDTH-30, CGRectGetMaxY(self.btnView.frame)+50)
+                              action:^(NSInteger index) {
+                                 
+                                  NSString* url=@"";
+                                  if (index==0) {
+                                      //点击离我最近按钮方式排序
+                                       NSLog(@"点击了第%ld行",index);
+                                      if (self.areaid) {
+                                         
+                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID,self.areaid];
+                                           NSLog(@"点击了区域按钮aaa\n%@",url);
+                                      }else{
+                                       
+                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
+                                          NSLog(@"没点区域按钮%@\n",url);
+                                          
+                                  }
+                                      
+                                      NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
+                                      
+                                      [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
+                                  }else
+                                  {
+                                      //点击热度按钮方式排序
+                                       NSLog(@"点击了第%ld行",index);
+                                      if (self.areaid) {
+                                          
+                                          NSLog(@"点击了区域按钮aaa");
+                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID,self.areaid];
+                                          
+                                      }else{
+                                           url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
+                                          NSLog(@"没点区域按钮");
+                                      }
+                                      
+                                      NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
+                                      
+                                      [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
+                                  }
+                                  
+                              }];
+    }else if ([btn.currentTitle isEqualToString:@"区域分布"])
+    {
+        
     NSLog(@"点击了区域按钮%@",self.cityID);
     HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
     aVC.cityId=self.cityID;
+        aVC.delegate=self;
     UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
     [self presentViewController:nav animated:YES completion:nil];
-    
+    }else
+    {
+            NSLog(@"点击了区域按钮%@",self.cityID);
+    }
 }
 
 #pragma mark-UIcollectionViewDelegate
@@ -214,6 +275,12 @@
     HCDVC.cityId=self.cityID;
     //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
     [self.navigationController pushViewController:HCDVC animated:YES];
+}
+
+- (void)HomAreaBtnTitle:(NSString *)title
+{
+    self.areaid=title;
+   
 }
 
 /*

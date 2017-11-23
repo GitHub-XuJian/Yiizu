@@ -58,6 +58,7 @@
 		1F4A31891FBFEDBA00DC384D /* HeadCityBtnReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A31881FBFEDBA00DC384D /* HeadCityBtnReusableView.m */; };
 		1F5497331FBC232600C00257 /* ActivityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5497321FBC232500C00257 /* ActivityDetailListModel.m */; };
 		1F58909F1FBEBB3A0026ABCA /* FollowBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58909E1FBEBB3A0026ABCA /* FollowBtn.m */; };
+		1F6CC2E81FC516C30026807C /* PopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CC2E71FC516C30026807C /* PopMenuView.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
@@ -360,6 +361,8 @@
 		1F5497321FBC232500C00257 /* ActivityDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListModel.m; sourceTree = "<group>"; };
 		1F58909D1FBEBB3A0026ABCA /* FollowBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowBtn.h; sourceTree = "<group>"; };
 		1F58909E1FBEBB3A0026ABCA /* FollowBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowBtn.m; sourceTree = "<group>"; };
+		1F6CC2E61FC516C30026807C /* PopMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopMenuView.h; sourceTree = "<group>"; };
+		1F6CC2E71FC516C30026807C /* PopMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopMenuView.m; sourceTree = "<group>"; };
 		1FE535561F9F2E7300713053 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1FE535571F9F2E7300713053 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		1FE535591F9F2E7300713053 /* HomeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListModel.h; sourceTree = "<group>"; };
@@ -1032,6 +1035,13 @@
 			path = ActivityLsitDetail;
 			sourceTree = "<group>";
 		};
+		1F6CC2E51FC50FFA0026807C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		1FE535541F9F2E7300713053 /* HomeList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1118,8 @@
 			children = (
 				1F32971C1FC2C71E00BCF94D /* HomeCategoryCell.h */,
 				1F32971D1FC2C71E00BCF94D /* HomeCategoryCell.m */,
+				1F6CC2E61FC516C30026807C /* PopMenuView.h */,
+				1F6CC2E71FC516C30026807C /* PopMenuView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1369,6 +1381,7 @@
 				AF66ACF51F9D7E540079A2CF /* AppDelegate.m */,
 				AF66ACF91F9D7E550079A2CF /* LaunchScreen.storyboard */,
 				AF66ACFC1F9D7E550079A2CF /* Info.plist */,
+				1F6CC2E51FC50FFA0026807C /* New Group */,
 				AF66ACF21F9D7E540079A2CF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -2339,6 +2352,7 @@
 				AF66AE791F9F1AB10079A2CF /* IQUIViewController+Additions.m in Sources */,
 				1F4423DD1FA6F0C200F8EA95 /* SVRadialGradientLayer.m in Sources */,
 				AFB2151D1FBD215C006DD630 /* PersonalInformationTableViewCell.m in Sources */,
+				1F6CC2E81FC516C30026807C /* PopMenuView.m in Sources */,
 				AF66AE811F9F1AB10079A2CF /* IQToolbar.m in Sources */,
 				AF66ADFC1F9DE1B60079A2CF /* MJRefreshBackStateFooter.m in Sources */,
 				AF8B6CF51FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m in Sources */,

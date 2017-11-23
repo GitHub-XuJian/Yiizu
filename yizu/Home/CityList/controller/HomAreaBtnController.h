@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomAreaBtnController;
+
+@protocol HomAreaBtnDelegate <NSObject>
+
+-(void)HomAreaBtnTitle:(NSString*)title;
+
+@end
+
 @interface HomAreaBtnController : UITableViewController
+
+@property (nonatomic, assign)id<HomAreaBtnDelegate> delegate;
 
 @property(nonatomic, copy)NSString* cityId;
 

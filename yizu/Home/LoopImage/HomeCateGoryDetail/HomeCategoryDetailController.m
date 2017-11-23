@@ -52,7 +52,7 @@
     //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
     [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"url===%@",[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId]);
-        NSLog(@"catehome===%@",responseObject);
+        //NSLog(@"catehome===%@",responseObject);
         //和首页数据类型一样
         NSArray* arr=responseObject[@"list"];
       
@@ -62,7 +62,7 @@
             
                         [_tabScroce addObject:model];
         }
-         NSLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
+        // NSLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
         [self.tableView reloadData];
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {

@@ -76,9 +76,6 @@
     
     cell.textLabel.text=model.name;
   
-
-  
-    
     return cell;
 }
 
@@ -90,7 +87,12 @@
     
     ////////////Mobile/Index/index_area/data/%@/area/%@/page/1/
     
-    NSLog(@"选择区域后的URL:%@",urlStr);
+    if ([self.delegate respondsToSelector:@selector(HomAreaBtnTitle:)]) {
+        [self.delegate HomAreaBtnTitle:model.areaId];
+       
+    }
+   
+    //NSLog(@"选择区域后的URL:%@",urlStr);
     
     NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId,@"areaUrl":urlStr};
 
