@@ -13,6 +13,9 @@ typedef void (^LoginValidationBlock)(NSDictionary *dict);
 
 @property (nonatomic, strong) NSString *emailStr;
 @property (nonatomic, assign) BOOL isValidation;
+@property (nonatomic, strong) NSString *validationStr;
+@property (nonatomic, assign) BOOL isBindingPhone;
+
 @property (nonatomic, strong) LoginValidationBlock validationBlock;
 
 @end

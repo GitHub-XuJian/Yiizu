@@ -42,10 +42,12 @@
     UITextField *accountTextField = [[UITextField alloc] init];
     accountTextField.frame = CGRectMake(50, 806/3, kSCREEN_WIDTH-100, 40);
     accountTextField.placeholder = @"请输入手机号";
+    accountTextField.keyboardType = UIKeyboardTypeNumberPad;
     [accountTextField setValue:kColorLine forKeyPath:@"_placeholderLabel.textColor"];
+    accountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     accountTextField.delegate = self;
     accountTextField.textColor = [UIColor whiteColor];
-    accountTextField.text = @"13898388023";
+    accountTextField.text = [XSaverTool objectForKey:PhoneKey];
     [backImageView addSubview:accountTextField];
     self.accountTextField = accountTextField;
     
@@ -111,6 +113,13 @@
 - (void)btnClicked:(btnClicked)block
 {
     _block = block;
+}
+- (BOOL)textFieldShouldClear:(UITextField *)textField{
+    NSLog(@"123131231");
+    if (textField == self.accountTextField) {
+        self.accountTextField.text = @"";
+    }
+    return YES;
 }
 - (UIButton *)createButtonWithFrame:(CGRect)frame andImageStr:(NSString *)imageStr andTitleStr:(NSString *)titleStr andBtnTag:(BtnloginType)typeTag andTitleColor:(UIColor *)titleColor{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

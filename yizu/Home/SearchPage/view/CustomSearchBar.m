@@ -37,7 +37,7 @@
     
     //self.backgroundColor = subjectColor;
     self.textField.delegate = self;
-    self.textField.clearButtonMode=UITextFieldViewModeAlways;
+    self.textField.clearButtonMode=UITextFieldViewModeWhileEditing;
     self.textField.returnKeyType=UIReturnKeySearch;
     //[self setTextFieldLeftPadding:self.textField forWidth:25];
     

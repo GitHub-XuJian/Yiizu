@@ -38,8 +38,8 @@
     versionNumberLabel.text = @"版本：1.0";
     [self addSubview:versionNumberLabel];
     
-    NSArray *array = @[@"用户协议",@"联系电话",@"我的微信",@"我的邮箱"];
-    _array2 = @[@"",@"024-12345678",@"jinbaibei",@"1234567890@qq.com"];
+    NSArray *array = @[@"用户协议",@"联系电话"];
+    _array2 = @[@"",@"024-12345678"];
     for (int i = 0; i < array.count; i++) {
         UIView * view = [[UIView alloc] init];
         view.frame = CGRectMake(0, 770/3+i*41, kSCREEN_WIDTH, 40);
@@ -94,6 +94,7 @@
         UITapGestureRecognizer *tempLP = (UITapGestureRecognizer *)recognizer;
         if (tempLP.view.tag == ViewTag) {   // 用户协议
             WebViewController *webViewVC = [[WebViewController alloc] init];
+            webViewVC.title = @"用户协议";
             webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
             [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
         }else if (tempLP.view.tag == ViewTag+1) {   // 联系电话
@@ -102,6 +103,7 @@
     }else if([recognizer isKindOfClass:[UIButton class]]){
         WebViewController *webViewVC = [[WebViewController alloc] init];
         webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
+        webViewVC.title = @"用户协议";
         [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
     }
 }

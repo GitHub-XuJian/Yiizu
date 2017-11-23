@@ -28,12 +28,14 @@
 }
 - (void)reloadData
 {
-    [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+    [self.iconBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+
     if ([[XSaverTool objectForKey:Nickname] length]) {
         self.nameLabel.text = [XSaverTool objectForKey:Nickname];
     }else{
         self.nameLabel.text = @"请输入昵称";
     }
+
     if ([[XSaverTool objectForKey:Personxq] length]) {
         self.introductionLabel.text = [XSaverTool objectForKey:Personxq];
     }else{
@@ -58,7 +60,6 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(self.width/2-60/2, self.height/2-60/2, 120/2,120/2);
-    [button setImage:[UIImage imageNamed:@"icon_default_avatar"] forState:UIControlStateNormal];
     button.tag = 222222;
     button.backgroundColor = [UIColor blackColor];
     [button addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -73,7 +74,7 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake(0, button.y+button.height+25/3, kSCREEN_WIDTH, 20);
     nameLabel.text = @"请填写昵称";
-    nameLabel.font = kFontOther;
+    nameLabel.font = kCommonWithFont(20);
     nameLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:nameLabel];
     self.nameLabel = nameLabel;
@@ -81,7 +82,7 @@
     UILabel *introductionLabel = [[UILabel alloc] init];
     introductionLabel.frame = CGRectMake(0, nameLabel.y+nameLabel.height+35/3, kSCREEN_WIDTH, 20);
     introductionLabel.text = @"简介：人生伟业的建立，不在能知，乃在能行。";
-    introductionLabel.font = kFontMini;
+    introductionLabel.font = kFontOther;
     introductionLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:introductionLabel];
     self.introductionLabel = introductionLabel;

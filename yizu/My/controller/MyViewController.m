@@ -164,11 +164,15 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self navigationBarHidden:NO];
-
     UIViewController *viewController;
     switch (indexPath.section) {
         case 0:{
+            if (![XSaverTool boolForKey:IsLogin]) {
+                jxt_showAlertTitle(@"请登录");
+                return;
+            }
+            [self navigationBarHidden:NO];
+
             switch (indexPath.row) {
                 case 0:{
                     viewController = [[MyActivationCodeViewController alloc] init];
@@ -185,6 +189,12 @@
             break;
         }
         case 1:{
+            if (![XSaverTool boolForKey:IsLogin]) {
+                jxt_showAlertTitle(@"请登录");
+                return;
+            }
+            [self navigationBarHidden:NO];
+
             switch (indexPath.row) {
                 case 0:{
                     viewController = [[MyCollectionViewController alloc] init];

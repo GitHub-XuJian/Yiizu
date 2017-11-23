@@ -41,6 +41,13 @@
         [SVProgressHUD dismiss];
         NSLog(@"%@",responseObject);
         _dict = responseObject;
+        if (responseObject[@"pername"]) {
+            [_bankCardDict setObject:responseObject[@"pername"] forKey:TextFieldName];
+        }
+       if (responseObject[@"pername"]) {
+            [_bankCardDict setObject:responseObject[@"tel"] forKey:TextFieldTel];
+        }
+
         [self createUIView];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -147,6 +154,9 @@
         jxt_showAlertTitle(responseObject[@"message"]);
         if ([responseObject[@"result"] integerValue]) {
             [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:PhoneKey];
+            [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:isPhone];
+            [[UIApplication sharedApplication].keyWindow endEditing:NO];
+
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {

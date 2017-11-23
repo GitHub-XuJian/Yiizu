@@ -28,7 +28,7 @@
         [self.contentView addSubview:nameLabel];
         self.nameLabel = nameLabel;
         
-        if (indexPath.section == 1 && indexPath.row == 2) {
+        if (indexPath.section == 1 && indexPath.row == 1) {
             UILabel *label = [[UILabel alloc] init];
             [self.contentView addSubview:label];
             self.cacheLabel =label;

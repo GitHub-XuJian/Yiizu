@@ -39,10 +39,13 @@
 {
   
     NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/%@",Main_Server,str];
-    NSDictionary *dict = @{@"personid":@"3"};
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
         self.dataArray = responseObject;
+        if ([responseObject count] == 0) {
+            jxt_showToastTitle(@"暂无数据", 1);
+        }
         [self.tableView reloadData];
 
     } fail:^(NSURLSessionDataTask *task, NSError *error) {

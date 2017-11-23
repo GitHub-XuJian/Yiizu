@@ -41,6 +41,7 @@
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake(button.x+button.width+10, button.y, kSCREEN_WIDTH-button.x-button.width-10, button.height/2);
     nameLabel.text = @"我的昵称";
+    nameLabel.font = kCommonWithFont(20);
     nameLabel.textAlignment = NSTextAlignmentLeft;
     [self addSubview:nameLabel];
     self.nameLabel = nameLabel;
@@ -55,8 +56,8 @@
 }
 - (void)reloadData
 {
-    [self.iconBtn sd_setImageWithURL:[XSaverTool objectForKey:UserIconImage] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
-    if ([XSaverTool objectForKey:Nickname]) {
+    [self.iconBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+    if ([[XSaverTool objectForKey:Nickname] length]) {
         self.nameLabel.text = [XSaverTool objectForKey:Nickname];
     }else{
         self.nameLabel.text = @"我的昵称";

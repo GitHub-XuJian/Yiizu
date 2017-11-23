@@ -93,7 +93,6 @@ NSInteger const MiddleButtonTag = 123919441;
             if (itemTag == 0) {
                 tabBarItem.selected = YES;
             }
-            
             [tabBarItem addTarget:self action:@selector(itemSelected:) forControlEvents:UIControlEventTouchUpInside];
             
             if (tabBarItem.tabBarItemType != LLTabBarItemRise) {

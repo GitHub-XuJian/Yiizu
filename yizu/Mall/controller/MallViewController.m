@@ -23,7 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(WeiXinPayNotificationAction:) name:@"WeiXinPayNotification" object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(ZhiFuBaoPayNotificationAction:) name:@"ZhiFuBaoPayNotification" object:nil];
+    
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createUIView];
@@ -46,6 +47,7 @@
             [self.view addSubview:self.mView];
             [self.mView reloadData];
         }else{
+           
             if (self.tView) {
                 [self.tView removeFromSuperview];
             }
@@ -78,11 +80,11 @@
                         
                         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"tian":responseObject[@"tian"],@"ordernum":responseObject[@"out_trade_no"],@"ordercuurt":responseObject[@"total"],@"orderbuy":@"微信"};
                         
-                       NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Member/payMember/data/%@",Main_Server,[EncapsulationMethod dictToJsonData:dict]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+                        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Member/payMember/data/%@",Main_Server,[EncapsulationMethod dictToJsonData:dict]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                         
                         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                             NSLog(@"%@",responseObject);
-                        jxt_showAlertTitle(responseObject[@"message"]);
+                            jxt_showAlertTitle(responseObject[@"message"]);
                             if ([responseObject[@"result"] integerValue]) {
                                 NSDictionary *dataDict = responseObject[@"data"];
                                 [XSaverTool setObject:dataDict[@"vipendtime"] forKey:VipEndtime];
@@ -108,9 +110,48 @@
     
     NSLog(@"---接收到通知---");
     [[NSNotificationCenter defaultCenter] removeObserver:@"WeiXinPayNotification" name:nil object:self];
-
 }
-
+- (void)ZhiFuBaoPayNotificationAction:(NSNotification *)notification{
+    NSLog(@"%@",notification.object);
+    NSString *resuleStr = notification.object[@"result"];
+    id jsonDict = [EncapsulationMethod toArrayOrNSDictionary:resuleStr];
+    NSLog(@"%@",jsonDict);
+    NSDictionary *alipayDict = jsonDict[@"alipay_trade_app_pay_response"];
+    
+    NSDictionary *dict = @{@"trade_no":alipayDict[@"trade_no"],@"out_trade_no":alipayDict[@"out_trade_no"]};
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@zhifubao/order.php",Main_ServerImage];
+    
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        
+        if ([responseObject[@"result"] isEqualToString:@"SUCCESS"]){
+            
+            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"tian":responseObject[@"tian"],@"ordernum":alipayDict[@"out_trade_no"],@"ordercuurt":alipayDict[@"total_amount"],@"orderbuy":@"支付宝"};
+            
+            NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Member/payMember/data/%@",Main_Server,[EncapsulationMethod dictToJsonData:dict]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+            
+            [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"%@",responseObject);
+                jxt_showAlertTitle(responseObject[@"message"]);
+                if ([responseObject[@"result"] integerValue]) {
+                    NSDictionary *dataDict = responseObject[@"data"];
+                    [XSaverTool setObject:dataDict[@"vipendtime"] forKey:VipEndtime];
+                    [XSaverTool setObject:dataDict[@"statevip"] forKey:Statevip];
+                    [self.mView reloadData];
+                }
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+    
+    NSLog(@"---接收到通知---");
+    [[NSNotificationCenter defaultCenter] removeObserver:@"ZhiFuBaoPayNotification" name:nil object:self];
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

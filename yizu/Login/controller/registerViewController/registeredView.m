@@ -91,12 +91,14 @@
     
     UITextField *emailTextField = [[UITextField alloc] init];
     emailTextField.frame = CGRectMake(kSCREEN_WIDTH/2-(kSCREEN_WIDTH-145/3*2)/2,yizuLabel.y+yizuLabel.height+94/2,kSCREEN_WIDTH-145/3*2,40);
+    emailTextField.keyboardType = UIKeyboardTypeNumberPad;
     [backImageView addSubview:emailTextField];
     self.phoneText = emailTextField;
-    [self addtextField:emailTextField Withplaceholder:@"请请输入手机" andTag:0 andTextFieldtext:self.iphoneStr];
+    [self addtextField:emailTextField Withplaceholder:@"请输入手机" andTag:0 andTextFieldtext:self.iphoneStr];
     
     UITextField *verificationCodeTextField = [[UITextField alloc] init];
     verificationCodeTextField.frame = CGRectMake(emailTextField.x,emailTextField.y+emailTextField.height+10,emailTextField.width,40);
+    verificationCodeTextField.keyboardType = UIKeyboardTypeNumberPad;
     [backImageView addSubview:verificationCodeTextField];
     self.verificationCodeText = verificationCodeTextField;
     [self addtextField:verificationCodeTextField Withplaceholder:@"请输入验证码" andTag:0 andTextFieldtext:@""];
@@ -263,6 +265,7 @@
                 jxt_showToastMessage(responseObject[@"msg"], 1);
                 if ([responseObject[@"code"] integerValue]) {
                     
+                    [XSaverTool setObject:self.iphoneStr forKey:PhoneKey];
                     [[UIApplication sharedApplication].keyWindow endEditing:NO];
                     [[EncapsulationMethod viewController:self] dismissViewControllerAnimated:NO completion:nil];
                     

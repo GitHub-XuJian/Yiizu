@@ -35,10 +35,10 @@
         [self.contentView addSubview:classBtn];
         self.classBtn = classBtn;
         
-//        UILabel *lineview = [[UILabel alloc] init];
-//        lineview.backgroundColor = kColorLine;
-//        [self.contentView addSubview:lineview];
-//        self.lineView = lineview;
+        UILabel *lineview = [[UILabel alloc] init];
+        lineview.backgroundColor = kColorLine;
+        [self.contentView addSubview:lineview];
+        self.lineView = lineview;
     }
     return self;
 }
@@ -63,6 +63,7 @@
             
         });
     }else if ([btn.titleLabel.text isEqualToString:@"分享"]){
+        NSLog(@"分享");
         
     }
 }
@@ -70,8 +71,8 @@
 - (void)setDict:(NSDictionary *)dict
 {
     self.cellDict = dict;
-    self.nameLabel.frame = CGRectMake(65/3, 0, kSCREEN_WIDTH/2, self.height);
-//    self.lineView.frame = CGRectMake(0, kTableViewCell_HEIGHT, kSCREEN_WIDTH, 0.5);
+    self.nameLabel.frame = CGRectMake(65/3, 0, kSCREEN_WIDTH/2, kTableViewCell_HEIGHT);
+    self.lineView.frame = CGRectMake(0, kTableViewCell_HEIGHT, kSCREEN_WIDTH, 0.5);
     self.nameLabel.text = dict[@"code"];
 }
 - (void)setButtonStr:(NSString *)buttonStr

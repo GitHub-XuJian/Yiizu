@@ -9,6 +9,7 @@
 #import "SetUpViewController.h"
 #import "SetUpTableViewCell.h"
 #import "PasswordManagementViewController.h"
+#import "SFValidationEmailViewController.h"
 
 @interface SetUpViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -25,16 +26,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
+    self.dataArray = [NSMutableArray arrayWithObjects:@[@"手机",@"真实姓名"],@[@"密码管理",@"清除缓存"], nil];
     
     [self createRightBtn];
-    [self createDataArray];
     [self createTableView];
     [self createBottomView];
 }
 - (void)createRightBtn
 {
     UIButton *releaseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    releaseButton.frame = CGRectMake(0, 0, 44, 44);
     [releaseButton setTitle:@"提交" forState:normal];
+    [releaseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [releaseButton addTarget:self action:@selector(rightBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [releaseButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     UIBarButtonItem *releaseButtonItem = [[UIBarButtonItem alloc] initWithCustomView:releaseButton];
@@ -43,22 +46,33 @@
 }
 - (void)rightBtnClick:(UIButton *)btn
 {
+    [[UIApplication sharedApplication].keyWindow endEditing:NO];
     NSLog(@"%@",self.dataDict);
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifytruth",Main_Server];
     [XAFNetWork GET:urlStr params:_dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        jxt_showAlertTitle(responseObject[@"msg"]);
+        if ([responseObject[@"code"] integerValue]) {
+            [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self createDataArray];
+}
 - (void)createDataArray
 {
-    self.dataArray = [NSMutableArray arrayWithObjects:@[@"手机",@"真实姓名"],@[@"密码管理",@"消息推送通知",@"清除缓存"], nil];
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/truth",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
-        if ([responseObject[@"pername"] length]) {
+        if ([responseObject[@"pername"] length] > 0) {
             self.rightBtn.hidden = YES;
         }else{
             self.rightBtn.hidden = NO;
@@ -84,7 +98,7 @@
     if ([XSaverTool boolForKey:IsLogin]) {
         jxt_showAlertTwoButton(@"退出登录", @"", @"确定", ^(NSInteger buttonIndex) {
             [XSaverTool removeDataForKey:UserIDKey];
-            [XSaverTool removeDataForKey:PhoneKey];
+            //            [XSaverTool removeDataForKey:PhoneKey];
             [XSaverTool removeDataForKey:IsLogin];
             [XSaverTool removeDataForKey:UserIconImage];
             [XSaverTool removeDataForKey:VerificationCode];
@@ -93,9 +107,26 @@
             [XSaverTool removeDataForKey:Nickname];
             [XSaverTool removeDataForKey:Personxq];
             [XSaverTool removeDataForKey:Password];
+            [XSaverTool removeDataForKey:VipBegintime];
+            [XSaverTool removeDataForKey:VipEndtime];
+            [XSaverTool removeDataForKey:isPhone];
             [XSaverTool removeDataForKey:Sex];
             [XSaverTool removeDataForKey:Identity];
-            [XSaverTool removeAllDatas];
+            //            [XSaverTool removeAllDatas];
+            
+            
+            NSLog(@"PhoneKey = %@",[XSaverTool objectForKey:PhoneKey]);
+            NSLog(@"UserIDKey = %@",[XSaverTool objectForKey:UserIDKey]);
+            NSLog(@"IsLogin = %@",[XSaverTool objectForKey:IsLogin]);
+            NSLog(@"UserIconImage = %@",[XSaverTool objectForKey:UserIconImage]);
+            NSLog(@"VerificationCode = %@",[XSaverTool objectForKey:VerificationCode]);
+            NSLog(@"VerificationCodeTime = %@",[XSaverTool objectForKey:VerificationCodeTime]);
+            NSLog(@"Statevip = %@",[XSaverTool objectForKey:Statevip]);
+            NSLog(@"Nickname = %@",[XSaverTool objectForKey:Nickname]);
+            NSLog(@"Personxq = %@",[XSaverTool objectForKey:Personxq]);
+            NSLog(@"Sex = %@",[XSaverTool objectForKey:Sex]);
+            NSLog(@"Identity = %@",[XSaverTool objectForKey:Identity]);
+            
             [self.navigationController popToRootViewControllerAnimated:YES];
         }, @"取消", ^(NSInteger buttonIndex) {
             
@@ -199,14 +230,22 @@
 {
     NSLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"密码管理"]) {
-        PasswordManagementViewController *pmVC = [[PasswordManagementViewController alloc] init];
-        pmVC.title = _dataArray[indexPath.section][indexPath.row];
-        [self.navigationController pushViewController:pmVC animated:YES];
+    if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"手机"]) {
+        //        if ([[XSaverTool objectForKey:PhoneKey] length] == 0) {
+        SFValidationEmailViewController *validVC = [[SFValidationEmailViewController alloc] init];
+        validVC.title = @"验证手机";
+        validVC.isBindingPhone = YES;
+        validVC.isValidation = YES;
+        [self.navigationController pushViewController:validVC animated:YES];
+        //        }
     }else if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"清除缓存"]) {
         [[SDImageCache sharedImageCache] clearDisk];
         jxt_showAlertTitle(@"清除成功");
         [self.tableView reloadData];
+    }else if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"密码管理"]) {
+        PasswordManagementViewController *pmVC = [[PasswordManagementViewController alloc] init];
+        pmVC.title = _dataArray[indexPath.section][indexPath.row];
+        [self.navigationController pushViewController:pmVC animated:YES];
     }
     
 }

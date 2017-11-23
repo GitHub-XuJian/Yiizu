@@ -52,7 +52,7 @@
 - (void)createData
 {
 
-    NSDictionary *dict = @{@"personid":@"3"};
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     NSString *rankingUrlStr = [NSString stringWithFormat:@"%@Mobile/Queue/codeApi",Main_Server];
     [XAFNetWork GET:rankingUrlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);

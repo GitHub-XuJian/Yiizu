@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self loadFile];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     if (!self.navigationController) {
         [self createBackBtn];
     }

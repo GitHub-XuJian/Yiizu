@@ -35,6 +35,9 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        if ([responseObject count] == 0) {
+            jxt_showToastTitle(@"暂无数据", 1);
+        }
         /**
          * 结束刷新
          */

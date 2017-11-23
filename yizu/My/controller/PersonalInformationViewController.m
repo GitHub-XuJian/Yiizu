@@ -114,6 +114,7 @@
                     if ([responseObject[@"result"] integerValue]) {
                         [XSaverTool setObject:responseObject[@"url"] forKey:UserIconImage];
                     }
+                    [self.tableView reloadData];
                 } withFailurBlock:^(NSURLSessionDataTask *task, NSError *error) {
                     NSLog(@"%@",error);
                 } withUpLoadProgress:^(NSProgress *progress) {

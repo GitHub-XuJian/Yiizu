@@ -23,11 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     [self loadLoginInterface];
 }
 - (void)loadLoginInterface
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
+    if (_loginView) {
+        [_loginView removeFromSuperview];
+    }
     _loginView = [[LoginView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
     [_loginView btnClicked:^(BtnloginType buttonType, NSString *password) {
         
@@ -46,7 +53,7 @@
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/Login",Main_Server];
                 [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                     [SVProgressHUD dismiss];
-                     NSLog(@"%@",responseObject);
+                    NSLog(@"%@",responseObject);
                     jxt_showToastMessage(responseObject[@"msg"], 1);
                     NSInteger code = [responseObject[@"code"] integerValue];
                     switch (code) {
@@ -60,7 +67,7 @@
                             [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
                             [XSaverTool setObject:responseObject[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
-                            [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
+                            [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
                             [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
                             [XSaverTool setObject:responseObject[@"tel"] forKey:isPhone];
                             _successfulBlock();
@@ -70,7 +77,24 @@
                         case 3:{
                             SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
                             validationVC.emailStr = _loginView.accountTextField.text;
+                            validationVC.validationStr = @"验证";
                             validationVC.isValidation = YES;
+                            validationVC.validationBlock = ^(NSDictionary *dict) {
+                                [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                                [XSaverTool setObject:password forKey:Password];
+                                [XSaverTool setBool:dict[@"code"] forKey:IsLogin];
+                                [XSaverTool setObject:dict[@"vipendtime"] forKey:VipEndtime];
+                                [XSaverTool setObject:dict[@"sex"] forKey:Sex];
+                                [XSaverTool setObject:dict[@"identity"] forKey:Identity];
+                                [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
+                                [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
+                                [XSaverTool setObject:dict[@"personid"] forKey:UserIDKey];
+                                [XSaverTool setObject:dict[@"headpic"] forKey:UserIconImage];
+                                [XSaverTool setObject:dict[@"statevip"] forKey:Statevip];
+                                [XSaverTool setObject:dict[@"tel"] forKey:isPhone];
+                                _successfulBlock();
+                                [self dismissViewControllerAnimated:YES completion:nil];
+                            };
                             [self presentViewController:validationVC animated:YES completion:nil];
                             break;
                         }
@@ -100,6 +124,7 @@
                 NSLog(@"忘记密码");
                 SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
                 validationVC.emailStr = _loginView.accountTextField.text;
+                validationVC.validationStr = @"忘记密码";
                 validationVC.isValidation = NO;
                 [self presentViewController:validationVC animated:YES completion:nil];
                 
@@ -121,6 +146,7 @@
     }];
     [self.view addSubview:_loginView];
 }
+
 - (void)QQLogin
 {
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
@@ -164,7 +190,7 @@
                 NSInteger code = [responseObject[@"code"] integerValue];
                 switch (code) {
                     case 1:{
-                        [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
+                        [XSaverTool setObject:responseObject[@"tel"] forKey:PhoneKey];
                         
                         [XSaverTool setBool:code forKey:IsLogin];
                         [XSaverTool setObject:responseObject[@"sex"] forKey:Sex];
@@ -173,7 +199,7 @@
                         [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
                         [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                         [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
-                        [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
+                        [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
                         [XSaverTool setObject:responseObject[@"vipendtime"] forKey:VipEndtime];
                         [XSaverTool setObject:responseObject[@"tel"] forKey:isPhone];
                         _successfulBlock();
@@ -219,14 +245,14 @@
             /**
              * 获取完数据登录自己平台
              */
-            NSDictionary *dict = @{@"nickname":resp.name,
+            NSDictionary *dictParameter = @{@"nickname":resp.name,
                                    @"sex":resp.unionGender,
                                    @"openid":resp.openid,
                                    @"headimgurl":resp.iconurl,
                                    @"city":resp.originalResponse[@"city"]};
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/weixinreceive", Main_Server];
             [SVProgressHUD showWithStatus:@"正在登录"];
-            [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            [XAFNetWork GET:urlStr params:dictParameter success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSLog(@"%@",responseObject);
                 [SVProgressHUD dismiss];
                 
@@ -242,12 +268,12 @@
                         [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
                         [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
                         [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];
-                        [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
-                        [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
+                        [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
+                        [XSaverTool setObject:responseObject[@"personxq"] forKey:Personxq];
                         [XSaverTool setBool:code forKey:IsLogin];
-                        [XSaverTool setObject:responseObject[@"headimgurl"] forKey:UserIconImage];
+                        [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
                         [XSaverTool setObject:responseObject[@"tel"] forKey:isPhone];
-                        
+                      
                         _successfulBlock();
                         [self dismissViewControllerAnimated:YES completion:nil];
                         break;
@@ -262,10 +288,11 @@
                             [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
                             [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
                             [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
-                            [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
+                            [XSaverTool setObject:dict[@"statevip"] forKey:Statevip];
                             [XSaverTool setBool:1 forKey:IsLogin];
-                            [XSaverTool setObject:dict[@"headimgurl"] forKey:UserIconImage];
-                            [XSaverTool setObject:responseObject[@"tel"] forKey:isPhone];
+                            [XSaverTool setObject:dict[@"headpic"] forKey:UserIconImage];
+                            
+                            [XSaverTool setObject:dict[@"tel"] forKey:isPhone];
                           
                             _successfulBlock();
                         };

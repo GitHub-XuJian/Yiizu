@@ -46,7 +46,6 @@
                 imageView.layer.cornerRadius = imageView.frame.size.width / 2;
                 //将多余的部分切掉
                 imageView.layer.masksToBounds = YES;
-                [imageView sd_setImageWithURL:[NSURL URLWithString:[XSaverTool objectForKey:UserIconImage]] placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
                 [self.contentView addSubview:imageView];
                 self.iconImageView = imageView;
                 break;
@@ -88,13 +87,14 @@
             default:
                 break;
         }
-        
     }
     return self;
 }
 - (void)setLeftNameStr:(NSString *)leftNameStr
 {
     self.nameLabel.text = leftNameStr;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+
     if ([[XSaverTool objectForKey:Sex] isEqualToString:@"1"]) {
         self.sexLabel.text = @"男";
     }else{
