@@ -7,6 +7,8 @@
 //
 
 #import "HomeCategoryCell.h"
+#import "HomeCategoryModel.h"
+
 
 @interface HomeCategoryCell ()
 
@@ -29,12 +31,12 @@
             self.titleLable.textColor = [UIColor blackColor];
             self.titleLable.font = [UIFont systemFontOfSize:15];
             self.titleLable.textAlignment = NSTextAlignmentCenter;
-            self.titleLable.backgroundColor=[UIColor yellowColor];
+            //self.titleLable.backgroundColor=[UIColor yellowColor];
             //[self addSubview:self.titleLable];
             [self.contentView addSubview:self.titleLable];
             
             self.imaView=[[UIImageView alloc]init];
-            self.imaView.backgroundColor=[UIColor redColor];
+            //self.imaView.backgroundColor=[UIColor redColor];
             [self.contentView addSubview:self.imaView];
             
         }
@@ -54,6 +56,17 @@
     
     self.titleLable.frame = CGRectMake(0, CGRectGetMaxY(self.imaView.frame), self.frame.size.width, self.frame.size.height-self.imaView.frame.size.height);
     
+}
+
+
+- (void)setModel:(HomeCategoryModel *)model
+{
+    _model=model;
+    
+    self.titleLable.text=model.tradename;
+  
+    
+    [self.imaView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
 }
 
 @end

@@ -12,9 +12,12 @@
 #import "SDCycleScrollView.h"
 #import "HomeCategoryCell.h"
 #import "HomeCategoryCell.h"
+#import "HomeCategoryModel.h"
+#import "HomeCategoryDetailController.h"
+#import "PopMenuView.h"
 
 
-@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@interface LoopImageViewController ()<UIScrollViewDelegate,SDCycleScrollViewDelegate,UICollectionViewDelegate,UICollectionViewDataSource,HomAreaBtnDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *btn;
 
@@ -22,25 +25,20 @@
 @property (strong, nonatomic) UICollectionView* collectionView;
 
 @property (strong, nonatomic) NSMutableArray* loopArr;
+@property (strong, nonatomic) NSMutableArray* cateArr;
 
 
-@property (assign, nonatomic)int currentNumber;
+@property (strong, nonatomic) UIView*  grayColorView;
+
+@property (strong, nonatomic) UIView* btnView;
+
+
+@property (copy, nonatomic) NSString* areaid;
 
 @end
 
 @implementation LoopImageViewController
-- (IBAction)btnAction:(id)sender
-{
- 
-    NSLog(@"点击了区域按钮%@",self.cityID);
-    HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
-    aVC.cityId=self.cityID;
-    UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
-    [self presentViewController:nav animated:YES completion:nil];
-    
-    
-    
-}
+
 
 - (NSMutableArray *)loopArr
 {
@@ -58,8 +56,8 @@
    
     
     
-    //通知接受数据
-     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
+    //通知接受数据之前不崩现在崩
+     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
     NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -89,14 +87,31 @@
 
 - (void)initCycleScrollView
 {
-    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 180) delegate:self placeholderImage:nil];
+    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 170) delegate:self placeholderImage:nil];
     cycleScrollView.imageURLStringsGroup=self.loopArr;
     cycleScrollView.autoScrollTimeInterval=2.0;
     cycleScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
     [self.view addSubview:cycleScrollView];
     
     //行业类别
-    
+    //http://47.104.18.18/index.php/Mobile/Index/indexindustry/
+    _cateArr=[[NSMutableArray alloc]init];
+    [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Index/indexindustry/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        //NSLog(@"hangye====%@",responseObject);
+        for (NSDictionary* dic in responseObject) {
+            HomeCategoryModel* model=[HomeCategoryModel modelWithDict:dic];
+            [_cateArr addObject:model];
+        }
+       
+        [self.collectionView reloadData];
+        
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"出错了");
+        [SVProgressHUD dismiss];
+        
+        [SVProgressHUD showErrorWithStatus:@"出错了"];
+        
+    }];
     [self createCollection:cycleScrollView];
 }
 
@@ -104,51 +119,168 @@
 - (void)createCollection:(SDCycleScrollView*)SDScrollView
 {
     
-      UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
-    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 150) collectionViewLayout:flowLayout];
+    UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
+    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 170) collectionViewLayout:flowLayout];
 
   
     
-    CGFloat itemW = (kSCREEN_WIDTH - 50)/5;
-    CGFloat itemH = (self.collectionView.frame.size.height-2)/2;
-    NSLog(@"%@",NSStringFromCGRect(self.view.frame));
+    CGFloat itemW = (kSCREEN_WIDTH - 50-20)/5;
+    CGFloat itemH = (self.collectionView.frame.size.height-10-20)/2;
+   // NSLog(@"%@",NSStringFromCGRect(self.view.frame));
     
     flowLayout.itemSize=CGSizeMake(itemW, itemH);
     flowLayout.minimumLineSpacing=12;//竖间距
    
-    flowLayout.minimumInteritemSpacing=2;
-     NSLog(@"%f",flowLayout.minimumInteritemSpacing);
+    flowLayout.minimumInteritemSpacing=10;
+     //NSLog(@"%f",flowLayout.minimumInteritemSpacing);
     
     flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
-   
-//    collectionFL.sectionInset=UIEdgeInsetsMake(5, 10, 5, 10);
+    flowLayout.sectionInset=UIEdgeInsetsMake(10, 10, 10, 10);
+    
 
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
-    self.collectionView.backgroundColor=[UIColor cyanColor];
+    self.collectionView.backgroundColor=[UIColor whiteColor];
     self.collectionView.showsHorizontalScrollIndicator=NO;
     [self.collectionView registerClass:[HomeCategoryCell class] forCellWithReuseIdentifier:@"catecell"];
-    
+
     [self.view addSubview:self.collectionView];
+    
+    //灰色背景
+    [self createBackView];
     
 }
 
-#pragma mark-UIcollectionViewDelegate
+- (void)createBackView
+{
+    self.grayColorView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.collectionView.frame), kSCREEN_WIDTH, 5)];
+    self.grayColorView.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    [self.view addSubview:self.grayColorView];
+    
+    [self createBtnView];
+}
 
+- (void)createBtnView
+{
+    self.btnView=[[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.grayColorView.frame), kSCREEN_WIDTH, 30)];
+    //self.btnView.backgroundColor=[UIColor cyanColor];
+    [self.view addSubview:self.btnView];
+    
+    CGFloat x=50;
+    CGFloat W=(kSCREEN_WIDTH-100)/3;
+    NSArray* btnTitle=@[@"综合排序",@"区域分布",@"离我最近"];
+    for (int i=0; i<3; i++) {
+        UIButton* btn=[[UIButton alloc]init];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitle:btnTitle[i] forState:UIControlStateNormal];
+        btn.titleLabel.font=[UIFont systemFontOfSize:13];
+        btn.frame=CGRectMake(i*(W+x), 0, W, 30);
+        [btn addTarget:self action:@selector(btnViewAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self.btnView addSubview:btn];
+    }
+}
+
+- (void)btnViewAction:(UIButton*)btn
+{
+    
+    if ([btn.currentTitle isEqualToString:@"离我最近"]) {
+        
+       
+        [PopMenuView showWithItems:@[@{@"title":@"离我最近",@"imageName":@"ic_common_praise_pressed_15x15_"},
+                                     @{@"title":@"热度排序",@"imageName":@"ic_common_praise_pressed_15x15_"},]
+                               width:130
+                    triangleLocation:CGPointMake(kSCREEN_WIDTH-30, CGRectGetMaxY(self.btnView.frame)+50)
+                              action:^(NSInteger index) {
+                                 
+                                  NSString* url=@"";
+                                  if (index==0) {
+                                      //点击离我最近按钮方式排序
+                                       NSLog(@"点击了第%ld行",index);
+                                      if (self.areaid) {
+                                         
+                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID,self.areaid];
+                                           NSLog(@"点击了区域按钮aaa\n%@",url);
+                                      }else{
+                                       
+                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
+                                          NSLog(@"没点区域按钮%@\n",url);
+                                          
+                                  }
+                                      
+                                      NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
+                                      
+                                      [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
+                                  }else
+                                  {
+                                      //点击热度按钮方式排序
+                                       NSLog(@"点击了第%ld行",index);
+                                      if (self.areaid) {
+                                          
+                                          NSLog(@"点击了区域按钮aaa");
+                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID,self.areaid];
+                                          
+                                      }else{
+                                           url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
+                                          NSLog(@"没点区域按钮");
+                                      }
+                                      
+                                      NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
+                                      
+                                      [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
+                                  }
+                                  
+                              }];
+    }else if ([btn.currentTitle isEqualToString:@"区域分布"])
+    {
+        
+    NSLog(@"点击了区域按钮%@",self.cityID);
+    HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
+    aVC.cityId=self.cityID;
+        aVC.delegate=self;
+    UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
+    [self presentViewController:nav animated:YES completion:nil];
+    }else
+    {
+            NSLog(@"点击了区域按钮%@",self.cityID);
+    }
+}
+
+#pragma mark-UIcollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 11;
+    return _cateArr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeCategoryCell* cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"catecell" forIndexPath:indexPath];
-    //cell.backgroundColor=[UIColor yellowColor];
+    //cell.backgroundColor=[UIColor cyanColor];
+    
+    cell.model=_cateArr[indexPath.item];
     return cell;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeCategoryModel* model=_cateArr[indexPath.item];
+    
+    HomeCategoryDetailController* HCDVC=[[HomeCategoryDetailController alloc]init];
+    
+    HCDVC.cateTitle=model.tradename;
+    HCDVC.insid=model.insid;
+    HCDVC.cityId=self.cityID;
+    //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
+    [self.navigationController pushViewController:HCDVC animated:YES];
+}
+
+- (void)HomAreaBtnTitle:(NSString *)title
+{
+    self.areaid=title;
+   
 }
 
 /*

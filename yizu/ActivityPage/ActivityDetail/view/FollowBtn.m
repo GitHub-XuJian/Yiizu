@@ -94,6 +94,7 @@ static NSString * const pressedImageName = @"ic_details_top_collection_prressed_
 //设置点赞图片
 - (void)setIsFollow:(BOOL)isFollow
 {
+    //NSLog(@"tupian====%d",isFollow);
     _isFollow = isFollow;
    
     NSString *imageName = self.isFollow ? pressedImageName : normalImageName;
@@ -109,18 +110,8 @@ static NSString * const pressedImageName = @"ic_details_top_collection_prressed_
 - (void)setFollowCount:(NSInteger)followCount
 {
     _followCount = followCount;
-    
 
-    
-//    if (followCount < 1) {
-//
-//        [self setTitle:nil forState:UIControlStateNormal];
-//
-//    }else {
         [self setTitle:[NSString stringWithFormat:@"%ld",(long)followCount] forState:UIControlStateNormal];
-        
-        
-   // }
 }
 
 /*
