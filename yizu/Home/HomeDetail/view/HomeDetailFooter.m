@@ -40,12 +40,26 @@
 {
     _full=full;
     self.fullLab.text=[NSString stringWithFormat:@"%@   >>>",full];
+    
+    self.fullLab.userInteractionEnabled=YES;
+    
+    UITapGestureRecognizer* tapfull=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fullLabClike)];
+    
+    [self.fullLab addGestureRecognizer:tapfull];
+}
+
+- (void)fullLabClike
+{
+
+    if ([self.delegate respondsToSelector:@selector(HomeDetailFooterView:)]) {
+        [self.delegate HomeDetailFooterView:self];
+    }
 }
 
 - (void)setPhone:(NSString *)phone
 {
     _phone=phone;
-    self.phoneLab.text=[NSString stringWithFormat:@"%@>>>",phone];
+    self.phoneLab.text=[NSString stringWithFormat:@"%@",phone];
     self.phoneLab.userInteractionEnabled=YES;
 
     UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(phoneLabClike)];
@@ -57,13 +71,15 @@
 - (void)phoneLabClike
 {
     NSLog(@"点击了电话号码");
-    //[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel:"] options:<#(nonnull NSDictionary<NSString *,id> *)#> completionHandler:<#^(BOOL success)completion#>
-    //[[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"tel:12345678"]];
-    NSMutableString* str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",self.phoneLab.text];
-     NSLog(@"strphone======%@",str);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    
   
+//    NSMutableString* str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_phone];
+//
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+    
+    NSMutableString* str=[[NSMutableString alloc]initWithFormat:@"tel:%@",self.phoneLab.text];
+    
+    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
+    NSLog(@"strphone======%@",str);
     
 }
 - (void)setStatus:(NSString *)status

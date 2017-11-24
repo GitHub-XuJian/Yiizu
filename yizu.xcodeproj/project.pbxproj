@@ -56,7 +56,12 @@
 		1F47A4701FB9A33200679995 /* ActivityDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F47A46F1FB9A33200679995 /* ActivityDetailController.m */; };
 		1F4A31861FBFE81F00DC384D /* SmallCityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A31851FBFE81F00DC384D /* SmallCityListModel.m */; };
 		1F4A31891FBFEDBA00DC384D /* HeadCityBtnReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4A31881FBFEDBA00DC384D /* HeadCityBtnReusableView.m */; };
+		1F505C7F1FC7C62D007A7A71 /* ActivityWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F505C7E1FC7C62D007A7A71 /* ActivityWebController.m */; };
 		1F5497331FBC232600C00257 /* ActivityDetailListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5497321FBC232500C00257 /* ActivityDetailListModel.m */; };
+		1F582F651FC697930048FA99 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F582F641FC697930048FA99 /* libstdc++.6.0.9.tbd */; };
+		1F582F671FC697C70048FA99 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F582F661FC697B80048FA99 /* OpenGLES.framework */; };
+		1F582F691FC697E60048FA99 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F582F681FC697D40048FA99 /* QuartzCore.framework */; };
+		1F582F6B1FC697FA0048FA99 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F582F6A1FC697F10048FA99 /* CoreLocation.framework */; };
 		1F58909F1FBEBB3A0026ABCA /* FollowBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58909E1FBEBB3A0026ABCA /* FollowBtn.m */; };
 		1F6CC2E81FC516C30026807C /* PopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CC2E71FC516C30026807C /* PopMenuView.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
@@ -364,8 +369,14 @@
 		1F4A31851FBFE81F00DC384D /* SmallCityListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmallCityListModel.m; sourceTree = "<group>"; };
 		1F4A31871FBFEDBA00DC384D /* HeadCityBtnReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeadCityBtnReusableView.h; sourceTree = "<group>"; };
 		1F4A31881FBFEDBA00DC384D /* HeadCityBtnReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeadCityBtnReusableView.m; sourceTree = "<group>"; };
+		1F505C7D1FC7C62D007A7A71 /* ActivityWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityWebController.h; sourceTree = "<group>"; };
+		1F505C7E1FC7C62D007A7A71 /* ActivityWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityWebController.m; sourceTree = "<group>"; };
 		1F5497311FBC232500C00257 /* ActivityDetailListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityDetailListModel.h; sourceTree = "<group>"; };
 		1F5497321FBC232500C00257 /* ActivityDetailListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityDetailListModel.m; sourceTree = "<group>"; };
+		1F582F641FC697930048FA99 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		1F582F661FC697B80048FA99 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		1F582F681FC697D40048FA99 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		1F582F6A1FC697F10048FA99 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1F58909D1FBEBB3A0026ABCA /* FollowBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FollowBtn.h; sourceTree = "<group>"; };
 		1F58909E1FBEBB3A0026ABCA /* FollowBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowBtn.m; sourceTree = "<group>"; };
 		1F6CC2E61FC516C30026807C /* PopMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopMenuView.h; sourceTree = "<group>"; };
@@ -747,6 +758,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F582F6B1FC697FA0048FA99 /* CoreLocation.framework in Frameworks */,
+				1F582F691FC697E60048FA99 /* QuartzCore.framework in Frameworks */,
+				1F582F671FC697C70048FA99 /* OpenGLES.framework in Frameworks */,
 				AFB215731FC3D987006DD630 /* AlipaySDK.framework in Frameworks */,
 				AFB215791FC3D9F0006DD630 /* QuartzCore.framework in Frameworks */,
 				AFB215771FC3D9DC006DD630 /* CoreText.framework in Frameworks */,
@@ -763,6 +777,7 @@
 				AF23F40B1FAC66070022E990 /* libUMSocialLog.a in Frameworks */,
 				AF23F4011FAC66070022E990 /* UMSocialNetwork.framework in Frameworks */,
 				AF6C46C71FA80DF500797125 /* Security.framework in Frameworks */,
+				1F582F651FC697930048FA99 /* libstdc++.6.0.9.tbd in Frameworks */,
 				AFB215081FB954EE006DD630 /* libWeChatSDK.a in Frameworks */,
 				AF23F4041FAC66070022E990 /* libSocialUniqueId.a in Frameworks */,
 				AF23F4031FAC66070022E990 /* UMSocialCore.framework in Frameworks */,
@@ -826,6 +841,7 @@
 		1F0CEAC21FBAB63400D06C8E /* HomeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				1F582F4C1FC694CE0048FA99 /* MapViewController */,
 				1F0CEAC71FBABD3200D06C8E /* view */,
 				1F0CEAC61FBABCA300D06C8E /* controller */,
 			);
@@ -896,6 +912,8 @@
 			children = (
 				1F1767261FB3F91200BB5026 /* ActivityPageController.h */,
 				1F1767271FB3F91200BB5026 /* ActivityPageController.m */,
+				1F505C7D1FC7C62D007A7A71 /* ActivityWebController.h */,
+				1F505C7E1FC7C62D007A7A71 /* ActivityWebController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1053,6 +1071,13 @@
 			children = (
 			);
 			path = ActivityLsitDetail;
+			sourceTree = "<group>";
+		};
+		1F582F4C1FC694CE0048FA99 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MapViewController;
 			sourceTree = "<group>";
 		};
 		1F6CC2E51FC50FFA0026807C /* New Group */ = {
@@ -1965,6 +1990,10 @@
 		AF6C46BD1FA80DB700797125 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1F582F6A1FC697F10048FA99 /* CoreLocation.framework */,
+				1F582F681FC697D40048FA99 /* QuartzCore.framework */,
+				1F582F661FC697B80048FA99 /* OpenGLES.framework */,
+				1F582F641FC697930048FA99 /* libstdc++.6.0.9.tbd */,
 				AFB215781FC3D9ED006DD630 /* QuartzCore.framework */,
 				AFB215761FC3D9CE006DD630 /* CoreText.framework */,
 				AFB215741FC3D9A8006DD630 /* CoreMotion.framework */,
@@ -2295,6 +2324,7 @@
 				AF66AD7D1F9DB51F0079A2CF /* AboutUsViewController.m in Sources */,
 				AF6C469C1FA71BC900797125 /* UUID.m in Sources */,
 				1F4A31891FBFEDBA00DC384D /* HeadCityBtnReusableView.m in Sources */,
+				1F505C7F1FC7C62D007A7A71 /* ActivityWebController.m in Sources */,
 				AF66ADB71F9DDD250079A2CF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF66ADFB1F9DE1B60079A2CF /* MJRefreshBackNormalFooter.m in Sources */,
 				AFB214D31FB40CE1006DD630 /* MembersView.m in Sources */,
@@ -2620,6 +2650,7 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/WeChat/WechatSDK",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/Baidu/thirdlibs",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -2642,6 +2673,7 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/QQ/QQSDK",
+
 					"$(PROJECT_DIR)/yizu/other/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2657,7 +2689,9 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/WeChat/WechatSDK",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/QQ",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/Baidu/thirdlibs",
 				);
+
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

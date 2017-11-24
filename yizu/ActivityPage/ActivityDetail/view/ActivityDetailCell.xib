@@ -43,8 +43,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-p8-MVG">
                         <rect key="frame" x="15" y="135" width="290" height="25"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-7h-6Q7" customClass="FollowBtn">
-                                <rect key="frame" x="210" y="8" width="61" height="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0YC-7h-6Q7" customClass="FollowBtn">
+                                <rect key="frame" x="221" y="0.0" width="50" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="9VU-uY-gKB"/>
+                                    <constraint firstAttribute="width" constant="50" id="pz7-gu-VA5"/>
+                                </constraints>
                                 <state key="normal" title="➕关注"/>
                             </button>
                         </subviews>

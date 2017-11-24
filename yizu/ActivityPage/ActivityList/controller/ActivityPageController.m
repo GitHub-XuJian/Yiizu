@@ -9,8 +9,10 @@
 #import "ActivityPageController.h"
 #import "ActivityCell.h"
 #import "ActivityLsitModel.h"
+#import "ActivityWebController.h"
+#import "CustomCellScrollView.h"
 
-@interface ActivityPageController ()
+@interface ActivityPageController ()<CustomCellScrollViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray* tabSource;
     
@@ -71,25 +73,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellA" forIndexPath:indexPath];
     
+    cell.customScroll.CustomDelegate=self;
     cell.model=_tabSource[indexPath.row];
     
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 260;
+    return 300;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击了:%ld",(long)indexPath.row);
+    NSLog(@"点击了活动列表:%ld",(long)indexPath.row);
     
-    //ActivityLsitModel* model=_tabSource[indexPath.row];
+    ActivityLsitModel* model=_tabSource[indexPath.row];
     //model.activityid
+    NSLog(@"活动%@",model.activityid);
+    ActivityWebController* web=[[ActivityWebController alloc]init];
     
+    web.activiId=model.activityid;
+    [self.navigationController pushViewController:web animated:YES];
+    
+    
+}
 
-    
+- (void)CustomCellScrollViewClickBtn:(UIImageView *)HeaderView
+{
+    ActivityWebController* web=[[ActivityWebController alloc]init];
+    ActivityLsitModel* model=_tabSource[HeaderView.tag];
+    //web.activiId=model.activityid;
+    [self.navigationController pushViewController:web animated:YES];
 }
 /*
 // Override to support conditional editing of the table view.

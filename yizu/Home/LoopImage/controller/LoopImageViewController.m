@@ -87,7 +87,7 @@
 
 - (void)initCycleScrollView
 {
-    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 170) delegate:self placeholderImage:nil];
+    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160) delegate:self placeholderImage:nil];
     cycleScrollView.imageURLStringsGroup=self.loopArr;
     cycleScrollView.autoScrollTimeInterval=2.0;
     cycleScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
@@ -120,22 +120,22 @@
 {
     
     UICollectionViewFlowLayout* flowLayout=[[UICollectionViewFlowLayout alloc]init];
-    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 170) collectionViewLayout:flowLayout];
+    self.collectionView=[[UICollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(SDScrollView.frame), kSCREEN_WIDTH, 180) collectionViewLayout:flowLayout];
 
   
     
-    CGFloat itemW = (kSCREEN_WIDTH - 50-20)/5;
-    CGFloat itemH = (self.collectionView.frame.size.height-10-20)/2;
+    CGFloat itemW = (kSCREEN_WIDTH -140-40)/5;
+    CGFloat itemH = (self.collectionView.frame.size.height-20-30)/2;
    // NSLog(@"%@",NSStringFromCGRect(self.view.frame));
     
     flowLayout.itemSize=CGSizeMake(itemW, itemH);
-    flowLayout.minimumLineSpacing=12;//竖间距
+    flowLayout.minimumLineSpacing=35;//竖间距
    
-    flowLayout.minimumInteritemSpacing=10;
-     //NSLog(@"%f",flowLayout.minimumInteritemSpacing);
+    flowLayout.minimumInteritemSpacing=20;
+    
     
     flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
-    flowLayout.sectionInset=UIEdgeInsetsMake(10, 10, 10, 10);
+    flowLayout.sectionInset=UIEdgeInsetsMake(15, 20, 15, 20);
     
 
     self.collectionView.delegate=self;

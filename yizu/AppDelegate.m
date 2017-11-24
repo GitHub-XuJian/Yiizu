@@ -15,8 +15,12 @@
 #import "ActivationCodeInputViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
 
+
+
+
 @interface AppDelegate ()<UIApplicationDelegate,LLTabBarDelegate,WXApiDelegate>
 @property (nonatomic, strong) LLTabBar *tabbar;
+
 @end
 
 @implementation AppDelegate
@@ -27,6 +31,8 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
     
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear]; //设置HUD背景图层的样式
     
@@ -213,6 +219,11 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+
+
+
 
 
 @end
