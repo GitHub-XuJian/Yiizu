@@ -65,6 +65,7 @@
             self.classBtn.layer.cornerRadius = 10 / 2;
         }else{
             self.classBtn.hidden = NO;
+            self.classBtn.enabled = YES;
             self.classBtn.frame = CGRectMake(kSCREEN_WIDTH - 70, kTableViewCell_HEIGHT/2-30/2, 50, 30);
             [self.classBtn setTitle:buttonStr forState:UIControlStateNormal];
             //设置圆角

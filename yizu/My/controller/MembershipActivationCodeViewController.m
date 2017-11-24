@@ -14,6 +14,7 @@
 @interface MembershipActivationCodeViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSString *_buttonStr;
+    NSDictionary *_shareDict;
 }
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) MembershipActivationCodeView *macView;
@@ -171,6 +172,7 @@
             });
         }else if ([btn.titleLabel.text isEqualToString:@"分享"]){
             NSLog(@"分享");
+            _shareDict = cellDict;
             [self shareClick];
         }
     };
@@ -180,23 +182,23 @@
  * 分享
  */
 - (void)shareClick {
-    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine)]];
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
         // 根据获取的platformType确定所选平台进行下一步操作
         [self shareImageAndTextToPlatformType:platformType];
     }];
 }
-//分享图片和文字
+//分享网址
 - (void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType
 {
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
     //创建网页内容对象
-    NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用【友盟+】社会化组件U-Share" descr:@"欢迎使用【友盟+】社会化组件U-Share，SDK包最小，集成成本最低，助力您的产品开发、运营与推广！" thumImage:thumbURL];
+    NSString* thumbURL =  @"http://47.104.18.18/Public/20171020092301.png";
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"我的标题！！！" descr:@"我是内容！！！" thumImage:thumbURL];
     //设置网页地址
-    shareObject.webpageUrl = @"http://mobile.umeng.com/social";
+    shareObject.webpageUrl = @"http://www.baidu.com";
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;
@@ -213,6 +215,20 @@
                 //第三方原始返回的数据
                 UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
                 
+                NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/shareApi",Main_Server];
+                NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
+                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                    NSLog(@"%@",responseObject);
+                    if ([responseObject[@"result"] integerValue]) {
+                        /**
+                         * 分享成功刷新界面
+                         */
+                        [self createDataArray:@"notShareApi"];
+                        
+                    }
+                } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                    
+                }];
             }else{
                 UMSocialLogInfo(@"response data is %@",data);
             }
@@ -244,7 +260,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"分享"
                                                     message:result
                                                    delegate:nil
-                                          cancelButtonTitle:NSLocalizedString(@"sure", @"确定")
+                                          cancelButtonTitle:@"确定"
                                           otherButtonTitles:nil];
     [alert show];
 }
