@@ -72,14 +72,8 @@
 {
     NSLog(@"点击了电话号码");
   
-//    NSMutableString* str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_phone];
-//
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-    
-    NSMutableString* str=[[NSMutableString alloc]initWithFormat:@"tel:%@",self.phoneLab.text];
-    
-    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:str]];
-    NSLog(@"strphone======%@",str);
+    [EncapsulationMethod callPhoneStr:self.phoneLab.text];
+   
     
 }
 - (void)setStatus:(NSString *)status
