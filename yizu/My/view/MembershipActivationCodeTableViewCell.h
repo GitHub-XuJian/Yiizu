@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^ReloadBlock)();
+typedef void (^ReloadBlock)(UIButton *btn);
 
 @interface MembershipActivationCodeTableViewCell : UITableViewCell
 

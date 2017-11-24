@@ -16,7 +16,7 @@
 /**
  * 排名数据
  */
-@property (nonatomic, strong) NSMutableArray *rankingArray;
+@property (nonatomic, strong) RankingView *rankingView;
 /**
  * 饼图数据
  */
@@ -51,7 +51,7 @@
 }
 - (void)createData
 {
-
+    
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     NSString *rankingUrlStr = [NSString stringWithFormat:@"%@Mobile/Queue/codeApi",Main_Server];
     [XAFNetWork GET:rankingUrlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -60,7 +60,7 @@
          * 排名
          */
         if (responseObject) {
-            self.rankingArray = [NSMutableArray arrayWithObject:responseObject];
+            [self.rankingView reloadRanking:responseObject[@"keepSort"]];
             /**
              * 饼图
              */
@@ -75,33 +75,42 @@
             [self.brokenLine setValue:[self brokenLineArrayWithDict:responseObject] withYLineCount:6];
             self.brokenLine.lineColor = [UIColor redColor];
         }
-       
+        
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
 - (void)createViewUI
 {
+    // 1.创建UIScrollView
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.frame = self.view.bounds; // frame中的size指UIScrollView的可视范围
+    scrollView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:scrollView];
+    
+    CGFloat scrollViewContactSize = 0;
     /**
      * 排名
      */
-    RankingView *rankingView = [[RankingView alloc] initWithFrame:CGRectMake(10, 65, kSCREEN_WIDTH-20, 200)];
-    [self.view addSubview:rankingView];
+    self.rankingView = [[RankingView alloc] initWithFrame:XCGRectMake(10,1, kSCREEN_WIDTH-20, 200)];
+    [scrollView addSubview:self.rankingView];
+    scrollViewContactSize += self.rankingView.y+self.rankingView.height;
     /**
      * 圆饼图
      */
-    self.pieView = [[PieChartView alloc] initWithFrame:CGRectMake(rankingView.x, rankingView.y+rankingView.height+5, (kSCREEN_WIDTH-20)/2-5, 210)];
-    [self.view addSubview:self.pieView];
+    self.pieView = [[PieChartView alloc] initWithFrame:CGRectMake(self.rankingView.x, self.rankingView.y+self.rankingView.height+5, (kSCREEN_WIDTH-20)/2-5, 210)];
+    [scrollView addSubview:self.pieView];
     /**
      * 线线图
      */
     self.lineView = [[LineChartView alloc] initWithFrame:CGRectMake(self.pieView.x+self.pieView.width+5, self.pieView.y, (kSCREEN_WIDTH-20)/2-5, 210)];
-    [self.view addSubview:self.lineView];
+    [scrollView addSubview:self.lineView];
+    scrollViewContactSize += self.lineView.height;
+
     /**
      * 折线图
      */
-    
-    self.brokenLine = [[HXLineChart alloc] initWithFrame:CGRectMake(10, self.lineView.y+self.lineView.height+5, kSCREEN_WIDTH-20, kSCREEN_HEIGHT-64-rankingView.height-self.pieView.height-20)];
+    self.brokenLine = [[HXLineChart alloc] initWithFrame:CGRectMake(10, self.lineView.y+self.lineView.height+5, kSCREEN_WIDTH-20, kSCREEN_HEIGHT-64-self.rankingView.height-self.pieView.height-20)];
     [self.brokenLine setTitleArray:@[@"星期一",@"星期二",@"星期三",@"星期四",@"星期五",@"星期六",@"星期日"]];
     self.brokenLine.lineColor = [UIColor redColor];
     self.brokenLine.fillColor = [self colorWithHexString:@"#2e3f53" alpha:0.5];
@@ -109,7 +118,22 @@
     //边框宽度
     [_brokenLine.layer setBorderWidth:0.5];
     _brokenLine.layer.borderColor=kColorLine.CGColor;
-    [self.view addSubview:self.brokenLine];
+    [scrollView addSubview:self.brokenLine];
+    scrollViewContactSize += self.brokenLine.height;
+
+    // 设置UIScrollView的滚动范围（内容大小）
+    scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, scrollViewContactSize);
+    // 隐藏水平滚动条
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.showsVerticalScrollIndicator = NO;
+    
+    // 用来记录scrollview滚动的位置
+    //    scrollView.contentOffset = ;
+    
+    // 去掉弹簧效果
+    //    scrollView.bounces = NO;
+    
+    
 }
 #pragma mark 设置16进制颜色
 - (UIColor *)colorWithHexString:(NSString *)color alpha:(CGFloat)alpha{

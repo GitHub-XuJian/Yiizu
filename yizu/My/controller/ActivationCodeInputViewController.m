@@ -135,7 +135,7 @@
     [self.scrollView addSubview:textField2];
     
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(textField2.x+textField2.width-100, textField2.y+textField2.height, 100, 20);
+    addBtn.frame = CGRectMake(textField2.x+textField2.width-100, textField2.y+textField2.height, 100, 40);
     [addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [addBtn setTitle:@"【添加】" forState:UIControlStateNormal];
     addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -193,23 +193,19 @@
         [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
         [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
         
-        if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
-            jxt_showAlertTitle(@"请输入真实姓名");
-            return;
-        }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
-            jxt_showAlertTitle(@"请输入常用手机号");
-            return;
-        }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
-            jxt_showAlertTitle(@"请输入支付宝账号");
-            return;
-        }else if (!_validationStr.length){
-            if (![self.dataDict objectForKey:@"code"]) {
-                jxt_showAlertTitle(@"请输入验证码");
-                return;
-            }
-        }else if (!_activationStr.length){
-            if (![self.dataDict objectForKey:@"code"]) {
-                jxt_showAlertTitle(@"请输入激活码");
+//        if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
+//            jxt_showAlertTitle(@"请输入真实姓名");
+//            return;
+//        }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
+//            jxt_showAlertTitle(@"请输入常用手机号");
+//            return;
+//        }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
+//            jxt_showAlertTitle(@"请输入支付宝账号");
+//            return;
+//        }else
+        if (!_validationStr.length){
+            if ([[self.dataDict objectForKey:@"code"] count] == 0) {
+                jxt_showAlertTitle(@"请输入验证码或激活码");
                 return;
             }
         }

@@ -49,6 +49,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createDataArray];
     [self createTableView];
+    NSLog(@"%f %f",kSCREEN_WIDTH,kSCREEN_HEIGHT);
 }
 - (void)createDataArray
 {

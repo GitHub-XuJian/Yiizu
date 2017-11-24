@@ -66,7 +66,11 @@
                             [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];
                             [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
                             [XSaverTool setObject:responseObject[@"personxq"] forKey:Personxq];
-                            [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                            if (responseObject[@"personid"]) {
+                                [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                            }else{
+                                [XSaverTool setObject:@"" forKey:UserIDKey];
+                            }
                             [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
                             [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
                             [XSaverTool setObject:responseObject[@"tel"] forKey:isPhone];
@@ -88,7 +92,11 @@
                                 [XSaverTool setObject:dict[@"identity"] forKey:Identity];
                                 [XSaverTool setObject:dict[@"nickname"] forKey:Nickname];
                                 [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
-                                [XSaverTool setObject:dict[@"personid"] forKey:UserIDKey];
+                                if (responseObject[@"personid"]) {
+                                    [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                                }else{
+                                    [XSaverTool setObject:@"" forKey:UserIDKey];
+                                }
                                 [XSaverTool setObject:dict[@"headpic"] forKey:UserIconImage];
                                 [XSaverTool setObject:dict[@"statevip"] forKey:Statevip];
                                 [XSaverTool setObject:dict[@"tel"] forKey:isPhone];
@@ -152,7 +160,7 @@
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
         if (error) {
             NSLog(@"%@",error);
-            jxt_showAlertTitle(@"已取消授权");
+//            jxt_showAlertTitle(@"已取消授权");
 
         } else {
             UMSocialUserInfoResponse *resp = result;
@@ -198,7 +206,11 @@
                         [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
                         [XSaverTool setObject:responseObject[@"nickname"] forKey:Nickname];
                         [XSaverTool setObject:dict[@"personxq"] forKey:Personxq];
-                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                        if (responseObject[@"personid"]) {
+                            [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                        }else{
+                            [XSaverTool setObject:@"" forKey:UserIDKey];
+                        }
                         [XSaverTool setObject:responseObject[@"headpic"] forKey:UserIconImage];
                         [XSaverTool setObject:responseObject[@"vipendtime"] forKey:VipEndtime];
                         [XSaverTool setObject:responseObject[@"tel"] forKey:isPhone];
@@ -220,7 +232,7 @@
 {
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_WechatSession currentViewController:nil completion:^(id result, NSError *error) {
         if (error) {
-            jxt_showAlertTitle(@"已取消授权");
+//            jxt_showAlertTitle(@"已取消授权");
         } else {
             UMSocialUserInfoResponse *resp = result;
             
@@ -264,7 +276,11 @@
                         [XSaverTool setObject:_loginView.accountTextField.text forKey:PhoneKey];
                         [XSaverTool setObject:responseObject[@"sex"] forKey:Sex];
                         [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];
-                        [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                        if (responseObject[@"personid"]) {
+                            [XSaverTool setObject:responseObject[@"personid"] forKey:UserIDKey];
+                        }else{
+                            [XSaverTool setObject:@"" forKey:UserIDKey];
+                        }
                         [XSaverTool setObject:_loginView.passWordTextField.text forKey:Password];
                         [XSaverTool setObject:responseObject[@"statevip"] forKey:Statevip];
                         [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];

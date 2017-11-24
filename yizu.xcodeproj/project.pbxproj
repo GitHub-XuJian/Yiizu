@@ -199,7 +199,6 @@
 		AF6C46C91FA80E0300797125 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C81FA80DFE00797125 /* CoreTelephony.framework */; };
 		AF6C46CB1FA80E1700797125 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46CA1FA80E1200797125 /* CFNetwork.framework */; };
 		AF6C494B1FC66FC100D2D53C /* DisplayCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C494A1FC66FC100D2D53C /* DisplayCardViewController.m */; };
-		AF6C494F1FC6B7A300D2D53C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6C494E1FC6B7A300D2D53C /* Images.xcassets */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -639,7 +638,6 @@
 		AF6C46CA1FA80E1200797125 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AF6C49491FC66FC100D2D53C /* DisplayCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayCardViewController.h; sourceTree = "<group>"; };
 		AF6C494A1FC66FC100D2D53C /* DisplayCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayCardViewController.m; sourceTree = "<group>"; };
-		AF6C494E1FC6B7A300D2D53C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -1387,7 +1385,6 @@
 				AF66AD321F9D81D20079A2CF /* Mall */,
 				AF66AD361F9D81D20079A2CF /* My */,
 				AF66AD221F9D80410079A2CF /* main */,
-				AF6C494E1FC6B7A300D2D53C /* Images.xcassets */,
 				AF66ACF11F9D7E540079A2CF /* Supporting Files */,
 			);
 			path = yizu;
@@ -2214,7 +2211,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0CEAC11FBA9CAA00D06C8E /* ActivityDetailCell.xib in Resources */,
-				AF6C494F1FC6B7A300D2D53C /* Images.xcassets in Resources */,
 				AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */,
 				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				1F4423DB1FA6F0C200F8EA95 /* SVProgressHUD.bundle in Resources */,
@@ -2602,7 +2598,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2639,7 +2635,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-4";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
