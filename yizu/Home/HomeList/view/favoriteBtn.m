@@ -74,6 +74,7 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
         
     }];
     //Mobile/Index/index_keep/name/%@/number/%@/%@
+    
     NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_keep/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isCang,@"3"];
     
     

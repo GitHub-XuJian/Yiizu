@@ -12,7 +12,7 @@
 
 @interface ActivityCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *bigIma;
-@property (weak, nonatomic) IBOutlet CustomCellScrollView *customScroll;
+
 @property (weak, nonatomic) IBOutlet UILabel *headLab;
 @property (weak, nonatomic) IBOutlet UILabel *cityLab;
 @property (weak, nonatomic) IBOutlet UILabel *writingpicLab;
@@ -23,6 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     //NSLog(@"%@\n%@",NSStringFromCGRect(self.customScroll.frame),NSStringFromCGRect(self.bigIma.frame));
     // Initialization code
 }

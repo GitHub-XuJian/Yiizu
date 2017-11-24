@@ -13,7 +13,9 @@
 
 #import "HomeDetailFooter.h"
 
-@interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource>
+#import  <MapKit/MapKit.h>
+
+@interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource,HomeDetailFooterDelegate>
 @property (nonatomic, strong) UITableView* tabView;
 //@property (nonatomic, strong) NSMutableArray* imaArr;
 @end
@@ -55,6 +57,7 @@
     foot.status=_model.status;
     foot.upvote=_model.upvote;
     foot.turvy=_model.Turvy;
+    foot.delegate=self;
     [self.view addSubview:self.tabView];
     
   
@@ -98,6 +101,36 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 300;
+}
+
+- (void)HomeDetailFooterView:(HomeDetailFooter *)footView
+{
+    if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"http://maps.apple.com/"]]){
+        //MKMapItem 使用场景: 1. 跳转原生地图 2.计算线路
+        MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+        
+        //地理编码器
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        //我们假定一个终点坐标，某某某某:121.229296,31.336956
+        [geocoder geocodeAddressString:@"ggggggggggg" completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            CLPlacemark *endPlacemark  = placemarks.lastObject;
+            
+            //创建一个地图的地标对象
+            MKPlacemark *endMKPlacemark = [[MKPlacemark alloc] initWithPlacemark:endPlacemark];
+            //在地图上标注一个点(终点)
+            MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endMKPlacemark];
+            
+            //MKLaunchOptionsDirectionsModeKey 指定导航模式
+            //NSString * const MKLaunchOptionsDirectionsModeDriving; 驾车
+            //NSString * const MKLaunchOptionsDirectionsModeWalking; 步行
+            //NSString * const MKLaunchOptionsDirectionsModeTransit; 公交
+            [MKMapItem openMapsWithItems:@[currentLocation, endMapItem]
+                           launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
+            
+        }];
+        
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

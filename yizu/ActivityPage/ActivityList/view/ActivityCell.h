@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class ActivityLsitModel;
-
+@class CustomCellScrollView;
 @interface ActivityCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet CustomCellScrollView *customScroll;
 @property(nonatomic, strong)ActivityLsitModel* model;
 
 @end

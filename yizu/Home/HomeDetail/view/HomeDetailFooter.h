@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomeDetailFooter;
+
+@protocol HomeDetailFooterDelegate <NSObject>
+
+-(void)HomeDetailFooterView:(HomeDetailFooter*)footView;
+
+@end
+
 @interface HomeDetailFooter : UIView
+
+@property (nonatomic, assign) id<HomeDetailFooterDelegate> delegate;
 
 //营业时间
 @property (nonatomic, copy) NSString* time;
