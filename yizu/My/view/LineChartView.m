@@ -12,6 +12,9 @@
     NSInteger i;
     NSTimer *_timer;
 }
+@property (nonatomic, strong) UILabel *subLabelLeft;
+@property (nonatomic, strong) UILabel *subLabelRight;
+
 @end
 @implementation LineChartView
 
@@ -28,6 +31,12 @@
     _recentlyDict = recentlyDict;
     _farthestDict = farthestDict;
     [self createCoverView];
+    [self updata];
+}
+- (void)updata
+{
+    self.subLabelLeft.text = [NSString stringWithFormat:@"%@天",_recentlyDict[@"time"]];
+    self.subLabelRight.text = [NSString stringWithFormat:@"%@天",_farthestDict[@"time"]];;
 }
 - (void)createUIView
 {
@@ -57,11 +66,11 @@
     
     UILabel *subLabelLeft = [[UILabel alloc] init];
     subLabelLeft.frame = CGRectMake(0, self.height-30, self.width/2, 30);
-    subLabelLeft.text = @"4.78G";
+    subLabelLeft.text = @"天";
     subLabelLeft.textAlignment = NSTextAlignmentCenter;
     subLabelLeft.font = kFontOther;
     [self addSubview:subLabelLeft];
-    
+    self.subLabelLeft = subLabelLeft;
     
     UILabel *titleLabelRight = [[UILabel alloc] init];
     titleLabelRight.frame = CGRectMake(titleLabelLeft.x+titleLabelLeft.width, 0, self.width/2, 30);
@@ -86,10 +95,11 @@
     }
     UILabel *subLabelRight = [[UILabel alloc] init];
     subLabelRight.frame = CGRectMake(self.width/2, self.height-30, self.width/2, 30);
-    subLabelRight.text = @"45%";
+    subLabelRight.text = @"天";
     subLabelRight.textAlignment = NSTextAlignmentCenter;
     subLabelRight.font = kFontOther;
     [self addSubview:subLabelRight];
+    self.subLabelRight = subLabelRight;
 }
 - (void)timerAction
 {

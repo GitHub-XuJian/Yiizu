@@ -59,7 +59,7 @@
         [self addSubview:label1];
         
         UILabel *label2 = [[UILabel alloc] init];
-        label2.frame = XCGRectMake(imageView1.x, label1.y+label1.height+5, imageView1.width, 20);
+        label2.frame = XCGRectMake(imageView1.x-5, label1.y+label1.height+5, imageView1.width+5, 20);
         label2.text = [NSString stringWithFormat:@"￥%@", dict[@"payzong"]];
         label2.font = kFontOther;
         label2.textAlignment =NSTextAlignmentCenter;
