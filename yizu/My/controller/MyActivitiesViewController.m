@@ -35,6 +35,9 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        if ([responseObject count] == 0) {
+            jxt_showToastTitle(@"暂无数据", 1);
+        }
         /**
          * 结束刷新
          */
@@ -63,6 +66,13 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     
+    //默认【下拉刷新】
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(refresh)];
+}
+- (void)refresh
+{
+    [self.dataArray removeAllObjects];
+    [self createDataArray];
 }
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

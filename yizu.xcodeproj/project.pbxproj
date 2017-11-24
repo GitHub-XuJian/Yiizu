@@ -203,6 +203,7 @@
 		AF6C46C71FA80DF500797125 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C61FA80DF000797125 /* Security.framework */; };
 		AF6C46C91FA80E0300797125 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46C81FA80DFE00797125 /* CoreTelephony.framework */; };
 		AF6C46CB1FA80E1700797125 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6C46CA1FA80E1200797125 /* CFNetwork.framework */; };
+		AF6C494B1FC66FC100D2D53C /* DisplayCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6C494A1FC66FC100D2D53C /* DisplayCardViewController.m */; };
 		AF8B6CE81FA01A4A008DA068 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */; };
 		AF8B6CE91FA01A4A008DA068 /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCA1FA01A4A008DA068 /* NSData+ImageContentType.m */; };
 		AF8B6CEA1FA01A4A008DA068 /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = AF8B6CCC1FA01A4A008DA068 /* SDImageCache.m */; };
@@ -243,6 +244,12 @@
 		AFB215651FC28C46006DD630 /* bank.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFB215641FC28C46006DD630 /* bank.plist */; };
 		AFB215681FC2BA6A006DD630 /* BankCardNextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB215671FC2BA6A006DD630 /* BankCardNextViewController.m */; };
 		AFB2156B1FC3B7B7006DD630 /* WithdrawalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2156A1FC3B7B7006DD630 /* WithdrawalViewController.m */; };
+		AFB2156E1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB2156D1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.m */; };
+		AFB215721FC3D987006DD630 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AFB215701FC3D987006DD630 /* AlipaySDK.bundle */; };
+		AFB215731FC3D987006DD630 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB215711FC3D987006DD630 /* AlipaySDK.framework */; };
+		AFB215751FC3D9B2006DD630 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB215741FC3D9A8006DD630 /* CoreMotion.framework */; };
+		AFB215771FC3D9DC006DD630 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB215761FC3D9CE006DD630 /* CoreText.framework */; };
+		AFB215791FC3D9F0006DD630 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB215781FC3D9ED006DD630 /* QuartzCore.framework */; };
 		AFC62F101FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */; };
 		AFC62F111FA1B5C600A3F3F5 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0B1FA1B5C600A3F3F5 /* UIColor+expanded.m */; };
 		AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F0D1FA1B5C600A3F3F5 /* UIImage+Common.m */; };
@@ -640,6 +647,8 @@
 		AF6C46C61FA80DF000797125 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		AF6C46C81FA80DFE00797125 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		AF6C46CA1FA80E1200797125 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		AF6C49491FC66FC100D2D53C /* DisplayCardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayCardViewController.h; sourceTree = "<group>"; };
+		AF6C494A1FC66FC100D2D53C /* DisplayCardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisplayCardViewController.m; sourceTree = "<group>"; };
 		AF8B6CC71FA01A4A008DA068 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		AF8B6CC81FA01A4A008DA068 /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		AF8B6CC91FA01A4A008DA068 /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -721,6 +730,13 @@
 		AFB215671FC2BA6A006DD630 /* BankCardNextViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BankCardNextViewController.m; sourceTree = "<group>"; };
 		AFB215691FC3B7B7006DD630 /* WithdrawalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalViewController.h; sourceTree = "<group>"; };
 		AFB2156A1FC3B7B7006DD630 /* WithdrawalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalViewController.m; sourceTree = "<group>"; };
+		AFB2156C1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MallTransactionRecordsTableViewCell.h; sourceTree = "<group>"; };
+		AFB2156D1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MallTransactionRecordsTableViewCell.m; sourceTree = "<group>"; };
+		AFB215701FC3D987006DD630 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		AFB215711FC3D987006DD630 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
+		AFB215741FC3D9A8006DD630 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		AFB215761FC3D9CE006DD630 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		AFB215781FC3D9ED006DD630 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AFC62F081FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
 		AFC62F091FA1B5C600A3F3F5 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
 		AFC62F0A1FA1B5C600A3F3F5 /* UIColor+expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+expanded.h"; sourceTree = "<group>"; };
@@ -745,6 +761,10 @@
 				1F582F6B1FC697FA0048FA99 /* CoreLocation.framework in Frameworks */,
 				1F582F691FC697E60048FA99 /* QuartzCore.framework in Frameworks */,
 				1F582F671FC697C70048FA99 /* OpenGLES.framework in Frameworks */,
+				AFB215731FC3D987006DD630 /* AlipaySDK.framework in Frameworks */,
+				AFB215791FC3D9F0006DD630 /* QuartzCore.framework in Frameworks */,
+				AFB215771FC3D9DC006DD630 /* CoreText.framework in Frameworks */,
+				AFB215751FC3D9B2006DD630 /* CoreMotion.framework in Frameworks */,
 				AF6C46C11FA80DD000797125 /* libz.tbd in Frameworks */,
 				AF6C46C51FA80DE800797125 /* libc++.tbd in Frameworks */,
 				AF23F40D1FAC66520022E990 /* libsqlite3.tbd in Frameworks */,
@@ -1498,6 +1518,8 @@
 				AFB214F51FB53315006DD630 /* MembersHeadView.m */,
 				AFB215161FBAB664006DD630 /* ActivationCodePayTableViewCell.h */,
 				AFB215171FBAB664006DD630 /* ActivationCodePayTableViewCell.m */,
+				AFB2156C1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.h */,
+				AFB2156D1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1565,6 +1587,8 @@
 				AFB215671FC2BA6A006DD630 /* BankCardNextViewController.m */,
 				AFB215691FC3B7B7006DD630 /* WithdrawalViewController.h */,
 				AFB2156A1FC3B7B7006DD630 /* WithdrawalViewController.m */,
+				AF6C49491FC66FC100D2D53C /* DisplayCardViewController.h */,
+				AF6C494A1FC66FC100D2D53C /* DisplayCardViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1649,6 +1673,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AFB2156F1FC3D987006DD630 /* AlipaySDK */,
 				AFB2154F1FBD9051006DD630 /* Phone */,
 				AFB214F91FB5473B006DD630 /* PWCustomSheet */,
 				1F17673E1FB3F93300BB5026 /* SDCycleScrollView */,
@@ -1969,6 +1994,9 @@
 				1F582F681FC697D40048FA99 /* QuartzCore.framework */,
 				1F582F661FC697B80048FA99 /* OpenGLES.framework */,
 				1F582F641FC697930048FA99 /* libstdc++.6.0.9.tbd */,
+				AFB215781FC3D9ED006DD630 /* QuartzCore.framework */,
+				AFB215761FC3D9CE006DD630 /* CoreText.framework */,
+				AFB215741FC3D9A8006DD630 /* CoreMotion.framework */,
 				AF23F40E1FAC665B0022E990 /* CoreGraphics.framework */,
 				AF23F40C1FAC66520022E990 /* libsqlite3.tbd */,
 				AF6C46CA1FA80E1200797125 /* CFNetwork.framework */,
@@ -2069,6 +2097,15 @@
 				AFB215511FBD9051006DD630 /* ZZYPhotoHelper.h */,
 			);
 			path = Phone;
+			sourceTree = "<group>";
+		};
+		AFB2156F1FC3D987006DD630 /* AlipaySDK */ = {
+			isa = PBXGroup;
+			children = (
+				AFB215701FC3D987006DD630 /* AlipaySDK.bundle */,
+				AFB215711FC3D987006DD630 /* AlipaySDK.framework */,
+			);
+			path = AlipaySDK;
 			sourceTree = "<group>";
 		};
 		AFC62F071FA1B5A100A3F3F5 /* Chart */ = {
@@ -2206,6 +2243,7 @@
 				AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */,
 				AF6C46601FA42E4A00797125 /* bang.html in Resources */,
 				1F4423DB1FA6F0C200F8EA95 /* SVProgressHUD.bundle in Resources */,
+				AFB215721FC3D987006DD630 /* AlipaySDK.bundle in Resources */,
 				1F43F9C21FC4028D00AF2F27 /* HomeCateDetailCell.xib in Resources */,
 				1F4423CA1FA6C49000F8EA95 /* CustomSearchBar.xib in Resources */,
 				1F0CEAD41FBADCAD00D06C8E /* HomeDetailFooter.xib in Resources */,
@@ -2390,6 +2428,7 @@
 				AF626D221FA2D97D00A1225F /* HomAreaBtnController.m in Sources */,
 				AF66ADF51F9DE1B60079A2CF /* MJRefreshFooter.m in Sources */,
 				AF6C46931FA6F7B600797125 /* LLTabBarItem.m in Sources */,
+				AFB2156E1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.m in Sources */,
 				AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */,
 				1F1767511FB3F93400BB5026 /* TAPageControl.m in Sources */,
 				1F1767381FB3F91200BB5026 /* ActivityLsitModel.m in Sources */,
@@ -2413,6 +2452,7 @@
 				AF23F3D21FA962490022E990 /* registeredView.m in Sources */,
 				AF6C46B31FA807E000797125 /* mytimer.m in Sources */,
 				AF66AE031F9DE1B60079A2CF /* UIScrollView+MJExtension.m in Sources */,
+				AF6C494B1FC66FC100D2D53C /* DisplayCardViewController.m in Sources */,
 				AF8B6CF21FA01A4A008DA068 /* UIImage+GIF.m in Sources */,
 				1F1767531FB3F93400BB5026 /* SDCycleScrollView.m in Sources */,
 				AF66ADF91F9DE1B60079A2CF /* MJRefreshAutoStateFooter.m in Sources */,
@@ -2588,13 +2628,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/QQ/QQSDK",
-					"$(PROJECT_DIR)/Baidu",
+					"$(PROJECT_DIR)/yizu/other/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yizu/YiZuManager.pch;
@@ -2611,7 +2652,11 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/Baidu/thirdlibs",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-fobjc-arc",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xujian.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2621,13 +2666,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = R4485X89UR;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/QQ/QQSDK",
-					"$(PROJECT_DIR)/Baidu",
+
+					"$(PROJECT_DIR)/yizu/other/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = yizu/YiZuManager.pch;
@@ -2644,7 +2691,12 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/Baidu/thirdlibs",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+					"-fobjc-arc",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = xujian.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

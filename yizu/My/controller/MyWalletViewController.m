@@ -12,6 +12,7 @@
 #import "WalletView.h"
 #import "AddBankCardViewController.h"
 #import "WithdrawalViewController.h"
+#import "DisplayCardViewController.h"
 
 @interface MyWalletViewController ()
 @property (nonatomic, strong)  WalletView *walletView;
@@ -42,6 +43,7 @@
 - (void)createRightBtn
 {
     UIButton *releaseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    releaseButton.frame = CGRectMake(0, 0, 70, 44);
     [releaseButton setTitle:@"交易明细" forState:normal];
     [releaseButton addTarget:self action:@selector(TransactionDetails) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *releaseButtonItem = [[UIBarButtonItem alloc] initWithCustomView:releaseButton];
@@ -85,9 +87,24 @@
 
     }else{
         NSLog(@"银行卡");
-        AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
-        addBankCardVC.title = @"银行卡";
-        [self.navigationController pushViewController:addBankCardVC animated:YES];
+        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Bankcard/bankcardTFApi",Main_Server];
+        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            if ([responseObject[@"bankcard"] length] == 0) {
+                AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
+                addBankCardVC.title = @"银行卡";
+                [self.navigationController pushViewController:addBankCardVC animated:YES];
+            }else{
+                DisplayCardViewController *displayCardVC = [[DisplayCardViewController alloc] init];
+                displayCardVC.title = @"银行卡";
+                displayCardVC.cardDict = responseObject;
+                [self.navigationController pushViewController:displayCardVC animated:YES];
+            }
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+       
     }
 }
 

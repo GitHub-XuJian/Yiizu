@@ -10,4 +10,6 @@
 
 @interface RankingView : UIView
 
+- (void)reloadRanking:(NSArray *)rankingArray;
+
 @end

@@ -20,6 +20,11 @@
  * 宽度
  */
 #define kSCREEN_WIDTH   MIN([[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height)
+/**
+ * 屏幕比例适配
+ */
+#define Proportion_Creen    kSCREEN_WIDTH/414
+#define XCGRectMake(x,y,w,h)    CGRectMake(x, y, w*Proportion_Creen, h*Proportion_Creen)
 
 #define UserDefaults  [NSUserDefaults standardUserDefaults]
 
@@ -166,8 +171,6 @@
 #define QQDoctor_App_Secret @"r3RZ6S5CjQFowl3m" // 注册时得到的AppSecret
 #define QQPatient_App_ID @"1106508032"
 #define QQPatient_App_Secret @"r3RZ6S5CjQFowl3m"
-
-
 
 
 

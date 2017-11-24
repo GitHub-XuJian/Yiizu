@@ -55,7 +55,6 @@
 }
 + (LLTabBar *)tabbarinitWithController:(UITabBarController *)controller
 {
-    
     LLTabBar *tabBar = [[LLTabBar alloc] initWithFrame:controller.tabBar.bounds];
     
     tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"UnHome", kLLTabBarItemAttributeSelectedImageName : @"Home", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},

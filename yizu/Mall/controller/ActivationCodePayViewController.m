@@ -52,7 +52,7 @@
         for (int i = 0; i < _selectorPatnArray.count; i++) {
             NSDictionary *dict = _selectorPatnArray[i];
             [allcodeIdarray addObject:@{@"codeid":dict[@"codeid"]}];
-            NSInteger money = [dict[@"payzong"] integerValue];
+            NSInteger money = [dict[@"payzong"] integerValue] * 100;
             allMoney += money;
         }
         NSLog(@"%ld",allMoney);
@@ -66,7 +66,7 @@
                 NSDictionary *dictData = responseObject[@"data"];
                 [XSaverTool setObject:dictData[@"vipbegintime"] forKey:VipBegintime];
                 [XSaverTool setObject:dictData[@"vipendtime"] forKey:VipEndtime];
-                [XSaverTool setObject:dictData[@"pername"] forKey:Pername];
+//                [XSaverTool setObject:dictData[@"pername"] forKey:Pername];
                 [XSaverTool setObject:dictData[@"statevip"] forKey:Statevip];
             
                 [self.navigationController popViewControllerAnimated:YES];

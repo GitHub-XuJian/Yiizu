@@ -59,7 +59,6 @@
     emailTextField.delegate = self;
     emailTextField.text = self.phoneStr;
     emailTextField.enabled = NO;
-    //    emailTextField.text = @"13898388023@163.com";
     UIView *textView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     emailTextField.leftView = textView;
     emailTextField.leftViewMode = UITextFieldViewModeAlways;

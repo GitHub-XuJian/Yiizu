@@ -11,7 +11,6 @@
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIButton *classBtn;
 @property (nonatomic, strong) UIView *lineView;
-@property (nonatomic, strong) NSDictionary *cellDict;
 @end
 @implementation MembershipActivationCodeTableViewCell
 
@@ -35,43 +34,23 @@
         [self.contentView addSubview:classBtn];
         self.classBtn = classBtn;
         
-//        UILabel *lineview = [[UILabel alloc] init];
-//        lineview.backgroundColor = kColorLine;
-//        [self.contentView addSubview:lineview];
-//        self.lineView = lineview;
+        UILabel *lineview = [[UILabel alloc] init];
+        lineview.backgroundColor = kColorLine;
+        [self.contentView addSubview:lineview];
+        self.lineView = lineview;
     }
     return self;
 }
 - (void)btnClick:(UIButton *)btn
 {
-    NSLog(@"%@ %@",btn.titleLabel.text, self.cellDict[@"codeid"]);
-    if ([btn.titleLabel.text isEqualToString:@"回购"]) {
-        jxt_showAlertTwoButton(@"提示", @"是否回购", @"确定", ^(NSInteger buttonIndex) {
-            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"codeid":self.cellDict[@"codeid"]};
-            
-            NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/backApi/data/%@",Main_Server,[EncapsulationMethod dictToJsonData:dict]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-            
-            [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                jxt_showAlertTitle(responseObject[@"message"]);
-                if ([responseObject[@"result"] integerValue]) {
-                    _block();
-                }
-            } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                jxt_showAlertTitle(@"请求失败");
-            }];
-        }, @"取消", ^(NSInteger buttonIndex) {
-            
-        });
-    }else if ([btn.titleLabel.text isEqualToString:@"分享"]){
-        
-    }
+    NSLog(@"%@",btn.titleLabel.text);
+    _block(btn);
 }
 
 - (void)setDict:(NSDictionary *)dict
 {
-    self.cellDict = dict;
-    self.nameLabel.frame = CGRectMake(65/3, 0, kSCREEN_WIDTH/2, self.height);
-//    self.lineView.frame = CGRectMake(0, kTableViewCell_HEIGHT, kSCREEN_WIDTH, 0.5);
+    self.nameLabel.frame = CGRectMake(65/3, 0, kSCREEN_WIDTH/2, kTableViewCell_HEIGHT);
+    self.lineView.frame = CGRectMake(0, kTableViewCell_HEIGHT, kSCREEN_WIDTH, 0.5);
     self.nameLabel.text = dict[@"code"];
 }
 - (void)setButtonStr:(NSString *)buttonStr

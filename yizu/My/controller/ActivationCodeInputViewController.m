@@ -33,7 +33,7 @@
     _textFieldTagAdd = 0;
     _codeArray = [[NSMutableArray alloc] init];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.dataDict =[NSMutableDictionary dictionaryWithDictionary: @{@"personid":@"",@"statevip":@"",@"pername": @"",@"tel":@"",@"paynum":@"", @"code":@[]}];
+    self.dataDict =[NSMutableDictionary dictionaryWithDictionary: @{@"personid":@"",@"statevip":@"",@"code":@[]}];
     [self createViewUI];
 }
 - (void)createViewUI
@@ -63,27 +63,27 @@
     titleLabel.text = titleStr;
     [self.scrollView addSubview:titleLabel];
     _scrollerContentSize_H += (titleLabel.x+titleLabel.height);
-    if ([[XSaverTool objectForKey:Identity] integerValue] == 0) {
-        NSArray *array = @[@"真实姓名",@"常用手机号",@"支付宝账号"];
-        for (int i = 0; i < array.count; i++) {
-            CGFloat label_W = kSCREEN_WIDTH-60;
-            UILabel *label = [[UILabel alloc] init];
-            label.frame = CGRectMake(90/3,_scrollerContentSize_H+(75/3), label_W, 30);
-            label.text = array[i];
-            label.backgroundColor = [UIColor clearColor];
-            label.textColor = [UIColor whiteColor];
-            label.font = kFontOther;
-            [self.scrollView addSubview:label];
-            
-            UITextField *textField = [[UITextField alloc] init];
-            textField.frame = CGRectMake(label.x, label.y+label.height+5, label.width, 40);
-            textField.delegate = self;
-            textField.tag = TextFieldTag+i;
-            textField.background = [UIImage imageNamed:@"asd"];
-            [self.scrollView addSubview:textField];
-            _scrollerContentSize_H += 80;
-        }
-    }
+//    if ([[XSaverTool objectForKey:Identity] integerValue] == 0) {
+//        NSArray *array = @[@"真实姓名",@"常用手机号",@"支付宝账号"];
+//        for (int i = 0; i < array.count; i++) {
+//            CGFloat label_W = kSCREEN_WIDTH-60;
+//            UILabel *label = [[UILabel alloc] init];
+//            label.frame = CGRectMake(90/3,_scrollerContentSize_H+(75/3), label_W, 30);
+//            label.text = array[i];
+//            label.backgroundColor = [UIColor clearColor];
+//            label.textColor = [UIColor whiteColor];
+//            label.font = kFontOther;
+//            [self.scrollView addSubview:label];
+//
+//            UITextField *textField = [[UITextField alloc] init];
+//            textField.frame = CGRectMake(label.x, label.y+label.height+5, label.width, 40);
+//            textField.delegate = self;
+//            textField.tag = TextFieldTag+i;
+//            textField.background = [UIImage imageNamed:@"asd"];
+//            [self.scrollView addSubview:textField];
+//            _scrollerContentSize_H += 80;
+//        }
+//    }
     _scrollerContentSize_H += (75/3);
     [self createActivationCode];
     [self createActivationBtn];
@@ -135,7 +135,7 @@
     [self.scrollView addSubview:textField2];
     
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(textField2.x+textField2.width-100, textField2.y+textField2.height, 100, 20);
+    addBtn.frame = CGRectMake(textField2.x+textField2.width-100, textField2.y+textField2.height, 100, 40);
     [addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [addBtn setTitle:@"【添加】" forState:UIControlStateNormal];
     addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
@@ -193,23 +193,19 @@
         [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
         [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
         
-        if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
-            jxt_showAlertTitle(@"请输入真实姓名");
-            return;
-        }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
-            jxt_showAlertTitle(@"请输入常用手机号");
-            return;
-        }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
-            jxt_showAlertTitle(@"请输入支付宝账号");
-            return;
-        }else if (!_validationStr.length){
-            if (![self.dataDict objectForKey:@"code"]) {
-                jxt_showAlertTitle(@"请输入验证码");
-                return;
-            }
-        }else if (!_activationStr.length){
-            if (![self.dataDict objectForKey:@"code"]) {
-                jxt_showAlertTitle(@"请输入激活码");
+//        if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
+//            jxt_showAlertTitle(@"请输入真实姓名");
+//            return;
+//        }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
+//            jxt_showAlertTitle(@"请输入常用手机号");
+//            return;
+//        }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
+//            jxt_showAlertTitle(@"请输入支付宝账号");
+//            return;
+//        }else
+        if (!_validationStr.length){
+            if ([[self.dataDict objectForKey:@"code"] count] == 0) {
+                jxt_showAlertTitle(@"请输入验证码或激活码");
                 return;
             }
         }

@@ -36,7 +36,7 @@
 }
 - (void)createBackBtn
 {
-    SFNavView *navView = [[SFNavView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 64) andTitle:@"忘记密码" andLeftBtnTitle:@"返回" andRightBtnTitle:nil andLeftBtnBlock:^{
+    SFNavView *navView = [[SFNavView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 64) andTitle:self.validationStr andLeftBtnTitle:@"返回" andRightBtnTitle:nil andLeftBtnBlock:^{
         [self dismissViewControllerAnimated:YES completion:nil];
     } andRightBtnBlock:^{
         
@@ -89,7 +89,7 @@
     //登录按钮
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(verificationCodeTextField.x, verificationCodeTextField.y+verificationCodeTextField.height+20, verificationCodeTextField.width, 40);
-    [button setTitle:self.isValidation?@"登录":@"下一步" forState:UIControlStateNormal];
+    [button setTitle:self.isValidation?@"确定":@"下一步" forState:UIControlStateNormal];
     [button setBackgroundImage:[UIImage imageNamed:@"nextstep"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:button];
@@ -114,22 +114,44 @@
     }else{
         if ([_inputVcode isEqualToString:[XSaverTool objectForKey:VerificationCode]]) {
             if (self.isValidation) {
-                NSDictionary *dict = @{@"tel":self.emailText.text,@"openid":            [XSaverTool objectForKey: WXPatient_Openid]};
-                NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/yanzheng",Main_Server];
-                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                    NSLog(@"%@",responseObject);
-                    jxt_showToastMessage(responseObject[@"msg"], 1);
-                    NSInteger code = [responseObject[@"code"] integerValue];
-                    if (code == 1) {
-                        _validationBlock(responseObject);
-                    [self.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
-                    }
-                } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                    jxt_showToastMessage(@"登录失败",1);
-                }];
+                if (self.isBindingPhone) {
+                    NSDictionary *dict = @{@"tel":self.emailText.text,@"personid":[XSaverTool objectForKey:UserIDKey]};
+                    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifMobile",Main_Server];
+                    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                        NSLog(@"%@",responseObject);
+                        jxt_showToastMessage(responseObject[@"msg"], 1);
+                        NSInteger code = [responseObject[@"code"] integerValue];
+                        if (code == 1) {
+                            [XSaverTool setObject:self.emailText.text forKey:isPhone];
+                            [XSaverTool setObject:self.emailText.text forKey:PhoneKey];
+                            
+                            [self.navigationController popToRootViewControllerAnimated:YES];;
+                        }
+                    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                        jxt_showToastMessage(@"修改失败",1);
+                    }];
+                }else{
+                    NSDictionary *dict = @{@"tel":self.emailText.text};
+                    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/yanzheng",Main_Server];
+                    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                        NSLog(@"%@",responseObject);
+                        jxt_showToastMessage(responseObject[@"msg"], 1);
+                        NSInteger code = [responseObject[@"code"] integerValue];
+                        if (code == 1) {
+                            [XSaverTool setObject:self.emailText.text forKey:isPhone];
+                            [XSaverTool setObject:self.emailText.text forKey:PhoneKey];
+                            
+                            _validationBlock(responseObject);
+                            [self.presentingViewController.presentingViewController dismissViewControllerAnimated:NO completion:nil];
+                        }
+                    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                        jxt_showToastMessage(@"登录失败",1);
+                    }];
+                }
+               
             }else{
                 OldAndNewPassWordViewController *onpVC = [[OldAndNewPassWordViewController alloc] init];
-                onpVC.phoneStr = self.emailStr;
+                onpVC.phoneStr = self.emailText.text;
                 [self presentViewController:onpVC animated:YES completion:nil];
             }
            
@@ -197,6 +219,7 @@
     
     textField.text = textStr;
     textField.placeholder = placeholder;
+    textField.keyboardType = UIKeyboardTypeNumberPad;
     [textField setValue:[UIColor blackColor] forKeyPath:@"_placeholderLabel.textColor"];
     textField.textColor = [UIColor blackColor];
     textField.delegate = self;
