@@ -2673,7 +2673,6 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/SocialLibraries/QQ/QQSDK",
-
 					"$(PROJECT_DIR)/yizu/other/AlipaySDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2691,7 +2690,6 @@
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialSDKPlugin",
 					"$(PROJECT_DIR)/Baidu/thirdlibs",
 				);
-
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

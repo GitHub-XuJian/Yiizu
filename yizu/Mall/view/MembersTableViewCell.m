@@ -31,7 +31,7 @@
         self.nameLabel = nameLabel;
         
         UIButton *classBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [classBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [classBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [classBtn setTitle:@"开通" forState:UIControlStateNormal];
         [classBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         classBtn.backgroundColor = [UIColor colorWithRed:0.87f green:0.68f blue:0.33f alpha:1.00f];;

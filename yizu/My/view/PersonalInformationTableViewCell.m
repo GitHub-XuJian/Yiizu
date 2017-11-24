@@ -65,7 +65,7 @@
             case 2:{
                 
                 UILabel *sexLabel = [[UILabel alloc] init];
-                sexLabel.frame = CGRectMake(kSCREEN_WIDTH-80, 0, 70, 60);
+                sexLabel.frame = CGRectMake(kSCREEN_WIDTH-80, 0, 60, 60);
                 sexLabel.textAlignment = NSTextAlignmentRight;
                 [self.contentView addSubview:sexLabel];
                 self.sexLabel = sexLabel;

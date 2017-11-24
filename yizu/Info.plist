@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>yizu </string>
+	<string>依足</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -65,52 +65,49 @@
 	<string>1</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-        <!-- 微信 URL Scheme 白名单-->
-        <string>wechat</string>
-        <string>weixin</string>
-        <!-- QQ、Qzone、TIM URL Scheme 白名单-->
-        <string>mqqapi</string>
-        <string>mqq</string>
-        <string>mqqOpensdkSSoLogin</string>
-        <string>mqqconnect</string>
-        <string>mqqopensdkdataline</string>
-        <string>mqqopensdkgrouptribeshare</string>
-        <string>mqqopensdkfriend</string>
-        <string>mqqopensdkapi</string>
-        <string>mqqopensdkapiV2</string>
-        <string>mqqopensdkapiV3</string>
-        <string>mqqopensdkapiV4</string>
-        <string>mqzoneopensdk</string>
-        <string>wtloginmqq</string>
-        <string>wtloginmqq2</string>
-        <string>mqqwpa</string>
-        <string>mqzone</string>
-        <string>mqzonev2</string>
-        <string>mqzoneshare</string>
-        <string>wtloginqzone</string>
-        <string>mqzonewx</string>
-        <string>mqzoneopensdkapiV2</string>
-        <string>mqzoneopensdkapi19</string>
-        <string>mqzoneopensdkapi</string>
-        <string>mqqbrowser</string>
-        <string>mttbrowser</string>
-        <string>tim</string>
-        <string>timapi</string>
-        <string>timopensdkfriend</string>
-        <string>timwpa</string>
-        <string>timgamebindinggroup</string>
-        <string>timapiwallet</string>
-        <string>timOpensdkSSoLogin</string>
-        <string>wtlogintim</string>
-        <string>timopensdkgrouptribeshare</string>
-        <string>timopensdkapiV4</string>
-        <string>timgamebindinggroup</string>
-        <string>timopensdkdataline</string>
-        <string>wtlogintimV1</string>
-        <string>timapiV1</string>
-        <!-- 支付宝 URL Scheme 白名单-->
-        <string>alipay</string>
-        <string>alipayshare</string>
+		<string>wechat</string>
+		<string>weixin</string>
+		<string>mqqapi</string>
+		<string>mqq</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqqconnect</string>
+		<string>mqqopensdkdataline</string>
+		<string>mqqopensdkgrouptribeshare</string>
+		<string>mqqopensdkfriend</string>
+		<string>mqqopensdkapi</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqqopensdkapiV4</string>
+		<string>mqzoneopensdk</string>
+		<string>wtloginmqq</string>
+		<string>wtloginmqq2</string>
+		<string>mqqwpa</string>
+		<string>mqzone</string>
+		<string>mqzonev2</string>
+		<string>mqzoneshare</string>
+		<string>wtloginqzone</string>
+		<string>mqzonewx</string>
+		<string>mqzoneopensdkapiV2</string>
+		<string>mqzoneopensdkapi19</string>
+		<string>mqzoneopensdkapi</string>
+		<string>mqqbrowser</string>
+		<string>mttbrowser</string>
+		<string>tim</string>
+		<string>timapi</string>
+		<string>timopensdkfriend</string>
+		<string>timwpa</string>
+		<string>timgamebindinggroup</string>
+		<string>timapiwallet</string>
+		<string>timOpensdkSSoLogin</string>
+		<string>wtlogintim</string>
+		<string>timopensdkgrouptribeshare</string>
+		<string>timopensdkapiV4</string>
+		<string>timgamebindinggroup</string>
+		<string>timopensdkdataline</string>
+		<string>wtlogintimV1</string>
+		<string>timapiV1</string>
+		<string>alipay</string>
+		<string>alipayshare</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -121,12 +118,12 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>是否允许此App使用你的相机？</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>导航</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>是否允许此App访问你的媒体资料库？</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>导航</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

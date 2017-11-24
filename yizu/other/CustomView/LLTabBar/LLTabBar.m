@@ -118,8 +118,8 @@ NSInteger const MiddleButtonTag = 123919441;
     UIImage *selectedImage = [UIImage imageNamed:selectedImageName];
     [item setImage:normalImage forState:UIControlStateNormal];
     [item setImage:selectedImage forState:UIControlStateSelected];
-    [item setTitleColor:[UIColor colorWithWhite:51 / 255.0 alpha:1] forState:UIControlStateNormal];
-    [item setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+    [item setTitleColor:[UIColor colorWithRed:0.41f green:0.41f blue:0.41f alpha:1.00f] forState:UIControlStateNormal];
+    [item setTitleColor:[UIColor colorWithRed:1.00f green:0.42f blue:0.19f alpha:1.00f] forState:UIControlStateSelected];
     item.tabBarItemType = tabBarItemType;
     
     return item;
