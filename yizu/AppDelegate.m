@@ -162,9 +162,8 @@
     if (!result) {
         // 其他如支付等SDK的回调
         NSLog(@"支付");
-        if ([WXApi handleOpenURL:url delegate:self]) {
-            return YES;
-        }else {
+        if ([url.host isEqualToString:@"safepay"]) {
+            // 支付跳转支付宝钱包进行支付，处理支付结果
             [[AlipaySDK defaultService]
              processOrderWithPaymentResult:url
              standbyCallback:^(NSDictionary *resultDic) {
@@ -177,6 +176,10 @@
                  }
                  
              }];
+        }
+        if ([url.host isEqualToString:@"pay"]){
+            //微信支付，处理支付结果
+            return [WXApi handleOpenURL:url delegate:self];
         }
     }
     
