@@ -43,6 +43,9 @@
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow
 
+/**
+ * 是否登录
+ */
 #define IsLoginState [XSaverTool objectForKey:IsLogin]
 //各种颜色宏定义
 //rgb颜色

@@ -155,9 +155,8 @@
         if ([responseObject[@"result"] integerValue]) {
             [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:PhoneKey];
             [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:isPhone];
-            [[UIApplication sharedApplication].keyWindow endEditing:NO];
 
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
