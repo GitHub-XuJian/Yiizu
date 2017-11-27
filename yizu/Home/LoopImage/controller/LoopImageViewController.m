@@ -124,18 +124,18 @@
 
   
     
-    CGFloat itemW = (kSCREEN_WIDTH -140-40)/5;
-    CGFloat itemH = (self.collectionView.frame.size.height-20-30)/2;
+    CGFloat itemW = (kSCREEN_WIDTH -160-40)/5;
+    CGFloat itemH = (self.collectionView.frame.size.height-20-40)/2;
    // NSLog(@"%@",NSStringFromCGRect(self.view.frame));
     
     flowLayout.itemSize=CGSizeMake(itemW, itemH);
-    flowLayout.minimumLineSpacing=35;//竖间距
+    flowLayout.minimumLineSpacing=40;//竖间距
    
     flowLayout.minimumInteritemSpacing=20;
     
     
     flowLayout.scrollDirection=UICollectionViewScrollDirectionHorizontal;
-    flowLayout.sectionInset=UIEdgeInsetsMake(15, 20, 15, 20);
+    flowLayout.sectionInset=UIEdgeInsetsMake(20, 20, 20, 20);
     
 
     self.collectionView.delegate=self;
@@ -168,82 +168,89 @@
     
     CGFloat x=50;
     CGFloat W=(kSCREEN_WIDTH-100)/3;
-    NSArray* btnTitle=@[@"综合排序",@"区域分布",@"离我最近"];
+    NSArray* btnTitle=@[@"距离排序",@"热度排序",@"区域分布"];
     for (int i=0; i<3; i++) {
         UIButton* btn=[[UIButton alloc]init];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         [btn setTitle:btnTitle[i] forState:UIControlStateNormal];
         btn.titleLabel.font=[UIFont systemFontOfSize:13];
         btn.frame=CGRectMake(i*(W+x), 0, W, 30);
-        [btn addTarget:self action:@selector(btnViewAction:) forControlEvents:UIControlEventTouchUpInside];
+        //                                                                                                       [btn addTarget:self action:@selector(btnViewAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [btn addTarget:self action:@selector(btnAction:) forControlEvents:UIControlEventTouchUpInside];
+        if (i==0) {
+            btn.selected=YES;
+        }
+        btn.tag=100+i;
+        
         [self.btnView addSubview:btn];
     }
 }
 
-- (void)btnViewAction:(UIButton*)btn
+- (void)btnAction:(UIButton *)sender
 {
     
-    if ([btn.currentTitle isEqualToString:@"离我最近"]) {
-        
+    sender.selected=YES;
+    
+    NSArray* btns=self.btnView.subviews;
+    
+    for (UIButton* btn in btns) {
+        if (btn.tag!=sender.tag) {
+            //判断一个对象是不是按钮（某个类）
+            if (![btn isMemberOfClass:[UIButton class]]) {
+                //continue跳出循环继续xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                continue;
+            }
+            btn.selected=NO;
+        }
+    }
+    
+    if ([sender.currentTitle isEqualToString:@"距离排序"]) {
        
-        [PopMenuView showWithItems:@[@{@"title":@"离我最近",@"imageName":@"ic_common_praise_pressed_15x15_"},
-                                     @{@"title":@"热度排序",@"imageName":@"ic_common_praise_pressed_15x15_"},]
-                               width:130
-                    triangleLocation:CGPointMake(kSCREEN_WIDTH-30, CGRectGetMaxY(self.btnView.frame)+50)
-                              action:^(NSInteger index) {
-                                 
-                                  NSString* url=@"";
-                                  if (index==0) {
-                                      //点击离我最近按钮方式排序
-                                       NSLog(@"点击了第%ld行",index);
-                                      if (self.areaid) {
-                                         
-                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID,self.areaid];
-                                           NSLog(@"点击了区域按钮aaa\n%@",url);
-                                      }else{
-                                       
-                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
-                                          NSLog(@"没点区域按钮%@\n",url);
-                                          
-                                  }
-                                      
-                                      NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
-                                      
-                                      [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
-                                  }else
-                                  {
-                                      //点击热度按钮方式排序
-                                       NSLog(@"点击了第%ld行",index);
-                                      if (self.areaid) {
-                                          
-                                          NSLog(@"点击了区域按钮aaa");
-                                          url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID,self.areaid];
-                                          
-                                      }else{
-                                           url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
-                                          NSLog(@"没点区域按钮");
-                                      }
-                                      
-                                      NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
-                                      
-                                      [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
-                                  }
-                                  
-                              }];
-    }else if ([btn.currentTitle isEqualToString:@"区域分布"])
-    {
+         NSString* url=@"";
+        if (self.areaid) {
+            
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID,self.areaid];
+            NSLog(@"点击了区域按钮aaa\n%@",url);
+        }else{
+            
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
+            NSLog(@"没点区域按钮%@\n",url);
+        }
         
-    NSLog(@"点击了区域按钮%@",self.cityID);
-    HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
-    aVC.cityId=self.cityID;
-        aVC.delegate=self;
-    UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
-    [self presentViewController:nav animated:YES completion:nil];
+        NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
+    }else if ([sender.currentTitle isEqualToString:@"热度排序"])
+    {
+        NSString* url=@"";
+        
+        if (self.areaid) {
+            
+            NSLog(@"点击了区域按钮aaa");
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID,self.areaid];
+            
+        }else{
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID];
+            NSLog(@"没点区域按钮");
+        }
+        
+        NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
     }else
     {
-            NSLog(@"点击了区域按钮%@",self.cityID);
+      
+        HomAreaBtnController* aVC=[[HomAreaBtnController alloc]init];
+        aVC.cityId=self.cityID;
+        aVC.delegate=self;
+        UINavigationController* nav=[[UINavigationController alloc]initWithRootViewController:aVC];
+        [self presentViewController:nav animated:YES completion:nil];
     }
 }
+
+
 
 #pragma mark-UIcollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

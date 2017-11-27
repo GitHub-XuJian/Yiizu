@@ -33,13 +33,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _tabSource=[[NSMutableArray alloc]init];
     
     [self loadData];
+    
+    [self setupRefresh];
 }
 
 - (void)loadData
 {
+     [SVProgressHUD showWithStatus:@"数据加载中..."];
    //http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/
     [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
 
@@ -50,12 +56,25 @@
         }
       
         [self.tableView reloadData];
-        
+        [self.tableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self.tableView.mj_header endRefreshing];
+        [SVProgressHUD dismiss];
     }];
 }
-
+//【下拉刷新】【上拉加载】
+-(void)setupRefresh{
+    MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [self loadData];
+        
+    }];
+    
+    self.tableView.mj_header = header;
+    
+ 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

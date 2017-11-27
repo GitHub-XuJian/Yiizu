@@ -134,7 +134,7 @@
     _listArr=[[NSMutableArray alloc]init];
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        //NSLog(@"默认Data:%@",responseObject);
+       // NSLog(@"默认Data:%@",responseObject);
        
         
         //if ([responseObject[@"list"] isEqualToString:@"<null>"]) {
@@ -326,6 +326,7 @@
     NSLog(@"homeNewStr===%@",newStr);
     [self requestData:newStr];
 }
+
 
 /*
 // Override to support conditional editing of the table view.

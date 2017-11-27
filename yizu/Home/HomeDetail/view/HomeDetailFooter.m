@@ -7,17 +7,14 @@
 //
 
 #import "HomeDetailFooter.h"
-#import "CellBtn.h"
-#import "favoriteBtn.h"
+
 
 @interface HomeDetailFooter ()
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLab;
 @property (weak, nonatomic) IBOutlet UILabel *fullLab;
-@property (weak, nonatomic) IBOutlet CellBtn *likeBtn;
 
-@property (weak, nonatomic) IBOutlet favoriteBtn *favBtn;
 
 @end
 
@@ -76,33 +73,7 @@
    
     
 }
-- (void)setStatus:(NSString *)status
-{
-    _status=status;
-    if (status) {
-        self.likeBtn.islike=YES;
-    }else
-    {
-        self.likeBtn.islike=NO;
-    }
-}
 
-- (void)setUpvote:(NSString *)upvote
-{
-    _upvote=upvote;
-    self.likeBtn.likeCount=upvote.integerValue;
-}
-
-- (void)setTurvy:(NSString *)turvy
-{
-    _turvy=turvy;
-    if (turvy) {
-        self.favBtn.issc=YES;
-    }else
-    {
-        self.favBtn.issc=NO;
-    }
-}
 
 /*
 // Only override drawRect: if you perform custom drawing.

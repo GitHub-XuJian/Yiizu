@@ -44,7 +44,11 @@
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];    //主要是[receiver resignFirstResponder]在哪调用就能把receiver对应的键盘往下收
+  
+    
+    if ([self.delegate respondsToSelector:@selector(customaSearchClikeReturn:textDid:)]) {
+        [self.delegate customaSearchClikeReturn:textField textDid:self.textField.text];
+    }
     return YES;
 }
 #pragma mark-搜索框输入内容
@@ -61,12 +65,26 @@
         [self.delegate customSearchBarDidBeginEditing:self];
     }
 }
-//-(BOOL)textFieldShouldReturn:(UITextField *)textField
-//{
-//    NSLog(@"456");
-//    return YES;
-//
-//}
+
+
+//自动弹出键盘
+- (BOOL)becomeFirstResponder
+{
+    return [self.textField becomeFirstResponder];
+}
+
+- (BOOL)resignFirstResponder
+{
+    [self.textField resignFirstResponder];
+    return [super resignFirstResponder];
+}
+
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField
+{
+    NSLog(@"textClear");
+    return YES;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

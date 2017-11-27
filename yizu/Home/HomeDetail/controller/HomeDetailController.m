@@ -14,6 +14,10 @@
 #import "HomeDetailFooter.h"
 
 #import  <MapKit/MapKit.h>
+#import "CellBtn.h"
+#import "favoriteBtn.h"
+
+
 
 @interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource,HomeDetailFooterDelegate>
 @property (nonatomic, strong) UITableView* tabView;
@@ -95,6 +99,23 @@
    // cell.chamberjjLab.text=_model.chamberjj;
   
    
+    
+if (_model.status) {
+            cell.likeBtn.islike=YES;
+        }else
+        {
+            cell.likeBtn.islike=NO;
+        }
+    
+    cell.likeBtn.likeCount=_model.upvote.integerValue;
+   
+    
+        if (_model.Turvy) {
+            cell.favBtn.issc=YES;
+        }else
+        {
+            cell.favBtn.issc=NO;
+        }
     return cell;
 }
 
@@ -105,33 +126,24 @@
 
 - (void)HomeDetailFooterView:(HomeDetailFooter *)footView
 {
-    if ( [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"http://maps.apple.com/"]]){
-        //MKMapItem 使用场景: 1. 跳转原生地图 2.计算线路
-        MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
-        
-        //地理编码器
-        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-        //我们假定一个终点坐标，某某某某:121.229296,31.336956
-        [geocoder geocodeAddressString:@"ggggggggggg" completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-            CLPlacemark *endPlacemark  = placemarks.lastObject;
-            
-            //创建一个地图的地标对象
-            MKPlacemark *endMKPlacemark = [[MKPlacemark alloc] initWithPlacemark:endPlacemark];
-            //在地图上标注一个点(终点)
-            MKMapItem *endMapItem = [[MKMapItem alloc] initWithPlacemark:endMKPlacemark];
-            
-            //MKLaunchOptionsDirectionsModeKey 指定导航模式
-            //NSString * const MKLaunchOptionsDirectionsModeDriving; 驾车
-            //NSString * const MKLaunchOptionsDirectionsModeWalking; 步行
-            //NSString * const MKLaunchOptionsDirectionsModeTransit; 公交
-            [MKMapItem openMapsWithItems:@[currentLocation, endMapItem]
-                           launchOptions:@{MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving,MKLaunchOptionsShowsTrafficKey: [NSNumber numberWithBool:YES]}];
-            
-        }];
-        
-    }
-    
+
+    //起点
+    MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
+    //CLLocationCoordinate2D desCorrdinate = CLLocationCoordinate2DMake(self.destinationCoordinate.latitude, self.destinationCoordinate.longitude);
+  
+   
+    CLLocationCoordinate2D des= CLLocationCoordinate2DMake(_model.lat.floatValue, _model.lng.floatValue);
+    //终点
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:des addressDictionary:nil]];
+    toLocation.name=_model.full;
+    //默认驾车
+    [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
+                   launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving,
+                                   MKLaunchOptionsMapTypeKey:[NSNumber numberWithInteger:MKMapTypeStandard],
+                                   MKLaunchOptionsShowsTrafficKey:[NSNumber numberWithBool:YES]}];
+   
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

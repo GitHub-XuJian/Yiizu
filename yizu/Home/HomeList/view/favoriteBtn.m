@@ -43,14 +43,17 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
 }
 - (void)like {
     
+    if (!IsLoginState) {
+        NSLog(@"没登录");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"游客未登录" message:@"是否登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"登录", nil];
+        [alert show];
+        return;
+    }else{
     
-    
-    
-    self.userInteractionEnabled = NO;
+      NSLog(@"登录le");
+    //self.userInteractionEnabled = NO;
     
     self.issc = !self.issc;
-    
-  
     
     NSString* isCang=@"";
     
@@ -75,7 +78,7 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
     }];
     //Mobile/Index/index_keep/name/%@/number/%@/%@
     
-    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_keep/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isCang,@"3"];
+    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_keep/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isCang,[XSaverTool objectForKey:UserIDKey]];
     
     
     newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -85,7 +88,16 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
         
     }];
     
-    
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        NSLog(@"a");
+    }else
+    {
+         NSLog(@"b");
+    }
 }
 
 //设置点赞图片

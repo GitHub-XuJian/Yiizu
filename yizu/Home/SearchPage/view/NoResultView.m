@@ -22,13 +22,15 @@
 - (void)setUpUI
 {
     UIImageView* imaView=[[UIImageView alloc]init];
-    imaView.frame=CGRectMake(self.frame.size.width/2+50, 70, 100, 100);
-    //imaView.image=[UIImage imageNamed:@"icon_default_avatar"];
+    imaView.frame=CGRectMake(kSCREEN_WIDTH/2-50, 170, 100, 100);
+    imaView.image=[UIImage imageNamed:@"ooo"];
     [self addSubview:imaView];
     
     UILabel* lab=[[UILabel alloc]init];
-    lab.frame=CGRectMake(self.frame.size.width/2, CGRectGetMaxY(imaView.frame), 150, 50);
-    lab.text=@"无结果~";
+    //lab.backgroundColor=[UIColor cyanColor];
+    lab.frame=CGRectMake(kSCREEN_WIDTH/2-75, CGRectGetMaxY(imaView.frame), 150, 50);
+    lab.text=@"未找到商家";
+    lab.textColor=[UIColor grayColor];
     lab.font=[UIFont systemFontOfSize:15];
     lab.textAlignment=NSTextAlignmentCenter;
     [self addSubview:lab];
@@ -36,7 +38,6 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    
 }
 
 
