@@ -18,6 +18,8 @@
 
 - (void)customSearchBarDidBeginEditing:(CustomSearchBar *)searchBar;
 
+- (void)customaSearchClikeReturn:(UITextField*)textfield textDid:(NSString* )text;
+
 @end
 
 

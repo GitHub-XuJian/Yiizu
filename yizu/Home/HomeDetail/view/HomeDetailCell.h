@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class CellBtn;
+
+@class favoriteBtn;
+
 @interface HomeDetailCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *image1;
@@ -24,5 +28,7 @@
 //商户简介
 @property (weak, nonatomic) IBOutlet UILabel *chamberjjLab;
 
+@property (weak, nonatomic) IBOutlet CellBtn *likeBtn;
+@property (weak, nonatomic) IBOutlet favoriteBtn *favBtn;
 
 @end

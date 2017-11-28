@@ -33,7 +33,7 @@
     
     self.movableLab.text=model.movable;
     
-    NSLog(@"%@",model.status);
+   
     
     if ([model.status isEqualToString:@"1"]) {
         self.followBtn.isFollow=YES;

@@ -64,6 +64,8 @@
 		1F582F6B1FC697FA0048FA99 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F582F6A1FC697F10048FA99 /* CoreLocation.framework */; };
 		1F58909F1FBEBB3A0026ABCA /* FollowBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58909E1FBEBB3A0026ABCA /* FollowBtn.m */; };
 		1F6CC2E81FC516C30026807C /* PopMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6CC2E71FC516C30026807C /* PopMenuView.m */; };
+		1F7510B41FCBD2580019BD93 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7510B31FCBD2580019BD93 /* NewHomeViewController.m */; };
+		1F7510BA1FCC0C0B0019BD93 /* ScrollImaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7510B91FCC0C0B0019BD93 /* ScrollImaView.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
@@ -383,6 +385,10 @@
 		1F58909E1FBEBB3A0026ABCA /* FollowBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FollowBtn.m; sourceTree = "<group>"; };
 		1F6CC2E61FC516C30026807C /* PopMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopMenuView.h; sourceTree = "<group>"; };
 		1F6CC2E71FC516C30026807C /* PopMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopMenuView.m; sourceTree = "<group>"; };
+		1F7510B21FCBD2580019BD93 /* NewHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewHomeViewController.h; sourceTree = "<group>"; };
+		1F7510B31FCBD2580019BD93 /* NewHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewHomeViewController.m; sourceTree = "<group>"; };
+		1F7510B81FCC0C0B0019BD93 /* ScrollImaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollImaView.h; sourceTree = "<group>"; };
+		1F7510B91FCC0C0B0019BD93 /* ScrollImaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollImaView.m; sourceTree = "<group>"; };
 		1FE535561F9F2E7300713053 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1FE535571F9F2E7300713053 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		1FE535591F9F2E7300713053 /* HomeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListModel.h; sourceTree = "<group>"; };
@@ -943,6 +949,8 @@
 				1F1767301FB3F91200BB5026 /* ActivityCell.m */,
 				1F1767311FB3F91200BB5026 /* CustomCellScrollView.h */,
 				1F1767321FB3F91200BB5026 /* CustomCellScrollView.m */,
+				1F7510B81FCC0C0B0019BD93 /* ScrollImaView.h */,
+				1F7510B91FCC0C0B0019BD93 /* ScrollImaView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1108,6 +1116,8 @@
 			children = (
 				1FE535561F9F2E7300713053 /* HomeViewController.h */,
 				1FE535571F9F2E7300713053 /* HomeViewController.m */,
+				1F7510B21FCBD2580019BD93 /* NewHomeViewController.h */,
+				1F7510B31FCBD2580019BD93 /* NewHomeViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2208,7 +2218,6 @@
 				TargetAttributes = {
 					AF66ACED1F9D7E540079A2CF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R4485X89UR;
 						ProvisioningStyle = Automatic;
 					};
 					AF66AD001F9D7E550079A2CF = {
@@ -2420,6 +2429,7 @@
 				AFB2156B1FC3B7B7006DD630 /* WithdrawalViewController.m in Sources */,
 				AF66AD6A1F9D99E60079A2CF /* UIImage+Extension.m in Sources */,
 				AF66AD6E1F9DACB10079A2CF /* MyTableViewCell.m in Sources */,
+				1F7510B41FCBD2580019BD93 /* NewHomeViewController.m in Sources */,
 				AFC62F271FA1B5D500A3F3F5 /* MCBarChartView.m in Sources */,
 				1F11E9DE1FBD752600AE4478 /* favoriteBtn.m in Sources */,
 				AF66AE011F9DE1B60079A2CF /* MJRefreshConst.m in Sources */,
@@ -2435,6 +2445,7 @@
 				1F4423DD1FA6F0C200F8EA95 /* SVRadialGradientLayer.m in Sources */,
 				AFB2151D1FBD215C006DD630 /* PersonalInformationTableViewCell.m in Sources */,
 				1F6CC2E81FC516C30026807C /* PopMenuView.m in Sources */,
+				1F7510BA1FCC0C0B0019BD93 /* ScrollImaView.m in Sources */,
 				AF66AE811F9F1AB10079A2CF /* IQToolbar.m in Sources */,
 				AF66ADFC1F9DE1B60079A2CF /* MJRefreshBackStateFooter.m in Sources */,
 				AF8B6CF51FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -2641,7 +2652,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = R4485X89UR;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
@@ -2679,7 +2690,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = R4485X89UR;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",

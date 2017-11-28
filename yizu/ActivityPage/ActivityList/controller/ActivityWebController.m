@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     self.webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
     
     NSString* webUrl=[NSString stringWithFormat:@"%@Mobile/Bridge/Bridgeitem/activityid/%@/",Main_Server,self.activiId];

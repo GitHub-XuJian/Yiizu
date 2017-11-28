@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class ScrollImaView;
+
 @class ActivityLsitModel;
 
 @class CustomCellScrollView;
 
 @protocol CustomCellScrollViewDelegate <NSObject>
 
--(void)CustomCellScrollViewClickBtn:(UIImageView*)HeaderView;
+-(void)CustomCellScrollViewClickBtn:(ScrollImaView*)HeaderView;
 
 @end
 

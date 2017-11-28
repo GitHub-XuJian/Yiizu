@@ -46,6 +46,10 @@
 //full
 @property (nonatomic, copy) NSString* full;
 
+@property (nonatomic, copy) NSString* lng;
+
+@property (nonatomic, copy) NSString* lat;
+
 + (instancetype)ModelWithDict:(NSDictionary*)dic;
 
 +(void)HomeListWithUrl:(NSString*)url success:(void(^)(NSMutableArray* array))sBlock error:(void(^)())eBlock;

@@ -43,6 +43,7 @@
     _tabScroce=[[NSMutableArray alloc]init];
     [self loadData];
     
+    //[self setupRefresh];
     // Do any additional setup after loading the view.
 }
 
@@ -64,10 +65,19 @@
         }
         // NSLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
         [self.tableView reloadData];
-        
+        [self.tableView.mj_header endRefreshing];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self.tableView.mj_header endRefreshing];
     }];
+}
+
+//【下拉刷新】【上拉加载】
+-(void)setupRefresh{
+    MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData];
+    }];
+    
+    self.tableView.mj_header = header;
 }
 
 - (void)setCateTitle:(NSString *)cateTitle

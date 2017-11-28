@@ -29,7 +29,7 @@
             
             self.titleLable = [[UILabel alloc] init];
             self.titleLable.textColor = [UIColor blackColor];
-            self.titleLable.font = [UIFont systemFontOfSize:11];
+            self.titleLable.font = [UIFont systemFontOfSize:10];
             self.titleLable.textAlignment = NSTextAlignmentCenter;
             //self.titleLable.backgroundColor=[UIColor yellowColor];
             //[self addSubview:self.titleLable];
@@ -64,7 +64,7 @@
     _model=model;
     
     self.titleLable.text=model.tradename;
-  
+   
     
     [self.imaView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
 }

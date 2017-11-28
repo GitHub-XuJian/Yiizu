@@ -12,6 +12,8 @@
 #import "ActivityDetailListModel.h"
 #import "HomeDetailController.h"
 
+#import "ActivityWebController.h"
+
 @interface ActivityDetailController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView* tabView;
@@ -24,9 +26,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.tabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
     self.tabView.delegate=self;
     self.tabView.dataSource=self;
+    //self.tabView.separatorStyle = NO;//隐藏cell分割线
     ActivityDetailLoopView* headerView=[[ActivityDetailLoopView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 300)];
     headerView.idq=self.idq;
     [self.tabView setTableHeaderView:headerView];
@@ -35,6 +41,8 @@
     [self.view addSubview:self.tabView];
     
     [self loadData];
+    
+    [self setupRefresh];
     // Do any additional setup after loading the view.
 }
 
@@ -51,10 +59,19 @@
             [_listArr addObject:model];
         }];
         [self.tabView reloadData];
-        
+        [self.tabView.mj_header endRefreshing];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self.tabView.mj_header endRefreshing];
     }];
+}
+
+//【下拉刷新】【上拉加载】
+-(void)setupRefresh{
+    MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadData];
+    }];
+    
+    self.tabView.mj_header = header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -80,7 +97,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    
+    ActivityWebController* web=[[ActivityWebController alloc]init];
+    ActivityDetailListModel* model=_listArr[indexPath.row];
+    web.activiId=model.activityid;
+   
+    [self.navigationController pushViewController:web animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
