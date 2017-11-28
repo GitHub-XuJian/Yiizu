@@ -96,11 +96,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     ActivityWebController* web=[[ActivityWebController alloc]init];
     ActivityDetailListModel* model=_listArr[indexPath.row];
     web.activiId=model.activityid;
-   
     [self.navigationController pushViewController:web animated:YES];
 }
 

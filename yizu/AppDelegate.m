@@ -13,7 +13,8 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "ActivationCodeInputViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
-
+#import "GuideViewController.h"
+#import "LBTabBarController.h"
 
 
 
@@ -62,7 +63,9 @@
     [self confitUShareSettings];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [SFRootVC chooseWindowRootVC];
+    //self.window.rootViewController = [SFRootVC chooseWindowRootVC];
+    //
+    self.window.rootViewController =[self isFirstOpen] ? [GuideViewController new] : [LBTabBarController new];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -165,6 +168,24 @@
         NSNotification *notification =[NSNotification notificationWithName:@"WeiXinPayNotification" object:resp userInfo:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
+}
+
+- (BOOL)isFirstOpen {
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    
+    NSString *key = NSStringFromSelector(_cmd);
+    
+    
+    BOOL isLastOpen = [ud boolForKey:key];
+    
+    if (isLastOpen) {
+        return NO;
+    }else {
+        [ud setBool:YES forKey:key];
+        return YES;
+    }
+    
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
