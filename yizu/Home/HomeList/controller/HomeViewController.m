@@ -316,11 +316,6 @@
     [self.navigationController pushViewController:dVC animated:YES];
     
 }
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
-{
-    NSLog(@"123123");
-}
-
 
 - (void)saixuanId:(NSNotification *)notification
 {
