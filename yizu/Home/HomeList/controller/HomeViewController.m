@@ -327,6 +327,15 @@
 }
 
 
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    NSLog(@"hometab=%@",NSStringFromCGRect(self.tableView.frame));
+    self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
+    NSLog(@"newtab=%@",NSStringFromCGRect(self.tableView.frame));
+
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
