@@ -317,6 +317,7 @@
     
 }
 
+
 - (void)saixuanId:(NSNotification *)notification
 {
     NSString* newStr=notification.userInfo[@"areaUrl"];

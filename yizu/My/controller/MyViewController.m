@@ -82,7 +82,18 @@
             setUpVC.title = @"设置";
             [self.navigationController pushViewController:setUpVC animated:YES];
         }else{
-            jxt_showAlertTitle(@"请登录");
+            jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+                LoginViewController *loginViewC = [[LoginViewController alloc] init];
+                loginViewC.successfulBlock = ^{
+                    self.tabBarController.selectedIndex = 0;
+                };
+                loginViewC.failedBlock = ^{
+                    
+                };
+                [self presentViewController:loginViewC animated:YES completion:nil];
+            }, @"取消", ^(NSInteger buttonIndex) {
+                
+            });
         }
         
     }else{
@@ -167,7 +178,18 @@
     switch (indexPath.section) {
         case 0:{
             if (![XSaverTool boolForKey:IsLogin]) {
-                jxt_showAlertTitle(@"请登录");
+                jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+                    LoginViewController *loginViewC = [[LoginViewController alloc] init];
+                    loginViewC.successfulBlock = ^{
+                        self.tabBarController.selectedIndex = 0;
+                    };
+                    loginViewC.failedBlock = ^{
+                        
+                    };
+                    [self presentViewController:loginViewC animated:YES completion:nil];
+                }, @"取消", ^(NSInteger buttonIndex) {
+                    
+                });
                 return;
             }
             [self navigationBarHidden:NO];
@@ -189,7 +211,18 @@
         }
         case 1:{
             if (![XSaverTool boolForKey:IsLogin]) {
-                jxt_showAlertTitle(@"请登录");
+                jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+                    LoginViewController *loginViewC = [[LoginViewController alloc] init];
+                    loginViewC.successfulBlock = ^{
+                        self.tabBarController.selectedIndex = 0;
+                    };
+                    loginViewC.failedBlock = ^{
+                        
+                    };
+                    [self presentViewController:loginViewC animated:YES completion:nil];
+                }, @"取消", ^(NSInteger buttonIndex) {
+                    
+                });
                 return;
             }
             [self navigationBarHidden:NO];

@@ -14,9 +14,6 @@
 #import "ActivationCodeInputViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
 
-
-
-
 @interface AppDelegate ()<UIApplicationDelegate,WXApiDelegate>
 
 @end
@@ -166,6 +163,30 @@
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
 }
+/**
+ * 验证版本号
+ */
+- (void)verifyVersion
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/explain",Main_Server];
+    [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        // 1.获取当前版本号
+        NSString *currVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+        /**
+         * 服务器版本号
+         */
+        NSString *lastVersion = responseObject[@"edition"];
+        if (![currVersion isEqualToString:lastVersion]) {
+            jxt_showAlertOneButton(responseObject[@"prompt"], responseObject[@"replace"], @"确定", ^(NSInteger buttonIndex) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftwareUpdate?id=%@&mt=8",AppStore_ID]] options:@{} completionHandler:nil];
+                // 这里写的URL地址是该app在app store里面的下载链接地址，其中ID是该app在app store对应的唯一的ID编号。
+            });
+        }
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -182,9 +203,13 @@
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
-
+/**
+ * 每次进入应用
+ */
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self verifyVersion];
+
 }
 
 

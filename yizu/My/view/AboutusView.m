@@ -38,8 +38,8 @@
     versionNumberLabel.text = @"版本：1.0";
     [self addSubview:versionNumberLabel];
     
-    NSArray *array = @[@"用户协议",@"联系电话"];
-    _array2 = @[@"",@"024-12345678"];
+    NSArray *array = @[@"用户协议",@"联系电话",@"代理合作",@"商家合作"];
+    _array2 = @[@"",@"024-12345678",@"024-11122233",@"024-5555555"];
     for (int i = 0; i < array.count; i++) {
         UIView * view = [[UIView alloc] init];
         view.frame = CGRectMake(0, 770/3+i*41, kSCREEN_WIDTH, 40);
@@ -97,7 +97,7 @@
             webViewVC.title = @"用户协议";
             webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
             [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
-        }else if (tempLP.view.tag == ViewTag+1) {   // 联系电话
+        }else {   // 联系电话
             [EncapsulationMethod callPhoneStr:_array2[tempLP.view.tag-ViewTag]];
         }
     }else if([recognizer isKindOfClass:[UIButton class]]){

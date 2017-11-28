@@ -132,7 +132,19 @@
             
         });
     }else{
-        jxt_showAlertTitle(@"请登录");
+        jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+            LoginViewController *loginViewC = [[LoginViewController alloc] init];
+            loginViewC.successfulBlock = ^{
+                [EncapsulationMethod viewController:self].tabBarController.selectedIndex = 0;
+            };
+            loginViewC.failedBlock = ^{
+                
+            };
+            [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
+        }, @"取消", ^(NSInteger buttonIndex) {
+            
+        });
+        
     }
     
 }
@@ -233,7 +245,7 @@
     if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"手机"]) {
         //        if ([[XSaverTool objectForKey:PhoneKey] length] == 0) {
         SFValidationEmailViewController *validVC = [[SFValidationEmailViewController alloc] init];
-        validVC.title = @"验证手机";
+        validVC.title = @"更换手机";
         validVC.isBindingPhone = YES;
         validVC.isValidation = YES;
         [self.navigationController pushViewController:validVC animated:YES];

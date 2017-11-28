@@ -33,10 +33,10 @@
 {
     self.dataArray = [NSMutableArray arrayWithObjects:
   @{@"title":@"VIP套餐",@"button":@1},
-                      @{@"title":@"1个月58元",@"button":@0,@"money":@5800,@"tian":@30},
-  @{@"title":@"3个月68元",@"button":@0,@"money":@6800,@"tian":@90},
-  @{@"title":@"6个月128元",@"button":@0,@"money":@12800,@"tian":@180},
-  @{@"title":@"年费233元",@"button":@0,@"money":@23300,@"tian":@365}, nil];
+                      @{@"title":@"1个月48元",@"button":@0,@"money":@4800,@"tian":@30},
+  @{@"title":@"3个月128元",@"button":@0,@"money":@12800,@"tian":@90},
+  @{@"title":@"6个月258元",@"button":@0,@"money":@25800,@"tian":@180},
+  @{@"title":@"年费398元",@"button":@0,@"money":@39800,@"tian":@365}, nil];
     [self.tableView reloadData];
 }
 - (void)reloadData{

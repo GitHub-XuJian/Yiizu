@@ -40,7 +40,19 @@
         }];
         [self.tableView reloadData];
     }else{
-        jxt_showAlertTitle(@"请登录");
+        jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+            LoginViewController *loginViewC = [[LoginViewController alloc] init];
+            loginViewC.successfulBlock = ^{
+                [EncapsulationMethod viewController:self].tabBarController.selectedIndex = 0;
+            };
+            loginViewC.failedBlock = ^{
+                
+            };
+            [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
+        }, @"取消", ^(NSInteger buttonIndex) {
+            
+        });
+        
     }
 }
 

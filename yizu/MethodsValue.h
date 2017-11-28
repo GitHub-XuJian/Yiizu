@@ -39,6 +39,11 @@
  *  服务器根地址
  */
 #define Main_ServerImage @"http://47.104.18.18/"
+/**
+ * App Store应用程序ID
+ */
+#define AppStore_ID @"XXX"
+
 
 // 主窗口
 #define KeyWindow [UIApplication sharedApplication].keyWindow

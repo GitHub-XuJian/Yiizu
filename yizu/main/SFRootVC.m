@@ -24,14 +24,7 @@
 @implementation SFRootVC
 
 + (UIViewController *)chooseWindowRootVC{
-
-    // 当有版本更新,或者第一次安装的时候显示新特性界面;
-    // 1.获取当前版本号
-    NSString *currVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
     
-    // 2.上一次版本号
-    NSString *lastVersion = [XSaverTool objectForKey:SFVersion];
-    NSLog(@"当前版本号%@ 上一次 %@",currVersion,lastVersion);
     UIViewController *rootVc;
     
 //    if (![currVersion isEqualToString:lastVersion]) {

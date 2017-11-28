@@ -22,6 +22,7 @@
 }
 @property (nonatomic, strong) NSMutableDictionary *dataDict;
 @property (nonatomic, strong) UIButton *activationButton;
+@property (nonatomic, strong) UILabel *label;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @end
 
@@ -60,43 +61,9 @@
     self.scrollView.backgroundColor = [UIColor clearColor];
     [backImageView addSubview:self.scrollView];
     
-    
-    
-    NSString *titleStr = @"首次输入兑换码请务必填写个人真实信息输入唯一兑换码,点击激活按钮，并提交个人信息返现成功将扣除手续费；5%（点第三方托管平台收取）";
-    CGFloat titleLabel_H = [EncapsulationMethod calculateRowHeight:titleStr andTexFont:13 andMaxWidth:kSCREEN_WIDTH-60];
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.frame = CGRectMake(90/3, 55/3, kSCREEN_WIDTH-60, titleLabel_H);
-    titleLabel.numberOfLines = 0;
-    titleLabel.backgroundColor = [UIColor clearColor];
-    titleLabel.font = [UIFont systemFontOfSize:13];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = titleStr;
-    [self.scrollView addSubview:titleLabel];
-    _scrollerContentSize_H += (titleLabel.x+titleLabel.height);
-//    if ([[XSaverTool objectForKey:Identity] integerValue] == 0) {
-//        NSArray *array = @[@"真实姓名",@"常用手机号",@"支付宝账号"];
-//        for (int i = 0; i < array.count; i++) {
-//            CGFloat label_W = kSCREEN_WIDTH-60;
-//            UILabel *label = [[UILabel alloc] init];
-//            label.frame = CGRectMake(90/3,_scrollerContentSize_H+(75/3), label_W, 30);
-//            label.text = array[i];
-//            label.backgroundColor = [UIColor clearColor];
-//            label.textColor = [UIColor whiteColor];
-//            label.font = kFontOther;
-//            [self.scrollView addSubview:label];
-//
-//            UITextField *textField = [[UITextField alloc] init];
-//            textField.frame = CGRectMake(label.x, label.y+label.height+5, label.width, 40);
-//            textField.delegate = self;
-//            textField.tag = TextFieldTag+i;
-//            textField.background = [UIImage imageNamed:@"asd"];
-//            [self.scrollView addSubview:textField];
-//            _scrollerContentSize_H += 80;
-//        }
-//    }
-    _scrollerContentSize_H += (75/3);
     [self createActivationCode];
     [self createActivationBtn];
+    
     // 设置UIScrollView的滚动范围（内容大小）
     self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+50);
     
@@ -110,6 +77,22 @@
     [self.activationButton setBackgroundImage:[UIImage imageNamed:@"jihuo"] forState:UIControlStateNormal];
     self.activationButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.scrollView addSubview:self.activationButton];
+    
+    
+    
+    NSString *titleStr = @"首次输入兑换码请务必填写个人真实信息输入唯一兑换码,点击激活按钮，并提交个人信息返现成功将扣除手续费；5%（点第三方托管平台收取）";
+    CGFloat titleLabel_H = [EncapsulationMethod calculateRowHeight:titleStr andTexFont:13 andMaxWidth:kSCREEN_WIDTH-60];
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.frame = CGRectMake(90/3, self.activationButton.y+self.activationButton.height+20, kSCREEN_WIDTH-60, titleLabel_H);
+    titleLabel.numberOfLines = 0;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont systemFontOfSize:13];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = titleStr;
+    [self.scrollView addSubview:titleLabel];
+    self.label = titleLabel;
+    //    _scrollerContentSize_H += (titleLabel.x+titleLabel.height);
+    //    _scrollerContentSize_H += (75/3);
 }
 - (void)createActivationCode
 {
@@ -183,8 +166,12 @@
                 _validationStr = @"";
                 [self createActivationCode];
                 self.activationButton.frame = CGRectMake(90/3, _scrollerContentSize_H, kSCREEN_WIDTH-60, 40);
-                self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+50);
-                [self.scrollView setContentOffset:CGPointMake(0,_scrollerContentSize_H-kSCREEN_HEIGHT+64+50) animated:YES];
+                self.label.frame = CGRectMake(self.activationButton.x, self.activationButton.y+self.activationButton.height+20, self.activationButton.width, self.label.height);
+                self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+self.label.height+self.activationButton.height+30);
+                if (_scrollerContentSize_H > kSCREEN_HEIGHT-64) {
+                    [self.scrollView setContentOffset:CGPointMake(0,_scrollerContentSize_H-kSCREEN_HEIGHT+64+self.activationButton.height+self.label.height+30) animated:YES];
+                    
+                }
                 
             }
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
@@ -198,21 +185,9 @@
 - (void)activationBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    if ([XSaverTool boolForKey:IsLogin]) {
-       
+        
         [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
         [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
-        
-//        if ([[self.dataDict objectForKey:@"pername"] length] == 0) {
-//            jxt_showAlertTitle(@"请输入真实姓名");
-//            return;
-//        }else if ([[self.dataDict objectForKey:@"tel"] length] == 0) {
-//            jxt_showAlertTitle(@"请输入常用手机号");
-//            return;
-//        }else if ([[self.dataDict objectForKey:@"paynum"] length] == 0) {
-//            jxt_showAlertTitle(@"请输入支付宝账号");
-//            return;
-//        }else
         if (!_validationStr.length){
             if ([[self.dataDict objectForKey:@"code"] count] == 0) {
                 jxt_showAlertTitle(@"请输入验证码或激活码");
@@ -242,9 +217,7 @@
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
-    }else{
-        jxt_showAlertTitle(@"请登录");
-    }
+ 
     
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -266,7 +239,7 @@
         default:
             break;
     }
-
+    
     if (textField.tag == ValidationTextFieldTag +_textFieldTagAdd) {
         _validationStr = textField.text;
     }else if (textField.tag == ActivationTextFieldTag +_textFieldTagAdd) {

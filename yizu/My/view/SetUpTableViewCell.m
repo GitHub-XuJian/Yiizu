@@ -52,10 +52,11 @@
                     self.nameTextField = textfield;
                 }
             }
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ic_details_top_collection_prressed_21x21_"]];
-            if (indexPath.section == 1 && indexPath.row == 2) {
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightImage"]];
+            if ((indexPath.section == 1 && indexPath.row == 2)||(indexPath.section == 0&& indexPath.row == 1)) {
                 imageView.hidden = YES;
             }
+            imageView.contentMode  = UIViewContentModeScaleAspectFit;
             imageView.frame = CGRectMake(kSCREEN_WIDTH-30, 60/2-20/2, 20, 20);
             [self.contentView addSubview:imageView];
         }

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol WalletViewDelegate <NSObject>
 
+-(void)clickWithTag:(NSInteger)viewTag;
+
+@end
 @interface WalletView : UIView
+@property (nonatomic,weak) id<WalletViewDelegate>delegate;
 
 - (void)reloadMonay:(NSString *)monayStr;
 @end

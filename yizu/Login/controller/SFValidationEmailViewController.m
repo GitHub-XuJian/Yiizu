@@ -8,7 +8,6 @@
 
 #import "SFValidationEmailViewController.h"
 #import "mytimer.h"
-#import "UUID.h"
 #import "OldAndNewPassWordViewController.h"
 
 @interface SFValidationEmailViewController ()<UITextFieldDelegate>
@@ -131,7 +130,7 @@
                         jxt_showToastMessage(@"修改失败",1);
                     }];
                 }else{
-                    NSDictionary *dict = @{@"tel":self.emailText.text};
+                    NSDictionary *dict = @{@"tel":self.emailText.text,@"sunshine":[UUID getUUID]};
                     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/yanzheng",Main_Server];
                     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                         NSLog(@"%@",responseObject);

@@ -137,7 +137,18 @@
             jxt_showAlertTitle(@"请补全信息");
         }
     }else{
-        jxt_showAlertTitle(@"请登录");
+        jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+            LoginViewController *loginViewC = [[LoginViewController alloc] init];
+            loginViewC.successfulBlock = ^{
+                self.tabBarController.selectedIndex = 0;
+            };
+            loginViewC.failedBlock = ^{
+                
+            };
+            [self presentViewController:loginViewC animated:YES completion:nil];
+        }, @"取消", ^(NSInteger buttonIndex) {
+            
+        });
     }
 
 

@@ -11,7 +11,6 @@
 #import "IQKeyboardManager.h"
 //#import "SFNetWorkManager.h"
 //#import "SFProgressHUD.h"
-#import "UUID.h"
 
 @interface registerViewController ()<UITextFieldDelegate>
 

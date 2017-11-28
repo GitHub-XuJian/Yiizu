@@ -41,7 +41,7 @@
         classBtn.layer.masksToBounds = YES;
         [self.contentView addSubview:classBtn];
         self.classBtn = classBtn;
-
+        
     }
     return self;
 }
@@ -70,63 +70,72 @@
 - (void)btnClick:(UIButton *)btn
 {
     if (IsLoginState) {
-        NSArray * ar = @[@"微信支付",@"支付宝支付",@"激活码支付"];
+        NSArray * ar = @[@"激活码支付",@"微信支付",@"支付宝支付"];
         PWCustomSheet * sheet = [[PWCustomSheet alloc]initWithButtons:ar];
         sheet.delegate =self;
         [self.window addSubview:sheet];
     }else{
-        jxt_showAlertTitle(@"请登录");
+        jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
+            LoginViewController *loginViewC = [[LoginViewController alloc] init];
+            loginViewC.successfulBlock = ^{
+                [EncapsulationMethod viewController:self].tabBarController.selectedIndex = 0;
+            };
+            loginViewC.failedBlock = ^{
+                
+            };
+            [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
+        }, @"取消", ^(NSInteger buttonIndex) {
+            
+        });
     }
     
 }
 -(void)clickButton:(UIButton *)button
 {
     NSLog(@"%@",button.titleLabel.text);
-    if (IsLoginState) {
-        switch (button.tag) {
-            case 0:{            // 微信支付
-                NSDictionary *dict =@{@"tian":_cellDict[@"tian"],@"total":_cellDict[@"money"],@"subject":@"购买会员"};
-                NSString *urlStr = [NSString stringWithFormat:@"%@weixin/index.php",Main_ServerImage];
-                [SVProgressHUD showWithStatus:@"正在转到微信支付..."];
-                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                    NSLog(@"%@",responseObject);
-                    [SVProgressHUD dismiss];
-                    if (responseObject) {
-                        [self createWXPayReq:responseObject];
-                        [XSaverTool setObject:responseObject[@"out_trade_no"] forKey:WXOut_trade_no];
-                    }
-                } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                    NSLog(@"%@",error);
-                }];
-                break;
-            }
-            case 1:{            // 支付宝支付
-                NSDictionary *dict = @{@"total":_cellDict[@"money"],@"subject":@"购买会员",@"body":@"购买会员",@"tian":_cellDict[@"tian"]};
-                NSString *urlStr = [NSString stringWithFormat:@"%@zhifubao/zhifubao.php",Main_ServerImage];
-                [SVProgressHUD showWithStatus:@"正在加载..."];
-                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                    [SVProgressHUD dismiss];
-                    NSLog(@"%@",responseObject);
-                    [self createPayTreasure:responseObject];
-                    
-                } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                    
-                }];
-                break;
-            }
-            case 2:{            // 激活码支付
-                ActivationCodePayViewController *acpVC = [[ActivationCodePayViewController alloc] init];
-                acpVC.title = @"激活码支付";
-                acpVC.moneyDict = _cellDict;
-                [[EncapsulationMethod viewController:self].navigationController pushViewController:acpVC animated:YES];
-                break;
-            }
-            default:
-                break;
+    switch (button.tag) {
+        case 0:{            // 激活码支付
+            ActivationCodePayViewController *acpVC = [[ActivationCodePayViewController alloc] init];
+            acpVC.title = @"激活码支付";
+            acpVC.moneyDict = _cellDict;
+            [[EncapsulationMethod viewController:self].navigationController pushViewController:acpVC animated:YES];
+            break;
         }
-    }else{
-        jxt_showAlertTitle(@"请登录");
+        case 1:{            // 微信支付
+            NSDictionary *dict =@{@"tian":_cellDict[@"tian"],@"total":_cellDict[@"money"],@"subject":@"购买会员"};
+            NSString *urlStr = [NSString stringWithFormat:@"%@weixin/index.php",Main_ServerImage];
+            [SVProgressHUD showWithStatus:@"正在转到微信支付..."];
+            [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"%@",responseObject);
+                [SVProgressHUD dismiss];
+                if (responseObject) {
+                    [self createWXPayReq:responseObject];
+                    [XSaverTool setObject:responseObject[@"out_trade_no"] forKey:WXOut_trade_no];
+                }
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                NSLog(@"%@",error);
+            }];
+            break;
+        }
+        case 2:{            // 支付宝支付
+            NSDictionary *dict = @{@"total":_cellDict[@"money"],@"subject":@"购买会员",@"body":@"购买会员",@"tian":_cellDict[@"tian"]};
+            NSString *urlStr = [NSString stringWithFormat:@"%@zhifubao/zhifubao.php",Main_ServerImage];
+            [SVProgressHUD showWithStatus:@"正在加载..."];
+            [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                [SVProgressHUD dismiss];
+                NSLog(@"%@",responseObject);
+                [self createPayTreasure:responseObject];
+                
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+            break;
+        }
+            
+        default:
+            break;
     }
+    
 }
 - (void)createPayTreasure:(NSDictionary *)dict
 {
@@ -153,7 +162,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
