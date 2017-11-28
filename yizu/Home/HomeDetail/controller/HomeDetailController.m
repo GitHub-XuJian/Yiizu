@@ -27,6 +27,7 @@
 @implementation HomeDetailController
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"商户详情";
@@ -143,6 +144,8 @@ if (_model.status) {
                                    MKLaunchOptionsShowsTrafficKey:[NSNumber numberWithBool:YES]}];
    
 }
+
+
 
 
 - (void)didReceiveMemoryWarning {

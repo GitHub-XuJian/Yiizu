@@ -66,7 +66,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    
-    //self.automaticallyAdjustsScrollViewInsets = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
    
 //    if (@available(iOS 10.0, *)) {
 //        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -91,8 +92,21 @@
     self.currentPage=1;
     self.homeListCityId=@"73";
     
+      NSString* newUrl=@"";
+      if (!IsLoginState)
+      {
+          //http:// 47.104.18.18/index.php/Mobile/Index/index_Chamber/data/城市id
+          //personid/3/sequence/0/page/页数/
+         newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+        
+      }else
+      {
+          newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
+         
+      }
     
-    NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%d",Main_Server,self.currentPage];
+    NSLog(@"alpl==%@",newUrl);
+    
     [self requestData:newUrl];
 
     [self setupRefresh];
@@ -105,8 +119,17 @@
         
         
       //全城商户列表
-      //http://47.104.18.18/index.php/Mobile/Index/index_Chamber/data/城/personid/3/sequence/（增加）默认是0 如果是1按照 点赞数排序/page/页数/
-        NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/%d",Main_Server,self.homeListCityId,1];
+    
+        NSString* newUrl=@"";
+        if (!IsLoginState)
+        {
+         
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+        }else
+        {
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+        }
+       
         NSLog(@"下啦刷新回调:%@",newUrl);
         [self requestData:newUrl];
         //[self loadData];
@@ -116,12 +139,21 @@
     self.tableView.mj_header = header;
     
     MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+          self.currentPage+=1;
+        NSString* newUrl=@"";
+        if (!IsLoginState)
+        {
+            
+            
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+        }else
+        {
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+        }
         
-        
-        [self loadMore];
-       // NSString* cid=[self.homeListCityId copy];
-        //[self requestMoreData:cid];
-        NSLog(@"上啦回调");
+       
+        [self requestMoreData:newUrl];
+        NSLog(@"上啦回调%@",newUrl);
         
     }];
     self.tableView.mj_footer = footer;
@@ -160,46 +192,13 @@
         [SVProgressHUD dismiss];
     }];
 }
-- (void)loadMore
-{
-    
-    [SVProgressHUD showWithStatus:@"数据加载中..."];
-     self.currentPage+=1;
-    NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/73/page/%d",Main_Server,self.currentPage];
-   
-    [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
 
-        NSArray* arr=responseObject[@"list"];
-        
-        if (arr.count==0) {
-            
-            //[self.tableView.mj_footer endRefreshingWithNoMoreData];
-            self.tableView.mj_footer.hidden=YES;
-        }
-        
-        for (NSDictionary* dic in arr) {
-            HomeListModel* model=[HomeListModel ModelWithDict:dic];
-            /////////
-            [_listArr addObject:model];
-            
-        }
-        [self.tableView reloadData];
-        [SVProgressHUD dismiss];
-        [self endRefresh];
-    } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        [self endRefresh];
-        [SVProgressHUD dismiss];
-    }];
-    
-    
-}
 - (void)requestMoreData:(NSString*)cityId
 {
-//    [SVProgressHUD showWithStatus:@"数据加载中..."];
-    self.currentPage+=1;
-    NSString*  newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/page/%d",cityId,Main_Server,self.currentPage];
+    [SVProgressHUD showWithStatus:@"数据加载中..."];
+  
     
-    [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
+    [XAFNetWork GET:cityId params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         
         NSArray* arr=responseObject[@"list"];
         
@@ -207,6 +206,7 @@
             
             //[self.tableView.mj_footer endRefreshingWithNoMoreData];
             self.tableView.mj_footer.hidden=YES;
+            
         }
         
         for (NSDictionary* dic in arr) {

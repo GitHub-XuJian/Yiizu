@@ -87,7 +87,7 @@
 
 - (void)initCycleScrollView
 {
-    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 160) delegate:self placeholderImage:nil];
+    SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 210) delegate:self placeholderImage:nil];
     cycleScrollView.imageURLStringsGroup=self.loopArr;
     cycleScrollView.autoScrollTimeInterval=2.0;
     cycleScrollView.pageControlStyle=SDCycleScrollViewPageContolStyleClassic;
