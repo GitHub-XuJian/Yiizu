@@ -36,7 +36,7 @@
 - (void)setFull:(NSString *)full
 {
     _full=full;
-    self.fullLab.text=[NSString stringWithFormat:@"%@   >>>",full];
+    self.fullLab.text=[NSString stringWithFormat:@"%@",full];
     
     self.fullLab.userInteractionEnabled=YES;
     

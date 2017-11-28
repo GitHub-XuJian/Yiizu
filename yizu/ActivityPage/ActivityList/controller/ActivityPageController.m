@@ -11,6 +11,7 @@
 #import "ActivityLsitModel.h"
 #import "ActivityWebController.h"
 #import "CustomCellScrollView.h"
+#import "ScrollImaView.h"
 
 @interface ActivityPageController ()<CustomCellScrollViewDelegate>
 
@@ -118,12 +119,13 @@
     
 }
 
-- (void)CustomCellScrollViewClickBtn:(UIImageView *)HeaderView
+- (void)CustomCellScrollViewClickBtn:(ScrollImaView *)HeaderView
 {
     ActivityWebController* web=[[ActivityWebController alloc]init];
     ActivityLsitModel* model=_tabSource[HeaderView.tag];
+    NSLog(@"iddidid%@",HeaderView.activityid);
     //web.activiId=model.activityid;
-    [self.navigationController pushViewController:web animated:YES];
+    //[self.navigationController pushViewController:web animated:YES];
 }
 /*
 // Override to support conditional editing of the table view.

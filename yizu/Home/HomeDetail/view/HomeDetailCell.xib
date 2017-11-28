@@ -64,12 +64,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUx-tP-adx" customClass="favoriteBtn">
-                        <rect key="frame" x="167" y="28" width="54" height="34"/>
-                        <state key="normal" title="Button"/>
+                        <rect key="frame" x="215" y="28" width="30" height="34"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVm-Bo-eyA" customClass="CellBtn">
-                        <rect key="frame" x="236" y="28" width="54" height="34"/>
-                        <state key="normal" title="Button"/>
+                        <rect key="frame" x="260" y="28" width="30" height="34"/>
+                        <color key="backgroundColor" red="1" green="0.35085847380000001" blue="0.32540104549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </button>
                 </subviews>
                 <constraints>
