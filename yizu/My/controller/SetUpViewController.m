@@ -132,15 +132,16 @@
             
         });
     }else{
+        WEAKSELF;
         jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
             LoginViewController *loginViewC = [[LoginViewController alloc] init];
             loginViewC.successfulBlock = ^{
-                [EncapsulationMethod viewController:self].tabBarController.selectedIndex = 0;
+                [EncapsulationMethod viewController:weakSelf].tabBarController.selectedIndex = 0;
             };
             loginViewC.failedBlock = ^{
                 
             };
-            [[EncapsulationMethod viewController:self] presentViewController:loginViewC animated:YES completion:nil];
+            [[EncapsulationMethod viewController:weakSelf] presentViewController:loginViewC animated:YES completion:nil];
         }, @"取消", ^(NSInteger buttonIndex) {
             
         });
@@ -222,6 +223,7 @@
     if (indexPath.section == 0) {
         if ([[XSaverTool objectForKey:isPhone] integerValue] == 0) {
             cell.rightLabelStr = @"未绑定";
+            cell.cellDict = _dataDict;
         }else{
             if (indexPath.row == 0) {
                 cell.rightLabelStr = [XSaverTool objectForKey:isPhone];
@@ -245,7 +247,7 @@
     if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"手机"]) {
         //        if ([[XSaverTool objectForKey:PhoneKey] length] == 0) {
         SFValidationEmailViewController *validVC = [[SFValidationEmailViewController alloc] init];
-        validVC.title = @"更换手机";
+        validVC.title = [[XSaverTool objectForKey:isPhone] integerValue]?@"更换手机":@"绑定手机";
         validVC.isBindingPhone = YES;
         validVC.isValidation = YES;
         [self.navigationController pushViewController:validVC animated:YES];

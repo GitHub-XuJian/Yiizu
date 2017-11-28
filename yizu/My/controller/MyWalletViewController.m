@@ -45,7 +45,7 @@
 - (void)createViewUI
 {
     WalletView *view = [[WalletView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 200)];
-    view.backgroundColor =[UIColor colorWithRed:0.30f green:0.30f blue:0.30f alpha:1.00f];
+    view.backgroundColor =[UIColor colorWithRed:0.41f green:0.44f blue:0.47f alpha:1.00f];
     view.delegate = self;
     [self.view addSubview:view];
     self.walletView = view;
