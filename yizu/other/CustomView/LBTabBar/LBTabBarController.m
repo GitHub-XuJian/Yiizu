@@ -17,7 +17,7 @@
 #import "ActivationCodeInputViewController.h"
 #import "LBTabBar.h"
 #import "UIImage+Image.h"
-
+#import "AddBankCardViewController.h"
 
 @interface LBTabBarController ()<LBTabBarDelegate>
 
@@ -134,7 +134,13 @@
             ActivationCodeInputViewController *activationVC = [[ActivationCodeInputViewController alloc] init];
             [self presentViewController:activationVC animated:YES completion:nil];
         }else{
-            jxt_showAlertTitle(@"请补全信息");
+            jxt_showAlertTwoButton(@"提示", @"请补全信息", @"确定", ^(NSInteger buttonIndex) {
+                AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
+                addBankCardVC.title = @"银行卡";
+                [self.navigationController pushViewController:addBankCardVC animated:YES];
+            }, @"取消", ^(NSInteger buttonIndex) {
+                
+            });
         }
     }else{
         jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {

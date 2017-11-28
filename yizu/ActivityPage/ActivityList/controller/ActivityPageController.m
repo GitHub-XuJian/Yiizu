@@ -43,6 +43,11 @@
     
     [self setupRefresh];
 }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    // 隐藏导航条
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
 
 - (void)loadData
 {
