@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "LLTabBar.h"
 @interface SFRootVC : NSObject
 
 
-+ (UITabBarController *)chooseWindowRootVC;
-+ (LLTabBar *)tabbarinitWithController:(UITabBarController *)controller;
++ (UIViewController *)chooseWindowRootVC;
 @end

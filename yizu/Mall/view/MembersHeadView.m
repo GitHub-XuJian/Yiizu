@@ -11,6 +11,7 @@
 @property (nonatomic, strong) UIButton *iconBtn;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *introductionLabel;
+@property (nonatomic, strong) UIImageView *crownImageView;
 @end
 @implementation MembersHeadView
 
@@ -37,6 +38,12 @@
     button.layer.borderColor=[UIColor whiteColor].CGColor;
     [self addSubview:button];
     self.iconBtn = button;
+    
+    UIImageView *crownImageView = [[UIImageView alloc] init];
+    crownImageView.frame = CGRectMake(button.x+button.width-20, button.y+button.height-20, 20, 20);
+    [crownImageView setImage:[UIImage imageNamed:@"UNcrown"]];
+    [self addSubview:crownImageView];
+    self.crownImageView = crownImageView;
     
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake(button.x+button.width+10, button.y, kSCREEN_WIDTH-button.x-button.width-10, button.height/2);
@@ -74,8 +81,10 @@
         NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
         
         self.introductionLabel.text = [NSString stringWithFormat:@"会员截止日期:%@",currentDateString];
+        self.crownImageView.image = [UIImage imageNamed:@"crown"];
     }else{
         self.introductionLabel.text = @"您还不是会员";
+        self.crownImageView.image = [UIImage imageNamed:@"UNcrown"];
     }
 }
 - (void)headPortraitBtnClick:(UIButton *)btn

@@ -16,56 +16,37 @@
 #import "MallViewController.h"
 #import "MyViewController.h"
 #import "ActivityPageController.h"
+#import "LBTabBarController.h"
 
 @interface SFRootVC()
 @end
 
 @implementation SFRootVC
 
-+ (UITabBarController *)chooseWindowRootVC{
++ (UIViewController *)chooseWindowRootVC{
 
+    // 当有版本更新,或者第一次安装的时候显示新特性界面;
+    // 1.获取当前版本号
+    NSString *currVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
     
-    // 1.首页
-    UIStoryboard* sb=[UIStoryboard storyboardWithName:@"Home" bundle:nil];
-    UIViewController* homeVC=[sb instantiateInitialViewController];
-    CustomNavigationController *nav1 = [[CustomNavigationController alloc] initWithRootViewController:homeVC];
-
-    // 4.活动
-//    ActivityViewController *activityVC = [[ActivityViewController alloc] init];
-//    activityVC.title = @"活动";
-    UIStoryboard* sb2=[UIStoryboard storyboardWithName:@"Activity" bundle:nil];
-    UIViewController* activityVC=[sb2 instantiateInitialViewController];
-    CustomNavigationController *nav2 = [[CustomNavigationController alloc] initWithRootViewController:activityVC];
-
-    // 2.商城
-    MallViewController *mallVC = [[MallViewController alloc] init];
-    mallVC.title = @"特权";
-    CustomNavigationController *nav3 = [[CustomNavigationController alloc] initWithRootViewController:mallVC];
-
-    // 3.我的
-    MyViewController *myVC = [[MyViewController alloc] init];
-    CustomNavigationController *nav4 = [[CustomNavigationController alloc] initWithRootViewController:myVC];
-
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = @[nav1, nav2, nav3, nav4];
-    [[UITabBar appearance] setBackgroundImage:[[UIImage alloc] init]];
-    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    // 2.上一次版本号
+    NSString *lastVersion = [XSaverTool objectForKey:SFVersion];
+    NSLog(@"当前版本号%@ 上一次 %@",currVersion,lastVersion);
+    UIViewController *rootVc;
     
-    return tabBarController;
+//    if (![currVersion isEqualToString:lastVersion]) {
+//        // 进入引导页界面
+//
+//    }else{
+//        if ([XSaverTool boolForKey:IsLogin]) {
+            // 进入主框架
+    rootVc = [[LBTabBarController alloc] init];
+//        }else{
+//            // 切换主界面
+//           
+//        }
+//    }
+    
+    return rootVc;
 }
-+ (LLTabBar *)tabbarinitWithController:(UITabBarController *)controller
-{
-    LLTabBar *tabBar = [[LLTabBar alloc] initWithFrame:controller.tabBar.bounds];
-    
-    tabBar.tabBarItemAttributes = @[@{kLLTabBarItemAttributeTitle : @"首页", kLLTabBarItemAttributeNormalImageName : @"UnHome", kLLTabBarItemAttributeSelectedImageName : @"Home", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
-                                    @{kLLTabBarItemAttributeTitle : @"热门", kLLTabBarItemAttributeNormalImageName : @"UnActivity", kLLTabBarItemAttributeSelectedImageName : @"Activity", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
-                                    @{kLLTabBarItemAttributeTitle : @"激活", kLLTabBarItemAttributeNormalImageName : @"middleIcon", kLLTabBarItemAttributeSelectedImageName : @"middleIcon", kLLTabBarItemAttributeType : @(LLTabBarItemRise)},
-                                    @{kLLTabBarItemAttributeTitle : @"特权", kLLTabBarItemAttributeNormalImageName : @"UnMall", kLLTabBarItemAttributeSelectedImageName : @"Mall", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)},
-                                    @{kLLTabBarItemAttributeTitle : @"我的", kLLTabBarItemAttributeNormalImageName : @"UnMy", kLLTabBarItemAttributeSelectedImageName : @"My", kLLTabBarItemAttributeType : @(LLTabBarItemNormal)}];
-    
-    
-    [controller.tabBar addSubview:tabBar];
-    return tabBar;
-}
-
 @end

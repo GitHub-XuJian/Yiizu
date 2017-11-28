@@ -44,16 +44,15 @@
 }
 - (void)createHeaderView
 {
-    UIView * blackView = [[UIView alloc] init];
-    blackView.frame = CGRectMake(0, 0, kSCREEN_WIDTH, self.height/2);
-    blackView.backgroundColor =[UIColor blackColor];
+    UIImageView * blackView = [[UIImageView alloc] init];
+    blackView.frame = CGRectMake(0, 0, kSCREEN_WIDTH, self.height);
+    [blackView setImage:[UIImage imageNamed:@"MyBack"]];
     [self addSubview:blackView];
 
     UIButton *setUpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     setUpBtn.frame = CGRectMake(kSCREEN_WIDTH-50, 20, 44, 44);
     [setUpBtn setImage:[UIImage imageNamed:@"settingsNavIcon"] forState:UIControlStateNormal];
     setUpBtn.tag = 111111;
-    setUpBtn.backgroundColor = [UIColor blackColor];
     [setUpBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:setUpBtn];
     
@@ -76,6 +75,7 @@
     nameLabel.text = @"请填写昵称";
     nameLabel.font = kCommonWithFont(20);
     nameLabel.textAlignment = NSTextAlignmentCenter;
+    nameLabel.textColor = [UIColor whiteColor];
     [self addSubview:nameLabel];
     self.nameLabel = nameLabel;
     
@@ -84,6 +84,7 @@
     introductionLabel.text = @"简介：人生伟业的建立，不在能知，乃在能行。";
     introductionLabel.font = kFontOther;
     introductionLabel.textAlignment = NSTextAlignmentCenter;
+    introductionLabel.textColor = [UIColor whiteColor];
     [self addSubview:introductionLabel];
     self.introductionLabel = introductionLabel;
 }

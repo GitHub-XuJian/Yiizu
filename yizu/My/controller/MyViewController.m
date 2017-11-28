@@ -98,7 +98,6 @@
             LoginViewController *loginViewC = [[LoginViewController alloc] init];
             loginViewC.successfulBlock = ^{
                 self.tabBarController.selectedIndex = 0;
-                [[AppDelegate shareDelegate] tabbarSelectedWithIndex:0];
             };
             loginViewC.failedBlock = ^{
                 
@@ -107,7 +106,6 @@
             
         }
     }
-   
 }
 //section底部间距
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

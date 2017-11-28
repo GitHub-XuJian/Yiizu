@@ -35,6 +35,16 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.dataDict =[NSMutableDictionary dictionaryWithDictionary: @{@"personid":@"",@"statevip":@"",@"code":@[]}];
     [self createViewUI];
+    [self createBackBtn];
+}
+- (void)createBackBtn
+{
+    SFNavView *navView = [[SFNavView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 64) andTitle:@"激活" andLeftBtnTitle:@"返回" andRightBtnTitle:nil andLeftBtnBlock:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } andRightBtnBlock:^{
+        
+    }];
+    [self.view addSubview:navView];
 }
 - (void)createViewUI
 {

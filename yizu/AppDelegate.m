@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "SFRootVC.h"
 #import "IQKeyboardManager.h"
-#import "LLTabBar.h"
 #import "LoginViewController.h"
 #import <UMSocialCore/UMSocialCore.h>
 #import "ActivationCodeInputViewController.h"
@@ -18,8 +17,7 @@
 
 
 
-@interface AppDelegate ()<UIApplicationDelegate,LLTabBarDelegate,WXApiDelegate>
-@property (nonatomic, strong) LLTabBar *tabbar;
+@interface AppDelegate ()<UIApplicationDelegate,WXApiDelegate>
 
 @end
 
@@ -63,38 +61,10 @@
     
     [self confitUShareSettings];
     
-    
-    // 1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    // 2.设置窗口的跟控制器
-    UITabBarController *tabbarController = [SFRootVC chooseWindowRootVC];
-    _tabbar = [SFRootVC tabbarinitWithController:tabbarController];
-    _tabbar.delegate = self;
-    self.window.rootViewController = tabbarController;
-    // 3,让窗口显示
+    self.window.rootViewController = [SFRootVC chooseWindowRootVC];
     [self.window makeKeyAndVisible];
-    
     return YES;
-}
-- (void)tabbarSelectedWithIndex:(NSInteger)index
-{
-    [_tabbar setSelectedIndex:index];
-}
-
-- (void)tabBarDidSelectedRiseButton {
-    NSLog(@"激活");
-    if ([XSaverTool boolForKey:IsLogin]) {
-        if ([[XSaverTool objectForKey:Identity] integerValue] == 1){
-            ActivationCodeInputViewController *activationVC = [[ActivationCodeInputViewController alloc] init];
-            activationVC.title = @"激活";
-            [[self currentViewController].navigationController pushViewController:activationVC animated:YES];
-        }else{
-            jxt_showAlertTitle(@"请补全信息");
-        }
-    }else{
-        jxt_showAlertTitle(@"请登录");
-    }
-    
 }
 
 //获取Window当前显示的ViewController

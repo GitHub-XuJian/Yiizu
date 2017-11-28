@@ -140,6 +140,12 @@
 #define VipBegintime @"VipBegintime"
 #define VipEndtime @"VipBegintime"
 #define Pername @"Pername"
+
+/**
+ * 版本号
+ */
+#define SFVersion @"SFVersion"
+
 /**
  * 是否补全了信息
  */
