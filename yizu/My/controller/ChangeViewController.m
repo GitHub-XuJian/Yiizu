@@ -25,7 +25,7 @@
 - (void)createUI
 {
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:@"icon_default_avatar"];
+    imageView.image = [UIImage imageNamed:@"AnyChange"];
     imageView.frame = CGRectMake(kSCREEN_WIDTH/2-100/2, 64+50, 100, 100);
     [self.view addSubview:imageView];
     
