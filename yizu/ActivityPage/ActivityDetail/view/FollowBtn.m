@@ -75,8 +75,10 @@ static NSString * const pressedImageName = @"ic_details_top_collection_prressed_
     
     //http://47.104.18.18/index.php/Mobile/Bridge/attention/activityid/%@/personid/%@/number/%@
     
-    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Bridge/attention/activityid/%@/personid/%@/number/%@",Main_Server,self.activityid,isGuan,@"3"];
     
+    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Bridge/attention/activityid/%@/personid/%@/number/%@",Main_Server,self.activityid,[XSaverTool objectForKey:UserIDKey],isGuan];
+    NSLog(@"guanzhu==%@",newUrl);
+     
     
     newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {

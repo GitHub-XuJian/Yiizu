@@ -9,6 +9,7 @@
 #import "NewHomeViewController.h"
 #import "HomeListModel.h"
 #import "HomeCateDetailCell.h"
+#import "LoopImageViewController.h""
 
 @interface NewHomeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -23,7 +24,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 20, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
+    
+    
+    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
+    
+    LoopImageViewController* loopVC =[[LoopImageViewController alloc]init];
+    
+    [self addChildViewController:loopVC];
+    loopVC.view.frame=CGRectMake(0, 0, kSCREEN_WIDTH, 430);
+    self.tableView.tableHeaderView=loopVC.view;
     
     self.tableView.delegate=self;
     self.tableView.dataSource=self;

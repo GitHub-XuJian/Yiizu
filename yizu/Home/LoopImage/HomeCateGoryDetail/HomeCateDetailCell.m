@@ -63,7 +63,7 @@
     if (model.distance.integerValue>=100000) {
         
         NSInteger value= model.distance.integerValue/1000;
-        self.distanceLab.text=[NSString stringWithFormat:@"%ld Km",(long)value];
+        self.distanceLab.text=[NSString stringWithFormat:@"距离：%ld Km",(long)value];
     }else
     {
         self.distanceLab.text=[NSString stringWithFormat:@"%@ m",model.distance];
