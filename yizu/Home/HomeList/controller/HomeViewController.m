@@ -330,13 +330,14 @@
     NSLog(@"%f",scrollView.contentOffset.y);
     
     // 获取导航条的imageView
+
     self.navigationController.navigationBar.subviews.firstObject.alpha = scrollView.contentOffset.y/200;
-    if (scrollView.contentOffset.y < 0) {
-        // 隐藏导航条
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-    }else{
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-    }
+//    if (scrollView.contentOffset.y < 0) {
+//        // 隐藏导航条
+//        [self.navigationController setNavigationBarHidden:YES animated:NO];
+//    }else{
+//        [self.navigationController setNavigationBarHidden:NO animated:NO];
+//    }
 }
 
 - (void)viewDidLayoutSubviews

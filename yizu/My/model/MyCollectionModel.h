@@ -13,5 +13,6 @@
 @property (nonatomic, strong) NSString *nameStr;
 @property (nonatomic, strong) NSString *addressStr;
 @property (nonatomic, strong) NSString *timeStr;
+@property (nonatomic, strong) NSString *chamber_id;
 
 @end

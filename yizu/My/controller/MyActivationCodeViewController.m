@@ -98,10 +98,7 @@
                 viewController = [[ChartViewController alloc] init];
                 break;
             }
-            case 2:{
-                viewController = [[ActivationCodeInputViewController alloc] init];
-                break;
-            }
+           
             default:
                 break;
         }
