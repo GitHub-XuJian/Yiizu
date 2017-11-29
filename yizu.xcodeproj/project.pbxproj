@@ -77,6 +77,7 @@
 		AF15D9D41FCC0BFD00F4B3DA /* UIView+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9D11FCC0BFC00F4B3DA /* UIView+LBExtension.m */; };
 		AF15D9D51FCC0BFD00F4B3DA /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9D21FCC0BFD00F4B3DA /* UIImage+Image.m */; };
 		AF15D9DD1FCD13DD00F4B3DA /* ChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */; };
+		AF15D9E01FCE9F7600F4B3DA /* SlotMachines.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */; };
 		AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C51FA828460022E990 /* resetPassword.m */; };
 		AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C81FA828460022E990 /* ForgetViewController.m */; };
 		AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3C91FA828460022E990 /* resetPassword.xib */; };
@@ -412,6 +413,8 @@
 		AF15D9D31FCC0BFD00F4B3DA /* UIImage+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Image.h"; sourceTree = "<group>"; };
 		AF15D9DB1FCD13DD00F4B3DA /* ChangeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeViewController.h; sourceTree = "<group>"; };
 		AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeViewController.m; sourceTree = "<group>"; };
+		AF15D9DE1FCE9F7600F4B3DA /* SlotMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlotMachines.h; sourceTree = "<group>"; };
+		AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlotMachines.m; sourceTree = "<group>"; };
 		AF23F3C51FA828460022E990 /* resetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resetPassword.m; sourceTree = "<group>"; };
 		AF23F3C61FA828460022E990 /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		AF23F3C71FA828460022E990 /* resetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resetPassword.h; sourceTree = "<group>"; };
@@ -1670,6 +1673,8 @@
 				AFB2151C1FBD215C006DD630 /* PersonalInformationTableViewCell.m */,
 				AFB215531FBE7886006DD630 /* WalletView.h */,
 				AFB215541FBE7886006DD630 /* WalletView.m */,
+				AF15D9DE1FCE9F7600F4B3DA /* SlotMachines.h */,
+				AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2488,6 +2493,7 @@
 				AF6C46B31FA807E000797125 /* mytimer.m in Sources */,
 				AF66AE031F9DE1B60079A2CF /* UIScrollView+MJExtension.m in Sources */,
 				AF6C494B1FC66FC100D2D53C /* DisplayCardViewController.m in Sources */,
+				AF15D9E01FCE9F7600F4B3DA /* SlotMachines.m in Sources */,
 				AF8B6CF21FA01A4A008DA068 /* UIImage+GIF.m in Sources */,
 				1F1767531FB3F93400BB5026 /* SDCycleScrollView.m in Sources */,
 				AF66ADF91F9DE1B60079A2CF /* MJRefreshAutoStateFooter.m in Sources */,

@@ -10,6 +10,7 @@
 #import "MembershipActivationCodeView.h"
 #import "MembershipActivationCodeTableViewCell.h"
 #import <UShareUI/UShareUI.h>
+#import "SlotMachines.h"
 
 @interface MembershipActivationCodeViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -191,49 +192,65 @@
 //分享网址
 - (void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType
 {
-    //创建分享消息对象
-    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
-    //创建网页内容对象
-    NSString* thumbURL =  @"http://47.104.18.18/Public/20171020092301.png";
-    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"我的标题！！！" descr:@"我是内容！！！" thumImage:thumbURL];
-    //设置网页地址
-    shareObject.webpageUrl = @"http://www.baidu.com";
-    
-    //分享消息对象设置分享内容对象
-    messageObject.shareObject = shareObject;
-    
-    //调用分享接口
-    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-        if (error) {
-            UMSocialLogInfo(@"************Share fail with error %@*********",error);
-        }else{
-            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
-                UMSocialShareResponse *resp = data;
-                //分享结果消息
-                UMSocialLogInfo(@"response message is %@",resp.message);
-                //第三方原始返回的数据
-                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
-                
-                NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/shareApi",Main_Server];
-                NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
-                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                    NSLog(@"%@",responseObject);
-                    if ([responseObject[@"result"] integerValue]) {
-                        /**
-                         * 分享成功刷新界面
-                         */
-                        [self createDataArray:@"notShareApi"];
-                        
-                    }
-                } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                    
-                }];
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Code/shareMoney",Main_Server];
+    NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        //创建分享消息对象
+        UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+        
+        //创建网页内容对象
+        NSString* thumbURL = [NSString stringWithFormat:@"%@%@",Main_ServerImage,responseObject[@"pic"]];
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"他竟然做了这件事，震惊了13亿中国人" descr:[NSString stringWithFormat:@"我在%@商家，领取了%.2f钱",responseObject[@"chambername"],[responseObject[@"nextmoney"] floatValue]+[responseObject[@"paymoney"] floatValue]] thumImage:thumbURL];
+        //设置网页地址
+        shareObject.webpageUrl = [NSString stringWithFormat:@"%@%@/codeid/%@",Main_ServerImage,responseObject[@"url"],_shareDict[@"codeid"]];
+        
+        //分享消息对象设置分享内容对象
+        messageObject.shareObject = shareObject;
+        
+        //调用分享接口
+        [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+            if (error) {
+                UMSocialLogInfo(@"************分享失败与错误 %@*********",error);
+                jxt_showAlertTitle(@"分享失败");
             }else{
-                UMSocialLogInfo(@"response data is %@",data);
+                if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                    UMSocialShareResponse *resp = data;
+                    //分享结果消息
+                    UMSocialLogInfo(@"response message is %@",resp.message);
+                    //第三方原始返回的数据
+                    UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                    
+                    NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/shareApi",Main_Server];
+                    NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
+                    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                        NSLog(@"%@",responseObject);
+                        jxt_showAlertOneButton(@"提示", responseObject[@"message"], @"确定", ^(NSInteger buttonIndex) {
+                            if ([responseObject[@"result"] integerValue]) {
+                                /**
+                                 * 分享成功刷新界面
+                                 */
+                                [self createDataArray:@"notShareApi"];
+                                
+                                SlotMachines *slotMachinesView = [[SlotMachines alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
+                                slotMachinesView.dict = responseObject;
+                                slotMachinesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+                                [self.view.window addSubview:slotMachinesView];
+                            }
+                        });
+                        
+                    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                        
+                    }];
+                }else{
+                    UMSocialLogInfo(@"response data is %@",data);
+                }
             }
-        }
-        [self alertWithError:error];
+//            [self alertWithError:error];
+        }];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 }
 
