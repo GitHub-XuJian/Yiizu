@@ -50,7 +50,6 @@
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    self.tableView.scrollEnabled = NO;
     [self addSubview:self.tableView];
     
     self.headerView = [[MembersHeadView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, (77+84)/3+164/2)];
@@ -67,7 +66,7 @@
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 135/2;
+    return 135/2*Proportion_Creen;
 }
 //设置组头和组尾部的颜色
 -(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section

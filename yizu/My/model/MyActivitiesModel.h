@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSString *addressStr;
 @property (nonatomic, strong) NSString *timeStr;
 @property (nonatomic, strong) NSString *stateStr;
+@property (nonatomic, strong) NSString *activityid;
 
 @end

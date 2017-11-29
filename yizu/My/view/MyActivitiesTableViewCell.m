@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *statelabel;
 @property (nonatomic, strong) UIView *lineView;
+@property (nonatomic, strong) UIButton *cancelBtn;
 
 @property (nonatomic, strong) MyActivitiesModel *activitiesModel;
 @end
@@ -51,12 +52,31 @@
         [self.contentView addSubview:statelabel];
         self.statelabel = statelabel;
         
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
+        [btn setTitle:@"取消" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        //边框宽度
+        [btn.layer setBorderWidth:0.5];
+        btn.layer.borderColor=kColorLine.CGColor;
+        //设置圆角
+        btn.layer.cornerRadius = 10/2;
+        //将多余的部分切掉
+        btn.layer.masksToBounds = YES;
+        [self.contentView addSubview:btn];
+        self.cancelBtn = btn;
+        
         UILabel *lineview = [[UILabel alloc] init];
         lineview.backgroundColor = kColorLine;
         [self.contentView addSubview:lineview];
         self.lineView = lineview;
     }
     return self;
+}
+-(void)cancelClick
+{
+    _block(self.activitiesModel);
 }
 -(void)initWithMyActivitiesModel:(MyActivitiesModel *)activitiesModel
 {
@@ -80,6 +100,8 @@
     self.addressLabel.frame = CGRectMake(self.iconImageView.x+self.iconImageView.width+10, self.nameLabel.y+self.nameLabel.height, kSCREEN_WIDTH/2-50, 100-20-self.nameLabel.height);
     self.timeLabel.frame = CGRectMake(kSCREEN_WIDTH/2, 10, kSCREEN_WIDTH/2-10, (135/2-20)/2);
     self.statelabel.frame = CGRectMake(kSCREEN_WIDTH-70,100/2-30/2,70,30);
+    self.cancelBtn.frame = CGRectMake(kSCREEN_WIDTH-60, self.timeLabel.y+self.timeLabel.height+10, 50 ,self.timeLabel.height);
+
     self.lineView.frame = CGRectMake(0, 100, kSCREEN_WIDTH, 0.5);
 
 }

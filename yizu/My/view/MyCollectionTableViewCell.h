@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MyCollectionModel.h"
+typedef void (^MyCollectionTableViewCellBlock)(MyCollectionModel *model);
 
 @interface MyCollectionTableViewCell : UITableViewCell
+
+@property (nonatomic, strong) MyCollectionTableViewCellBlock block;
 
 -(void)initWithMyCollectionModel:(MyCollectionModel *)cellmyCollectionModel;
 

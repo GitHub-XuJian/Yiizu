@@ -46,8 +46,9 @@
 {
     // 显示导航条
     [self setNavigationBarHidden:NO animated:NO];
-    _navigationBarAlpha = self.navigationBar.subviews.firstObject.alpha;
-    self.navigationBar.subviews.firstObject.alpha = 1;
+
+//    _navigationBarAlpha = self.navigationBar.subviews.firstObject.alpha;
+//    self.navigationBar.subviews.firstObject.alpha = 1;
 
     if (self.viewControllers.count > 0) { // 如果现在push的不是栈底控制器(最先push进来的那个控制器)
         viewController.hidesBottomBarWhenPushed = YES;
@@ -65,7 +66,7 @@
 }
 - (void)popView
 {
-    self.navigationBar.subviews.firstObject.alpha = _navigationBarAlpha;
+//    self.navigationBar.subviews.firstObject.alpha = _navigationBarAlpha;
     [self popViewControllerAnimated:YES];
 }
 @end

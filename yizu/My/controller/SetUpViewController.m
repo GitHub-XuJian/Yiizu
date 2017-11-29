@@ -136,12 +136,12 @@
         jxt_showAlertTwoButton(@"提示", @"请登录", @"确定", ^(NSInteger buttonIndex) {
             LoginViewController *loginViewC = [[LoginViewController alloc] init];
             loginViewC.successfulBlock = ^{
-                [EncapsulationMethod viewController:weakSelf].tabBarController.selectedIndex = 0;
+                weakSelf.tabBarController.selectedIndex = 0;
             };
             loginViewC.failedBlock = ^{
                 
             };
-            [[EncapsulationMethod viewController:weakSelf] presentViewController:loginViewC animated:YES completion:nil];
+            [weakSelf presentViewController:loginViewC animated:YES completion:nil];
         }, @"取消", ^(NSInteger buttonIndex) {
             
         });

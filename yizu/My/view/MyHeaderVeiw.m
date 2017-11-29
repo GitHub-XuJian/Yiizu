@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIButton *iconBtn;
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UILabel *introductionLabel;
+@property (nonatomic, strong) UIImageView *crownImageView;
 @end
 @implementation MyHeaderVeiw
 
@@ -29,7 +30,11 @@
 - (void)reloadData
 {
     [self.iconBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
-
+    if ([[XSaverTool objectForKey:Statevip] integerValue]) {
+        self.crownImageView.image = [UIImage imageNamed:@"crown"];
+    }else{
+        self.crownImageView.image = [UIImage imageNamed:@"UNcrown"];
+    }
     if ([[XSaverTool objectForKey:Nickname] length]) {
         self.nameLabel.text = [XSaverTool objectForKey:Nickname];
     }else{
@@ -56,7 +61,6 @@
     [setUpBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:setUpBtn];
     
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(self.width/2-60/2, self.height/2-60/2, 120/2,120/2);
     button.tag = 222222;
@@ -69,6 +73,12 @@
     button.layer.borderColor=[UIColor whiteColor].CGColor;
     [self addSubview:button];
     self.iconBtn = button;
+    
+    UIImageView *crownImageView = [[UIImageView alloc] init];
+    crownImageView.frame = CGRectMake(button.x+button.width-20, button.y+button.height-20, 20, 20);
+    [crownImageView setImage:[UIImage imageNamed:@"UNcrown"]];
+    [self addSubview:crownImageView];
+    self.crownImageView = crownImageView;
     
     UILabel *nameLabel = [[UILabel alloc] init];
     nameLabel.frame = CGRectMake(0, button.y+button.height+25/3, kSCREEN_WIDTH, 20);

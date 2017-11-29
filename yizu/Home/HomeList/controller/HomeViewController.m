@@ -66,7 +66,7 @@
     self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
 
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.navigationController.navigationBar.clipsToBounds = 0.0;
    
 //    if (@available(iOS 10.0, *)) {
 //        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
@@ -329,6 +329,7 @@
     //NSLog(@"Offset=%f",scrollView.contentOffset.y);
     
     // 获取导航条的imageView
+
     self.navigationController.navigationBar.subviews.firstObject.alpha = scrollView.contentOffset.y/200;
     if (scrollView.contentOffset.y > 0) {
         // 隐藏导航条

@@ -35,6 +35,7 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        self.dataArray = nil;
         if ([responseObject count] == 0) {
             jxt_showToastTitle(@"暂无数据", 1);
         }
@@ -48,10 +49,11 @@
             model.nameStr = dict[@"chambername"];
             model.addressStr = [NSString stringWithFormat:@"!%@|点赞总数:%@",dict[@"city_id"],dict[@"keep"]];
             model.timeStr = [EncapsulationMethod timeStrWithTimeStamp:dict[@"keeptime"]];
+            model.chamber_id = dict[@"chamber_id"];
             [self.dataArray addObject:model];
-            [self.tableView reloadData];
-
         }
+        [self.tableView reloadData];
+
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -105,6 +107,21 @@
     }
     MyCollectionModel *model = self.dataArray[indexPath.row];
     [cell initWithMyCollectionModel:model];
+    cell.block = ^(MyCollectionModel *model) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/offkeepaw",Main_Server];
+        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"chamber_id":model.chamber_id};
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            jxt_showAlertOneButton(@"提示", responseObject[@"msg"], @"确定", ^(NSInteger buttonIndex) {
+                if ([responseObject[@"code"] integerValue]) {
+                    [self createDataArray];
+                }
+            });
+            
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    };
     return cell;
 }
 
