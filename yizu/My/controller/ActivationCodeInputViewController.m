@@ -118,15 +118,15 @@
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
     NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
-    if (_activationStr.length>0 && _validationStr.length>0) {
-        NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
-        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
-        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-        
-        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-            if ([[responseObject objectForKey:@"result"] integerValue]) {
-                [_codeArray addObject:jsonDictStr];
+//    if (_activationStr.length>0 && _validationStr.length>0) {
+//        NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
+//        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
+//        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//
+//        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
+//            if ([[responseObject objectForKey:@"result"] integerValue]) {
+//                [_codeArray addObject:jsonDictStr];
                 UITextField *textField = (UITextField *)[self.view viewWithTag:ActivationTextFieldTag+_textFieldTagAdd];
                 textField.enabled = NO;
                 textField.textColor = kLightGrayTextColor;
@@ -151,14 +151,14 @@
                     [self.scrollView setContentOffset:CGPointMake(0,_scrollerContentSize_H-kSCREEN_HEIGHT+64+self.activationButton.height+self.imageView.height+30) animated:YES];
                     
                 }
-            }
-        } fail:^(NSURLSessionDataTask *task, NSError *error) {
-            
-        }];
-        
-    }else{
-        jxt_showAlertTitle(@"请输入验证码或激活码");
-    }
+//            }
+//        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//        }];
+//
+//    }else{
+//        jxt_showAlertTitle(@"请输入验证码或激活码");
+//    }
 }
 - (void)activationBtnClick:(UIButton *)btn
 {

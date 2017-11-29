@@ -35,6 +35,7 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        self.dataArray = nil;
         if ([responseObject count] == 0) {
             jxt_showToastTitle(@"暂无数据", 1);
         }
@@ -49,9 +50,11 @@
             model.addressStr = dict[@"movable"];
             model.timeStr = [EncapsulationMethod timeStrWithTimeStamp:dict[@"attentiontime"]];;
             model.stateStr = @"";
+            model.activityid = dict[@"activityid"];
             [self.dataArray addObject:model];
-            [self.tableView reloadData];
         }
+        [self.tableView reloadData];
+
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
@@ -101,6 +104,21 @@
         cell = [[MyActivitiesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     [cell initWithMyActivitiesModel:self.dataArray[indexPath.row]];
+    cell.block = ^(MyActivitiesModel *model) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@/Mobile/Mine/ofmovable",Main_Server];
+        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"activityid":model.activityid};
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            jxt_showAlertOneButton(@"提示", responseObject[@"msg"], @"确定", ^(NSInteger buttonIndex) {
+                if ([responseObject[@"code"] integerValue]) {
+                    [self createDataArray];
+                }
+            });
+            
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    };
     return cell;
 }
 //响应点击事件

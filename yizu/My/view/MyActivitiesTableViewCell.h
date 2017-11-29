@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MyActivitiesModel.h"
+typedef void (^MyActivitiesTableViewCellBlock)(MyActivitiesModel *model);
 
 @interface MyActivitiesTableViewCell : UITableViewCell
+@property (nonatomic, strong) MyActivitiesTableViewCellBlock block;
 
 -(void)initWithMyActivitiesModel:(MyActivitiesModel *)activitiesModel;
 
