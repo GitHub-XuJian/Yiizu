@@ -14,6 +14,7 @@
 #import "HomeSearchController.h"
 #import "HomeDetailController.h"
 #import "PopMenuView.h"
+#import "CustomNavigationController.h"
 
 @interface HomeViewController ()<HomeCityBtnDelegate,PopmenuViewDelegate>
 @property(nonatomic, strong)NSMutableArray* listArr;
@@ -54,16 +55,14 @@
     [self requestData:CityURLstr];
     
 }
-//- (NSMutableArray *)listArr
-//{
-//    if (_listArr==nil) {
-//        _listArr=[[NSMutableArray alloc]init];
-//    }
-//    return _listArr;
-//}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+   
+    
+    
     self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
 
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -76,8 +75,8 @@
     self.tableView.estimatedRowHeight =0;
     self.tableView.estimatedSectionHeaderHeight =0;
     self.tableView.estimatedSectionFooterHeight =0;
+    self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     self.navigationItem.title=@"依足";
-    
     [self setNavBarBtn];
     
     //接受数据
@@ -98,20 +97,20 @@
           //http:// 47.104.18.18/index.php/Mobile/Index/index_Chamber/data/城市id
           //personid/3/sequence/0/page/页数/
          newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
-        
+
       }else
       {
           newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
-         
+
       }
-    
-    NSLog(@"alpl==%@",newUrl);
+     //newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
+    NSLog(@"第一次请求=%@",newUrl);
     
     [self requestData:newUrl];
 
     [self setupRefresh];
-    
-    
+   
+    NSLog(@"%@",NSStringFromCGRect(self.tableView.tableHeaderView.frame));
 }
 //【下拉刷新】【上拉加载】
 -(void)setupRefresh{
@@ -123,13 +122,14 @@
         NSString* newUrl=@"";
         if (!IsLoginState)
         {
-         
+
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
         }else
         {
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
         }
-       
+    
+      
         NSLog(@"下啦刷新回调:%@",newUrl);
         [self requestData:newUrl];
         //[self loadData];
@@ -144,13 +144,11 @@
         if (!IsLoginState)
         {
             
-            
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
         }else
         {
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
         }
-        
        
         [self requestMoreData:newUrl];
         NSLog(@"上啦回调%@",newUrl);
@@ -315,6 +313,7 @@
 
     [self.navigationController pushViewController:dVC animated:YES];
     
+    
 }
 
 
@@ -327,28 +326,22 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"%f",scrollView.contentOffset.y);
+    //NSLog(@"Offset=%f",scrollView.contentOffset.y);
     
     // 获取导航条的imageView
 
     self.navigationController.navigationBar.subviews.firstObject.alpha = scrollView.contentOffset.y/200;
-    if (scrollView.contentOffset.y < 0) {
+    if (scrollView.contentOffset.y > 0) {
         // 隐藏导航条
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
-    }else{
         [self.navigationController setNavigationBarHidden:NO animated:NO];
+    }else{
+        
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    NSLog(@"hometab=%@",NSStringFromCGRect(self.tableView.frame));
-    self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
-    NSLog(@"newtab=%@",NSStringFromCGRect(self.tableView.frame));
 
-    
-}
+//}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

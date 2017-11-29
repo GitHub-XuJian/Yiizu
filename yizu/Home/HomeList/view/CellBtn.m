@@ -56,18 +56,18 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 
 - (void)like {
  
-
+    if (!IsLoginState) {
+        NSLog(@"没登录");
+        
+        return;
+    }else{
+        
 
  
     self.userInteractionEnabled = NO;
     
     self.islike = !self.islike;
     
-//    NSString *isZan  = self.islike ? @"1" : @"2";  //取消赞2,反则1
-//    NSLog(@"在里面的按钮方法%d",self.islike);
-//    NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
-//
-//    newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSString* isZan=@"";
  
@@ -95,9 +95,10 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
         
     }];
     
-        NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,@"3"];
     
+        NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,[XSaverTool objectForKey:UserIDKey]];
     
+        NSLog(@"dianzanID=%@",newUrl);
         newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
        
@@ -112,7 +113,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 
     }];
    
-    
+    }
 }
 
 

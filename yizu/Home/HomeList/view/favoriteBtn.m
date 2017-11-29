@@ -89,6 +89,7 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
     }];
     
     }
+    
 }
 
 //- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {}

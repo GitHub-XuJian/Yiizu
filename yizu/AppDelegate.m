@@ -192,6 +192,7 @@
         
     }];
 }
+//引导页判断
 - (BOOL)isFirstOpen {
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];

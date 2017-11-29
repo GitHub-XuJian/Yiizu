@@ -30,6 +30,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.tabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
+    
     self.tabView.delegate=self;
     self.tabView.dataSource=self;
     //self.tabView.separatorStyle = NO;//隐藏cell分割线
@@ -40,17 +41,28 @@
     [self.tabView registerNib:nib forCellReuseIdentifier:@"dcell"];
     [self.view addSubview:self.tabView];
     
-    [self loadData];
+    NSString* newUrl=@"";
+    if (!IsLoginState)
+    {
+        
+        newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/3",Main_Server,self.townId];
+    }else
+    {
+        newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/%@",Main_Server,self.townId,[XSaverTool objectForKey:UserIDKey]];
+        
+    }
+    
+    [self loadData:newUrl];
     
     [self setupRefresh];
     // Do any additional setup after loading the view.
 }
 
-- (void)loadData
+- (void)loadData:(NSString*)str
 {
     _listArr =[[NSMutableArray alloc]init];
     
-    [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/3",Main_Server,self.townId] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         NSLog(@"aclist:===%@",responseObject);
         
@@ -68,7 +80,16 @@
 //【下拉刷新】【上拉加载】
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self loadData];
+        NSString* newUrl=@"";
+        if (!IsLoginState)
+        {
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/3",Main_Server,self.townId];
+        }else
+        {
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/%@",Main_Server,self.townId,[XSaverTool objectForKey:UserIDKey]];
+        }
+        
+        [self loadData:newUrl];
     }];
     
     self.tabView.mj_header = header;

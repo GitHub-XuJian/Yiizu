@@ -36,7 +36,7 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     _tabSource=[[NSMutableArray alloc]init];
     
     [self loadData];
