@@ -121,6 +121,14 @@
     }
     return YES;
 }
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (textField == self.accountTextField) {
+        if (![EncapsulationMethod isValidatePhone:textField.text]) {
+            jxt_showAlertTitle(@"请输入正确的手机号");
+            return;
+        }
+    }
+}
 - (UIButton *)createButtonWithFrame:(CGRect)frame andImageStr:(NSString *)imageStr andTitleStr:(NSString *)titleStr andBtnTag:(BtnloginType)typeTag andTitleColor:(UIColor *)titleColor{
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = frame;

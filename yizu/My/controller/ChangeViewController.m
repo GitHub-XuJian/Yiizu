@@ -12,7 +12,7 @@
 #import "WithdrawalViewController.h"
 
 @interface ChangeViewController ()
-
+@property (nonatomic, strong) UILabel *moneyLabel;;
 @end
 
 @implementation ChangeViewController
@@ -21,6 +21,22 @@
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     [self createUI];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self createData];
+}
+- (void)createData
+{
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Money/myMoneyApi",Main_Server];
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        self.moneyLabel.text = responseObject[@"balance"];
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 - (void)createUI
 {
@@ -38,10 +54,11 @@
     
     UILabel *moneyLabel = [[UILabel alloc] init];
     moneyLabel.frame = CGRectMake(0, titleLabel.y+titleLabel.height+10, kSCREEN_WIDTH, 50);
-    moneyLabel.text = _moneyStr;
+    moneyLabel.text = @"￥0";
     moneyLabel.font = [UIFont systemFontOfSize:50];
     moneyLabel.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:moneyLabel];
+    self.moneyLabel = moneyLabel;
     
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     btn1.frame =CGRectMake(20, moneyLabel.y+moneyLabel.height+20, kSCREEN_WIDTH-40, 50);
@@ -72,6 +89,7 @@
         case Btn2Tag:{
             WithdrawalViewController *withdrawalVC = [[WithdrawalViewController alloc] init];
             withdrawalVC.title = @"提现";
+            withdrawalVC.moneyStr = self.moneyLabel.text;
             [self.navigationController pushViewController:withdrawalVC animated:YES];
             break;
         }

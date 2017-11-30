@@ -111,6 +111,10 @@
  */
 + (BOOL)isValidateBankCard:(NSString *)bankCard;
 /**
+ * 电话号码的正则表达式
+ */
++ (BOOL)isValidatePhone:(NSString *)phone;
+/**
  * @brief 把对象（Model）转换成字典
  * @param model 模型对象
  * @return 返回字典

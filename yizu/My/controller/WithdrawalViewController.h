@@ -10,4 +10,6 @@
 
 @interface WithdrawalViewController : UIViewController
 
+@property (nonatomic, strong) NSString *moneyStr;
+
 @end

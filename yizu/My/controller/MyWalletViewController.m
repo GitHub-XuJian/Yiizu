@@ -16,7 +16,6 @@
 
 @interface MyWalletViewController ()<WalletViewDelegate>
 @property (nonatomic, strong)  WalletView *walletView;
-@property (nonatomic, strong) NSString *moneyStr;
 @end
 
 @implementation MyWalletViewController
@@ -26,8 +25,11 @@
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     
     [self createViewUI];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     [self createData];
-    
 }
 - (void)createData
 {
@@ -35,7 +37,6 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
-        self.moneyStr = responseObject[@"balance"];
         [self.walletView reloadMonay:responseObject[@"balance"]];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -79,7 +80,6 @@
             NSLog(@"零钱");
             ChangeViewController *changeVC = [[ChangeViewController alloc] init];
             changeVC.title = @"零钱";
-            changeVC.moneyStr = [NSString stringWithFormat:@"￥%@",self.moneyStr];
             [self.navigationController pushViewController:changeVC animated:YES];
 
             break;
