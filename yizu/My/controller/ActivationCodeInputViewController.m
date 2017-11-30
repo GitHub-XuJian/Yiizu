@@ -125,8 +125,9 @@
 
         [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-            if ([[responseObject objectForKey:@"result"] integerValue]) {
-                [_codeArray addObject:jsonDictStr];
+            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+                NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
+                [_codeArray addObject:dict];
                 UITextField *textField = (UITextField *)[self.view viewWithTag:ActivationTextFieldTag+_textFieldTagAdd];
                 textField.enabled = NO;
                 textField.textColor = kLightGrayTextColor;
@@ -162,7 +163,7 @@
 }
 - (void)activationBtnClick:(UIButton *)btn
 {
-    [[UIApplication sharedApplication].keyWindow endEditing:NO];
+    [self.view endEditing:NO];
     
     [self.dataDict setObject:[XSaverTool objectForKey:UserIDKey] forKey:@"personid"];
     [self.dataDict setObject:[NSString stringWithFormat:@"%d",[XSaverTool boolForKey:Statevip]] forKey:@"statevip"];
@@ -187,13 +188,15 @@
     [SVProgressHUD showWithStatus:@"正在激活"];
     [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
-        jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-        if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
-            
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+        jxt_showAlertOneButton(@"提示", responseObject[@"message"], @"确定", ^(NSInteger buttonIndex) {
+            if ([responseObject[@"result"] integerValue] == 1) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        });
+       
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [SVProgressHUD dismiss];
+
     }];
     
     

@@ -79,6 +79,7 @@
 		AF15D9DD1FCD13DD00F4B3DA /* ChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */; };
 		AF15D9E01FCE9F7600F4B3DA /* SlotMachines.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */; };
 		AF15DA021FCFC0DC00F4B3DA /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15DA011FCFC0DC00F4B3DA /* NullSafe.m */; };
+		AF15DA051FCFF81F00F4B3DA /* TransactionDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15DA041FCFF81F00F4B3DA /* TransactionDetailsViewController.m */; };
 		AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C51FA828460022E990 /* resetPassword.m */; };
 		AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C81FA828460022E990 /* ForgetViewController.m */; };
 		AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3C91FA828460022E990 /* resetPassword.xib */; };
@@ -417,6 +418,8 @@
 		AF15D9DE1FCE9F7600F4B3DA /* SlotMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlotMachines.h; sourceTree = "<group>"; };
 		AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlotMachines.m; sourceTree = "<group>"; };
 		AF15DA011FCFC0DC00F4B3DA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		AF15DA031FCFF81F00F4B3DA /* TransactionDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransactionDetailsViewController.h; sourceTree = "<group>"; };
+		AF15DA041FCFF81F00F4B3DA /* TransactionDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransactionDetailsViewController.m; sourceTree = "<group>"; };
 		AF23F3C51FA828460022E990 /* resetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resetPassword.m; sourceTree = "<group>"; };
 		AF23F3C61FA828460022E990 /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		AF23F3C71FA828460022E990 /* resetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resetPassword.h; sourceTree = "<group>"; };
@@ -1631,6 +1634,8 @@
 				AF6C494A1FC66FC100D2D53C /* DisplayCardViewController.m */,
 				AF15D9DB1FCD13DD00F4B3DA /* ChangeViewController.h */,
 				AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */,
+				AF15DA031FCFF81F00F4B3DA /* TransactionDetailsViewController.h */,
+				AF15DA041FCFF81F00F4B3DA /* TransactionDetailsViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2334,6 +2339,7 @@
 				AF66AE821F9F1AB10079A2CF /* IQUIView+IQKeyboardToolbar.m in Sources */,
 				AFB215181FBAB664006DD630 /* ActivationCodePayTableViewCell.m in Sources */,
 				AF66ADB41F9DDD250079A2CF /* UIButton+AFNetworking.m in Sources */,
+				AF15DA051FCFF81F00F4B3DA /* TransactionDetailsViewController.m in Sources */,
 				AF626D031FA1DF9500A1225F /* JXTAlertController.m in Sources */,
 				AF23F3DA1FAB16570022E990 /* MyActivitiesModel.m in Sources */,
 				AF8B6CEE1FA01A4A008DA068 /* SDWebImageDownloaderOperation.m in Sources */,

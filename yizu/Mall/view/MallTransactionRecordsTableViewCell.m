@@ -52,13 +52,13 @@
 }
 - (void)createData
 {
-    self.titleLabel.text = [NSString stringWithFormat:@"%@支付",_dictCell[@"orderbuy"]];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",_dictCell[@"orderbuy"]];
     self.subTitleLabel.text = [EncapsulationMethod timeStrWithTimeStamp:_dictCell[@"ordertime"]];
     self.moneyLabel.text = [NSString stringWithFormat:@"-%@",_dictCell[@"ordercuurt"]];
 }
 - (void)createFrame
 {
-    self.titleLabel.frame = CGRectMake(20, 5, 100, 25);
+    self.titleLabel.frame = CGRectMake(20, 5, kSCREEN_WIDTH-100, 25);
     self.subTitleLabel.frame = CGRectMake(20, self.titleLabel.y+self.titleLabel.height, 100, 25);
     self.moneyLabel.frame = CGRectMake(kSCREEN_WIDTH-100, 0, 90, 60);
     self.lineView.frame = CGRectMake(0, 60, kSCREEN_WIDTH, 0.5);

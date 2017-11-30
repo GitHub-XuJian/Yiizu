@@ -90,7 +90,7 @@
     UIButton *btn1 = [UIButton buttonWithType:UIButtonTypeCustom];
     btn1.frame = CGRectMake(label4.x, label4.y+label4.height+30, kSCREEN_WIDTH-label4.x*2, 40);
     [btn1 setTitle:@"确认" forState:UIControlStateNormal];
-    btn1.backgroundColor = [UIColor colorWithRed:0.60f green:0.60f blue:0.60f alpha:1.00f];
+    btn1.backgroundColor = [UIColor colorWithRed:0.17f green:0.68f blue:0.10f alpha:1.00f];
     [btn1 addTarget:self action:@selector(confirmBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn1];
 }
@@ -109,9 +109,13 @@
             jxt_showAlertMessage(@"超出本次可提现金额");
         }else{
             NSString *urlStr = [NSString stringWithFormat:@"%@daishou/jpp_phpdemo_20170915/demo/CollectingPayment.php",Main_ServerImage];
-            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":self.textField.text};
+            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSLog(@"%@",responseObject);
+                jxt_showAlertMessage(responseObject[@"rspMessage"]);
+                if ([responseObject[@"orderSts"] isEqualToString:@"P"] ||[responseObject[@"orderSts"] isEqualToString:@"S"]  ) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
 
             } fail:^(NSURLSessionDataTask *task, NSError *error) {
                 

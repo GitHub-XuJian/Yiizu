@@ -10,6 +10,7 @@
 
 #import "ChangeViewController.h"
 #import "WithdrawalViewController.h"
+#import "TransactionDetailsViewController.h"
 
 @interface ChangeViewController ()
 @property (nonatomic, strong) UILabel *moneyLabel;;
@@ -83,7 +84,10 @@
 {
     switch (btn.tag) {
         case Btn1Tag:{
-            
+            TransactionDetailsViewController *transactionDetailsVC  = [[TransactionDetailsViewController alloc] init];
+            transactionDetailsVC.title = @"明细";
+            [self.navigationController pushViewController:transactionDetailsVC animated:YES];
+
             break;
         }
         case Btn2Tag:{

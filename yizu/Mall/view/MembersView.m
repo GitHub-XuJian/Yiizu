@@ -35,8 +35,8 @@
   @{@"title":@"VIP套餐",@"button":@1},
                       @{@"title":@"1个月48元",@"button":@0,@"money":@4800,@"tian":@30},
   @{@"title":@"3个月128元",@"button":@0,@"money":@12800,@"tian":@90},
-  @{@"title":@"6个月258元",@"button":@0,@"money":@25800,@"tian":@180},
-  @{@"title":@"年费398元",@"button":@0,@"money":@39800,@"tian":@365}, nil];
+  @{@"title":@"6个月218元",@"button":@0,@"money":@21800,@"tian":@180},
+  @{@"title":@"年费358元",@"button":@0,@"money":@35800,@"tian":@365}, nil];
     [self.tableView reloadData];
 }
 - (void)reloadData{
@@ -49,7 +49,7 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.backgroundColor = kClearColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:self.tableView];
     
     self.headerView = [[MembersHeadView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, (77+84)/3+164/2)];

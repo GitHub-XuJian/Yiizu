@@ -38,8 +38,8 @@
     versionNumberLabel.text = @"版本：1.0";
     [self addSubview:versionNumberLabel];
     
-    NSArray *array = @[@"用户协议",@"联系电话",@"代理合作",@"商家合作"];
-    _array2 = @[@"",@"024-12345678",@"024-11122233",@"024-5555555"];
+    NSArray *array = @[@"客服热线",@"代理合作",@"商家合作"];
+    _array2 = @[@"4001-877-599",@"024-67875156",@"024-67875156"];
     for (int i = 0; i < array.count; i++) {
         UIView * view = [[UIView alloc] init];
         view.frame = CGRectMake(0, 770/3+i*41, kSCREEN_WIDTH, 40);
@@ -66,7 +66,7 @@
     }
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(0, kSCREEN_HEIGHT-130, kSCREEN_WIDTH, 20);
-    [btn setTitle:@"《依足服务平台用户须知》" forState:UIControlStateNormal];
+    [btn setTitle:@"《依足用户须知》" forState:UIControlStateNormal];
     btn.titleLabel.font = kFontOther;
     [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(mTitlePress:) forControlEvents:UIControlEventTouchUpInside];
@@ -74,14 +74,14 @@
     
     UILabel *label3 = [[UILabel alloc] init];
     label3.frame = CGRectMake(0, btn.y+btn.height, kSCREEN_WIDTH, 20);
-    label3.text = @"辽宁金佰贝科技有限公司   版权所有";
+    label3.text = @"辽宁金佰贝网络科技有限公司   版权所有";
     label3.textAlignment = NSTextAlignmentCenter;
     label3.font = kFontOther;
     [self addSubview:label3];
     
     UILabel *label4 = [[UILabel alloc] init];
     label4.frame = CGRectMake(0, label3.y+label3.height, kSCREEN_WIDTH, 20);
-    label4.text = @"Copyr i ght ⭕️2011 YIZU AI Right Reserved.";
+    label4.text = @"Copyr i ght ⭕️2017 YIZU AI Right Reserved.";
     label4.textAlignment = NSTextAlignmentCenter;
     label4.font = kFontOther;
     [self addSubview:label4];
@@ -92,14 +92,7 @@
     NSLog(@"View点击事件");
     if ([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         UITapGestureRecognizer *tempLP = (UITapGestureRecognizer *)recognizer;
-        if (tempLP.view.tag == ViewTag) {   // 用户协议
-            WebViewController *webViewVC = [[WebViewController alloc] init];
-            webViewVC.title = @"用户协议";
-            webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];
-            [[EncapsulationMethod viewController:self].navigationController pushViewController:webViewVC animated:YES];
-        }else {   // 联系电话
-            [EncapsulationMethod callPhoneStr:_array2[tempLP.view.tag-ViewTag]];
-        }
+        [EncapsulationMethod callPhoneStr:_array2[tempLP.view.tag-ViewTag]];
     }else if([recognizer isKindOfClass:[UIButton class]]){
         WebViewController *webViewVC = [[WebViewController alloc] init];
         webViewVC.urlStr = [NSString stringWithFormat:@"%@Home/Hereto/bang",Main_Server];

@@ -16,7 +16,7 @@
 }
 @property (nonatomic, strong) UILabel *nameLabel;
 @property (nonatomic, strong) UIButton *classBtn;
-
+@property (nonatomic, strong) UIView  *lineView;
 @end
 
 @implementation MembersTableViewCell
@@ -42,6 +42,10 @@
         [self.contentView addSubview:classBtn];
         self.classBtn = classBtn;
         
+        UIView *lineView= [[UIView alloc] init];
+        lineView.backgroundColor = kColorLine;
+        [self.contentView addSubview:lineView];
+        self.lineView = lineView;
     }
     return self;
 }
@@ -65,6 +69,7 @@
 {
     self.nameLabel.frame = CGRectMake(10, 0, self.width/2, 135/2);
     self.classBtn.frame = CGRectMake(kSCREEN_WIDTH-70, 135/2/2-30/2, 60, 30);
+    self.lineView.frame = CGRectMake(0, 135/2*Proportion_Creen-0.5, kSCREEN_WIDTH, 0.5);
 }
 
 - (void)btnClick:(UIButton *)btn
