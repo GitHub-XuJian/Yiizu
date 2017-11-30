@@ -33,7 +33,7 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
-        self.moneyLabel.text = responseObject[@"balance"];
+        self.moneyLabel.text = [NSString stringWithFormat:@"￥%@",responseObject[@"balance"]];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

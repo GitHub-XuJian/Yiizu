@@ -14,6 +14,7 @@
    success:(LHResponseSuccess)success fail:(LHResponseFail)fail{
     
     AFHTTPSessionManager *manager = [XAFNetWork managerWithBaseURL:nil sessionConfiguration:NO];
+    
     [manager GET:url parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         id dic = [XAFNetWork responseConfiguration:responseObject];
@@ -217,7 +218,6 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
     [manager POST:urlString parameters:operations constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         int i = 1 ;

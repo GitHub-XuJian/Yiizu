@@ -78,6 +78,7 @@
 		AF15D9D51FCC0BFD00F4B3DA /* UIImage+Image.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9D21FCC0BFD00F4B3DA /* UIImage+Image.m */; };
 		AF15D9DD1FCD13DD00F4B3DA /* ChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */; };
 		AF15D9E01FCE9F7600F4B3DA /* SlotMachines.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */; };
+		AF15DA021FCFC0DC00F4B3DA /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15DA011FCFC0DC00F4B3DA /* NullSafe.m */; };
 		AF23F3CA1FA828460022E990 /* resetPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C51FA828460022E990 /* resetPassword.m */; };
 		AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF23F3C81FA828460022E990 /* ForgetViewController.m */; };
 		AF23F3CC1FA828460022E990 /* resetPassword.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF23F3C91FA828460022E990 /* resetPassword.xib */; };
@@ -415,6 +416,7 @@
 		AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeViewController.m; sourceTree = "<group>"; };
 		AF15D9DE1FCE9F7600F4B3DA /* SlotMachines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SlotMachines.h; sourceTree = "<group>"; };
 		AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SlotMachines.m; sourceTree = "<group>"; };
+		AF15DA011FCFC0DC00F4B3DA /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		AF23F3C51FA828460022E990 /* resetPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = resetPassword.m; sourceTree = "<group>"; };
 		AF23F3C61FA828460022E990 /* ForgetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetViewController.h; sourceTree = "<group>"; };
 		AF23F3C71FA828460022E990 /* resetPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = resetPassword.h; sourceTree = "<group>"; };
@@ -1715,6 +1717,7 @@
 		AF66AD551F9D90270079A2CF /* other */ = {
 			isa = PBXGroup;
 			children = (
+				AF15DA011FCFC0DC00F4B3DA /* NullSafe.m */,
 				AFB2156F1FC3D987006DD630 /* AlipaySDK */,
 				AFB2154F1FBD9051006DD630 /* Phone */,
 				AFB214F91FB5473B006DD630 /* PWCustomSheet */,
@@ -2365,6 +2368,7 @@
 				AF66ADB71F9DDD250079A2CF /* UIRefreshControl+AFNetworking.m in Sources */,
 				AF66ADFB1F9DE1B60079A2CF /* MJRefreshBackNormalFooter.m in Sources */,
 				AFB214D31FB40CE1006DD630 /* MembersView.m in Sources */,
+				AF15DA021FCFC0DC00F4B3DA /* NullSafe.m in Sources */,
 				AFB215291FBD7374006DD630 /* ChangePasswordViewController.m in Sources */,
 				AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */,
 				1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */,
