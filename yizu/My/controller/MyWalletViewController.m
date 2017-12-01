@@ -86,7 +86,7 @@
         }
         case 2:{
             NSLog(@"积分");
-            jxt_showAlertTitle(@"正在开发中，敬请期待");
+            jxt_showAlertTitle(@"此功能在未开通，敬请期待");
             break;
         }
         default:
