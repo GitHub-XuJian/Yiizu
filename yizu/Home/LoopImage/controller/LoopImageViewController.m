@@ -95,9 +95,9 @@
     [self.view addSubview:cycleScrollView];
     
     //行业类别
-    //http://47.104.18.18/index.php/Mobile/Index/indexindustry/
+    //http://www.xdfishing.cn/index.php/Mobile/Index/indexindustry/
     _cateArr=[[NSMutableArray alloc]init];
-    [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Index/indexindustry/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Index/indexindustry/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         //NSLog(@"hangye====%@",responseObject);
         for (NSDictionary* dic in responseObject) {
             HomeCategoryModel* model=[HomeCategoryModel modelWithDict:dic];
@@ -281,7 +281,7 @@
     HCDVC.cateTitle=model.tradename;
     HCDVC.insid=model.insid;
     HCDVC.cityId=self.cityID;
-    //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
+    //http://www.xdfishing.cn/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
     [self.navigationController pushViewController:HCDVC animated:YES];
 }
 

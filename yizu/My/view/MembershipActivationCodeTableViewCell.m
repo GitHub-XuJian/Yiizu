@@ -74,6 +74,10 @@
             self.classBtn.hidden = YES;
             self.subLabel.hidden = NO;
             self.subLabel.text = [NSString stringWithFormat:@"￥%@",_dict[@"payzong"]];
+        }else if ([buttonStr isEqualToString:@"已激活"]) {
+            self.classBtn.hidden = YES;
+            self.subLabel.hidden = NO;
+            self.subLabel.text = [NSString stringWithFormat:@"￥%.2f",[_dict[@"paymoney"] floatValue]+[_dict[@"nextmoney"] floatValue]];
         }else{
             self.classBtn.hidden = NO;
             self.subLabel.hidden = YES;
@@ -82,6 +86,7 @@
         
     }else{
         self.classBtn.hidden = YES;
+        self.subLabel.hidden = YES;
     }
     
 }

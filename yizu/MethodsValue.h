@@ -34,11 +34,13 @@
 /***
  *  服务器地址
  */
-#define Main_Server @"http://47.104.18.18/index.php/"
+//#define Main_Server @"http://47.104.18.18/index.php/"
+#define Main_Server @"http://www.xdfishing.cn/index.php/"
 /***
  *  服务器根地址
  */
-#define Main_ServerImage @"http://47.104.18.18/"
+//#define Main_ServerImage @"http://47.104.18.18/"
+#define Main_ServerImage @"http://www.xdfishing.cn/"
 /**
  * App Store应用程序ID
  */

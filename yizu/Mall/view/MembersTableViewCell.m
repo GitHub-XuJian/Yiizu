@@ -129,6 +129,9 @@
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 [SVProgressHUD dismiss];
                 NSLog(@"%@",responseObject);
+                if (!responseObject) {
+                    jxt_showAlertTitle(@"服务器返回数据错误");
+                }
                 [self createPayTreasure:responseObject];
                 
             } fail:^(NSURLSessionDataTask *task, NSError *error) {

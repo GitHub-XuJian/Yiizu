@@ -8,6 +8,7 @@
 
 #import "AgreementView.h"
 #import "WebViewController.h"
+#import "UIButtonArea.h"
 
 @implementation AgreementView
 
@@ -21,8 +22,8 @@
 }
 - (void)createUI:(UIColor *)titleColor
 {
-    UIButton *checkBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    checkBtn.frame = CGRectMake(0, self.height/2-11/2, 11, 11);
+    UIButtonArea *checkBtn = [UIButtonArea buttonWithType:UIButtonTypeCustom];
+    checkBtn.frame = CGRectMake(0, self.height/2-20/2, 20, 20);
     [checkBtn setBackgroundImage:[UIImage imageNamed:@"CheckBox"] forState:UIControlStateNormal];
     checkBtn.selected = YES;
     [checkBtn addTarget:self action:@selector(checkBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -30,20 +31,21 @@
     [checkBtn setImage:[UIImage imageNamed:@"CheckBox2"] forState:UIControlStateSelected];
     [self addSubview:checkBtn];
     
-    CGFloat rect = [EncapsulationMethod calculateRowWidth:@"登陆依足，标识您同意平台" andFont:10 andHight:self.height];
+    CGFloat rect = [EncapsulationMethod calculateRowWidth:@"已阅读并接受" andFont:16 andHight:self.height];
     UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(checkBtn.x+checkBtn.width+5, 0, rect, self.height);
-    label.text = @"登陆依足，标识您同意平台";
-    label.font = kFontMini;
+    label.frame = CGRectMake(checkBtn.x+checkBtn.width, 00, rect, self.height);
+    label.text = @"已阅读并接受";
+    label.font = kFontBodyTitle;
     label.textColor = titleColor;
     [self addSubview:label];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButtonArea *btn = [UIButtonArea buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(label.x+label.width, label.y, self.width-label.width, self.height);
     [btn setTitle:@"《用户协议》" forState:UIControlStateNormal];
-    [btn setTitleColor:kColorblue forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor colorWithRed:0.62f green:0.11f blue:0.19f alpha:1.00f] forState:UIControlStateNormal];
+    btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [btn addTarget:self action:@selector(agreementBtnclick:) forControlEvents:UIControlEventTouchUpInside];
-    btn.titleLabel.font = kFontMini;
+    btn.titleLabel.font = kFontBodyTitle;
     [self addSubview:btn];
 }
 - (void)agreementBtnclick:(UIButton *)btn

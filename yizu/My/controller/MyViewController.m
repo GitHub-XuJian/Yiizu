@@ -96,6 +96,9 @@
             });
         }
         
+    }else if (button.tag == 2222223) {
+        NSLog(@"站内信");
+        
     }else{
         [self navigationBarHidden:NO];
 

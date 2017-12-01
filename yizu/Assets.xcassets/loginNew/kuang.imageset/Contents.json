@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "kuang.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "icon_qq_share.png",
       "scale" : "2x"
     },
     {

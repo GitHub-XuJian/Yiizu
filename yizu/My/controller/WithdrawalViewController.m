@@ -109,7 +109,7 @@
             jxt_showAlertMessage(@"超出本次可提现金额");
         }else{
             NSString *urlStr = [NSString stringWithFormat:@"%@daishou/jpp_phpdemo_20170915/demo/CollectingPayment.php",Main_ServerImage];
-            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100]};
+            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100*0.9]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSLog(@"%@",responseObject);
                 jxt_showAlertMessage(responseObject[@"rspMessage"]);

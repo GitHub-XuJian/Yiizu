@@ -55,18 +55,6 @@
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    //    //随机数从这里边产生
-    //    NSMutableArray *startArray=[[NSMutableArray alloc] initWithObjects:@0,@1,@2,@3,@4,@5,@6,@7,@"1233123133",@"99231239",@"4dsfsfsdf453",@"1233123133",@"99231239",@"4dsfsfsdf453", nil];
-    //    //随机数产生结果
-    //    _dataArray=[[NSMutableArray alloc] initWithCapacity:0];
-    //    //随机数个数
-    //    NSInteger m=arc4random()%startArray.count;
-    //    for (int i=0; i<m; i++) {
-    //        int t=arc4random()%startArray.count;
-    //        _dataArray[i]=startArray[t];
-    //        startArray[t]=[startArray lastObject]; //为更好的乱序，故交换下位置
-    //        [startArray removeLastObject];
-    //    }
 }
 - (void)createViewUI
 {
@@ -83,7 +71,7 @@
                 break;
             }
             case 1:{
-                _buttonStr = @"";
+                _buttonStr = @"已激活";
                 [self createDataArray:@"activate"];
                 
                 break;
