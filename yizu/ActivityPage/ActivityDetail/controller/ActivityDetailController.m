@@ -45,12 +45,13 @@
     if (!IsLoginState)
     {
         
-        newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/3",Main_Server,self.townId];
+        newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/0",Main_Server,self.townId];
     }else
     {
         newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/%@",Main_Server,self.townId,[XSaverTool objectForKey:UserIDKey]];
         
     }
+    NSLog(@"城市按钮活动列表页：%@",newUrl);
     
     [self loadData:newUrl];
     
@@ -83,7 +84,7 @@
         NSString* newUrl=@"";
         if (!IsLoginState)
         {
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/3",Main_Server,self.townId];
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/0",Main_Server,self.townId];
         }else
         {
             newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/%@",Main_Server,self.townId,[XSaverTool objectForKey:UserIDKey]];

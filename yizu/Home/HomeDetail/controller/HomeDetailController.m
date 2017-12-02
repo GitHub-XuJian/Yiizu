@@ -21,34 +21,32 @@
 
 @interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource,HomeDetailFooterDelegate>
 @property (nonatomic, strong) UITableView* tabView;
-//@property (nonatomic, strong) NSMutableArray* imaArr;
+@property (nonatomic, strong) NSMutableArray* imaArr;
 @end
 
 @implementation HomeDetailController
-
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"商户详情";
     
-    //_imaArr=[[NSArray alloc]init];
+    _imaArr=[[NSMutableArray alloc]init];
     self.tabView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
     self.tabView.delegate=self;
     self.tabView.dataSource=self;
-    
     UINib* nib=[UINib nibWithNibName:@"HomeDetailCell" bundle:nil];
     [self.tabView registerNib:nib forCellReuseIdentifier:@"homedcell"];
     
     HomeDetailLoop* view=[[HomeDetailLoop alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 200)];
     
     NSString* ima1=[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image1];
+    [_imaArr addObject:ima1];
     NSString* ima2=[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image2];
+    [_imaArr addObject:ima2];
     NSString* ima3=[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image3];
- 
-    view.ima1=ima1;
-    view.ima2=ima2;
-    view.ima3=ima3;
+    [_imaArr addObject:ima3];
+    view.imaArr=_imaArr;
     
 
     [self.tabView setTableHeaderView:view];
@@ -86,6 +84,9 @@
     
     HomeDetailCell* cell=[tableView dequeueReusableCellWithIdentifier:@"homedcell"];
     
+    //cell.userInteractionEnabled = NO;
+    //选中行无色（没有点击的状态样式）
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;  
     [cell.image1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image1]]];
      [cell.image2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image2]]];
      [cell.image3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image3]]];
@@ -99,6 +100,9 @@
     cell.upLab.text=[NSString stringWithFormat:@"|排名 : %@ | 已售 : %@",_model.up,_model.obtained];
    // cell.chamberjjLab.text=_model.chamberjj;
   
+ 
+    cell.likeBtn.chambername=_model.chambername;
+    cell.favBtn.chambername=_model.chambername;
    
     
 if (_model.status) {

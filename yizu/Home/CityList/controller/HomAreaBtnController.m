@@ -95,10 +95,11 @@
     //NSLog(@"选择区域后的URL:%@",urlStr);
     
     NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId,@"areaUrl":urlStr};
-
+    NSLog(@"选择区域后:%@",model.name);
     [[NSNotificationCenter defaultCenter]postNotificationName:@"AreaId" object:nil userInfo:dict];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 
 /*

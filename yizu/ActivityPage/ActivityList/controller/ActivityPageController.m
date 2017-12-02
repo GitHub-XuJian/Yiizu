@@ -12,8 +12,9 @@
 #import "ActivityWebController.h"
 #import "CustomCellScrollView.h"
 #import "ScrollImaView.h"
+#import "SmallActivityListModel.h"
 
-@interface ActivityPageController ()<CustomCellScrollViewDelegate>
+@interface ActivityPageController ()<myViewidDelegate,UIScrollViewDelegate,ScrmyaaaDelegate>
 
 @property (nonatomic,strong) NSMutableArray* tabSource;
     
@@ -38,8 +39,11 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     _tabSource=[[NSMutableArray alloc]init];
+   
+    //[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server]
+    NSString* str=@"http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/";
     
-    [self loadData];
+    [self loadData:str];
     
     [self setupRefresh];
 }
@@ -49,12 +53,14 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
-- (void)loadData
+- (void)loadData:(NSString*)str
 {
+    [_tabSource removeAllObjects];
+    
      [SVProgressHUD showWithStatus:@"数据加载中..."];
    //http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/
-    [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-
+    [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+       
         for (NSDictionary* dic in responseObject) {
             //NSLog(@"dataListLoop:%@",responseObject);
             ActivityLsitModel * model=[ActivityLsitModel modelWithDict:dic];
@@ -73,7 +79,8 @@
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        [self loadData];
+        NSString* str=@"http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/";
+        [self loadData:str];
         
     }];
     
@@ -88,24 +95,35 @@
 
 #pragma mark - Table view data source
 
+//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//     return _tabSource.count;
+//}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+//    ActivityLsitModel* model=_tabSource[section];
+//    return model.pic.count;
     return _tabSource.count;
-   
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellA" forIndexPath:indexPath];
     
-    cell.customScroll.CustomDelegate=self;
-    cell.model=_tabSource[indexPath.row];
+    cell.customScrollView.ScrDelegate=self;
+    ActivityLsitModel* model=_tabSource[indexPath.row];
+    
+    cell.model=model;
     
     return cell;
+    
+   
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 300;
+    return 320;
 }
 
 
@@ -124,13 +142,13 @@
     
 }
 
-- (void)CustomCellScrollViewClickBtn:(ScrollImaView *)HeaderView
+- (void)ImaaActid:(NSString *)actid
 {
     ActivityWebController* web=[[ActivityWebController alloc]init];
-    ActivityLsitModel* model=_tabSource[HeaderView.tag];
-    NSLog(@"iddidid%@",HeaderView.activityid);
-    //web.activiId=model.activityid;
-    //[self.navigationController pushViewController:web animated:YES];
+    //ActivityLsitModel* model=_tabSource[HeaderView.tag];
+    NSLog(@"活动小图id=%@",actid);
+    web.activiId=actid;
+    [self.navigationController pushViewController:web animated:YES];
 }
 /*
 // Override to support conditional editing of the table view.
