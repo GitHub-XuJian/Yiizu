@@ -101,12 +101,12 @@
     [self.activationButton setImage:[UIImage imageNamed:@"activationBtn"] forState:UIControlStateNormal];
     self.activationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.scrollView addSubview:self.activationButton];
-
+    
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"888r"]];
     imageView.frame = CGRectMake(20, kSCREEN_HEIGHT-170, kSCREEN_WIDTH-40, 150);
     [self.scrollView addSubview:imageView];
     self.imageView = imageView;
-   
+    
 }
 - (void)deleteBtnClick:(UIButton *)btn
 {
@@ -161,24 +161,24 @@
     textField2.tag = ActivationTextFieldTag+_textFieldTagAdd;
     textField2.background = [UIImage imageNamed:@"asd"];
     [self.scrollView addSubview:textField2];
-
+    
     _scrollerContentSize_H = (textField2.y+textField2.height)+10;
     
 }
 - (void)addBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-//    NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
-//    if (_activationStr.length>0 && _validationStr.length>0) {
-//        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"statevip":[XSaverTool objectForKey:Statevip],@"nownum":[NSString stringWithFormat:@"%ld",(long)_textFieldTagAdd],@"yzm": _validationStr,@"jhm":_activationStr};
-//        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
-//        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-//
-//        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-//            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
-//                NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
-//                [_codeArray addObject:dict];
+    NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
+    if (_activationStr.length>0 && _validationStr.length>0) {
+        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"statevip":[XSaverTool objectForKey:Statevip],@"nownum":[NSString stringWithFormat:@"%ld",(long)_textFieldTagAdd],@"yzm": _validationStr,@"jhm":_activationStr};
+        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
+        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
+            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+                NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
+                [_codeArray addObject:dict];
                 UITextField *textField = (UITextField *)[self.view viewWithTag:ActivationTextFieldTag+_textFieldTagAdd];
                 textField.enabled = NO;
                 textField.textColor = kLightGrayTextColor;
@@ -186,15 +186,15 @@
                 textField2.enabled = NO;
                 textField2.textColor = kLightGrayTextColor;
                 
-    [self scrollViewFrame];
-//            }
-//        } fail:^(NSURLSessionDataTask *task, NSError *error) {
-//
-//        }];
-//
-//    }else{
-//        jxt_showAlertTitle(@"请输入验证码或激活码");
-//    }
+                [self scrollViewFrame];
+            }
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+        
+    }else{
+        jxt_showAlertTitle(@"请输入验证码或激活码");
+    }
 }
 - (void)scrollViewFrame
 {
@@ -257,10 +257,10 @@
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         });
-       
+        
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         [SVProgressHUD dismiss];
-
+        
     }];
     
     
