@@ -10,7 +10,7 @@
 
 @interface ScrollImaView ()
 
-@property (nonatomic, strong)UIImageView* imaView;
+//@property (nonatomic, strong)UIImage* ima;
 
 @end
 
@@ -31,9 +31,12 @@
 //            //[self addSubview:self.titleLable];
 //            [self.contentView addSubview:self.titleLable];
 //
-            self.imaView=[[UIImageView alloc]init];
-            //self.imaView.backgroundColor=[UIColor redColor];
-            [self addSubview:self.imaView];
+            //self.ima=[[UIImage alloc]init];
+       
+            self.userInteractionEnabled=YES;
+            UITapGestureRecognizer* imaTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(imaViewClike)];
+            imaTap.numberOfTapsRequired = 1;
+            [self addGestureRecognizer:imaTap];
             
         }
     }
@@ -41,11 +44,28 @@
     return self;
 }
 
+
+- (void)imaViewClike
+{
+    
+    NSLog(@"点击事件=%@",self.activityid);
+    if ([self.delegate respondsToSelector:@selector(ImaViewActid:)]) {
+        NSLog(@"响应%@",self.activityid);
+        [self.delegate ImaViewActid :self.activityid];
+    }else
+    {
+        NSLog(@"没响应");
+    }
+    
+    
+    
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     
-    self.imaView.frame=self.frame;
+    
     
 }
 

@@ -9,6 +9,7 @@
 #import "ActivityCell.h"
 #import "ActivityLsitModel.h"
 #import "CustomCellScrollView.h"
+#import "SmallActivityListModel.h"
 
 @interface ActivityCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *bigIma;
@@ -26,6 +27,10 @@
     
     //NSLog(@"%@\n%@",NSStringFromCGRect(self.customScroll.frame),NSStringFromCGRect(self.bigIma.frame));
     // Initialization code
+    
+//    self.collectionView.delegate=self;
+//    self.collectionView.dataSource=self;
+    
 }
 
 - (void)setModel:(ActivityLsitModel *)model
@@ -38,9 +43,12 @@
     self.headLab.text=model.caption1;
     self.cityLab.text=model.city_id;
     self.writingpicLab.text=model.writingpic;
-    self.customScroll.imaArr=model.pic;
+    //self.customScrollView.imaArr=model.pic;
+
+  self.customScrollView.Amodel=model;
     
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -16,4 +16,6 @@
 
 @property (nonatomic,strong) HomeListModel* model;
 
+@property (nonatomic, assign) BOOL likeStart;
+
 @end

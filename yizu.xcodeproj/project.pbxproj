@@ -72,6 +72,7 @@
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
 		1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355E1F9F2E7300713053 /* HomeListCell.m */; };
 		1FF734761FAAFBE0008BE98C /* NoResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF734751FAAFBE0008BE98C /* NoResultView.m */; };
+		1FFFE9141FCF99320005A1DE /* SmallActivityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE9131FCF99320005A1DE /* SmallActivityListModel.m */; };
 		AF15D9CE1FCC0BDD00F4B3DA /* LBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9CB1FCC0BDD00F4B3DA /* LBTabBar.m */; };
 		AF15D9CF1FCC0BDD00F4B3DA /* LBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9CD1FCC0BDD00F4B3DA /* LBTabBarController.m */; };
 		AF15D9D41FCC0BFD00F4B3DA /* UIView+LBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = AF15D9D11FCC0BFC00F4B3DA /* UIView+LBExtension.m */; };
@@ -406,6 +407,8 @@
 		1FE5355E1F9F2E7300713053 /* HomeListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeListCell.m; sourceTree = "<group>"; };
 		1FF734741FAAFBDF008BE98C /* NoResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoResultView.h; sourceTree = "<group>"; };
 		1FF734751FAAFBE0008BE98C /* NoResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoResultView.m; sourceTree = "<group>"; };
+		1FFFE9121FCF99320005A1DE /* SmallActivityListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmallActivityListModel.h; sourceTree = "<group>"; };
+		1FFFE9131FCF99320005A1DE /* SmallActivityListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmallActivityListModel.m; sourceTree = "<group>"; };
 		AF15D9CA1FCC0BDD00F4B3DA /* LBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTabBarController.h; sourceTree = "<group>"; };
 		AF15D9CB1FCC0BDD00F4B3DA /* LBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBTabBar.m; sourceTree = "<group>"; };
 		AF15D9CC1FCC0BDD00F4B3DA /* LBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTabBar.h; sourceTree = "<group>"; };
@@ -954,6 +957,8 @@
 				1F17672A1FB3F91200BB5026 /* ActivityLsitModel.m */,
 				1F17672B1FB3F91200BB5026 /* ActivityPageModel.h */,
 				1F17672C1FB3F91200BB5026 /* ActivityPageModel.m */,
+				1FFFE9121FCF99320005A1DE /* SmallActivityListModel.h */,
+				1FFFE9131FCF99320005A1DE /* SmallActivityListModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -2364,6 +2369,7 @@
 				1F0CEAD21FBADC9700D06C8E /* HomeDetailFooter.m in Sources */,
 				AF66AD801F9DB5460079A2CF /* ContactUsViewController.m in Sources */,
 				AF626D261FA2D97D00A1225F /* CityListCell.m in Sources */,
+				1FFFE9141FCF99320005A1DE /* SmallActivityListModel.m in Sources */,
 				AF66AE781F9F1AB10079A2CF /* IQUIView+Hierarchy.m in Sources */,
 				AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */,
 				1F17673B1FB3F91200BB5026 /* ActivityCell.m in Sources */,

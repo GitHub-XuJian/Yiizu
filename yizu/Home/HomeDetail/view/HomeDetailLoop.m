@@ -64,30 +64,12 @@
     
 }
 
-- (void)setIma1:(NSString *)ima1
-{
-    _ima1=ima1;
-    [_imaUrlArr addObject:ima1];
-    [self updateUI];
 
-}
-
-- (void)setIma2:(NSString *)ima2
+- (void)setImaArr:(NSMutableArray *)imaArr
 {
-    _ima2=ima2;
-    [_imaUrlArr addObject:ima2];
-    [self updateUI];
-}
-- (void)setIma3:(NSString *)ima3
-{
-    _ima3=ima3;
-    [_imaUrlArr addObject:ima3];
-    [self updateUI];
-    //
-}
-
-- (void)updateUI
-{
-    self.SDScrollView.imageURLStringsGroup=self.imaUrlArr;
+    _imaArr = imaArr;
+    NSLog(@"imaArr22==%lu",(unsigned long)imaArr.count);
+    
+    self.SDScrollView.imageURLStringsGroup=imaArr;
 }
 @end

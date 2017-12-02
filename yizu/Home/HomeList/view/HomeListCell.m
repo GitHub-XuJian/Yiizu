@@ -27,8 +27,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *chamberjjLab;
 //已售lab
 @property (weak, nonatomic) IBOutlet UILabel *obtainedLab;
-//点赞
-@property (weak, nonatomic) IBOutlet CellBtn *likeCellBtn;
+
 //排名
 @property (weak, nonatomic) IBOutlet UIButton *upView;
 

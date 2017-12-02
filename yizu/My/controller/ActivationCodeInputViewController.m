@@ -24,6 +24,9 @@
 @property (nonatomic, strong) UIButton *activationButton;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIButton *addBtn;
+@property (nonatomic, strong) UIButton *deleteBtn;
+
 @end
 
 @implementation ActivationCodeInputViewController
@@ -71,8 +74,29 @@
 }
 - (void)createActivationBtn
 {
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBtn.frame = CGRectMake(kSCREEN_WIDTH-150, _scrollerContentSize_H, 100, 30);
+    [addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [addBtn setTitle:@"【添加】" forState:UIControlStateNormal];
+    addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    addBtn.titleLabel.font = kFontOther;
+    [self.scrollView addSubview:addBtn];
+    self.addBtn = addBtn;
+    
+    UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    deleteBtn.frame = CGRectMake(50, _scrollerContentSize_H, 100, 30);
+    [deleteBtn addTarget:self action:@selector(deleteBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [deleteBtn setTitle:@"【删除】" forState:UIControlStateNormal];
+    deleteBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [deleteBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    deleteBtn.titleLabel.font = kFontOther;
+    deleteBtn.hidden = YES;
+    [self.scrollView addSubview:deleteBtn];
+    self.deleteBtn = deleteBtn;
+    
     self.activationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.activationButton.frame = CGRectMake(100, _scrollerContentSize_H, kSCREEN_WIDTH-200, 40);
+    self.activationButton.frame = CGRectMake(100, deleteBtn.y+deleteBtn.height+10, kSCREEN_WIDTH-200, 40);
     [self.activationButton addTarget:self action:@selector(activationBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.activationButton setImage:[UIImage imageNamed:@"activationBtn"] forState:UIControlStateNormal];
     self.activationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -82,6 +106,43 @@
     imageView.frame = CGRectMake(20, kSCREEN_HEIGHT-170, kSCREEN_WIDTH-40, 150);
     [self.scrollView addSubview:imageView];
     self.imageView = imageView;
+   
+}
+- (void)deleteBtnClick:(UIButton *)btn
+{
+    UITextField *textField = (UITextField *)[self.view viewWithTag:ActivationTextFieldTag+_textFieldTagAdd];
+    _scrollerContentSize_H -= textField.height;
+    [textField removeFromSuperview];
+    UITextField *textField2 = (UITextField *)[self.view viewWithTag:ValidationTextFieldTag+_textFieldTagAdd];
+    _scrollerContentSize_H -= textField2.height;
+    [textField2 removeFromSuperview];
+    _scrollerContentSize_H -= 15;
+    /**
+     * 没点击一次验证码和激活码tag值加一
+     */
+    _textFieldTagAdd--;
+    _activationStr = @"";
+    _validationStr = @"";
+    if (_textFieldTagAdd > 1) {
+        self.deleteBtn.hidden = NO;
+    }else{
+        self.deleteBtn.hidden = YES;
+    }
+    self.addBtn.frame = CGRectMake(kSCREEN_WIDTH-150, _scrollerContentSize_H, 100, 30);
+    self.deleteBtn.frame = CGRectMake(50, _scrollerContentSize_H, 100, 30);
+    self.activationButton.frame = CGRectMake(90/3, self.deleteBtn.y+self.deleteBtn.height, kSCREEN_WIDTH-60, 40);
+    
+    if (kSCREEN_HEIGHT-self.activationButton.y-self.activationButton.height-self.imageView.x <  140) {
+        self.imageView.frame = CGRectMake(self.imageView.x, self.activationButton.y+self.activationButton.height+20, self.imageView.width, self.imageView.height);
+        
+    }else{
+        self.imageView.frame = CGRectMake(20, kSCREEN_HEIGHT-170, kSCREEN_WIDTH-40, 150);
+    }
+    self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+self.imageView.height+self.activationButton.height+100);
+    if (_scrollerContentSize_H > kSCREEN_HEIGHT-64) {
+        [self.scrollView setContentOffset:CGPointMake(0,_scrollerContentSize_H-kSCREEN_HEIGHT+64+self.activationButton.height+self.imageView.height+30) animated:YES];
+        
+    }
 }
 - (void)createActivationCode
 {
@@ -94,39 +155,30 @@
     [self.scrollView addSubview:textField];
     
     UITextField *textField2 = [[UITextField alloc] init];
-    textField2.frame = CGRectMake(textField.x, textField.y+textField.height+20, textField.width, 40);
+    textField2.frame = CGRectMake(textField.x, textField.y+textField.height+5, textField.width, 40);
     textField2.delegate = self;
     textField2.placeholder = @"卡券激活码";
     textField2.tag = ActivationTextFieldTag+_textFieldTagAdd;
     textField2.background = [UIImage imageNamed:@"asd"];
     [self.scrollView addSubview:textField2];
-    
-    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(textField2.x+textField2.width-100, textField2.y+textField2.height, 100, 30);
-    [addBtn addTarget:self action:@selector(addBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [addBtn setTitle:@"【添加】" forState:UIControlStateNormal];
-    addBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [addBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    addBtn.titleLabel.font = kFontOther;
-    [self.scrollView addSubview:addBtn];
-    
-    _scrollerContentSize_H = (addBtn.y+addBtn.height);
+
+    _scrollerContentSize_H = (textField2.y+textField2.height)+10;
     
 }
 - (void)addBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
-    if (_activationStr.length>0 && _validationStr.length>0) {
-        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"statevip":[XSaverTool objectForKey:Statevip],@"nownum":[NSString stringWithFormat:@"%ld",(long)_textFieldTagAdd],@"yzm": _validationStr,@"jhm":_activationStr};
-        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
-        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-
-        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
-            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
-                NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
-                [_codeArray addObject:dict];
+//    NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
+//    if (_activationStr.length>0 && _validationStr.length>0) {
+//        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"statevip":[XSaverTool objectForKey:Statevip],@"nownum":[NSString stringWithFormat:@"%ld",(long)_textFieldTagAdd],@"yzm": _validationStr,@"jhm":_activationStr};
+//        NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
+//        NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Code/codeState/code/%@",Main_Server,jsonDictStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//
+//        [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//            jxt_showAlertTitle([responseObject objectForKey:@"message"]);
+//            if ([[responseObject objectForKey:@"result"] integerValue] == 1) {
+//                NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
+//                [_codeArray addObject:dict];
                 UITextField *textField = (UITextField *)[self.view viewWithTag:ActivationTextFieldTag+_textFieldTagAdd];
                 textField.enabled = NO;
                 textField.textColor = kLightGrayTextColor;
@@ -134,32 +186,45 @@
                 textField2.enabled = NO;
                 textField2.textColor = kLightGrayTextColor;
                 
-                /**
-                 * 没点击一次验证码和激活码tag值加一
-                 */
-                _textFieldTagAdd++;
-                _activationStr = @"";
-                _validationStr = @"";
-                [self createActivationCode];
-                self.activationButton.frame = CGRectMake(90/3, _scrollerContentSize_H, kSCREEN_WIDTH-60, 40);
-                if (kSCREEN_HEIGHT-self.activationButton.y-self.activationButton.height-self.imageView.x <  140) {
-                    self.imageView.frame = CGRectMake(self.imageView.x, self.activationButton.y+self.activationButton.height+20, self.imageView.width, self.imageView.height);
-                    
-                }
-                self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+self.imageView.height+self.activationButton.height+30);
-                if (_scrollerContentSize_H > kSCREEN_HEIGHT-64) {
-                    [self.scrollView setContentOffset:CGPointMake(0,_scrollerContentSize_H-kSCREEN_HEIGHT+64+self.activationButton.height+self.imageView.height+30) animated:YES];
-                    
-                }
-            }
-        } fail:^(NSURLSessionDataTask *task, NSError *error) {
-
-        }];
-
+    [self scrollViewFrame];
+//            }
+//        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+//
+//        }];
+//
+//    }else{
+//        jxt_showAlertTitle(@"请输入验证码或激活码");
+//    }
+}
+- (void)scrollViewFrame
+{
+    /**
+     * 没点击一次验证码和激活码tag值加一
+     */
+    _textFieldTagAdd++;
+    _activationStr = @"";
+    _validationStr = @"";
+    [self createActivationCode];
+    if (_textFieldTagAdd > 1) {
+        self.deleteBtn.hidden = NO;
     }else{
-        jxt_showAlertTitle(@"请输入验证码或激活码");
+        self.deleteBtn.hidden = YES;
+    }
+    self.addBtn.frame = CGRectMake(kSCREEN_WIDTH-150, _scrollerContentSize_H, 100, 30);
+    self.deleteBtn.frame = CGRectMake(50, _scrollerContentSize_H, 100, 30);
+    self.activationButton.frame = CGRectMake(90/3, self.deleteBtn.y+self.deleteBtn.height, kSCREEN_WIDTH-60, 40);
+    
+    if (kSCREEN_HEIGHT-self.activationButton.y-self.activationButton.height-self.imageView.x <  140) {
+        self.imageView.frame = CGRectMake(self.imageView.x, self.activationButton.y+self.activationButton.height+20, self.imageView.width, self.imageView.height);
+        
+    }
+    self.scrollView.contentSize = CGSizeMake(kSCREEN_WIDTH, _scrollerContentSize_H+self.imageView.height+self.activationButton.height+100);
+    if (_scrollerContentSize_H > kSCREEN_HEIGHT-64) {
+        [self.scrollView setContentOffset:CGPointMake(0,_scrollerContentSize_H-kSCREEN_HEIGHT+64+self.activationButton.height+self.imageView.height+30) animated:YES];
+        
     }
 }
+
 - (void)activationBtnClick:(UIButton *)btn
 {
     [self.view endEditing:NO];

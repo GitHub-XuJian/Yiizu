@@ -107,6 +107,11 @@
  */
 + (BOOL)isValidateEmail:(NSString *)email;
 /**
+ * 身份证正则表达式
+ */
++ (BOOL)isIdCardCard:(NSString *)userID;
+
+/**
  * 银行卡正则表达式
  */
 + (BOOL)isValidateBankCard:(NSString *)bankCard;

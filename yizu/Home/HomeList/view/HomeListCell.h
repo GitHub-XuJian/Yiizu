@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 
 
+@class CellBtn;
 
 @class HomeListModel;
 @interface HomeListCell : UITableViewCell
 
-
+//点赞
+@property (weak, nonatomic) IBOutlet CellBtn *likeCellBtn;
 
 @property(nonatomic,strong)HomeListModel * model;
 

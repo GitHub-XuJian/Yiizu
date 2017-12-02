@@ -125,7 +125,12 @@
         }
         case TextFieldTag+4:{
             NSLog(@"证件号");
-            [_bankCardDict setObject:textField.text forKey:TextFieldId];
+            BOOL isIdCard = [EncapsulationMethod isIdCardCard:textField.text];
+            if (isIdCard) {
+                [_bankCardDict setObject:textField.text forKey:TextFieldId];
+            }else{
+                jxt_showAlertTitle(@"身份证号不正确");
+            }
 
             break;
         }

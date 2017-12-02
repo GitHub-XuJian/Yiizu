@@ -57,7 +57,7 @@
     
     
     //通知接受数据之前不崩现在崩
-     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
+    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
     NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -169,7 +169,7 @@
     
     CGFloat x=50;
     CGFloat W=(kSCREEN_WIDTH-100)/3;
-    NSArray* btnTitle=@[@"距离排序",@"热度排序",@"区域分布"];
+    NSArray* btnTitle=@[@"离我最近",@"热门商家",@"区域分布"];
     for (int i=0; i<3; i++) {
         UIButton* btn=[[UIButton alloc]init];
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -207,7 +207,7 @@
         }
     }
     
-    if ([sender.currentTitle isEqualToString:@"距离排序"]) {
+    if ([sender.currentTitle isEqualToString:@"离我最近"]) {
        
          NSString* url=@"";
         if (self.areaid) {
@@ -223,7 +223,7 @@
         NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"saixuan" object:nil userInfo:dict];
-    }else if ([sender.currentTitle isEqualToString:@"热度排序"])
+    }else if ([sender.currentTitle isEqualToString:@"热门商家"])
     {
         NSString* url=@"";
         

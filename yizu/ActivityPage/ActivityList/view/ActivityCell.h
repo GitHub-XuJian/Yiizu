@@ -12,7 +12,9 @@
 @class CustomCellScrollView;
 @interface ActivityCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet CustomCellScrollView *customScroll;
+@property (weak, nonatomic) IBOutlet CustomCellScrollView *customScrollView;
+
+
 @property(nonatomic, strong)ActivityLsitModel* model;
 
 @end

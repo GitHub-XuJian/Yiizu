@@ -38,42 +38,55 @@
     _full=full;
     self.fullLab.text=[NSString stringWithFormat:@"%@",full];
     
-    self.fullLab.userInteractionEnabled=YES;
-    
-    UITapGestureRecognizer* tapfull=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fullLabClike)];
-    
-    [self.fullLab addGestureRecognizer:tapfull];
+//    self.fullLab.userInteractionEnabled=YES;
+//
+//    UITapGestureRecognizer* tapfull=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(fullLabClike)];
+//
+//    [self.fullLab addGestureRecognizer:tapfull];
 }
-
-- (void)fullLabClike
-{
-
-    if ([self.delegate respondsToSelector:@selector(HomeDetailFooterView:)]) {
-        [self.delegate HomeDetailFooterView:self];
-    }
-}
+//
+//- (void)fullLabClike
+//{
+//
+//    if ([self.delegate respondsToSelector:@selector(HomeDetailFooterView:)]) {
+//        [self.delegate HomeDetailFooterView:self];
+//    }
+//}
 
 - (void)setPhone:(NSString *)phone
 {
     _phone=phone;
     self.phoneLab.text=[NSString stringWithFormat:@"%@",phone];
-    self.phoneLab.userInteractionEnabled=YES;
+    //self.phoneLab.userInteractionEnabled=YES;
 
-    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(phoneLabClike)];
-    
-    [self.phoneLab addGestureRecognizer:tap];
+//    UITapGestureRecognizer* tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(phoneLabClike)];
+//
+//    [self.phoneLab addGestureRecognizer:tap];
     
 }
 
-- (void)phoneLabClike
+//- (void)phoneLabClike
+//{
+//    NSLog(@"点击了电话号码");
+//
+//    [EncapsulationMethod callPhoneStr:self.phoneLab.text];
+//
+//
+//}
+
+- (IBAction)navBtn:(id)sender
 {
-    NSLog(@"点击了电话号码");
-  
-    [EncapsulationMethod callPhoneStr:self.phoneLab.text];
-   
-    
+    NSLog(@"点击了导航按钮");
+    if ([self.delegate respondsToSelector:@selector(HomeDetailFooterView:)]) {
+        [self.delegate HomeDetailFooterView:self];
+    }
 }
-
+- (IBAction)clikePhoneBtn:(id)sender
+{
+    NSLog(@"点击了电话号码btn");
+    
+    [EncapsulationMethod callPhoneStr:self.phoneLab.text];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

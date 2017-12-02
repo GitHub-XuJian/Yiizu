@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LikeBtnViewDelegate <NSObject>
+
+-(void)ClickLikeBtn:(BOOL)start;
+
+@end
+
 @interface CellBtn : UIButton
 
 @property (nonatomic) BOOL islike;                  //当前状态
@@ -22,6 +28,8 @@
 
 @property (nonatomic,copy) void (^onClick)(CellBtn *btn);
 
+
+@property (nonatomic,copy) id<LikeBtnViewDelegate> delegate;
 
 + (instancetype)likeCountViewWithCount:(NSInteger)count requestID:(NSString *)ID;
 

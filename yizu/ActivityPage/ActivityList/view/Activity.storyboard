@@ -27,11 +27,11 @@
                             </connections>
                         </containerView>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellA" rowHeight="300" id="fLz-aU-A5n" customClass="ActivityCell">
-                                <rect key="frame" x="0.0" y="348" width="375" height="300"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellA" rowHeight="320" id="fLz-aU-A5n" customClass="ActivityCell">
+                                <rect key="frame" x="0.0" y="348" width="375" height="320"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fLz-aU-A5n" id="oO5-jr-M4h">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG1-0L-P5u">
@@ -43,14 +43,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P4d-eG-dEY" customClass="CustomCellScrollView">
-                                            <rect key="frame" x="0.0" y="214.5" width="375" height="80"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="80" id="3dT-N2-An5"/>
-                                            </constraints>
-                                        </scrollView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="P0c-UO-le0">
-                                            <rect key="frame" x="10" y="31" width="355" height="178.5"/>
+                                            <rect key="frame" x="10" y="31" width="355" height="183.5"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPx-jh-i5g">
                                             <rect key="frame" x="21" y="190" width="33" height="14.5"/>
@@ -64,28 +58,34 @@
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGf-gz-28f" customClass="CustomCellScrollView">
+                                            <rect key="frame" x="10" y="219.5" width="355" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="LR0-jQ-k76"/>
+                                            </constraints>
+                                        </scrollView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="P4d-eG-dEY" firstAttribute="top" secondItem="EPx-jh-i5g" secondAttribute="bottom" constant="10" id="3hR-IO-CwV"/>
-                                        <constraint firstAttribute="bottom" secondItem="P4d-eG-dEY" secondAttribute="bottom" constant="5" id="8OJ-wA-fcm"/>
                                         <constraint firstItem="EPx-jh-i5g" firstAttribute="leading" secondItem="oO5-jr-M4h" secondAttribute="leadingMargin" constant="5" id="9hn-QI-IzF"/>
+                                        <constraint firstItem="XGf-gz-28f" firstAttribute="top" secondItem="P0c-UO-le0" secondAttribute="bottom" constant="5" id="CEt-Cy-MrD"/>
+                                        <constraint firstItem="XGf-gz-28f" firstAttribute="leading" secondItem="P0c-UO-le0" secondAttribute="leading" id="Du5-QB-4B1"/>
                                         <constraint firstItem="pej-r8-28b" firstAttribute="leading" secondItem="oO5-jr-M4h" secondAttribute="leadingMargin" constant="15" id="I3H-8A-RoB"/>
                                         <constraint firstItem="DG1-0L-P5u" firstAttribute="top" secondItem="oO5-jr-M4h" secondAttribute="top" constant="8" id="Jue-LB-CRA"/>
-                                        <constraint firstItem="P4d-eG-dEY" firstAttribute="top" secondItem="P0c-UO-le0" secondAttribute="bottom" constant="5" id="LQq-BN-s6k"/>
                                         <constraint firstItem="EPx-jh-i5g" firstAttribute="top" secondItem="pej-r8-28b" secondAttribute="bottom" constant="7" id="aPR-y9-j5I"/>
                                         <constraint firstItem="P0c-UO-le0" firstAttribute="top" secondItem="DG1-0L-P5u" secondAttribute="bottom" constant="2" id="bqc-S3-Owu"/>
-                                        <constraint firstItem="P4d-eG-dEY" firstAttribute="leading" secondItem="oO5-jr-M4h" secondAttribute="leading" id="bsC-W3-Qim"/>
+                                        <constraint firstItem="XGf-gz-28f" firstAttribute="top" secondItem="EPx-jh-i5g" secondAttribute="bottom" constant="15" id="dDf-eF-XwF"/>
                                         <constraint firstAttribute="trailing" secondItem="P0c-UO-le0" secondAttribute="trailing" constant="10" id="eY2-Hy-JHU"/>
                                         <constraint firstItem="DG1-0L-P5u" firstAttribute="leading" secondItem="oO5-jr-M4h" secondAttribute="leading" id="edw-6D-pRM"/>
                                         <constraint firstItem="P0c-UO-le0" firstAttribute="leading" secondItem="oO5-jr-M4h" secondAttribute="leading" constant="10" id="iL7-0h-9sy"/>
+                                        <constraint firstItem="XGf-gz-28f" firstAttribute="trailing" secondItem="P0c-UO-le0" secondAttribute="trailing" id="lZL-9C-Fi0"/>
                                         <constraint firstAttribute="trailing" secondItem="DG1-0L-P5u" secondAttribute="trailing" id="okU-gY-b4p"/>
-                                        <constraint firstAttribute="trailing" secondItem="P4d-eG-dEY" secondAttribute="trailing" id="x3U-Xu-an1"/>
+                                        <constraint firstAttribute="bottom" secondItem="XGf-gz-28f" secondAttribute="bottom" id="tGl-iV-1Zq"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="bigIma" destination="P0c-UO-le0" id="WQK-TG-6f8"/>
                                     <outlet property="cityLab" destination="pej-r8-28b" id="n43-NW-KJY"/>
-                                    <outlet property="customScroll" destination="P4d-eG-dEY" id="WbD-ne-UHk"/>
+                                    <outlet property="customScrollView" destination="XGf-gz-28f" id="TM7-62-rAP"/>
                                     <outlet property="headLab" destination="DG1-0L-P5u" id="0lm-CJ-PRl"/>
                                     <outlet property="writingpicLab" destination="EPx-jh-i5g" id="gdK-Jp-ol2"/>
                                 </connections>
@@ -99,7 +99,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUK-03-cRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1319.2" y="-519.49025487256381"/>
+            <point key="canvasLocation" x="-1761" y="-517"/>
         </scene>
         <!--First Scroll View Controller-->
         <scene sceneID="HjA-Fw-YbV">
@@ -114,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0U-sp-EV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-252" y="-547"/>
+            <point key="canvasLocation" x="-583" y="-572"/>
         </scene>
     </scenes>
 </document>

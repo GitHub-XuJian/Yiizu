@@ -10,19 +10,22 @@
 
 @class ScrollImaView;
 
-@class ActivityLsitModel;
+@protocol ScrmyaaaDelegate <NSObject>
 
-@class CustomCellScrollView;
-
-@protocol CustomCellScrollViewDelegate <NSObject>
-
--(void)CustomCellScrollViewClickBtn:(ScrollImaView*)HeaderView;
+-(void)ImaaActid:(NSString*)actid;
 
 @end
 
-@interface CustomCellScrollView : UIScrollView
-@property (nonatomic,strong) NSArray* imaArr;
+@class ScrollImaView;
 
-@property (nonatomic, assign) id<CustomCellScrollViewDelegate> CustomDelegate;
+@class ActivityLsitModel;
+
+@interface CustomCellScrollView : UIScrollView
+
+@property (nonatomic, strong) ActivityLsitModel* Amodel;
+
+@property (nonatomic ,strong) ScrollImaView* imaView1;
+
+@property (nonatomic, assign) id<ScrmyaaaDelegate> ScrDelegate;
 
 @end

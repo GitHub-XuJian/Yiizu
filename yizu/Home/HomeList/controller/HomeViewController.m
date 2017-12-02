@@ -15,8 +15,12 @@
 #import "HomeDetailController.h"
 #import "PopMenuView.h"
 #import "CustomNavigationController.h"
+#import "CellBtn.h"
 
-@interface HomeViewController ()<HomeCityBtnDelegate,PopmenuViewDelegate>
+
+//#define Main_Server @"http://www.xdfishing.cn/index.php/"
+//#define Main_ServerImage @"http://www.xdfishing.cn/"
+@interface HomeViewController ()<HomeCityBtnDelegate,LikeBtnViewDelegate>
 @property(nonatomic, strong)NSMutableArray* listArr;
 //用于设置navbarbtn的标题
 @property(nonatomic, strong)UIButton* navBtn;
@@ -34,7 +38,7 @@
 @property(nonatomic,copy)NSString* homeUrlStr;
 
 
-
+@property (nonatomic, assign) BOOL isLikeStart;
 
 @end
 
@@ -76,7 +80,7 @@
     self.tableView.estimatedSectionHeaderHeight =0;
     self.tableView.estimatedSectionFooterHeight =0;
     self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
-    self.navigationItem.title=@"依足";
+    
     [self setNavBarBtn];
     
     //接受数据
@@ -115,18 +119,17 @@
 //【下拉刷新】【上拉加载】
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
-        
+        [_listArr removeAllObjects];
       //全城商户列表
     
         NSString* newUrl=@"";
         if (!IsLoginState)
         {
 
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,1];
         }else
         {
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
+            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],1];
         }
     
       
@@ -296,11 +299,15 @@
     HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
     //HomeListModel* model
     cell.model=self.listArr[indexPath.row];
+    //
+    //self.isLikeStart=cell.likeCellBtn.islike;
+    //cell.likeCellBtn.delegate=self;
+   
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 190;
+    return 200;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -310,13 +317,20 @@
     HomeListModel* model=self.listArr[indexPath.row];
     
     dVC.model=model;
+    
+    dVC.likeStart=self.isLikeStart;
 
     [self.navigationController pushViewController:dVC animated:YES];
     
     
 }
 
-
+- (void)ClickLikeBtn:(BOOL)start
+{
+    NSLog(@"5555555=%d",start);
+    self.isLikeStart=start;
+    
+}
 - (void)saixuanId:(NSNotification *)notification
 {
     NSString* newStr=notification.userInfo[@"areaUrl"];
@@ -340,6 +354,14 @@
     }
 }
 
+
+-(void)viewDidAppear:(BOOL)animated
+
+{
+    
+    self.navigationItem.title = @"依足";
+    
+}
 
 //}
 /*
