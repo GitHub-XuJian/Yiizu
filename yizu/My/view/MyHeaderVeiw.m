@@ -61,6 +61,13 @@
     [setUpBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:setUpBtn];
     
+    UIButton *emailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    emailBtn.frame = CGRectMake(10, 20, 44, 44);
+    [emailBtn setImage:[UIImage imageNamed:@"timg"] forState:UIControlStateNormal];
+    emailBtn.tag = 2222223;
+    [emailBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:emailBtn];
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(self.width/2-60/2, self.height/2-60/2, 120/2,120/2);
     button.tag = 222222;

@@ -32,7 +32,7 @@
     [self createDataArray];
 }
 - (void)createDataArray{
-    self.dataArray = [NSMutableArray arrayWithObjects:@"会员激活码",@"补贴进度", nil];
+    self.dataArray = [NSMutableArray arrayWithObjects:@"我的激活码",@"进度查询", nil];
 }
 - (void)createTableView{
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64,kSCREEN_WIDTH,kSCREEN_HEIGHT-64) style:UITableViewStylePlain];
@@ -92,6 +92,7 @@
         switch (indexPath.row) {
             case 0:{
                 viewController = [[MembershipActivationCodeViewController alloc] init];
+                viewController.title = self.dataArray[indexPath.row];
                 break;
             }
             case 1:{
@@ -102,7 +103,6 @@
             default:
                 break;
         }
-        viewController.title = self.dataArray[indexPath.row];
         [self.navigationController pushViewController:viewController animated:YES];
     }else{
         LoginViewController *loginViewC = [[LoginViewController alloc] init];

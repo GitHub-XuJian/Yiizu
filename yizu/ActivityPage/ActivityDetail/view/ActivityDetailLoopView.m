@@ -33,7 +33,7 @@
 - (void)loadData
 {
 
-    [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Bridge/Bridgeround/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Bridge/Bridgeround/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         for (NSDictionary* dic in responseObject) {
             NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,dic[@"picnpath"]];

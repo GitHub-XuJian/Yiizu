@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
+    self.title = @"补贴排行";
     [self createData];
     [self createViewUI];
 }

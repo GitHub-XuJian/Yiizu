@@ -16,7 +16,6 @@
 
 @interface MyWalletViewController ()<WalletViewDelegate>
 @property (nonatomic, strong)  WalletView *walletView;
-@property (nonatomic, strong) NSString *moneyStr;
 @end
 
 @implementation MyWalletViewController
@@ -26,8 +25,11 @@
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     
     [self createViewUI];
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     [self createData];
-    
 }
 - (void)createData
 {
@@ -35,7 +37,6 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
-        self.moneyStr = responseObject[@"balance"];
         [self.walletView reloadMonay:responseObject[@"balance"]];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -45,7 +46,7 @@
 - (void)createViewUI
 {
     WalletView *view = [[WalletView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 200)];
-    view.backgroundColor =[UIColor colorWithRed:0.41f green:0.44f blue:0.47f alpha:1.00f];
+    view.backgroundColor =[UIColor colorWithRed:0.99f green:0.97f blue:0.90f alpha:1.00f];
     view.delegate = self;
     [self.view addSubview:view];
     self.walletView = view;
@@ -79,14 +80,13 @@
             NSLog(@"零钱");
             ChangeViewController *changeVC = [[ChangeViewController alloc] init];
             changeVC.title = @"零钱";
-            changeVC.moneyStr = [NSString stringWithFormat:@"￥%@",self.moneyStr];
             [self.navigationController pushViewController:changeVC animated:YES];
 
             break;
         }
         case 2:{
             NSLog(@"积分");
-            jxt_showAlertTitle(@"正在开发中，敬请期待");
+            jxt_showAlertTitle(@"此功能在未开通，敬请期待");
             break;
         }
         default:

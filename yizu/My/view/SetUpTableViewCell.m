@@ -30,6 +30,7 @@
         
         if (indexPath.section == 1 && indexPath.row == 1) {
             UILabel *label = [[UILabel alloc] init];
+            label.textAlignment = NSTextAlignmentRight;
             [self.contentView addSubview:label];
             self.cacheLabel =label;
         }else{
@@ -102,7 +103,7 @@
     double displaySize = size/ 1000.0 /1000.0;
     NSLog(@"%.2f-------",displaySize);
     self.cacheLabel.text = [NSString stringWithFormat:@"%.2f M",displaySize];
-    self.cacheLabel.frame = CGRectMake(kSCREEN_WIDTH-60, 0, 60, 60);
+    self.cacheLabel.frame = CGRectMake(kSCREEN_WIDTH-120, 0, 100, 60);
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

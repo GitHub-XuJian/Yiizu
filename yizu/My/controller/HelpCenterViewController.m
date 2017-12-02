@@ -43,7 +43,7 @@
 }
 - (void)createDataArray
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Support/support_aid/",Main_Server];
+    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Support/support_aid",Main_Server];
     [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         /**
          * 结束刷新
@@ -54,7 +54,6 @@
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    
 }
 - (void)createSearchView
 {
@@ -97,7 +96,7 @@
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 135/3;
+    return 60;
 }
 //设置每个区有多少行共有多少行
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

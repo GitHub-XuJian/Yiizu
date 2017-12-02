@@ -10,6 +10,4 @@
 
 @interface ChangeViewController : UIViewController
 
-@property (nonatomic, strong) NSString *moneyStr;
-
 @end

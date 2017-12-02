@@ -39,11 +39,13 @@
 }
 - (void)createDataArray:(NSString *)str
 {
-    
+    [SVProgressHUD showWithStatus:@"正在加载..."];
+
     NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/%@",Main_Server,str];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
+        [SVProgressHUD dismiss];
         self.dataArray = responseObject;
         if ([responseObject count] == 0) {
             jxt_showToastTitle(@"暂无数据", 1);
@@ -53,23 +55,11 @@
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
-    //    //随机数从这里边产生
-    //    NSMutableArray *startArray=[[NSMutableArray alloc] initWithObjects:@0,@1,@2,@3,@4,@5,@6,@7,@"1233123133",@"99231239",@"4dsfsfsdf453",@"1233123133",@"99231239",@"4dsfsfsdf453", nil];
-    //    //随机数产生结果
-    //    _dataArray=[[NSMutableArray alloc] initWithCapacity:0];
-    //    //随机数个数
-    //    NSInteger m=arc4random()%startArray.count;
-    //    for (int i=0; i<m; i++) {
-    //        int t=arc4random()%startArray.count;
-    //        _dataArray[i]=startArray[t];
-    //        startArray[t]=[startArray lastObject]; //为更好的乱序，故交换下位置
-    //        [startArray removeLastObject];
-    //    }
 }
 - (void)createViewUI
 {
     _buttonStr = @"分享";
-    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已分享",@"已激活",@"可回购", nil];
+    NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已激活",@"可回购",@"已回购", nil];
     self.macView = [[MembershipActivationCodeView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 50) andTitleArray:titleArray andClassBlock:^(UIButton *classBtn) {
         NSLog(@"%@",classBtn.titleLabel.text);
         _buttonStr = nil;
@@ -81,20 +71,20 @@
                 break;
             }
             case 1:{
-                _buttonStr = @"已分享";
-                [self createDataArray:@"Share"];
-                
-                break;
-            }
-            case 2:{
-                _buttonStr = @"";
+                _buttonStr = @"已激活";
                 [self createDataArray:@"activate"];
                 
                 break;
             }
-            case 3:{
+            case 2:{
                 _buttonStr = @"回购";
                 [self createDataArray:@"backCodeApi"];
+                
+                break;
+            }
+            case 3:{
+                _buttonStr = @"已回购";
+                [self createDataArray:@"Share"];
                 
                 break;
             }
@@ -202,7 +192,7 @@
         
         //创建网页内容对象
         NSString* thumbURL = [NSString stringWithFormat:@"%@%@",Main_ServerImage,responseObject[@"pic"]];
-        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"他竟然做了这件事，震惊了13亿中国人" descr:[NSString stringWithFormat:@"我在%@商家，领取了%.2f钱",responseObject[@"chambername"],[responseObject[@"nextmoney"] floatValue]+[responseObject[@"paymoney"] floatValue]] thumImage:thumbURL];
+        UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"我又在依足领到现金补贴啦！" descr:[NSString stringWithFormat:@"我在%@商家，领取了%.2f现金补贴",responseObject[@"chambername"],[responseObject[@"nextmoney"] floatValue]+[responseObject[@"paymoney"] floatValue]] thumImage:thumbURL];
         //设置网页地址
         shareObject.webpageUrl = [NSString stringWithFormat:@"%@%@/codeid/%@",Main_ServerImage,responseObject[@"url"],_shareDict[@"codeid"]];
         

@@ -44,7 +44,7 @@
 
 - (void)loadData
 {
-    [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Bridge/BrigeSlide" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Bridge/BrigeSlide" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         //NSLog(@"image====%@",responseObject);
         for (NSDictionary* dic in responseObject) {
             NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,dic[@"picnpath"]];
@@ -70,7 +70,7 @@
 
 - (void)loadCityData
 {
-    [XAFNetWork GET:@"http://47.104.18.18/index.php/Mobile/Bridge/Brigetext/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Bridge/Brigetext/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         //NSLog(@"city_id===%@",responseObject);
        
         for (NSDictionary* dic in responseObject) {
@@ -106,7 +106,7 @@
         int value= [model.idq intValue];
         btn.tag=10+value;
         [btn addTarget:self action:@selector(cityBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:model.town forState:UIControlStateNormal];
+//        [btn setTitle:model.town forState:UIControlStateNormal];
         
         [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.citypic]] forState:UIControlStateNormal];
         //self.SDCScrollView.frame获取不到frame

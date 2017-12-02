@@ -39,7 +39,7 @@
 {
     self.label1.text = [NSString stringWithFormat:@"%u",arc4random() % 100];
     self.label2.text = [NSString stringWithFormat:@"%u",arc4random() % 100];
-    if (_time >= 50) {
+    if (_time >= 20) {
         self.label1.text = [NSString stringWithFormat:@"%@",_dict[@"paymoney"]];
         self.label2.text = [NSString stringWithFormat:@"%@",_dict[@"nextmoney"]];
         self.labelzong.text = [NSString stringWithFormat:@"%@",_dict[@"payzong"]];

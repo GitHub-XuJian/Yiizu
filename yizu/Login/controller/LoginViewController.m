@@ -48,6 +48,10 @@
                     jxt_showAlertTitle(@"请输入密码");
                     return ;
                 }
+                if (![EncapsulationMethod isValidatePhone:_loginView.accountTextField.text]) {
+                    jxt_showAlertTitle(@"请输入正确的手机号");
+                    return;
+                }
                 [SVProgressHUD showWithStatus:@"正在登录"];
                 NSDictionary *dict = @{@"tel":_loginView.accountTextField.text,@"password":[EncapsulationMethod md5:password],@"sunshine":[UUID getUUID]};
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/Login",Main_Server];
@@ -199,7 +203,6 @@
                 switch (code) {
                     case 1:{
                         [XSaverTool setObject:responseObject[@"tel"] forKey:PhoneKey];
-                        
                         [XSaverTool setBool:code forKey:IsLogin];
                         [XSaverTool setObject:responseObject[@"sex"] forKey:Sex];
                         [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];

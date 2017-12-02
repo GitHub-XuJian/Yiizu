@@ -9,5 +9,8 @@
 #import "MyCollectionModel.h"
 
 @implementation MyCollectionModel
-
++(BOOL)propertyIsOptional:(NSString*)propertyName
+{
+    return YES;
+}
 @end
