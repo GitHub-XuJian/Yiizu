@@ -62,7 +62,6 @@
     [leftBtn addTarget:self action:@selector(leftBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [backImageView addSubview:leftBtn];
     
-    
     [self createActivationCode];
     [self createActivationBtn];
     
@@ -73,7 +72,7 @@
 - (void)createActivationBtn
 {
     self.activationButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.activationButton.frame = CGRectMake(100, _scrollerContentSize_H, kSCREEN_WIDTH-200, 30);
+    self.activationButton.frame = CGRectMake(100, _scrollerContentSize_H, kSCREEN_WIDTH-200, 40);
     [self.activationButton addTarget:self action:@selector(activationBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.activationButton setImage:[UIImage imageNamed:@"activationBtn"] forState:UIControlStateNormal];
     self.activationButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -87,7 +86,7 @@
 - (void)createActivationCode
 {
     UITextField *textField = [[UITextField alloc] init];
-    textField.frame = CGRectMake(50, _scrollerContentSize_H, kSCREEN_WIDTH-100, 30);
+    textField.frame = CGRectMake(50, _scrollerContentSize_H, kSCREEN_WIDTH-100, 40);
     textField.delegate = self;
     textField.placeholder = @"店面编码";
     textField.tag = ValidationTextFieldTag+_textFieldTagAdd;
@@ -95,7 +94,7 @@
     [self.scrollView addSubview:textField];
     
     UITextField *textField2 = [[UITextField alloc] init];
-    textField2.frame = CGRectMake(textField.x, textField.y+textField.height+20, textField.width, 30);
+    textField2.frame = CGRectMake(textField.x, textField.y+textField.height+20, textField.width, 40);
     textField2.delegate = self;
     textField2.placeholder = @"卡券激活码";
     textField2.tag = ActivationTextFieldTag+_textFieldTagAdd;

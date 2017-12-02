@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol SlotMachinesDelegate <NSObject>
 
+-(void)determineBtnClick;
+
+@end
 @interface SlotMachines : UIView
+@property (nonatomic,weak) id<SlotMachinesDelegate>delegate;
 
 @property (nonatomic, strong) NSDictionary *dict;
 

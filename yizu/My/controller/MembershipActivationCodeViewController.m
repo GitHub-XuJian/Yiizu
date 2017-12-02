@@ -12,7 +12,7 @@
 #import <UShareUI/UShareUI.h>
 #import "SlotMachines.h"
 
-@interface MembershipActivationCodeViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MembershipActivationCodeViewController ()<UITableViewDelegate,UITableViewDataSource,SlotMachinesDelegate>
 {
     NSString *_buttonStr;
     NSDictionary *_shareDict;
@@ -20,6 +20,7 @@
 @property (nonatomic, strong) UITableView     *tableView;
 @property (nonatomic, strong) MembershipActivationCodeView *macView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) SlotMachines *slotMachinesView;
 @end
 
 @implementation MembershipActivationCodeViewController
@@ -182,7 +183,8 @@
 //分享网址
 - (void)shareImageAndTextToPlatformType:(UMSocialPlatformType)platformType
 {
-    
+    WEAKSELF;
+
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Code/shareMoney",Main_Server];
     NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -218,15 +220,13 @@
                         NSLog(@"%@",responseObject);
                         jxt_showAlertOneButton(@"提示", responseObject[@"message"], @"确定", ^(NSInteger buttonIndex) {
                             if ([responseObject[@"result"] integerValue]) {
-                                /**
-                                 * 分享成功刷新界面
-                                 */
-                                [self createDataArray:@"notShareApi"];
                                 
                                 SlotMachines *slotMachinesView = [[SlotMachines alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT)];
+                                slotMachinesView.delegate = weakSelf;
                                 slotMachinesView.dict = responseObject;
                                 slotMachinesView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
                                 [self.view.window addSubview:slotMachinesView];
+                                self.slotMachinesView = slotMachinesView;
                             }
                         });
                         
@@ -242,6 +242,15 @@
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+}
+- (void)determineBtnClick
+{
+    [self.slotMachinesView removeFromSuperview];
+    /**
+     * 分享成功刷新界面
+     */
+    [self createDataArray:@"notShareApi"];
+    
 }
 
 - (void)alertWithError:(NSError *)error

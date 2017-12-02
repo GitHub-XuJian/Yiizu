@@ -24,6 +24,18 @@
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     _backCardCode = @"";
     [self createViewUI];
+    if (!self.navigationController) {
+        [self createBackBtn];
+    }
+}
+- (void)createBackBtn
+{
+    SFNavView *navView = [[SFNavView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 64) andTitle:@"银行卡" andLeftBtnTitle:@"返回" andRightBtnTitle:nil andLeftBtnBlock:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } andRightBtnBlock:^{
+        
+    }];
+    [self.view addSubview:navView];
 }
 - (void)createViewUI
 {
@@ -86,7 +98,11 @@
     bankCardVC.title = self.title;
     bankCardVC.bankcard = _backCardCode;
     bankCardVC.bancarname = [self returnBankName:_backCardCode];
-    [self.navigationController pushViewController:bankCardVC animated:YES];
+    if (self.navigationController) {
+        [self.navigationController pushViewController:bankCardVC animated:YES];
+    }else{
+        [self presentViewController:bankCardVC animated:YES completion:nil];
+    }
 }
 - (void)singleTap:(UITapGestureRecognizer*)recognizer
 {

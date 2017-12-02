@@ -28,6 +28,18 @@
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
     _bankCardDict = [[NSMutableDictionary alloc] init];
     [self createData];
+    if (!self.navigationController) {
+        [self createBackBtn];
+    }
+}
+- (void)createBackBtn
+{
+    SFNavView *navView = [[SFNavView alloc] initWithFrame:CGRectMake(0, 0, kSCREEN_WIDTH, 64) andTitle:@"银行卡" andLeftBtnTitle:@"返回" andRightBtnTitle:nil andLeftBtnBlock:^{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } andRightBtnBlock:^{
+        
+    }];
+    [self.view addSubview:navView];
 }
 - (void)createData
 {
@@ -155,8 +167,12 @@
         if ([responseObject[@"result"] integerValue]) {
             [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:PhoneKey];
             [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:isPhone];
-
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            if (self.navigationController) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }else{
+                self.presentingViewController.view.alpha = 0;
+                [self.presentingViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];            }
         }
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         

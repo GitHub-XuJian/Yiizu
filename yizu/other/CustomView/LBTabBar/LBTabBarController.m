@@ -137,7 +137,8 @@
             jxt_showAlertTwoButton(@"提示", @"请补全信息", @"确定", ^(NSInteger buttonIndex) {
                 AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
                 addBankCardVC.title = @"银行卡";
-                [self.navigationController pushViewController:addBankCardVC animated:YES];
+                [self presentViewController:addBankCardVC animated:YES completion:nil];
+
             }, @"取消", ^(NSInteger buttonIndex) {
                 
             });

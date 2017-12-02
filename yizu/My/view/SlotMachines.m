@@ -114,5 +114,6 @@
 - (void)determineBtnClick
 {
     [self removeFromSuperview];
+    [_delegate determineBtnClick];
 }
 @end
