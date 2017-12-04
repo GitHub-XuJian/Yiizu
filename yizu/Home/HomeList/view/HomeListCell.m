@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet favoriteBtn *favBtn;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *distanceLab;
 
 
 
@@ -98,7 +99,7 @@
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
     //一行时lab字体顶对齐
     //self.chamberjjLab.text=model.chamberjj;
-    
+    self.distanceLab.text=[NSString stringWithFormat:@"距离:%@m",model.distance];
     [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
 
 }

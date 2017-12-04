@@ -40,8 +40,8 @@
     self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     _tabSource=[[NSMutableArray alloc]init];
    
-    //[NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server]
-    NSString* str=@"http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/";
+    NSString* str = [NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server];
+    //NSString* str=@"http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/";
     
     [self loadData:str];
     
@@ -55,6 +55,7 @@
 
 - (void)loadData:(NSString*)str
 {
+    
     [_tabSource removeAllObjects];
     
      [SVProgressHUD showWithStatus:@"数据加载中..."];
@@ -79,7 +80,7 @@
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        NSString* str=@"http://47.104.18.18/index.php/Mobile/Bridge/Brigelist/";
+         NSString* str = [NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server];
         [self loadData:str];
         
     }];

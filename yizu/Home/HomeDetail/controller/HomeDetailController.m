@@ -17,11 +17,18 @@
 #import "CellBtn.h"
 #import "favoriteBtn.h"
 
+#import "HomeDetailModel.h"
+
 
 
 @interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource,HomeDetailFooterDelegate>
 @property (nonatomic, strong) UITableView* tabView;
 @property (nonatomic, strong) NSMutableArray* imaArr;
+
+
+
+@property (nonatomic, strong) NSMutableArray* detailArr;
+
 @end
 
 @implementation HomeDetailController
@@ -29,6 +36,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _detailArr=[[NSMutableArray alloc]init];
+    [self loadData];
+    
     self.navigationItem.title=@"商户详情";
     
     _imaArr=[[NSMutableArray alloc]init];
@@ -67,6 +78,21 @@
     
 }
 
+- (void)loadData
+{
+    [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Index/connector/chamber_id/8/personid/27" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        //NSLog(@"responseObject==%@",responseObject);
+        
+        HomeDetailModel* model=[HomeDetailModel ModelWithDict:responseObject];
+        [_detailArr addObject:model];
+        [self.tabView reloadData];
+        
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
 - (void)setModel:(HomeListModel *)model
 {
     _model =model;
@@ -76,29 +102,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 1;
-    
+    //return 1;
+    return _detailArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     HomeDetailCell* cell=[tableView dequeueReusableCellWithIdentifier:@"homedcell"];
-    
+    HomeDetailModel* model = _detailArr[indexPath.row];
     //cell.userInteractionEnabled = NO;
     //选中行无色（没有点击的状态样式）
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  
-    [cell.image1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image1]]];
-     [cell.image2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image2]]];
-     [cell.image3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image3]]];
+//    [cell.image1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image1]]];
+//     [cell.image2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image2]]];
+//     [cell.image3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image3]]];
     
-    [cell.iconIma sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.icon]]];
+    //[cell.iconIma sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
     
     cell.iconIma.layer.cornerRadius = 8;
     cell.iconIma.layer.masksToBounds = YES;
     
     cell.titleLab.text=_model.chambername;
     cell.upLab.text=[NSString stringWithFormat:@"|排名 : %@ | 已售 : %@",_model.up,_model.obtained];
-   // cell.chamberjjLab.text=_model.chamberjj;
+    cell.chamberjjLab.text=_model.chamberjj;
   
  
     cell.likeBtn.chambername=_model.chambername;

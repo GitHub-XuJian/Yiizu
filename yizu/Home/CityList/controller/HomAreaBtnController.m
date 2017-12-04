@@ -87,9 +87,9 @@
     
     ////////////Mobile/Index/index_area/data/%@/area/%@/page/1/
     
-    if ([self.delegate respondsToSelector:@selector(HomAreaBtnTitle:)]) {
-        [self.delegate HomAreaBtnTitle:model.areaId];
-       
+    if ([self.delegate respondsToSelector:@selector(HomAreaBtnTitleId:areaId:)]) {
+        [self.delegate HomAreaBtnTitleId:model.name areaId:model.areaId];
+        
     }
    
     //NSLog(@"选择区域后的URL:%@",urlStr);
