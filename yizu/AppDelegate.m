@@ -30,8 +30,6 @@
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
-    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear]; //设置HUD背景图层的样式
     
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
@@ -123,7 +121,7 @@
      [QQ/QZone平台集成说明]http://dev.umeng.com/social/ios/%E8%BF%9B%E9%98%B6%E6%96%87%E6%A1%A3#1_3
      */
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:QQPatient_App_ID/*设置QQ平台的appID*/  appSecret:QQPatient_App_Secret redirectURL:@"http://www.umeng.com/social"];
-   
+    
 }
 
 // 支持所有iOS系统
@@ -192,6 +190,7 @@
         
     }];
 }
+
 //引导页判断
 - (BOOL)isFirstOpen {
     
@@ -232,7 +231,7 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [self verifyVersion];
-
+    
 }
 
 

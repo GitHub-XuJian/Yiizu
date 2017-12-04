@@ -31,13 +31,13 @@
 }
 -(void)standInsideLetter:(NSInteger)number;
 {
-    if (number == 0) {
-        self.numberLabel.hidden = YES;
+    if (number > 0 && number < 99) {
+        self.numberLabel.hidden = NO;
+        self.numberLabel.text =  [NSString stringWithFormat:@"%ld",(long)number];
     }else if (number >= 99)
     {
+        self.numberLabel.hidden = NO;
         self.numberLabel.text = @"99";
-    }else{
-        self.numberLabel.text =  [NSString stringWithFormat:@"%ld",(long)number];
     }
 }
 - (void)reloadData
@@ -87,6 +87,7 @@
     nnumberLabel.backgroundColor = [UIColor redColor];
     nnumberLabel.textAlignment = NSTextAlignmentCenter;
     nnumberLabel.textColor = [UIColor whiteColor];
+    nnumberLabel.hidden = YES;
     //设置圆角
     nnumberLabel.layer.cornerRadius = 15/2;
     //将多余的部分切掉

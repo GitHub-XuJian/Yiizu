@@ -53,14 +53,20 @@
 }
 - (void)standInsideLetterNumber
 {
-    NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageCode",Main_Server];
-    NSDictionary *dict = @{@"personid":@"171"};
-    [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
-        [self.headerView standInsideLetter:[responseObject[@"nums"] integerValue]];
-    } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        
-    }];
+    if (IsLoginState) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageCode",Main_Server];
+        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            [self.headerView standInsideLetter:[responseObject[@"nums"] integerValue]];
+            //设置推送消息个数
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[responseObject[@"nums"] integerValue]];
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }else{
+        [self.headerView standInsideLetter:0];
+    }
 }
 - (void)createDataArray
 {
