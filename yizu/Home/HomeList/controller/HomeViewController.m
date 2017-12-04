@@ -68,8 +68,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //停止定位
-    [self.locationManager stopUpdatingLocation];
+   
     
    
     
@@ -399,6 +398,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSLog(@"viewWillAppear");
     //定位相关
     //定位服务管理对象初始化
     self.locationManager = [[CLLocationManager alloc] init];
@@ -407,18 +407,13 @@
     self.locationManager.distanceFilter = 1000.0f;
     
     [self.locationManager requestWhenInUseAuthorization];
-    [self.locationManager requestAlwaysAuthorization];
+    //[self.locationManager requestAlwaysAuthorization];
     
     //开始定位
     [self.locationManager startUpdatingLocation];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    //停止定位
-    //    [self.locationManager stopUpdatingLocation];
-}
+
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -448,6 +443,10 @@
                                      currLocation.coordinate.latitude];
                        NSString* lon=[NSString stringWithFormat:@"%f",
                                       currLocation.coordinate.longitude];
+    // 停止定位
+ 
+    [self.locationManager stopUpdatingLocation];
+    
     NSString* str=[NSString stringWithFormat:@"%@Mobile/Index/indexposition/personid/%@/lat/%@/lng/%@",Main_Server,[XSaverTool objectForKey:UserIDKey],lat,lon];
     NSLog(@"locanURL===%@",str);
     //http://47.104.18.18/index.php/Mobile/Index/indexposition/personid/
@@ -460,6 +459,33 @@
         
     }];
 }
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"定位错误error: %@",error);
+    if (error.code == kCLErrorDenied) {
+        // 提示用户出错原因，可按住Option键点击 KCLErrorDenied的查看更多出错信息，可打印error.code值查找原因所在
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        NSLog(@"Authorized");
+    } else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+        NSLog(@"AuthorizedWhenInUse");
+    } else if (status == kCLAuthorizationStatusDenied) {
+        NSLog(@"Denied");
+    } else if (status == kCLAuthorizationStatusRestricted) {
+        NSLog(@"Restricted");
+    } else if (status == kCLAuthorizationStatusNotDetermined) {
+        NSLog(@"NotDetermined");
+    }
+    
+}
+
+
 
 //}
 /*

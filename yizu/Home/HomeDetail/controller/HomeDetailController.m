@@ -18,10 +18,11 @@
 #import "favoriteBtn.h"
 
 #import "HomeDetailModel.h"
+#import "HomeDetailScrollView.h"
+#import "HomeDetailImaView.h"
 
 
-
-@interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource,HomeDetailFooterDelegate>
+@interface HomeDetailController ()<UITableViewDelegate,UITableViewDataSource,HomeDetailFooterDelegate,HomeDetailScrollViewDelegate>
 @property (nonatomic, strong) UITableView* tabView;
 @property (nonatomic, strong) NSMutableArray* imaArr;
 
@@ -29,6 +30,14 @@
 
 @property (nonatomic, strong) NSMutableArray* detailArr;
 
+@property (nonatomic, strong) HomeDetailFooter* footView;
+@property (nonatomic, strong) HomeDetailLoop* loopView;
+
+//点击放大模糊背景
+@property (nonatomic, strong) UIButton* backBtn;
+//记录原始frame
+@property (nonatomic,assign)CGRect imaFrame;
+@property (nonatomic, strong) UIImageView* imaV;
 @end
 
 @implementation HomeDetailController
@@ -51,27 +60,15 @@
     
     HomeDetailLoop* view=[[HomeDetailLoop alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 200)];
     
-    NSString* ima1=[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image1];
-    [_imaArr addObject:ima1];
-    NSString* ima2=[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image2];
-    [_imaArr addObject:ima2];
-    NSString* ima3=[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image3];
-    [_imaArr addObject:ima3];
-    view.imaArr=_imaArr;
     
 
     [self.tabView setTableHeaderView:view];
-    
+    self.loopView=view;
     //HomeDetailFooter* footView=[[HomeDetailFooter alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.tabView.frame), kSCREEN_WIDTH, 240)]; 
     HomeDetailFooter * foot=[HomeDetailFooter makeCustomFooterView];
     [self.tabView setTableFooterView:foot];
-    foot.time=[NSString stringWithFormat:@"%@ - %@",_model.starttime,_model.endtime];
-    foot.full=_model.full;
-    foot.phone=_model.chammobile;
-    foot.status=_model.status;
-    foot.upvote=_model.upvote;
-    foot.turvy=_model.Turvy;
-    foot.delegate=self;
+        foot.delegate=self;
+    self.footView=foot;
     [self.view addSubview:self.tabView];
     
   
@@ -80,19 +77,35 @@
 
 - (void)loadData
 {
-    [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Index/connector/chamber_id/8/personid/27" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [XAFNetWork GET:[NSString stringWithFormat:@"%@Mobile/Index/connector/chamber_id/%@/personid/%@",Main_Server,_chamber_id,_userId] params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
         //NSLog(@"responseObject==%@",responseObject);
         
         HomeDetailModel* model=[HomeDetailModel ModelWithDict:responseObject];
         [_detailArr addObject:model];
         [self.tabView reloadData];
+        [self updateUI:model];
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
-
+- (void)updateUI:(HomeDetailModel*)model
+{
+    NSString* str =@"";
+    for (int i=0; i<model.lun.count; i++) {
+        str = [NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.lun[i]];
+        [_imaArr addObject:str];
+    }
+    self.loopView.imaArr=_imaArr;
+//
+    self.footView.time=[NSString stringWithFormat:@"%@ - %@",model.starttime,model.endtime];
+    self.footView.full=model.full;
+    self.footView.phone=model.chammobile;
+    self.footView.status=model.status;
+    self.footView.upvote=model.upvote;
+    self.footView.turvy=model.Turvy;
+}
 - (void)setModel:(HomeListModel *)model
 {
     _model =model;
@@ -112,41 +125,38 @@
     HomeDetailModel* model = _detailArr[indexPath.row];
     //cell.userInteractionEnabled = NO;
     //选中行无色（没有点击的状态样式）
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;  
-//    [cell.image1 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image1]]];
-//     [cell.image2 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image2]]];
-//     [cell.image3 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,_model.image3]]];
-    
-    //[cell.iconIma sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.iconIma.layer.cornerRadius = 8;
     cell.iconIma.layer.masksToBounds = YES;
+    [cell.iconIma sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
+    cell.titleLab.text=model.chambername;
+    cell.upLab.text=[NSString stringWithFormat:@"|排名 : %@ | 已售 : %@",model.up,model.obtained];
+    cell.chamberjjLab.text=model.chamberjj;
     
-    cell.titleLab.text=_model.chambername;
-    cell.upLab.text=[NSString stringWithFormat:@"|排名 : %@ | 已售 : %@",_model.up,_model.obtained];
-    cell.chamberjjLab.text=_model.chamberjj;
-  
- 
-    cell.likeBtn.chambername=_model.chambername;
-    cell.favBtn.chambername=_model.chambername;
-   
     
-if (_model.status) {
-            cell.likeBtn.islike=YES;
-        }else
-        {
-            cell.likeBtn.islike=NO;
-        }
+    cell.likeBtn.chambername=model.chambername;
+    cell.favBtn.chambername=model.chambername;
     
-    cell.likeBtn.likeCount=_model.upvote.integerValue;
-   
     
-        if (_model.Turvy) {
-            cell.favBtn.issc=YES;
-        }else
-        {
-            cell.favBtn.issc=NO;
-        }
+    if (model.status) {
+        cell.likeBtn.islike=YES;
+    }else
+    {
+        cell.likeBtn.islike=NO;
+    }
+    
+    cell.likeBtn.likeCount=model.upvote.integerValue;
+    
+    
+    if (model.Turvy) {
+        cell.favBtn.issc=YES;
+    }else
+    {
+        cell.favBtn.issc=NO;
+    }
+    
+    cell.homeScrollview.Amodel=model;
+    cell.homeScrollview.homeDelegate=self;
     return cell;
 }
 
@@ -183,6 +193,53 @@ if (_model.status) {
     // Dispose of any resources that can be recreated.
 }
 
+- (void)HomeDetail:(HomeDetailImaView*)ima
+{
+    self.imaV=ima;
+    NSLog(@"imaFrame==%@",NSStringFromCGRect(ima.frame));// imaFrame=={{10, 0}, {128, 95}}
+    //self.isBig=YES;
+    //记录一下头像按钮的原始frame
+    self.imaFrame=ima.frame;
+    //创建大小与屏幕大小一样的按钮，把这个按钮作为阴影
+    UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
+    btn.frame=self.view.frame;
+    btn.backgroundColor=[UIColor blackColor];
+    btn.alpha=0.0;
+    [btn addTarget:self action:@selector(smallBtn) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    self.backBtn=btn;
+
+    [self.view bringSubviewToFront:ima];
+    [self.view addSubview:self.imaV];
+
+    CGFloat newW=self.view.frame.size.width;
+    CGFloat newH=newW;
+    CGFloat newY=(self.view.frame.size.height-self.view.frame.size.width)*0.5;
+    [UIView animateWithDuration:0.5 animations:^{
+
+        ima.frame=CGRectMake(0,newY,newW, newH);
+        self.backBtn.alpha=0.5;
+    }];
+}
+
+//还原放大图片的按钮方法
+-(void)smallBtn
+{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.imaV.frame=self.imaFrame;
+        self.backBtn.alpha=0;
+    } completion:^(BOOL finished) {
+        if (finished) {
+            [self.backBtn removeFromSuperview];
+            [self.imaV removeFromSuperview];
+            self.backBtn=nil;
+            self.imaV=nil;
+        }
+    }];
+    //self.isBig=NO;
+    
+}
 /*
 #pragma mark - Navigation
 

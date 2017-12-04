@@ -270,6 +270,8 @@
 		AFC62F271FA1B5D500A3F3F5 /* MCBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F161FA1B5D500A3F3F5 /* MCBarChartView.m */; };
 		AFC62F281FA1B5D500A3F3F5 /* MCChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */; };
 		AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */; };
+		E5EA18B51FD523BC00234B74 /* HomeDetailScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA18B41FD523BC00234B74 /* HomeDetailScrollView.m */; };
+		E5EA18B81FD52ADF00234B74 /* HomeDetailImaView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA18B71FD52ADF00234B74 /* HomeDetailImaView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -789,6 +791,10 @@
 		AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChartInformationView.m; sourceTree = "<group>"; };
 		AFC62F211FA1B5D500A3F3F5 /* MCPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPieChartView.h; sourceTree = "<group>"; };
 		AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPieChartView.m; sourceTree = "<group>"; };
+		E5EA18B31FD523BC00234B74 /* HomeDetailScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailScrollView.h; sourceTree = "<group>"; };
+		E5EA18B41FD523BC00234B74 /* HomeDetailScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailScrollView.m; sourceTree = "<group>"; };
+		E5EA18B61FD52ADF00234B74 /* HomeDetailImaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailImaView.h; sourceTree = "<group>"; };
+		E5EA18B71FD52ADF00234B74 /* HomeDetailImaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailImaView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -904,6 +910,10 @@
 				1F0CEACB1FBAC9EA00D06C8E /* HomeDetailCell.h */,
 				1F0CEACC1FBAC9EA00D06C8E /* HomeDetailCell.m */,
 				1F0CEACD1FBAC9EA00D06C8E /* HomeDetailCell.xib */,
+				E5EA18B31FD523BC00234B74 /* HomeDetailScrollView.h */,
+				E5EA18B41FD523BC00234B74 /* HomeDetailScrollView.m */,
+				E5EA18B61FD52ADF00234B74 /* HomeDetailImaView.h */,
+				E5EA18B71FD52ADF00234B74 /* HomeDetailImaView.m */,
 				1F0CEAD01FBADC9700D06C8E /* HomeDetailFooter.h */,
 				1F0CEAD11FBADC9700D06C8E /* HomeDetailFooter.m */,
 				1F0CEAD31FBADCAD00D06C8E /* HomeDetailFooter.xib */,
@@ -2412,6 +2422,7 @@
 				1F8D7BE51FD3D1EE00EC0724 /* HomeListSorryCell.m in Sources */,
 				AF15D9CF1FCC0BDD00F4B3DA /* LBTabBarController.m in Sources */,
 				AF23F3CF1FA872D30022E990 /* OldAndNewPassWordViewController.m in Sources */,
+				E5EA18B81FD52ADF00234B74 /* HomeDetailImaView.m in Sources */,
 				AF66AE0A1F9EDC200079A2CF /* MembershipActivationCodeViewController.m in Sources */,
 				AF66ADAF1F9DDD250079A2CF /* AFURLSessionManager.m in Sources */,
 				AF66AD501F9D84990079A2CF /* CustomNavigationController.m in Sources */,
@@ -2545,6 +2556,7 @@
 				AF66AE101F9EDD470079A2CF /* ActivationCodeInputViewController.m in Sources */,
 				AF626D251FA2D97D00A1225F /* CityListModel.m in Sources */,
 				AF66AE7C1F9F1AB10079A2CF /* IQKeyboardReturnKeyHandler.m in Sources */,
+				E5EA18B51FD523BC00234B74 /* HomeDetailScrollView.m in Sources */,
 				AF66AE751F9F1AB10079A2CF /* IQNSArray+Sort.m in Sources */,
 				AF66AE021F9DE1B60079A2CF /* NSBundle+MJRefresh.m in Sources */,
 				AF8B6CED1FA01A4A008DA068 /* SDWebImageDownloader.m in Sources */,
