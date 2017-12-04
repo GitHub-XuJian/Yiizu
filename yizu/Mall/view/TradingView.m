@@ -33,6 +33,9 @@
         [SVProgressHUD showWithStatus:@"正在加载..."];
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
             [SVProgressHUD dismiss];
+            if ([responseObject count] == 0) {
+//                jxt_showToastTitle(@"暂无数据", 1);
+            }
             self.dataArray = responseObject;
             [self.tableView reloadData];
         } fail:^(NSURLSessionDataTask *task, NSError *error) {

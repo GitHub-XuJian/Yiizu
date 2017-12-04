@@ -37,7 +37,7 @@
         NSLog(@"%@",responseObject);
         self.dataArray = nil;
         if ([responseObject count] == 0) {
-            jxt_showToastTitle(@"暂无数据", 1);
+//            jxt_showToastTitle(@"暂无数据", 1);
         }
         /**
          * 结束刷新

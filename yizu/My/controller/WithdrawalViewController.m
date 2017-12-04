@@ -112,7 +112,11 @@
             NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100*0.9]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSLog(@"%@",responseObject);
-                jxt_showAlertMessage(responseObject[@"rspMessage"]);
+                if ([responseObject length]) {
+                    jxt_showAlertMessage(responseObject[@"rspMessage"]);
+                }else{
+                    jxt_showAlertMessage(@"服务器返回数据为空");
+                }
                 if ([responseObject[@"orderSts"] isEqualToString:@"P"] ||[responseObject[@"orderSts"] isEqualToString:@"S"]  ) {
                     [self.navigationController popViewControllerAnimated:YES];
                 }

@@ -19,7 +19,7 @@
 #import "PersonalInformationViewController.h"
 #import "SetUpViewController.h"
 #import "HomeViewController.h"
-
+#import "StandInsideLetterViewController.h"
 
 @interface MyViewController ()<UITableViewDelegate,UITableViewDataSource,MyHeaderVeiwDelegate>
 @property (nonatomic, strong) UITableView     *tableView;
@@ -41,7 +41,7 @@
     [super viewWillAppear:YES];
     [self navigationBarHidden:YES];
     [self.headerView reloadData];
-
+    [self standInsideLetterNumber];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,6 +50,23 @@
     [self createDataArray];
     [self createTableView];
     NSLog(@"%f %f",kSCREEN_WIDTH,kSCREEN_HEIGHT);
+}
+- (void)standInsideLetterNumber
+{
+    if (IsLoginState) {
+        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageCode",Main_Server];
+        NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            [self.headerView standInsideLetter:[responseObject[@"nums"] integerValue]];           
+            //设置推送消息个数
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[responseObject[@"nums"] integerValue]];
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+    }else{
+        [self.headerView standInsideLetter:0];
+    }
 }
 - (void)createDataArray
 {
@@ -98,11 +115,27 @@
         
     }else if (button.tag == 2222223) {
         NSLog(@"站内信");
-        
+        if ([XSaverTool boolForKey:IsLogin]) {
+            StandInsideLetterViewController *standInsideLetterVC = [[StandInsideLetterViewController alloc] init];
+            standInsideLetterVC.title = @"系统消息";
+            [self.navigationController pushViewController:standInsideLetterVC animated:YES];
+
+        }else{
+            LoginViewController *loginViewC = [[LoginViewController alloc] init];
+            loginViewC.successfulBlock = ^{
+                self.tabBarController.selectedIndex = 0;
+            };
+            loginViewC.failedBlock = ^{
+                
+            };
+            [self presentViewController:loginViewC animated:YES completion:nil];
+            
+        }
     }else{
-        [self navigationBarHidden:NO];
 
         if ([XSaverTool boolForKey:IsLogin]) {
+            [self navigationBarHidden:NO];
+
             [self.navigationController setNavigationBarHidden:NO animated:NO];
             
             PersonalInformationViewController *piVC = [[PersonalInformationViewController alloc] init];

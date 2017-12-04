@@ -40,7 +40,7 @@
  AddLabel(在哪个LB上面使用该特性)
  
  */
-+(void)settingLabelTextAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent FontOfSize:(CGFloat)fontOfSize TextColor:(UIColor *)textColor text:(NSString *)text AddLabel:(UILabel *)label;
++(void)settingLabelTextAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent FontOfSize:(CGFloat)fontOfSize TextColor:(UIColor *)textColor text:(NSString *)text AddLabel:(id)label;
 /**
  * 计算UILabel的高度(带有行间距的情况)
  */
@@ -75,9 +75,14 @@
  */
 +(NSString *)stringWithDate:(NSDate *)date;
 /**
- * 时间戳转字符串
+ * 时间戳转字符串 年月日
  */
 +(NSString *)timeStrWithTimeStamp:(NSString *)timeStr;
+/**
+ * 时间戳转字符串 带小时分钟
+ */
++(NSString *)timeStrWithTimeStampMinutes:(NSString *)timeStr;
+
 /**
  * 字符串转date
  */

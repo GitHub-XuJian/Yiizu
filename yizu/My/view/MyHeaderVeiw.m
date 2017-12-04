@@ -13,6 +13,8 @@
 @interface MyHeaderVeiw ()
 @property (nonatomic, strong) UIButton *iconBtn;
 @property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *numberLabel;
+
 @property (nonatomic, strong) UILabel *introductionLabel;
 @property (nonatomic, strong) UIImageView *crownImageView;
 @end
@@ -26,6 +28,20 @@
         [self createHeaderView];
     }
     return self;
+}
+-(void)standInsideLetter:(NSInteger)number;
+{
+    if (number > 0 && number < 99) {
+        self.numberLabel.hidden = NO;
+        self.numberLabel.text =  [NSString stringWithFormat:@"%ld",(long)number];
+    }else if (number >= 99)
+    {
+        self.numberLabel.hidden = NO;
+        self.numberLabel.text = @"99";
+    }else if (number == 0)
+    {
+        self.numberLabel.hidden = YES;
+    }
 }
 - (void)reloadData
 {
@@ -55,18 +71,32 @@
     [self addSubview:blackView];
 
     UIButton *setUpBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    setUpBtn.frame = CGRectMake(kSCREEN_WIDTH-50, 20, 44, 44);
+    setUpBtn.frame = CGRectMake(kSCREEN_WIDTH-50, 0, 44, 44);
     [setUpBtn setImage:[UIImage imageNamed:@"settingsNavIcon"] forState:UIControlStateNormal];
     setUpBtn.tag = 111111;
     [setUpBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:setUpBtn];
     
     UIButton *emailBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    emailBtn.frame = CGRectMake(10, 20, 44, 44);
+    emailBtn.frame = CGRectMake(10, 0, 44, 44);
     [emailBtn setImage:[UIImage imageNamed:@"timg"] forState:UIControlStateNormal];
     emailBtn.tag = 2222223;
     [emailBtn addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:emailBtn];
+    
+    UILabel *nnumberLabel = [[UILabel alloc] init];
+    nnumberLabel.frame = CGRectMake(emailBtn.width, emailBtn.y+5, 15, 15);
+    nnumberLabel.font = kCommonWithFont(10);
+    nnumberLabel.backgroundColor = [UIColor redColor];
+    nnumberLabel.textAlignment = NSTextAlignmentCenter;
+    nnumberLabel.textColor = [UIColor whiteColor];
+    nnumberLabel.hidden = YES;
+    //设置圆角
+    nnumberLabel.layer.cornerRadius = 15/2;
+    //将多余的部分切掉
+    nnumberLabel.layer.masksToBounds = YES;
+    [self addSubview:nnumberLabel];
+    self.numberLabel = nnumberLabel;
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(self.width/2-60/2, self.height/2-60/2, 120/2,120/2);

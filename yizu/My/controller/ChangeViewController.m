@@ -11,6 +11,7 @@
 #import "ChangeViewController.h"
 #import "WithdrawalViewController.h"
 #import "TransactionDetailsViewController.h"
+#import "AddBankCardViewController.h"
 
 @interface ChangeViewController ()
 @property (nonatomic, strong) UILabel *moneyLabel;;
@@ -91,10 +92,24 @@
             break;
         }
         case Btn2Tag:{
-            WithdrawalViewController *withdrawalVC = [[WithdrawalViewController alloc] init];
-            withdrawalVC.title = @"提现";
-            withdrawalVC.moneyStr = self.moneyLabel.text;
-            [self.navigationController pushViewController:withdrawalVC animated:YES];
+            NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Bankcard/bankcardTFApi",Main_Server];
+            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
+            [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                NSLog(@"%@",responseObject);
+                if ([responseObject[@"bankcard"] length] == 0) {
+                    AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
+                    addBankCardVC.title = @"银行卡";
+                    [self.navigationController pushViewController:addBankCardVC animated:YES];
+                }else{
+                    WithdrawalViewController *withdrawalVC = [[WithdrawalViewController alloc] init];
+                    withdrawalVC.title = @"提现";
+                    withdrawalVC.moneyStr = self.moneyLabel.text;
+                    [self.navigationController pushViewController:withdrawalVC animated:YES];
+                }
+            } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                
+            }];
+            
             break;
         }
         default:

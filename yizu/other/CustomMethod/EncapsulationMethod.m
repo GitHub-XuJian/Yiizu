@@ -391,6 +391,17 @@
     NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
     return currentDateString;
 }
++(NSString *)timeStrWithTimeStampMinutes:(NSString *)timeStr
+{
+    NSDate *currentDate = [NSDate dateWithTimeIntervalSince1970:[timeStr doubleValue]];
+    //用于格式化NSDate对象
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //设置格式：zzz表示时区
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //NSDate转NSString
+    NSString *currentDateString = [dateFormatter stringFromDate:currentDate];
+    return currentDateString;
+}
 //获取当前的时间
 +(NSString*)getCurrentTimes{
     
@@ -449,7 +460,7 @@
     return (int)(from + (arc4random() % (to - from + 1)));
 }
 
-+(void)settingLabelTextAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent FontOfSize:(CGFloat)fontOfSize TextColor:(UIColor *)textColor text:(NSString *)text AddLabel:(UILabel *)label{
++(void)settingLabelTextAttributesWithLineSpacing:(CGFloat)lineSpacing FirstLineHeadIndent:(CGFloat)firstLineHeadIndent FontOfSize:(CGFloat)fontOfSize TextColor:(UIColor *)textColor text:(NSString *)text AddLabel:(id)label{
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -470,9 +481,13 @@
                                    NSForegroundColorAttributeName : textColor
                                    
                                    };
-    
-    label.attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributeDic];
-    
+    if ([label isKindOfClass:[UILabel class]]) {
+        UILabel *label1 = label;
+        label1.attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributeDic];
+    }else if ([label isKindOfClass:[UITextView class]]){
+        UITextView *textView = label;
+        textView.attributedText = [[NSAttributedString alloc] initWithString:text attributes:attributeDic];
+    }    
 }
 //计算UILabel的高度(带有行间距的情况)
 +(CGFloat)getSpaceLabelHeight:(NSString*)str withFont:(UIFont*)font withWidth:(CGFloat)width LineSpacing:(CGFloat)lineSpacing;
