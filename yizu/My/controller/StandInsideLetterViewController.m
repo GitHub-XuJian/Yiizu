@@ -15,8 +15,15 @@
 @property (nonatomic, strong) NSMutableArray  *dataArray;
 @end
 
-@implementation StandInsideLetterViewController
 
+@implementation StandInsideLetterViewController
+-(NSMutableArray *)dataArray
+{
+    if(!_dataArray){
+        _dataArray = [[NSMutableArray alloc] init];
+    }
+    return _dataArray;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = kMAIN_BACKGROUND_COLOR;
@@ -33,11 +40,13 @@
     [SVProgressHUD showWithStatus:@"正在加载..."];
     
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageList",Main_Server];
-    NSDictionary *dict = @{@"personid":@"171"};
+    NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
         [SVProgressHUD dismiss];
-        self.dataArray = responseObject;
+
+        [self.dataArray removeAllObjects];
+        [self.dataArray addObjectsFromArray: responseObject];
         [self.tableView reloadData];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -83,7 +92,36 @@
     cell.cellDict = self.dataArray[indexPath.row];
     return cell;
 }
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *cellDict = self.dataArray[indexPath.row];
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [SVProgressHUD showWithStatus:@"正在加载..."];
+
+        NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageDelApi",Main_Server];
+        NSDictionary *dict = @{@"id":cellDict[@"id"]};
+        [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            [SVProgressHUD dismiss];
+            jxt_showAlertTitle(responseObject[@"message"]);
+            if ([responseObject[@"result"] integerValue]) {
+                [self.dataArray removeObjectAtIndex:indexPath.row];
+                [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            
+        } fail:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+ 
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+
+    }
+}
 
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
