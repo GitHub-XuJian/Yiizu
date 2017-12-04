@@ -38,6 +38,9 @@
     {
         self.numberLabel.hidden = NO;
         self.numberLabel.text = @"99";
+    }else if (number == 0)
+    {
+        self.numberLabel.hidden = YES;
     }
 }
 - (void)reloadData

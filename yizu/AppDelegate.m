@@ -29,6 +29,19 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    float version = [[[UIDevice currentDevice] systemVersion] floatValue];
+
+    //获取用户授权
+    if (version >= 8.0) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+    //注册消息推送
+    if (version >= 8.0) {
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [application registerForRemoteNotifications];
+    }
     
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear]; //设置HUD背景图层的样式
     

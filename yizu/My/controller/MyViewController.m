@@ -58,7 +58,7 @@
         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"%@",responseObject);
-            [self.headerView standInsideLetter:[responseObject[@"nums"] integerValue]];
+            [self.headerView standInsideLetter:[responseObject[@"nums"] integerValue]];           
             //设置推送消息个数
             [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[responseObject[@"nums"] integerValue]];
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
