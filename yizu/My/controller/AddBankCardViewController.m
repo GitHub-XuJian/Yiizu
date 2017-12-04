@@ -76,8 +76,8 @@
     }
     UIButton *nextBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     nextBtn.frame = CGRectMake(kSCREEN_WIDTH/2-kSCREEN_WIDTH/2/2, 100+135/3+64, kSCREEN_WIDTH/2, 40);
-    [nextBtn setBackgroundImage:[UIImage imageNamed:@"nextStepImage"] forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(nextBtnclick:) forControlEvents:UIControlEventTouchUpInside];
+    nextBtn.backgroundColor = [UIColor colorWithRed:0.17f green:0.68f blue:0.10f alpha:1.00f];
     [nextBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:nextBtn];

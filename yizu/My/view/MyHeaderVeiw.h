@@ -16,6 +16,7 @@
 @property (nonatomic,weak) id<MyHeaderVeiwDelegate>delegate;
 
 -(void)reloadData;
+-(void)standInsideLetter:(NSInteger)number;
 
 
 @end

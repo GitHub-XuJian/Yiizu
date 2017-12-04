@@ -268,6 +268,9 @@
 		AFC62F271FA1B5D500A3F3F5 /* MCBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F161FA1B5D500A3F3F5 /* MCBarChartView.m */; };
 		AFC62F281FA1B5D500A3F3F5 /* MCChartInformationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */; };
 		AFC62F2D1FA1B5D500A3F3F5 /* MCPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */; };
+		AFE98D6A1FD4FE4200EBBCA1 /* StandInsideLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D691FD4FE4200EBBCA1 /* StandInsideLetterViewController.m */; };
+		AFE98D6D1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */; };
+		AFE98D701FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -783,6 +786,12 @@
 		AFC62F181FA1B5D500A3F3F5 /* MCChartInformationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCChartInformationView.m; sourceTree = "<group>"; };
 		AFC62F211FA1B5D500A3F3F5 /* MCPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCPieChartView.h; sourceTree = "<group>"; };
 		AFC62F221FA1B5D500A3F3F5 /* MCPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCPieChartView.m; sourceTree = "<group>"; };
+		AFE98D681FD4FE4200EBBCA1 /* StandInsideLetterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandInsideLetterViewController.h; sourceTree = "<group>"; };
+		AFE98D691FD4FE4200EBBCA1 /* StandInsideLetterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterViewController.m; sourceTree = "<group>"; };
+		AFE98D6B1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandInsideLetterTableViewCell.h; sourceTree = "<group>"; };
+		AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterTableViewCell.m; sourceTree = "<group>"; };
+		AFE98D6E1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandInsideLetterDetailsViewController.h; sourceTree = "<group>"; };
+		AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterDetailsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1644,6 +1653,10 @@
 				AF15D9DC1FCD13DD00F4B3DA /* ChangeViewController.m */,
 				AF15DA031FCFF81F00F4B3DA /* TransactionDetailsViewController.h */,
 				AF15DA041FCFF81F00F4B3DA /* TransactionDetailsViewController.m */,
+				AFE98D681FD4FE4200EBBCA1 /* StandInsideLetterViewController.h */,
+				AFE98D691FD4FE4200EBBCA1 /* StandInsideLetterViewController.m */,
+				AFE98D6E1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.h */,
+				AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1690,6 +1703,8 @@
 				AFB215541FBE7886006DD630 /* WalletView.m */,
 				AF15D9DE1FCE9F7600F4B3DA /* SlotMachines.h */,
 				AF15D9DF1FCE9F7600F4B3DA /* SlotMachines.m */,
+				AFE98D6B1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.h */,
+				AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2372,6 +2387,7 @@
 				1FFFE9141FCF99320005A1DE /* SmallActivityListModel.m in Sources */,
 				AF66AE781F9F1AB10079A2CF /* IQUIView+Hierarchy.m in Sources */,
 				AF23F3CB1FA828460022E990 /* ForgetViewController.m in Sources */,
+				AFE98D6D1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m in Sources */,
 				1F17673B1FB3F91200BB5026 /* ActivityCell.m in Sources */,
 				AF66AD861F9DC55D0079A2CF /* MyActivitiesTableViewCell.m in Sources */,
 				AF66ADB61F9DDD250079A2CF /* UIProgressView+AFNetworking.m in Sources */,
@@ -2413,6 +2429,7 @@
 				AFB215521FBD9051006DD630 /* ZZYPhotoHelper.m in Sources */,
 				AF66ADF81F9DE1B60079A2CF /* MJRefreshAutoNormalFooter.m in Sources */,
 				1F17675B1FB3F9AF00BB5026 /* ChartViewController.m in Sources */,
+				AFE98D6A1FD4FE4200EBBCA1 /* StandInsideLetterViewController.m in Sources */,
 				AF66AD441F9D82100079A2CF /* MyViewController.m in Sources */,
 				AF23F3DD1FAC05C40022E990 /* MyWalletViewController.m in Sources */,
 				AF8B6CF01FA01A4A008DA068 /* SDWebImagePrefetcher.m in Sources */,
@@ -2532,6 +2549,7 @@
 				AF66AE7A1F9F1AB10079A2CF /* IQUIWindow+Hierarchy.m in Sources */,
 				1F47A4701FB9A33200679995 /* ActivityDetailController.m in Sources */,
 				AF6C46A21FA806E700797125 /* SFValidationEmailViewController.m in Sources */,
+				AFE98D701FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m in Sources */,
 				AF66AD4B1F9D82570079A2CF /* ActivityViewController.m in Sources */,
 				AF66ADAE1F9DDD250079A2CF /* AFURLResponseSerialization.m in Sources */,
 				AF66ADFF1F9DE1B60079A2CF /* MJRefreshStateHeader.m in Sources */,
@@ -2721,7 +2739,7 @@
 					"-all_load",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = xujian.yizu;
+				PRODUCT_BUNDLE_IDENTIFIER = jinbaibei.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2759,7 +2777,7 @@
 					"-all_load",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = xujian.yizu;
+				PRODUCT_BUNDLE_IDENTIFIER = jinbaibei.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
