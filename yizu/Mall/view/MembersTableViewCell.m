@@ -130,7 +130,7 @@
                 [SVProgressHUD dismiss];
                 NSLog(@"%@",responseObject);
                 if (!responseObject) {
-                    jxt_showAlertTitle(@"服务器返回数据错误");
+                    jxt_showAlertTitle(@"系统忙，请稍后再试");
                 }
                 [self createPayTreasure:responseObject];
                 

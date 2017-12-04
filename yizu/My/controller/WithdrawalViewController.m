@@ -108,21 +108,25 @@
         if ([self.textField.text floatValue] > [_moneyStr floatValue]) {
             jxt_showAlertMessage(@"超出本次可提现金额");
         }else{
+            [SVProgressHUD show];
             NSString *urlStr = [NSString stringWithFormat:@"%@daishou/jpp_phpdemo_20170915/demo/CollectingPayment.php",Main_ServerImage];
-            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100*0.9]};
+            NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 NSLog(@"%@",responseObject);
-                if ([responseObject length]) {
+                [SVProgressHUD dismiss];
+
+                if (responseObject) {
                     jxt_showAlertMessage(responseObject[@"rspMessage"]);
                 }else{
-                    jxt_showAlertMessage(@"服务器返回数据为空");
+                    jxt_showAlertMessage(@"系统忙，请稍后再试");
                 }
                 if ([responseObject[@"orderSts"] isEqualToString:@"P"] ||[responseObject[@"orderSts"] isEqualToString:@"S"]  ) {
                     [self.navigationController popViewControllerAnimated:YES];
                 }
 
             } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                
+                [SVProgressHUD dismiss];
+
             }];
         }
     }else{
