@@ -12,7 +12,8 @@
 
 @interface HomeDetailController : UIViewController
 
-
+@property (nonatomic,copy) NSString* chamber_id;
+@property (nonatomic,copy) NSString* userId;
 
 @property (nonatomic,strong) HomeListModel* model;
 

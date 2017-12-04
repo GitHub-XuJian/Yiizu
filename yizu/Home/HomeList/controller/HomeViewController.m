@@ -16,11 +16,14 @@
 #import "PopMenuView.h"
 #import "CustomNavigationController.h"
 #import "CellBtn.h"
+#import  <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 
-//#define Main_Server @"http://www.xdfishing.cn/index.php/"
-//#define Main_ServerImage @"http://www.xdfishing.cn/"
-@interface HomeViewController ()<HomeCityBtnDelegate,LikeBtnViewDelegate>
+
+
+@interface HomeViewController ()<HomeCityBtnDelegate,LikeBtnViewDelegate,CLLocationManagerDelegate>
+
 @property(nonatomic, strong)NSMutableArray* listArr;
 //用于设置navbarbtn的标题
 @property(nonatomic, strong)UIButton* navBtn;
@@ -39,6 +42,8 @@
 
 
 @property (nonatomic, assign) BOOL isLikeStart;
+
+@property(nonatomic, strong) CLLocationManager *locationManager;
 
 @end
 
@@ -63,6 +68,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //停止定位
+    [self.locationManager stopUpdatingLocation];
     
    
     
@@ -80,6 +87,8 @@
     self.tableView.estimatedSectionHeaderHeight =0;
     self.tableView.estimatedSectionFooterHeight =0;
     self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+    
+  
     
     [self setNavBarBtn];
     
@@ -167,7 +176,7 @@
     _listArr=[[NSMutableArray alloc]init];
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-       // NSLog(@"默认Data:%@",responseObject);
+        //NSLog(@"默认Data:%@",responseObject);
        
         
         //if ([responseObject[@"list"] isEqualToString:@"<null>"]) {
@@ -291,37 +300,60 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
   
-    return self.listArr.count;
-    
+    //return self.listArr.count;
+     return self.listArr.count>0?self.listArr.count:1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
-    //HomeListModel* model
-    cell.model=self.listArr[indexPath.row];
-    //
-    //self.isLikeStart=cell.likeCellBtn.islike;
-    //cell.likeCellBtn.delegate=self;
+    if (self.listArr.count>0) {
+        HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
+        //HomeListModel* model
+        cell.model=self.listArr[indexPath.row];
+        //
+        //self.isLikeStart=cell.likeCellBtn.islike;
+        //cell.likeCellBtn.delegate=self;
+        return cell;
+    }
    
+    static NSString* str =@"cell";
+    UITableViewCell* cell= [tableView dequeueReusableCellWithIdentifier:str];
+    if (!cell) {
+        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
+    }
+    cell.textLabel.text=@"城市为开通";
+    
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200;
+    if (self.listArr.count>0) {
+        return 200;
+    }
+    return 300;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (self.listArr.count>0) {
+
     HomeDetailController* dVC=[[HomeDetailController alloc]init];
     
+        
     HomeListModel* model=self.listArr[indexPath.row];
-    
-    dVC.model=model;
+        
+        dVC.chamber_id= model.chamber_id;
+        dVC.userId=[XSaverTool objectForKey:UserIDKey];
+    //dVC.model=model;
     
     dVC.likeStart=self.isLikeStart;
 
     [self.navigationController pushViewController:dVC animated:YES];
-    
+    }else
+    {
+        NSLog(@"点击了为开通");
+    }
     
 }
 
@@ -361,6 +393,72 @@
     
     self.navigationItem.title = @"依足";
     
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //定位相关
+    //定位服务管理对象初始化
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = 1000.0f;
+    
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager requestAlwaysAuthorization];
+    
+    //开始定位
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    //停止定位
+    //    [self.locationManager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    
+    
+    
+    CLLocation *currLocation = [locations lastObject];
+    //%3.5f是输出整数部分是3位，小数部分是5位的浮点数。
+    //    self.txtLat.text = [NSString stringWithFormat:@"%3.5f",
+    //                        currLocation.coordinate.latitude];
+    //    self.txtLng.text = [NSString stringWithFormat:@"%3.5f",
+    //currLocation.coordinate.longitude];
+    
+//    NSLog(@"定位回调中:lat===%@,long===%@",[NSString stringWithFormat:@"%3.5f",
+//                                 currLocation.coordinate.latitude],[NSString stringWithFormat:@"%3.5f",
+//                                                                    currLocation.coordinate.longitude]);
+    
+    NSLog(@"定位回调中:lat===%f,long===%f",
+                                       currLocation.coordinate.latitude,
+                                                                                                           currLocation.coordinate.longitude);
+    
+//    NSString* lat=[NSString stringWithFormat:@"%3.5f",
+//                   currLocation.coordinate.latitude];
+//    NSString* lon=[NSString stringWithFormat:@"%3.5f",
+//                   currLocation.coordinate.longitude];
+    NSString* lat=[NSString stringWithFormat:@"%f",
+                                     currLocation.coordinate.latitude];
+                       NSString* lon=[NSString stringWithFormat:@"%f",
+                                      currLocation.coordinate.longitude];
+    NSString* str=[NSString stringWithFormat:@"%@Mobile/Index/indexposition/personid/%@/lat/%@/lng/%@",Main_Server,[XSaverTool objectForKey:UserIDKey],lat,lon];
+    NSLog(@"locanURL===%@",str);
+    //http://47.104.18.18/index.php/Mobile/Index/indexposition/personid/
+    //http://47.104.18.18/index.php/Mobile/Index/indexposition/personid/123/lat/22.28468/lng/114.15818
+    [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSLog(@"%@",responseObject);
+        
+    } fail:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 //}

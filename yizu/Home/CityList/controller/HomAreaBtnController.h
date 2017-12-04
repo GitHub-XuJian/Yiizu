@@ -12,7 +12,7 @@
 
 @protocol HomAreaBtnDelegate <NSObject>
 
--(void)HomAreaBtnTitle:(NSString*)title;
+-(void)HomAreaBtnTitleId:(NSString*)title areaId:(NSString*)aid;
 
 @end
 

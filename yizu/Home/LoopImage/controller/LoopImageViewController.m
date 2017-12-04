@@ -34,6 +34,7 @@
 
 
 @property (copy, nonatomic) NSString* areaid;
+@property (copy, nonatomic) NSString* areaName;
 
 @end
 
@@ -285,12 +286,16 @@
     [self.navigationController pushViewController:HCDVC animated:YES];
 }
 
-- (void)HomAreaBtnTitle:(NSString *)title
+- (void)HomAreaBtnTitleId:(NSString *)title areaId:(NSString *)aid
 {
-    self.areaid=title;
-   
+    self.areaid=aid;
+    self.areaName=title;
+    NSLog(@"地区==%@",title);
+    
+    UIButton* btn= [self.btnView viewWithTag:102];
+    [btn setTitle:title forState:UIControlStateNormal];
+    
 }
-
 /*
 #pragma mark - Navigation
 

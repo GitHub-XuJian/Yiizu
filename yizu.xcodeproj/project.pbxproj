@@ -67,6 +67,8 @@
 		1F7510B41FCBD2580019BD93 /* NewHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7510B31FCBD2580019BD93 /* NewHomeViewController.m */; };
 		1F7510BA1FCC0C0B0019BD93 /* ScrollImaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7510B91FCC0C0B0019BD93 /* ScrollImaView.m */; };
 		1F7BBD3A1FCCFFDC00614C38 /* GuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7BBD391FCCFFDC00614C38 /* GuideViewController.m */; };
+		1F8D7BE51FD3D1EE00EC0724 /* HomeListSorryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D7BE41FD3D1EE00EC0724 /* HomeListSorryCell.m */; };
+		1F8D7BE91FD3E12300EC0724 /* HomeDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D7BE81FD3E12300EC0724 /* HomeDetailModel.m */; };
 		1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE535571F9F2E7300713053 /* HomeViewController.m */; };
 		1FE5356A1F9F2E7300713053 /* HomeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE5355A1F9F2E7300713053 /* HomeListModel.m */; };
 		1FE5356B1F9F2E7300713053 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5355C1F9F2E7300713053 /* Home.storyboard */; };
@@ -398,6 +400,10 @@
 		1F7510B91FCC0C0B0019BD93 /* ScrollImaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollImaView.m; sourceTree = "<group>"; };
 		1F7BBD381FCCFFDC00614C38 /* GuideViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuideViewController.h; sourceTree = "<group>"; };
 		1F7BBD391FCCFFDC00614C38 /* GuideViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuideViewController.m; sourceTree = "<group>"; };
+		1F8D7BE31FD3D1ED00EC0724 /* HomeListSorryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeListSorryCell.h; sourceTree = "<group>"; };
+		1F8D7BE41FD3D1EE00EC0724 /* HomeListSorryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeListSorryCell.m; sourceTree = "<group>"; };
+		1F8D7BE71FD3E12300EC0724 /* HomeDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeDetailModel.h; sourceTree = "<group>"; };
+		1F8D7BE81FD3E12300EC0724 /* HomeDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeDetailModel.m; sourceTree = "<group>"; };
 		1FE535561F9F2E7300713053 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		1FE535571F9F2E7300713053 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		1FE535591F9F2E7300713053 /* HomeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeListModel.h; sourceTree = "<group>"; };
@@ -874,6 +880,7 @@
 			isa = PBXGroup;
 			children = (
 				1F582F4C1FC694CE0048FA99 /* MapViewController */,
+				1F8D7BE61FD3E0AE00EC0724 /* model */,
 				1F0CEAC71FBABD3200D06C8E /* view */,
 				1F0CEAC61FBABCA300D06C8E /* controller */,
 			);
@@ -1123,6 +1130,15 @@
 			name = "New Group";
 			sourceTree = "<group>";
 		};
+		1F8D7BE61FD3E0AE00EC0724 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1F8D7BE71FD3E12300EC0724 /* HomeDetailModel.h */,
+				1F8D7BE81FD3E12300EC0724 /* HomeDetailModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		1FE535541F9F2E7300713053 /* HomeList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1163,6 +1179,8 @@
 				1F4423C01FA6B78E00F8EA95 /* CellBtn.m */,
 				1F11E9DC1FBD752600AE4478 /* favoriteBtn.h */,
 				1F11E9DD1FBD752600AE4478 /* favoriteBtn.m */,
+				1F8D7BE31FD3D1ED00EC0724 /* HomeListSorryCell.h */,
+				1F8D7BE41FD3D1EE00EC0724 /* HomeListSorryCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2366,6 +2384,7 @@
 				1F17675C1FB3F9AF00BB5026 /* PersonalInformationViewController.m in Sources */,
 				AF626D131FA2D92D00A1225F /* LoopImageViewController.m in Sources */,
 				1F1767501FB3F93400BB5026 /* TADotView.m in Sources */,
+				1F8D7BE91FD3E12300EC0724 /* HomeDetailModel.m in Sources */,
 				1F0CEAD21FBADC9700D06C8E /* HomeDetailFooter.m in Sources */,
 				AF66AD801F9DB5460079A2CF /* ContactUsViewController.m in Sources */,
 				AF626D261FA2D97D00A1225F /* CityListCell.m in Sources */,
@@ -2390,6 +2409,7 @@
 				AF6C46631FA451BE00797125 /* ProblemFeedbackViewController.m in Sources */,
 				1FE5356C1F9F2E7300713053 /* HomeListCell.m in Sources */,
 				AF66ACF61F9D7E540079A2CF /* AppDelegate.m in Sources */,
+				1F8D7BE51FD3D1EE00EC0724 /* HomeListSorryCell.m in Sources */,
 				AF15D9CF1FCC0BDD00F4B3DA /* LBTabBarController.m in Sources */,
 				AF23F3CF1FA872D30022E990 /* OldAndNewPassWordViewController.m in Sources */,
 				AF66AE0A1F9EDC200079A2CF /* MembershipActivationCodeViewController.m in Sources */,
