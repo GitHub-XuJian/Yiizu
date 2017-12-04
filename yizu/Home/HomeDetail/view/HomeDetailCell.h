@@ -8,17 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomeDetailScrollView;
+
 @class CellBtn;
 
 @class favoriteBtn;
 
 @interface HomeDetailCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *image1;
+@property (strong, nonatomic) IBOutlet HomeDetailScrollView *homeScrollview;
 
-@property (weak, nonatomic) IBOutlet UIImageView *image2;
-
-@property (weak, nonatomic) IBOutlet UIImageView *image3;
 //头像
 @property (weak, nonatomic) IBOutlet UIImageView *iconIma;
 //标题

@@ -273,6 +273,8 @@
 		AFE98D6A1FD4FE4200EBBCA1 /* StandInsideLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D691FD4FE4200EBBCA1 /* StandInsideLetterViewController.m */; };
 		AFE98D6D1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */; };
 		AFE98D701FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */; };
+		E5EA18BD1FD5503200234B74 /* HomeDetailScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA18B91FD5503200234B74 /* HomeDetailScrollView.m */; };
+		E5EA18BE1FD5503200234B74 /* HomeDetailImaView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA18BA1FD5503200234B74 /* HomeDetailImaView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -798,6 +800,10 @@
 		AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterTableViewCell.m; sourceTree = "<group>"; };
 		AFE98D6E1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandInsideLetterDetailsViewController.h; sourceTree = "<group>"; };
 		AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterDetailsViewController.m; sourceTree = "<group>"; };
+		E5EA18B91FD5503200234B74 /* HomeDetailScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailScrollView.m; sourceTree = "<group>"; };
+		E5EA18BA1FD5503200234B74 /* HomeDetailImaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailImaView.m; sourceTree = "<group>"; };
+		E5EA18BB1FD5503200234B74 /* HomeDetailScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailScrollView.h; sourceTree = "<group>"; };
+		E5EA18BC1FD5503200234B74 /* HomeDetailImaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailImaView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -908,6 +914,10 @@
 		1F0CEAC71FBABD3200D06C8E /* view */ = {
 			isa = PBXGroup;
 			children = (
+				E5EA18BC1FD5503200234B74 /* HomeDetailImaView.h */,
+				E5EA18BA1FD5503200234B74 /* HomeDetailImaView.m */,
+				E5EA18BB1FD5503200234B74 /* HomeDetailScrollView.h */,
+				E5EA18B91FD5503200234B74 /* HomeDetailScrollView.m */,
 				1F0CEAC81FBABD4C00D06C8E /* HomeDetailLoop.h */,
 				1F0CEAC91FBABD4C00D06C8E /* HomeDetailLoop.m */,
 				1F0CEACB1FBAC9EA00D06C8E /* HomeDetailCell.h */,
@@ -2437,6 +2447,7 @@
 				1F0CEACE1FBAC9EA00D06C8E /* HomeDetailCell.m in Sources */,
 				1F43F9BB1FC3FACD00AF2F27 /* HomeCategoryDetailController.m in Sources */,
 				AF8B6CEC1FA01A4A008DA068 /* SDWebImageDecoder.m in Sources */,
+				E5EA18BD1FD5503200234B74 /* HomeDetailScrollView.m in Sources */,
 				1F4A31861FBFE81F00DC384D /* SmallCityListModel.m in Sources */,
 				AFC62F121FA1B5C600A3F3F5 /* UIImage+Common.m in Sources */,
 				AF626D241FA2D97D00A1225F /* AreaListModel.m in Sources */,
@@ -2548,6 +2559,7 @@
 				AFB215101FB99B67006DD630 /* SetUpTableViewCell.m in Sources */,
 				1FE535691F9F2E7300713053 /* HomeViewController.m in Sources */,
 				AF23F3D21FA962490022E990 /* registeredView.m in Sources */,
+				E5EA18BE1FD5503200234B74 /* HomeDetailImaView.m in Sources */,
 				AF6C46B31FA807E000797125 /* mytimer.m in Sources */,
 				AF66AE031F9DE1B60079A2CF /* UIScrollView+MJExtension.m in Sources */,
 				AF6C494B1FC66FC100D2D53C /* DisplayCardViewController.m in Sources */,

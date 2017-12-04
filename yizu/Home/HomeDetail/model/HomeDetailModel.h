@@ -10,8 +10,12 @@
 
 @interface HomeDetailModel : NSObject
 
+//详情轮播
+@property (nonatomic, strong) NSArray* lun;
+//详情小图
+@property (nonatomic, strong) NSArray* dada;
 //十图
-@property (nonatomic, strong) NSArray* list;
+//@property (nonatomic, strong) NSArray* list;
 //距离
 @property (nonatomic, copy) NSString* distance;
 

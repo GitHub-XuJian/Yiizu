@@ -213,11 +213,11 @@
          NSString* url=@"";
         if (self.areaid) {
             
-            url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID,self.areaid];
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/%@/sequence/0/page/1/",Main_Server,self.cityID,self.areaid,[XSaverTool objectForKey:UserIDKey]];
             NSLog(@"点击了区域按钮aaa\n%@",url);
         }else{
             
-            url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,self.cityID];
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/1/",Main_Server,self.cityID,[XSaverTool objectForKey:UserIDKey]];
             NSLog(@"没点区域按钮%@\n",url);
         }
         
@@ -231,10 +231,10 @@
         if (self.areaid) {
             
             NSLog(@"点击了区域按钮aaa");
-            url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID,self.areaid];
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/%@/sequence/1/page/1/",Main_Server,self.cityID,self.areaid,[XSaverTool objectForKey:UserIDKey]];
             
         }else{
-            url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/1/page/1/",Main_Server,self.cityID];
+            url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/1/page/1/",Main_Server,self.cityID,[XSaverTool objectForKey:UserIDKey]];
             NSLog(@"没点区域按钮");
         }
         
