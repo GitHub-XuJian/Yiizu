@@ -27,7 +27,6 @@
 }
 - (void)createUIView
 {
-    
     NSArray *array = @[@"银行卡",@"零钱",@"积分"];
     NSArray *imageArray = @[@"WalletBankCard",@"change",@"integral"];
 
@@ -56,7 +55,6 @@
         if (i == 1) {
             UILabel *subLabel = [[UILabel alloc] init];
             subLabel.frame = CGRectMake(0, titleLabel.y+titleLabel.height+10, view.width, 20);
-            subLabel.text = array[i];
             subLabel.textColor = [UIColor colorWithRed:0.60f green:0.60f blue:0.60f alpha:1.00f];;
             subLabel.textAlignment =NSTextAlignmentCenter;
             [view addSubview:subLabel];
