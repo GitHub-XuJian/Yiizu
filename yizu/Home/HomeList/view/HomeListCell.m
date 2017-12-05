@@ -75,7 +75,7 @@
     {
         
        self.likeCellBtn.islike=NO;
-        //NSLog(@"00000000000");
+
     }
     
     if (model.Turvy) {
@@ -98,9 +98,17 @@
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
     //一行时lab字体顶对齐
-    self.chamberjjLab.text=model.chamberjj;
-    self.distanceLab.text=[NSString stringWithFormat:@"距离:%@m",model.distance];
-    [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
+    //self.chamberjjLab.text=model.chamberjj;
+    self.chamberjjLab.text=[NSString stringWithFormat:@"%@%@",model.locus_id,model.full];
+    if (model.distance.integerValue>=1000) {
+        
+        self.distanceLab.text=[NSString stringWithFormat:@"距离：%1.1f km",model.distance.floatValue/1000];
+    }else
+    {
+        self.distanceLab.text=[NSString stringWithFormat:@"距离:%ldm",model.distance.integerValue];
+    }
+    
+    [self.upView setTitle:[NSString stringWithFormat:@"%@| 排名：%@",model.city_id,model.up] forState:UIControlStateNormal];
 
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

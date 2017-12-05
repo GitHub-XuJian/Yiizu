@@ -55,18 +55,18 @@
     
     
     self.upLabel.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
-    //一行时lab字体顶对齐
-    //self.chamberjjLab.text=model.chamberjj;
     
-    self.rankingLab .text=[NSString stringWithFormat:@"| 排名：%@",model.up];
     
-    if (model.distance.integerValue>=100000) {
+    
+    self.rankingLab .text=[NSString stringWithFormat:@"%@| 排名：%@",model.city_id,model.up];
+    
+    self.chamberjjLabel.text=[NSString stringWithFormat:@"%@%@",model.locus_id,model.full];
+    if (model.distance.integerValue>=1000) {
         
-        NSInteger value= model.distance.integerValue/1000;
-        self.distanceLab.text=[NSString stringWithFormat:@"距离：%ld Km",(long)value];
+        self.distanceLab.text=[NSString stringWithFormat:@"距离：%1.1f km",model.distance.floatValue/1000];
     }else
     {
-        self.distanceLab.text=[NSString stringWithFormat:@"%@ m",model.distance];
+        self.distanceLab.text=[NSString stringWithFormat:@"距离:%ldm",model.distance.integerValue];
     }
     
     
