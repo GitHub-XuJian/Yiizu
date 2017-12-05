@@ -210,7 +210,7 @@
   
     
     [XAFNetWork GET:cityId params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        
+        NSLog(@"加载更多==%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         
         if (arr.count==0) {
@@ -377,7 +377,7 @@
     
     // 获取导航条的imageView
     self.navigationController.navigationBar.subviews.firstObject.alpha = scrollView.contentOffset.y/200;
-    NSLog(@"%f",scrollView.contentOffset.y/200);
+   
     if (scrollView.contentOffset.y > 0) {
       
         [self.navigationController setNavigationBarHidden:NO animated:NO];
