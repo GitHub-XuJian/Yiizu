@@ -75,7 +75,7 @@
     {
         
        self.likeCellBtn.islike=NO;
-        //NSLog(@"00000000000");
+
     }
     
     if (model.Turvy) {
@@ -99,7 +99,16 @@
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
     //一行时lab字体顶对齐
     self.chamberjjLab.text=model.chamberjj;
-    self.distanceLab.text=[NSString stringWithFormat:@"距离:%@m",model.distance];
+    self.chamberjjLab.backgroundColor=[UIColor yellowColor];
+    if (model.distance.integerValue>=1000) {
+        
+        NSInteger value= model.distance.integerValue/1000;
+        self.distanceLab.text=[NSString stringWithFormat:@"距离：%ld km",value];
+    }else
+    {
+        self.distanceLab.text=[NSString stringWithFormat:@"距离:%ldm",model.distance.integerValue];
+    }
+    
     [self.upView setTitle:[NSString stringWithFormat:@"| 排名：%@",model.up] forState:UIControlStateNormal];
 
 }

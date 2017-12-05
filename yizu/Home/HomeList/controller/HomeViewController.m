@@ -308,7 +308,7 @@
         HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
         //HomeListModel* model
         cell.model=self.listArr[indexPath.row];
-        //
+        cell.backgroundColor=[UIColor cyanColor];
         //self.isLikeStart=cell.likeCellBtn.islike;
         //cell.likeCellBtn.delegate=self;
         return cell;
@@ -327,7 +327,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.listArr.count>0) {
-        return 200;
+        return 220;
     }
     return 300;
 }
