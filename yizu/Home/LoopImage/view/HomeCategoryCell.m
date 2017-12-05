@@ -36,7 +36,7 @@
             [self.contentView addSubview:self.titleLable];
             
             self.imaView=[[UIImageView alloc]init];
-            //self.imaView.backgroundColor=[UIColor redColor];
+            self.imaView.contentMode = UIViewContentModeScaleAspectFit;
             [self.contentView addSubview:self.imaView];
             
         }
@@ -54,7 +54,7 @@
     
     self.imaView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height-20);
     
-    self.titleLable.frame = CGRectMake(0, CGRectGetMaxY(self.imaView.frame), self.frame.size.width, self.frame.size.height-self.imaView.frame.size.height);
+    self.titleLable.frame = CGRectMake(-10, CGRectGetMaxY(self.imaView.frame), self.frame.size.width+20, self.frame.size.height-self.imaView.frame.size.height);
     
 }
 
