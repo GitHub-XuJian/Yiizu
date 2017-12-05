@@ -195,11 +195,18 @@
 
 - (void)HomeDetail:(HomeDetailImaView*)ima
 {
-    self.imaV=ima;
+    self.imaV = [[UIImageView alloc] init];
+    self.imaV.image =ima.image;
+    /**
+     * 获取当前视图在屏幕中的位置
+     */
+    CGRect rect=[ima convertRect: ima.bounds toView:[[[UIApplication sharedApplication] delegate] window]];
+    self.imaV.frame = rect;
+//    self.imaV=ima;
     NSLog(@"imaFrame==%@",NSStringFromCGRect(ima.frame));// imaFrame=={{10, 0}, {128, 95}}
     //self.isBig=YES;
     //记录一下头像按钮的原始frame
-    self.imaFrame=ima.frame;
+    self.imaFrame=rect;
     //创建大小与屏幕大小一样的按钮，把这个按钮作为阴影
     UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
     btn.frame=self.view.frame;
@@ -215,9 +222,9 @@
     CGFloat newW=self.view.frame.size.width;
     CGFloat newH=newW;
     CGFloat newY=(self.view.frame.size.height-self.view.frame.size.width)*0.5;
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
 
-        ima.frame=CGRectMake(0,newY,newW, newH);
+        self.imaV.frame=CGRectMake(0,newY,newW, newH);
         self.backBtn.alpha=0.5;
     }];
 }
@@ -226,7 +233,7 @@
 -(void)smallBtn
 {
     
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         self.imaV.frame=self.imaFrame;
         self.backBtn.alpha=0;
     } completion:^(BOOL finished) {
