@@ -73,19 +73,21 @@
    
     
     
-    self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
+    //self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
 
-    self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationController.navigationBar.clipsToBounds = 0.0;
    
-//    if (@available(iOS 10.0, *)) {
-//        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-//    }
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else
+    {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
 ////////////////////////////////
     self.tableView.estimatedRowHeight =0;
     self.tableView.estimatedSectionHeaderHeight =0;
     self.tableView.estimatedSectionFooterHeight =0;
-    self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+    //self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
     
   
     
@@ -308,7 +310,7 @@
         HomeListCell* cell=[tableView dequeueReusableCellWithIdentifier:@"home"];
         //HomeListModel* model
         cell.model=self.listArr[indexPath.row];
-        cell.backgroundColor=[UIColor cyanColor];
+        //cell.backgroundColor=[UIColor cyanColor];
         //self.isLikeStart=cell.likeCellBtn.islike;
         //cell.likeCellBtn.delegate=self;
         return cell;
@@ -374,22 +376,27 @@
     //NSLog(@"Offset=%f",scrollView.contentOffset.y);
     
     // 获取导航条的imageView
-
     self.navigationController.navigationBar.subviews.firstObject.alpha = scrollView.contentOffset.y/200;
+    NSLog(@"%f",scrollView.contentOffset.y/200);
     if (scrollView.contentOffset.y > 0) {
-        // 隐藏导航条
+      
         [self.navigationController setNavigationBarHidden:NO animated:NO];
-    }else{
         
-        [self.navigationController setNavigationBarHidden:YES animated:NO];
+      
+    }else{
+      
+      
+        //[self.navigationController setNavigationBarHidden:YES animated:NO];
+       
     }
 }
 
 
 -(void)viewDidAppear:(BOOL)animated
-
 {
-    
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
+    //self.navigationController.navigationBar.alpha = 0;
     self.navigationItem.title = @"依足";
     
 }

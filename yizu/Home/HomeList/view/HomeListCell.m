@@ -98,12 +98,11 @@
     
     self.obtainedLab.text=[NSString stringWithFormat:@"已售:%@",model.obtained];
     //一行时lab字体顶对齐
-    self.chamberjjLab.text=model.chamberjj;
-    self.chamberjjLab.backgroundColor=[UIColor yellowColor];
+    //self.chamberjjLab.text=model.chamberjj;
+    
     if (model.distance.integerValue>=1000) {
         
-        NSInteger value= model.distance.integerValue/1000;
-        self.distanceLab.text=[NSString stringWithFormat:@"距离：%ld km",value];
+        self.distanceLab.text=[NSString stringWithFormat:@"距离：%1.1f km",model.distance.floatValue/1000];
     }else
     {
         self.distanceLab.text=[NSString stringWithFormat:@"距离:%ldm",model.distance.integerValue];
