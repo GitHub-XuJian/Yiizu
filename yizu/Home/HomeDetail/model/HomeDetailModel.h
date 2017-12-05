@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface HomeDetailModel : NSObject
+//城市
+@property (nonatomic, copy) NSString* city_id;
 
 //详情轮播
 @property (nonatomic, strong) NSArray* lun;

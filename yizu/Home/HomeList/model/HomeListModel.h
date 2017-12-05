@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface HomeListModel : NSObject
+
+
+
 //城市
 @property (nonatomic, copy) NSString* city_id;
 //哪个区

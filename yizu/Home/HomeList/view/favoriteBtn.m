@@ -45,7 +45,7 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
     
     if (!IsLoginState) {
         NSLog(@"没登录");
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"游客未登录" message:@"是否登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未登录" message:@"是否登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }else{
