@@ -66,7 +66,7 @@
     textField.frame = CGRectMake(label3.x+label3.width+40, 10, kSCREEN_WIDTH-label3.x-label3.width-40, 40);
     textField.placeholder = @"请输入金额";
     textField.delegate = self;
-    textField.keyboardType = UIKeyboardTypeNumberPad;
+    textField.keyboardType = UIKeyboardTypeDecimalPad;
     [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [backView2 addSubview:textField];
     self.textField = textField;
