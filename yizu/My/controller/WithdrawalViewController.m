@@ -106,7 +106,9 @@
     [self.textField  resignFirstResponder];
     if (self.textField.text.length) {
         if ([self.textField.text floatValue] > [_moneyStr floatValue]) {
-            jxt_showAlertMessage(@"超出本次可提现金额");
+            jxt_showAlertMessage(@"余额不足");
+        }else if ([self.textField.text floatValue] < 10) {
+            jxt_showAlertMessage(@"提现金额不能小于10元");
         }else{
             [SVProgressHUD show];
             NSString *urlStr = [NSString stringWithFormat:@"%@daishou/jpp_phpdemo_20170915/demo/CollectingPayment.php",Main_ServerImage];
