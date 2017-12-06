@@ -2294,8 +2294,8 @@
 				TargetAttributes = {
 					AF66ACED1F9D7E540079A2CF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = R4485X89UR;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = C46BYY9W39;
+						ProvisioningStyle = Manual;
 					};
 					AF66AD001F9D7E550079A2CF = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -2743,7 +2743,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = R4485X89UR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C46BYY9W39;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
@@ -2771,8 +2774,10 @@
 					"-all_load",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei.yizu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei0.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d75985e7-0417-4c15-acc4-0f80cf2d34b1";
+				PROVISIONING_PROFILE_SPECIFIER = PostDescriptionFile;
 			};
 			name = Debug;
 		};
@@ -2781,7 +2786,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = R4485X89UR;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = C46BYY9W39;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/yizu/other/UMSocial/UMSocialUI",
@@ -2809,8 +2817,10 @@
 					"-all_load",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei.yizu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei0.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "d75985e7-0417-4c15-acc4-0f80cf2d34b1";
+				PROVISIONING_PROFILE_SPECIFIER = PostDescriptionFile;
 			};
 			name = Release;
 		};
