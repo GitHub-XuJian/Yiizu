@@ -104,6 +104,7 @@
 
         NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageDelApi",Main_Server];
         NSDictionary *dict = @{@"id":cellDict[@"id"]};
+        
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"%@",responseObject);
             [SVProgressHUD dismiss];

@@ -119,7 +119,11 @@
     
     HomeListModel* model=_tabScroce[indexPath.row];
     
-    dVC.model=model;
+    
+    
+    dVC.chamber_id= model.chamber_id;
+    dVC.userId=[XSaverTool objectForKey:UserIDKey];
+
     
     [self.navigationController pushViewController:dVC animated:YES];
     

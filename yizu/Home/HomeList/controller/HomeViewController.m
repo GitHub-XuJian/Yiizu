@@ -205,12 +205,12 @@
   
     
     [XAFNetWork GET:cityId params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        NSLog(@"加载更多==%@",responseObject);
+        //NSLog(@"加载更多==%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         
-        if (arr.count==0) {
+        if (!arr.count) {
             
-            //[self.tableView.mj_footer endRefreshingWithNoMoreData];
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
             self.tableView.mj_footer.hidden=YES;
             
         }

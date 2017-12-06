@@ -130,7 +130,7 @@
     cell.iconIma.layer.masksToBounds = YES;
     [cell.iconIma sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.icon]]];
     cell.titleLab.text=model.chambername;
-    cell.upLab.text=[NSString stringWithFormat:@"|排名 : %@ | 已售 : %@",model.up,model.obtained];
+    cell.upLab.text=[NSString stringWithFormat:@"%@ | 排名 : %@",model.city_id,model.up];
     cell.chamberjjLab.text=model.chamberjj;
     
     
@@ -167,16 +167,20 @@
 
 - (void)HomeDetailFooterView:(HomeDetailFooter *)footView
 {
+    HomeDetailModel* model = _detailArr[0];
 
+    
     //起点
     MKMapItem *currentLocation = [MKMapItem mapItemForCurrentLocation];
     //CLLocationCoordinate2D desCorrdinate = CLLocationCoordinate2DMake(self.destinationCoordinate.latitude, self.destinationCoordinate.longitude);
   
    
-    CLLocationCoordinate2D des= CLLocationCoordinate2DMake(_model.lat.floatValue, _model.lng.floatValue);
+    CLLocationCoordinate2D des= CLLocationCoordinate2DMake(model.lat.floatValue, model.lng.floatValue);
+    
     //终点
     MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:des addressDictionary:nil]];
-    toLocation.name=_model.full;
+    toLocation.name=model.full;
+    NSLog(@"导航终点==%@",model.full);
     //默认驾车
     [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
                    launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving,
