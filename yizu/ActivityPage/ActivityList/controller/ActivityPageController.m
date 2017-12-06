@@ -36,8 +36,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+    //self.automaticallyAdjustsScrollViewInsets = NO;
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else
+    {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     _tabSource=[[NSMutableArray alloc]init];
    
     NSString* str = [NSString stringWithFormat:@"%@Mobile/Bridge/Brigelist/",Main_Server];
@@ -152,12 +158,12 @@
     [self.navigationController pushViewController:web animated:YES];
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
-}
+//- (void)viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//
+//    //self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
+//}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

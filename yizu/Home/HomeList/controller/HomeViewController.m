@@ -82,7 +82,7 @@
     self.tableView.estimatedRowHeight =0;
     self.tableView.estimatedSectionHeaderHeight =0;
     self.tableView.estimatedSectionFooterHeight =0;
-    //self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     
   
     
@@ -506,12 +506,12 @@
     
 }
 
-- (void)viewDidLayoutSubviews
-{
-    [super viewDidLayoutSubviews];
-    
-    self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
-}
+//- (void)viewDidLayoutSubviews
+//{
+//    [super viewDidLayoutSubviews];
+//    
+//    self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
+//}
 
 //}
 /*
