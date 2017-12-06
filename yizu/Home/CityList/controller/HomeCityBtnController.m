@@ -33,7 +33,10 @@ static NSString * const cityUrl = @"%@Mobile/Index/index_Chamber/data/%@personid
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"请选择城市";
-    UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
+    //UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton* btn =[[UIButton alloc]init];
+    btn.frame=CGRectMake(0, 0, 80, 60);
+    [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [btn setTitle:@"取消" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(cancle) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
