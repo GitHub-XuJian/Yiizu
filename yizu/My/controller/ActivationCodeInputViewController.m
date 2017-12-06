@@ -254,6 +254,7 @@
         [SVProgressHUD dismiss];
         jxt_showAlertOneButton(@"提示", responseObject[@"message"], @"确定", ^(NSInteger buttonIndex) {
             if ([responseObject[@"result"] integerValue] == 1) {
+                _block();
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         });

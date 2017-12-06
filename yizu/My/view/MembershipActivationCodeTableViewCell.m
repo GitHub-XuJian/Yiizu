@@ -75,9 +75,16 @@
             self.subLabel.hidden = NO;
             self.subLabel.text = [NSString stringWithFormat:@"￥%@",_dict[@"payzong"]];
         }else if ([buttonStr isEqualToString:@"已分享"]) {
-            self.classBtn.hidden = YES;
-            self.subLabel.hidden = NO;
-            self.subLabel.text = [NSString stringWithFormat:@"￥%.2f",[_dict[@"paymoney"] floatValue]+[_dict[@"nextmoney"] floatValue]];
+            if ([_dict[@"exchangestata"] isEqualToString:@"1"]) {
+                self.classBtn.hidden = NO;
+                self.subLabel.hidden = YES;
+                [self.classBtn setTitle:@"提现" forState:UIControlStateNormal];
+            }else{
+                self.classBtn.hidden = YES;
+                self.subLabel.hidden = NO;
+                self.subLabel.text = [NSString stringWithFormat:@"￥%.2f",[_dict[@"payzong"] floatValue]];
+            }
+            
         }else{
             self.classBtn.hidden = NO;
             self.subLabel.hidden = YES;
