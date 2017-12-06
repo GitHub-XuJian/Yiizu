@@ -44,7 +44,7 @@
         
 //        UIImageView *iconImage = [[UIImageView alloc] init];
 //        iconImage.frame = XCGRectMake(0, 0, imageView1.width, imageView1.height);
-//        [iconImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Main_ServerImage,dict[@"headpic"]]] placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+//        [iconImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",Main_ServerImage,dict[@"headpic"]]] placeholderImage:[UIImage imageNamed:@"iconRegistered"]];
 //        //设置圆角
 //        iconImage.layer.cornerRadius = imageView1.height/2;
 //        //将多余的部分切掉

@@ -28,8 +28,6 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(57/3, self.height/2-164/2/2, 164/2,164/2);
-    [button setImage:[UIImage imageNamed:@"icon_default_avatar"] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor blackColor];
     [button addTarget:self action:@selector(headPortraitBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     button.clipsToBounds=YES;
     button.layer.cornerRadius=164/2/2;
@@ -63,7 +61,7 @@
 }
 - (void)reloadData
 {
-    [self.iconBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+    [self.iconBtn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"iconRegistered"]];
     if ([[XSaverTool objectForKey:Nickname] length]) {
         self.nameLabel.text = [XSaverTool objectForKey:Nickname];
     }else{
