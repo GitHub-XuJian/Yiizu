@@ -18,7 +18,7 @@
 #import "CellBtn.h"
 #import  <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import "HomeListSorryCell.h"
 
 
 
@@ -84,7 +84,7 @@
     self.tableView.estimatedSectionFooterHeight =0;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 50, 0);
     
-  
+    [self.tableView registerClass:[HomeListSorryCell class] forCellReuseIdentifier:@"sorrycell"];
     
     [self setNavBarBtn];
     
@@ -145,22 +145,28 @@
     }];
     
     self.tableView.mj_header = header;
-    
-    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    // MJRefreshAutoNormalFooter *footer
+   
+   MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
           self.currentPage+=1;
         NSString* newUrl=@"";
         if (!IsLoginState)
         {
-            
+            if (self.homeListAreaId) {
+                newUrl=self.homeUrlStr;
+              
+            }else{
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+            }
         }else
         {
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
         }
-       
+
         [self requestMoreData:newUrl];
         NSLog(@"上啦回调%@",newUrl);
-        
+//http://www.xdfishing.cn/index.php/Mobile/Index/index_Chamber/data/73/personid/0/sequence/0/page/2
+//http://www.xdfishing.cn/index.php/Mobile/Index/index_area/data/73/area/851/page/1/personid/3/sequence/0
     }];
     self.tableView.mj_footer = footer;
     /////////////////////////////////
@@ -173,10 +179,14 @@
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         //NSLog(@"默认Data:%@",responseObject);
-       
+        NSArray* arr=responseObject[@"list"];
+        if (!arr.count) {
+            NSLog(@"没有数据");
+           
+        }
         
        
-            NSArray* arr=responseObject[@"list"];
+        
             for (NSDictionary* dic in arr) {
                 HomeListModel* model=[HomeListModel ModelWithDict:dic];
                 
@@ -203,13 +213,19 @@
         //NSLog(@"加载更多==%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         
+    
+        self.tableView.tableFooterView.hidden=YES;
+        
+        
         if (!arr.count) {
             
-            [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            self.tableView.mj_footer.hidden=YES;
+            
+            self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
             
         }
+            
         
+       
         for (NSDictionary* dic in arr) {
             HomeListModel* model=[HomeListModel ModelWithDict:dic];
             /////////
@@ -260,6 +276,7 @@
     //NSLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"areaId"]);
     //self.homeListAreaId=notification.userInfo[@"areaId"];
     self.homeUrlStr=notification.userInfo[@"areaUrl"];
+    self.homeListAreaId = notification.userInfo[@"areaId"];
 }
 #pragma mark-首页导航条按钮
 - (void)navBtnAction
@@ -305,16 +322,16 @@
         //cell.likeCellBtn.delegate=self;
         return cell;
     }
-   
-    static NSString* str =@"cell";
-    UITableViewCell* cell= [tableView dequeueReusableCellWithIdentifier:str];
-    if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
-    }
-    cell.textLabel.text=@"城市为开通";
+
+        static NSString* str =@"sorrycell";
+        HomeListSorryCell* cell= [tableView dequeueReusableCellWithIdentifier:str];
+        if (!cell) {
+            cell=[[HomeListSorryCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
+        }
+       cell.userInteractionEnabled = NO;
     
+        return cell;
     
-    return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -364,7 +381,7 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"Offset=%f",scrollView.contentOffset.y);
+    //NSLog(@"Offset=%f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 0) {
         [self.navigationController setNavigationBarHidden:NO animated:NO];
     }else{

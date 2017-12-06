@@ -82,8 +82,16 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
       AreaListModel* model=self.arr[indexPath.row];
+    NSString* urlStr=@"";
+    if (!IsLoginState)
+    {
+       
+        urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1/personid/0/sequence/0",Main_Server,self.cityId,model.areaId];
+    }else
+    {
+        urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1/personid/%@/sequence/0",Main_Server,self.cityId,model.areaId,[XSaverTool objectForKey:UserIDKey]];
+    }
     
-    NSString* urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1/personid/3/sequence/0",Main_Server,self.cityId,model.areaId];
     
     ////////////Mobile/Index/index_area/data/%@/area/%@/page/1/
     
