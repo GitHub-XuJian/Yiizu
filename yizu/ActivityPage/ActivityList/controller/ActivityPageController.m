@@ -151,6 +151,13 @@
     web.activiId=actid;
     [self.navigationController pushViewController:web animated:YES];
 }
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    self.tableView.frame=CGRectMake(0, 0, kSCREEN_WIDTH, kSCREEN_HEIGHT-50);
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
