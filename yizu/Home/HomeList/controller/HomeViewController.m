@@ -370,9 +370,9 @@
 {
     NSLog(@"Offset=%f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 0) {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
     }else{
-        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
     }
     /**
      * 导航条颜色渐变
@@ -386,7 +386,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    self.navigationItem.title = @"依足";
+
     [self.navigationController.navigationBar
      setBackgroundImage:[EncapsulationMethod createImageWithColor:[UIColor colorWithRed:0.97f green:0.97f blue:0.96f alpha:(_offset / 200)>0.99?0.99:(_offset / 200)]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar
@@ -415,7 +416,6 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    self.navigationItem.title = @"依足";
     
 }
 
