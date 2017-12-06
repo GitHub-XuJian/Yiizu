@@ -23,6 +23,11 @@
  * 根据字符内容计算高度
  */
 + (CGFloat)calculateRowHeight:(NSString *)textStr andTexFont:(NSInteger )size andMaxWidth:(CGFloat)width;
+
+/**
+ * 颜色转换图片
+ */
++(UIImage*) createImageWithColor:(UIColor*) color;
 /**
  * Label首行缩进，行间距
  参数介绍

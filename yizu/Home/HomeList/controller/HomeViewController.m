@@ -23,7 +23,9 @@
 
 
 @interface HomeViewController ()<HomeCityBtnDelegate,LikeBtnViewDelegate,CLLocationManagerDelegate>
-
+{
+    CGFloat _offset;
+}
 @property(nonatomic, strong)NSMutableArray* listArr;
 //用于设置navbarbtn的标题
 @property(nonatomic, strong)UIButton* navBtn;
@@ -68,13 +70,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
-    
-   
-    
-    
-    //self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
-
     self.navigationController.navigationBar.clipsToBounds = 0.0;
    
     if (@available(iOS 11.0, *)) {
@@ -373,39 +368,30 @@
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"Offset=%f",scrollView.contentOffset.y);
-    
-    // 获取导航条的imageView
-    self.navigationController.navigationBar.subviews.firstObject.alpha = scrollView.contentOffset.y/200;
-   
-    if (scrollView.contentOffset.y > 0) {
-      
-        [self.navigationController setNavigationBarHidden:NO animated:NO];
-        
-      
+    NSLog(@"Offset=%f",scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y >= 0) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
     }else{
-      
-      
-        //[self.navigationController setNavigationBarHidden:YES animated:NO];
-       
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
+    /**
+     * 导航条颜色渐变
+     */;
+    _offset = scrollView.contentOffset.y;//38,137,247
+    [self.navigationController.navigationBar
+     setBackgroundImage:[EncapsulationMethod createImageWithColor:[UIColor colorWithRed:0.97f green:0.97f blue:0.96f alpha:(_offset / 200)>0.99?0.99:(_offset / 200)]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar
+     setShadowImage:[UIImage new]];
 }
 
-
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    self.navigationController.navigationBar.subviews.firstObject.alpha = 0;
-    //self.navigationController.navigationBar.alpha = 0;
-    self.navigationItem.title = @"依足";
-    
-}
-
-
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSLog(@"viewWillAppear");
+    
+    [self.navigationController.navigationBar
+     setBackgroundImage:[EncapsulationMethod createImageWithColor:[UIColor colorWithRed:0.97f green:0.97f blue:0.96f alpha:(_offset / 200)>0.99?0.99:(_offset / 200)]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar
+     setShadowImage:[UIImage new]];
+    
     //定位相关
     //定位服务管理对象初始化
     self.locationManager = [[CLLocationManager alloc] init];
@@ -419,6 +405,38 @@
     //开始定位
     [self.locationManager startUpdatingLocation];
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:nil];
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationItem.title = @"依足";
+    
+}
+
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    NSLog(@"viewWillAppear");
+//    //定位相关
+//    //定位服务管理对象初始化
+//    self.locationManager = [[CLLocationManager alloc] init];
+//    self.locationManager.delegate = self;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+//    self.locationManager.distanceFilter = 1000.0f;
+//
+//    [self.locationManager requestWhenInUseAuthorization];
+//    //[self.locationManager requestAlwaysAuthorization];
+//
+//    //开始定位
+//    [self.locationManager startUpdatingLocation];
+//}
 
 
 
