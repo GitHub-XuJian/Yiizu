@@ -9,9 +9,7 @@
 #import "CustomNavigationController.h"
 
 @interface CustomNavigationController ()
-{
-    CGFloat _navigationBarAlpha;
-}
+
 @end
 
 @implementation CustomNavigationController
@@ -45,11 +43,7 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     // 显示导航条
-    [self setNavigationBarHidden:NO animated:NO];
-
-//    _navigationBarAlpha = self.navigationBar.subviews.firstObject.alpha;
-//    self.navigationBar.subviews.firstObject.alpha = 1;
-
+    [self setNavigationBarHidden:NO animated:YES];
     if (self.viewControllers.count > 0) { // 如果现在push的不是栈底控制器(最先push进来的那个控制器)
         viewController.hidesBottomBarWhenPushed = YES;
         // 设置导航栏按钮
@@ -66,7 +60,6 @@
 }
 - (void)popView
 {
-//    self.navigationBar.subviews.firstObject.alpha = _navigationBarAlpha;
     [self popViewControllerAnimated:YES];
 }
 @end
