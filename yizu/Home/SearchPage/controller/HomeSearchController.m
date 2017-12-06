@@ -207,8 +207,8 @@
         self.currentSeachText = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
         //转UTF-8
         NSString *keyword  = [self.currentSeachText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        NSString* str=[NSString stringWithFormat:@"%@/Mobile/Index/index_name/name/%@/page/1",Main_Server,keyword];
-    
+        NSString* str=[NSString stringWithFormat:@"%@Mobile/Index/index_name/name/%@/personid/%@/page/1/",Main_Server,keyword,[XSaverTool objectForKey:UserIDKey]];
+    NSLog(@"搜索url==%@",str);
    
     //
     [SVProgressHUD show];
@@ -218,14 +218,16 @@
             for (NSDictionary* dic in arr) {
                 HomeListModel* model=[HomeListModel ModelWithDict:dic];
                 [_seachArr addObject:model];
+                //[self.tableView reloadData];
+                [SVProgressHUD dismiss];
             }
+            [self.tableView reloadData];
+
             BOOL hasResult = _seachArr.count > 0;
              NSLog(@"是否隐藏:%d",hasResult);
             self.noResultView.hidden = hasResult;
-            if (hasResult) {
-                [self.tableView reloadData];
-                [SVProgressHUD dismiss];
-            }
+            [SVProgressHUD dismiss];
+
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
     
             [SVProgressHUD dismiss];

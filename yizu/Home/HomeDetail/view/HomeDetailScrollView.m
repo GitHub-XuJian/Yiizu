@@ -30,7 +30,7 @@
     NSString* ima=@"";
     
     for (int i=0;i<Amodel.dada.count;i++) {
-        NSLog(@"个数==%lu",Amodel.dada.count);
+        //NSLog(@"个数==%lu",Amodel.dada.count);
         ima = [NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,Amodel.dada[i]];
         //NSLog(@"十图==%@",[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,Amodel.dada[i]]);
         

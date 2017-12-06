@@ -180,11 +180,7 @@
         //NSLog(@"默认Data:%@",responseObject);
        
         
-        //if ([responseObject[@"list"] isEqualToString:@"<null>"]) {
-            
-        
-        //}else
-        //{
+       
             NSArray* arr=responseObject[@"list"];
             for (NSDictionary* dic in arr) {
                 HomeListModel* model=[HomeListModel ModelWithDict:dic];
@@ -192,7 +188,6 @@
                 [_listArr addObject:model];
                 
             }
-        //}
 
         
         [self.tableView reloadData];
@@ -370,6 +365,7 @@
     
     NSLog(@"homeNewStr===%@",newStr);
     [self requestData:newStr];
+    self.currentPage=1;
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
