@@ -85,7 +85,7 @@
 - (void)nextBtnclick:(UIButton *)btn
 {
     [self.bankCardNoField resignFirstResponder];
-    NSLog(@"下一步 ===  卡号--%@  卡类型--%@",_backCardCode,[self returnBankName:_backCardCode]);
+    DLog(@"下一步 ===  卡号--%@  卡类型--%@",_backCardCode,[self returnBankName:_backCardCode]);
     /**
      * 检验银行卡号
      */
@@ -119,10 +119,10 @@
     }else{
         _backCardCode = [_backCardCode substringToIndex:_backCardCode.length-1];
     }
-    NSLog(@"%@",_backCardCode);
+    DLog(@"%@",_backCardCode);
 
     NSString *str123 = [self returnBankName:_backCardCode];
-    NSLog(@"%@",str123);
+    DLog(@"%@",str123);
     self.label.text = str123;
     NSString *text = [self.bankCardNoField text];
     
@@ -191,7 +191,7 @@
     return @"";
 }
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
-    NSLog(@"123131231");
+    DLog(@"123131231");
     _backCardCode = @"";
     return YES;
 }

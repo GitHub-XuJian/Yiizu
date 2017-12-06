@@ -76,14 +76,14 @@
 
 - (IBAction)navBtn:(id)sender
 {
-    NSLog(@"点击了导航按钮");
+    DLog(@"点击了导航按钮");
     if ([self.delegate respondsToSelector:@selector(HomeDetailFooterView:)]) {
         [self.delegate HomeDetailFooterView:self];
     }
 }
 - (IBAction)clikePhoneBtn:(id)sender
 {
-    NSLog(@"点击了电话号码btn");
+    DLog(@"点击了电话号码btn");
     
     [EncapsulationMethod callPhoneStr:self.phoneLab.text];
 }

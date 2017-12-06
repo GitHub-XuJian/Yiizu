@@ -45,7 +45,7 @@
 - (void)loadData
 {
     [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Bridge/BrigeSlide" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //NSLog(@"image====%@",responseObject);
+        //DLog(@"image====%@",responseObject);
         for (NSDictionary* dic in responseObject) {
             NSString* imaUrl=[NSString stringWithFormat:@"%@Public/img/img/%@",Main_ServerImage,dic[@"picnpath"]];
             [_loopIma addObject:imaUrl];
@@ -71,7 +71,7 @@
 - (void)loadCityData
 {
     [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Bridge/Brigetext/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //NSLog(@"city_id===%@",responseObject);
+        //DLog(@"city_id===%@",responseObject);
        
         for (NSDictionary* dic in responseObject) {
             

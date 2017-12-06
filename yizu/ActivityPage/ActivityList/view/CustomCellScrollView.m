@@ -79,7 +79,7 @@
    
 -(void)ImaViewActid:(NSString *)actid
 {
-    NSLog(@"actid%@",actid);
+    DLog(@"actid%@",actid);
     if ([self.ScrDelegate respondsToSelector:@selector(ImaaActid:)]) {
         [self.ScrDelegate ImaaActid:actid];
     }

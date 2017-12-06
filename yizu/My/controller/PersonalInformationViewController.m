@@ -93,14 +93,14 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:{
-            NSLog(@"更改头像");
+            DLog(@"更改头像");
             [[ZZYPhotoHelper shareHelper] showImageViewSelcteWithResultBlock:^(id data) {
                 UIImage *image = (UIImage *)data;
-                NSLog(@"%@",image);
+                DLog(@"%@",image);
                 
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Headpic/headpicApi",Main_Server];
                 NSMutableArray *imageDataArray = [[NSMutableArray alloc] init];
@@ -109,14 +109,14 @@
                 NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
                 
                 [XAFNetWork uploadImageWithOperations:dict withImageArray:imageDataArray withtargetWidth:image.size.width withUrlString:urlStr withImageName:@"headpic" withSuccessBlock:^(NSURLSessionDataTask *task, id responseObject) {
-                    NSLog(@"%@",responseObject);
+                    DLog(@"%@",responseObject);
                     jxt_showAlertTitle(responseObject[@"message"]);
                     if ([responseObject[@"result"] integerValue]) {
                         [XSaverTool setObject:responseObject[@"url"] forKey:UserIconImage];
                     }
                     [self.tableView reloadData];
                 } withFailurBlock:^(NSURLSessionDataTask *task, NSError *error) {
-                    NSLog(@"%@",error);
+                    DLog(@"%@",error);
                 } withUpLoadProgress:^(NSProgress *progress) {
                     
                 }];
@@ -124,7 +124,7 @@
             break;
         }
         case 2:{
-            NSLog(@"更改性别");
+            DLog(@"更改性别");
             NSArray * ar = @[@"男",@"女"];
             PWCustomSheet * sheet = [[PWCustomSheet alloc]initWithButtons:ar];
             sheet.delegate =self;
@@ -132,7 +132,7 @@
             break;
         }
         case 3:{
-            NSLog(@"实名认证");
+            DLog(@"实名认证");
             break;
         }
         default:
@@ -144,7 +144,7 @@
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"sex":[NSString stringWithFormat:@"%ld",button.tag+1]};
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifydata",Main_Server];
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]) {
             [XSaverTool setObject:[NSString stringWithFormat:@"%ld",button.tag+1] forKey:Sex];
             [self.tableView reloadData];

@@ -174,7 +174,7 @@
     NSDictionary *dict = @{@"tel":self.iphoneStr};
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Register/regyzm",Main_Server];
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         jxt_showToastMessage(responseObject[@"msg"], 1);
         NSInteger code = [responseObject[@"code"] integerValue];
         if (code == 1) {
@@ -208,9 +208,9 @@
             NSDate* date = [NSDate dateWithTimeIntervalSince1970:[[XSaverTool objectForKey:VerificationCodeTime] doubleValue]];
             NSDate * now = [NSDate date];
             NSTimeInterval timeBetween = [now timeIntervalSinceDate:date];
-            NSLog(@"%f",timeBetween);
+            DLog(@"%f",timeBetween);
             NSInteger sec = (NSInteger)timeBetween;
-            NSLog(@"%ld",(long)sec);
+            DLog(@"%ld",(long)sec);
             
             if (sec>300) {
                 jxt_showAlertTitle(@"验证码超时");
@@ -261,7 +261,7 @@
             NSDictionary *dict = @{@"tel":self.iphoneStr,@"password":[EncapsulationMethod md5:_newPassword]};
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Register/register",Main_Server];
             [XAFNetWork POST:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 jxt_showToastMessage(responseObject[@"msg"], 1);
                 if ([responseObject[@"code"] integerValue]) {
                     
@@ -271,7 +271,7 @@
                     
                 }
             } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"%@",error);
+                DLog(@"%@",error);
             }];
         }else{
             jxt_showToastMessage(@"两次密码不一致", 1);

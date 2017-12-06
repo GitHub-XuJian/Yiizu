@@ -54,7 +54,7 @@
 }
 - (void)btnClick:(UIButton *)btn
 {
-    NSLog(@"%@",btn.titleLabel.text);
+    DLog(@"%@",btn.titleLabel.text);
     _block(btn);
 }
 

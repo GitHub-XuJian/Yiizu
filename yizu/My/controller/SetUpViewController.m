@@ -47,10 +47,10 @@
 - (void)rightBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    NSLog(@"%@",self.dataDict);
+    DLog(@"%@",self.dataDict);
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifytruth",Main_Server];
     [XAFNetWork GET:urlStr params:_dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         jxt_showAlertTitle(responseObject[@"msg"]);
         if ([responseObject[@"code"] integerValue]) {
             [XSaverTool setObject:responseObject[@"identity"] forKey:Identity];
@@ -71,7 +71,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/truth",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         if ([responseObject[@"pername"] length] > 0) {
             self.rightBtn.hidden = YES;
         }else{
@@ -115,17 +115,17 @@
             //            [XSaverTool removeAllDatas];
             
             
-            NSLog(@"PhoneKey = %@",[XSaverTool objectForKey:PhoneKey]);
-            NSLog(@"UserIDKey = %@",[XSaverTool objectForKey:UserIDKey]);
-            NSLog(@"IsLogin = %@",[XSaverTool objectForKey:IsLogin]);
-            NSLog(@"UserIconImage = %@",[XSaverTool objectForKey:UserIconImage]);
-            NSLog(@"VerificationCode = %@",[XSaverTool objectForKey:VerificationCode]);
-            NSLog(@"VerificationCodeTime = %@",[XSaverTool objectForKey:VerificationCodeTime]);
-            NSLog(@"Statevip = %@",[XSaverTool objectForKey:Statevip]);
-            NSLog(@"Nickname = %@",[XSaverTool objectForKey:Nickname]);
-            NSLog(@"Personxq = %@",[XSaverTool objectForKey:Personxq]);
-            NSLog(@"Sex = %@",[XSaverTool objectForKey:Sex]);
-            NSLog(@"Identity = %@",[XSaverTool objectForKey:Identity]);
+            DLog(@"PhoneKey = %@",[XSaverTool objectForKey:PhoneKey]);
+            DLog(@"UserIDKey = %@",[XSaverTool objectForKey:UserIDKey]);
+            DLog(@"IsLogin = %@",[XSaverTool objectForKey:IsLogin]);
+            DLog(@"UserIconImage = %@",[XSaverTool objectForKey:UserIconImage]);
+            DLog(@"VerificationCode = %@",[XSaverTool objectForKey:VerificationCode]);
+            DLog(@"VerificationCodeTime = %@",[XSaverTool objectForKey:VerificationCodeTime]);
+            DLog(@"Statevip = %@",[XSaverTool objectForKey:Statevip]);
+            DLog(@"Nickname = %@",[XSaverTool objectForKey:Nickname]);
+            DLog(@"Personxq = %@",[XSaverTool objectForKey:Personxq]);
+            DLog(@"Sex = %@",[XSaverTool objectForKey:Sex]);
+            DLog(@"Identity = %@",[XSaverTool objectForKey:Identity]);
             
             [self.navigationController popToRootViewControllerAnimated:YES];
         }, @"取消", ^(NSInteger buttonIndex) {
@@ -242,7 +242,7 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([_dataArray[indexPath.section][indexPath.row] isEqualToString:@"手机"]) {
         //        if ([[XSaverTool objectForKey:PhoneKey] length] == 0) {

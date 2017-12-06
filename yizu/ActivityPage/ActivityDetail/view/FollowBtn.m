@@ -77,13 +77,13 @@ static NSString * const pressedImageName = @"ic_details_top_collection_prressed_
     
     
     NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Bridge/attention/activityid/%@/personid/%@/number/%@",Main_Server,self.activityid,[XSaverTool objectForKey:UserIDKey],isGuan];
-    NSLog(@"guanzhu==%@",newUrl);
+    DLog(@"guanzhu==%@",newUrl);
      
     
     newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -96,7 +96,7 @@ static NSString * const pressedImageName = @"ic_details_top_collection_prressed_
 //设置点赞图片
 - (void)setIsFollow:(BOOL)isFollow
 {
-    //NSLog(@"tupian====%d",isFollow);
+    //DLog(@"tupian====%d",isFollow);
     _isFollow = isFollow;
    
     NSString *imageName = self.isFollow ? pressedImageName : normalImageName;

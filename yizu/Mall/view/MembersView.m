@@ -112,7 +112,7 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

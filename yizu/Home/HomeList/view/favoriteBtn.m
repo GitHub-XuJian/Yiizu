@@ -44,13 +44,13 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
 - (void)like {
     
     if (!IsLoginState) {
-        NSLog(@"没登录");
+        DLog(@"没登录");
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"未登录" message:@"是否登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
         [alert show];
         return;
     }else{
     
-      NSLog(@"登录le");
+      DLog(@"登录le");
     //self.userInteractionEnabled = NO;
     
     self.issc = !self.issc;
@@ -80,10 +80,10 @@ static NSString * const sPressed = @"ic_details_top_collection_prressed_21x21_";
     
     NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_keep/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isCang,[XSaverTool objectForKey:UserIDKey]];
     
-        NSLog(@"登陆==%@id==%@",self.chambername,[XSaverTool objectForKey:UserIDKey]);
+        DLog(@"登陆==%@id==%@",self.chambername,[XSaverTool objectForKey:UserIDKey]);
     newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"shouchang==%@",responseObject);
+        DLog(@"shouchang==%@",responseObject);
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

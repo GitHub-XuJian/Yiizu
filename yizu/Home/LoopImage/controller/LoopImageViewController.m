@@ -62,7 +62,7 @@
 
     NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //NSLog(@"ima====%@",responseObject);
+        //DLog(@"ima====%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         
         [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -74,7 +74,7 @@
         [self initCycleScrollView];
        
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"出错了");
+                DLog(@"出错了");
         [SVProgressHUD dismiss];
 
         [SVProgressHUD showErrorWithStatus:@"出错了"];
@@ -99,7 +99,7 @@
     //http://www.xdfishing.cn/index.php/Mobile/Index/indexindustry/
     _cateArr=[[NSMutableArray alloc]init];
     [XAFNetWork GET:@"http://www.xdfishing.cn/index.php/Mobile/Index/indexindustry/" params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //NSLog(@"hangye====%@",responseObject);
+        //DLog(@"hangye====%@",responseObject);
         for (NSDictionary* dic in responseObject) {
             HomeCategoryModel* model=[HomeCategoryModel modelWithDict:dic];
             [_cateArr addObject:model];
@@ -108,7 +108,7 @@
         [self.collectionView reloadData];
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        NSLog(@"出错了");
+        DLog(@"出错了");
         [SVProgressHUD dismiss];
         
         [SVProgressHUD showErrorWithStatus:@"出错了"];
@@ -128,7 +128,7 @@
     
     CGFloat itemW = (kSCREEN_WIDTH -160-40)/5;
     CGFloat itemH = (self.collectionView.frame.size.height-20-40)/2;
-   // NSLog(@"%@",NSStringFromCGRect(self.view.frame));
+   // DLog(@"%@",NSStringFromCGRect(self.view.frame));
     
     flowLayout.itemSize=CGSizeMake(itemW, itemH);
     flowLayout.minimumLineSpacing=40;//竖间距
@@ -214,11 +214,11 @@
         if (self.areaid) {
             
             url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/%@/sequence/0/page/1/",Main_Server,self.cityID,self.areaid,[XSaverTool objectForKey:UserIDKey]];
-            NSLog(@"点击了区域按钮aaa\n%@",url);
+            DLog(@"点击了区域按钮aaa\n%@",url);
         }else{
             
             url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/1/",Main_Server,self.cityID,[XSaverTool objectForKey:UserIDKey]];
-            NSLog(@"没点区域按钮%@\n",url);
+            DLog(@"没点区域按钮%@\n",url);
         }
         
         NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
@@ -230,12 +230,12 @@
         
         if (self.areaid) {
             
-            NSLog(@"点击了区域按钮aaa");
+            DLog(@"点击了区域按钮aaa");
             url=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/personid/%@/sequence/1/page/1/",Main_Server,self.cityID,self.areaid,[XSaverTool objectForKey:UserIDKey]];
             
         }else{
             url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/1/page/1/",Main_Server,self.cityID,[XSaverTool objectForKey:UserIDKey]];
-            NSLog(@"没点区域按钮");
+            DLog(@"没点区域按钮");
         }
         
         NSDictionary* dict=@{@"areaId":@"1",@"areaUrl":url};
@@ -290,7 +290,7 @@
 {
     self.areaid=aid;
     self.areaName=title;
-    NSLog(@"地区==%@",title);
+    DLog(@"地区==%@",title);
     
     UIButton* btn= [self.btnView viewWithTag:102];
     [btn setTitle:title forState:UIControlStateNormal];

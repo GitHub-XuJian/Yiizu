@@ -277,11 +277,11 @@ static JXTAlertView *__jxt_commonHUD = nil;
 //重写setValue:forUndefinedKey:方法，处理不存在的key赋值，防止崩溃
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key
 {
-    NSLog(@"key: %@ 不存在", key);
+    DLog(@"key: %@ 不存在", key);
 }
 - (id)valueForUndefinedKey:(NSString *)key
 {
-    NSLog(@"value: %@ 不存在", key);
+    DLog(@"value: %@ 不存在", key);
     return nil;
 }
 

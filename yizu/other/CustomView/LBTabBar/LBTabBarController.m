@@ -128,7 +128,7 @@
 //点击中间按钮的代理方法
 - (void)tabBarPlusBtnClick:(LBTabBar *)tabBar
 {
-    NSLog(@"激活");
+    DLog(@"激活");
     if ([XSaverTool boolForKey:IsLogin]) {
         if ([[XSaverTool objectForKey:Identity] integerValue] == 1){
             ActivationCodeInputViewController *activationVC = [[ActivationCodeInputViewController alloc] init];

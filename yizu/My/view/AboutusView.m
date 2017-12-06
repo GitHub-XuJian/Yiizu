@@ -89,7 +89,7 @@
 
 //调用方法
 -(void)mTitlePress:(id)recognizer{
-    NSLog(@"View点击事件");
+    DLog(@"View点击事件");
     if ([recognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         UITapGestureRecognizer *tempLP = (UITapGestureRecognizer *)recognizer;
         [EncapsulationMethod callPhoneStr:_array2[tempLP.view.tag-ViewTag]];

@@ -107,19 +107,21 @@
         NSDictionary *dict = @{@"tel":self.phoneStr,@"password":[EncapsulationMethod md5:_newPassword]};
         NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/Rpass",Main_Server];
         [XAFNetWork POST:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             jxt_showToastMessage(responseObject[@"msg"], 1);
             if ([responseObject[@"code"] integerValue]) {
-                
+                [XSaverTool setObject:_newPassword forKey:Password];
+
                 if (self.navigationController) {
-                    [XSaverTool setObject:_newPassword forKey:Password];
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }else{
-                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [self dismissViewControllerAnimated:YES completion:^{
+                        _block();
+                    }];
                 }
             }
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error);
+            DLog(@"%@",error);
         }];
     }else{
         jxt_showToastMessage(@"两次密码不一致", 1);

@@ -40,7 +40,7 @@
         
         switch (buttonType) {
             case Login:{
-                NSLog(@"登录");
+                DLog(@"登录");
                 if (!_loginView.accountTextField.text.length) {
                     jxt_showAlertTitle(@"请输入手机号");
                     return ;
@@ -57,7 +57,7 @@
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/Login",Main_Server];
                 [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                     [SVProgressHUD dismiss];
-                    NSLog(@"%@",responseObject);
+                    DLog(@"%@",responseObject);
                     jxt_showToastMessage(responseObject[@"msg"], 1);
                     NSInteger code = [responseObject[@"code"] integerValue];
                     switch (code) {
@@ -116,24 +116,24 @@
                     
                     
                 } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                    NSLog(@"%@",error);
+                    DLog(@"%@",error);
                 }];
                 break;
             }
             case RegisterBtn:{
-                NSLog(@"注册");
+                DLog(@"注册");
                 registerViewController *registerVC = [[registerViewController alloc] init];
                 registerVC.phoneStr = _loginView.accountTextField.text;
                 [self presentViewController:registerVC animated:YES completion:nil];
                 break;
             }
             case Back:{
-                NSLog(@"返回");
+                DLog(@"返回");
                 [self dismissViewControllerAnimated:YES completion:nil];
                 break;
             }
             case ForgotPassword:{
-                NSLog(@"忘记密码");
+                DLog(@"忘记密码");
                 SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
                 validationVC.emailStr = _loginView.accountTextField.text;
                 validationVC.validationStr = @"忘记密码";
@@ -143,12 +143,12 @@
                 break;
             }
             case QQ:{
-                NSLog(@"QQ");
+                DLog(@"QQ");
                 [self QQLogin];
                 break;
             }
             case WeiXin:{
-                NSLog(@"微信");
+                DLog(@"微信");
                 [self wechatLogin];
                 break;
             }
@@ -163,26 +163,26 @@
 {
     [[UMSocialManager defaultManager] getUserInfoWithPlatform:UMSocialPlatformType_QQ currentViewController:nil completion:^(id result, NSError *error) {
         if (error) {
-            NSLog(@"%@",error);
+            DLog(@"%@",error);
 //            jxt_showAlertTitle(@"已取消授权");
 
         } else {
             UMSocialUserInfoResponse *resp = result;
             
             // 授权信息
-            NSLog(@"QQ uid: %@", resp.uid);
-            NSLog(@"QQ openid: %@", resp.openid);
-            NSLog(@"QQ unionid: %@", resp.unionId);
-            NSLog(@"QQ accessToken: %@", resp.accessToken);
-            NSLog(@"QQ expiration: %@", resp.expiration);
+            DLog(@"QQ uid: %@", resp.uid);
+            DLog(@"QQ openid: %@", resp.openid);
+            DLog(@"QQ unionid: %@", resp.unionId);
+            DLog(@"QQ accessToken: %@", resp.accessToken);
+            DLog(@"QQ expiration: %@", resp.expiration);
             
             // 用户信息
-            NSLog(@"QQ name: %@", resp.name);
-            NSLog(@"QQ iconurl: %@", resp.iconurl);
-            NSLog(@"QQ gender: %@", resp.unionGender);
+            DLog(@"QQ name: %@", resp.name);
+            DLog(@"QQ iconurl: %@", resp.iconurl);
+            DLog(@"QQ gender: %@", resp.unionGender);
             
             // 第三方平台SDK源数据
-            NSLog(@"QQ originalResponse: %@", resp.originalResponse);
+            DLog(@"QQ originalResponse: %@", resp.originalResponse);
             
             /**
              * 获取完数据登录自己平台
@@ -195,7 +195,7 @@
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/weixinreceive", Main_Server];
             [SVProgressHUD showWithStatus:@"正在登录"];
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 [SVProgressHUD dismiss];
                 
                 jxt_showToastTitle(responseObject[@"msg"], 1);
@@ -240,22 +240,22 @@
             UMSocialUserInfoResponse *resp = result;
             
             // 授权信息
-            NSLog(@"Wechat uid: %@", resp.uid);
-            NSLog(@"Wechat openid: %@", resp.openid);
-            NSLog(@"Wechat unionid: %@", resp.unionId);
-            NSLog(@"Wechat accessToken: %@", resp.accessToken);
-            NSLog(@"Wechat refreshToken: %@", resp.refreshToken);
-            NSLog(@"Wechat expiration: %@", resp.expiration);
+            DLog(@"Wechat uid: %@", resp.uid);
+            DLog(@"Wechat openid: %@", resp.openid);
+            DLog(@"Wechat unionid: %@", resp.unionId);
+            DLog(@"Wechat accessToken: %@", resp.accessToken);
+            DLog(@"Wechat refreshToken: %@", resp.refreshToken);
+            DLog(@"Wechat expiration: %@", resp.expiration);
             
             // 用户信息
-            NSLog(@"Wechat name: %@", resp.name);
-            NSLog(@"Wechat iconurl: %@", resp.iconurl);
-            NSLog(@"Wechat gender: %@", resp.unionGender);
+            DLog(@"Wechat name: %@", resp.name);
+            DLog(@"Wechat iconurl: %@", resp.iconurl);
+            DLog(@"Wechat gender: %@", resp.unionGender);
             
             [XSaverTool setObject:resp.openid forKey:WXPatient_Openid];
 
             // 第三方平台SDK源数据
-            NSLog(@"Wechat originalResponse: %@", resp.originalResponse);
+            DLog(@"Wechat originalResponse: %@", resp.originalResponse);
             
             /**
              * 获取完数据登录自己平台
@@ -268,7 +268,7 @@
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/weixinreceive", Main_Server];
             [SVProgressHUD showWithStatus:@"正在登录"];
             [XAFNetWork GET:urlStr params:dictParameter success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 [SVProgressHUD dismiss];
                 
                 jxt_showToastTitle(responseObject[@"msg"], 1);

@@ -122,7 +122,7 @@
     }
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifydata",Main_Server];
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]) {
             [XSaverTool setObject:textField.text forKey:keyStr];
         }

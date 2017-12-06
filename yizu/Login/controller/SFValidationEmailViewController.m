@@ -104,9 +104,9 @@
     NSDate* date = [NSDate dateWithTimeIntervalSince1970:[[XSaverTool objectForKey:VerificationCodeTime] doubleValue]];
     NSDate * now = [NSDate date];
     NSTimeInterval timeBetween = [now timeIntervalSinceDate:date];
-    NSLog(@"%f",timeBetween);
+    DLog(@"%f",timeBetween);
     NSInteger sec = (NSInteger)timeBetween;
-    NSLog(@"%ld",(long)sec);
+    DLog(@"%ld",(long)sec);
     
     if (sec>300) {
         jxt_showAlertTitle(@"验证码超时");
@@ -117,7 +117,7 @@
                     NSDictionary *dict = @{@"tel":self.emailText.text,@"personid":[XSaverTool objectForKey:UserIDKey]};
                     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifMobile",Main_Server];
                     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                        NSLog(@"%@",responseObject);
+                        DLog(@"%@",responseObject);
                         jxt_showToastMessage(responseObject[@"msg"], 1);
                         NSInteger code = [responseObject[@"code"] integerValue];
                         if (code == 1) {
@@ -133,7 +133,7 @@
                     NSDictionary *dict = @{@"tel":self.emailText.text,@"sunshine":[UUID getUUID]};
                     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/yanzheng",Main_Server];
                     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                        NSLog(@"%@",responseObject);
+                        DLog(@"%@",responseObject);
                         jxt_showToastMessage(responseObject[@"msg"], 1);
                         NSInteger code = [responseObject[@"code"] integerValue];
                         if (code == 1) {
@@ -151,6 +151,9 @@
             }else{
                 OldAndNewPassWordViewController *onpVC = [[OldAndNewPassWordViewController alloc] init];
                 onpVC.phoneStr = self.emailText.text;
+                onpVC.block = ^{
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                };
                 [self presentViewController:onpVC animated:YES completion:nil];
             }
            
@@ -176,7 +179,7 @@
         
         NSString *urlStr = [NSString stringWithFormat:@"%@%@",Main_Server,yzmStr];
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             jxt_showToastMessage(responseObject[@"msg"], 1);
             NSInteger code = [responseObject[@"code"] integerValue];
             if (code == 1) {

@@ -69,7 +69,7 @@
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
        
         for (NSDictionary* dic in responseObject) {
-            //NSLog(@"dataListLoop:%@",responseObject);
+            //DLog(@"dataListLoop:%@",responseObject);
             ActivityLsitModel * model=[ActivityLsitModel modelWithDict:dic];
             [_tabSource addObject:model];
         }
@@ -136,11 +136,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"点击了活动列表:%ld",(long)indexPath.row);
+    DLog(@"点击了活动列表:%ld",(long)indexPath.row);
     
     ActivityLsitModel* model=_tabSource[indexPath.row];
     //model.activityid
-    NSLog(@"活动%@",model.activityid);
+    DLog(@"活动%@",model.activityid);
     ActivityWebController* web=[[ActivityWebController alloc]init];
     
     web.activiId=model.activityid;
@@ -153,7 +153,7 @@
 {
     ActivityWebController* web=[[ActivityWebController alloc]init];
     //ActivityLsitModel* model=_tabSource[HeaderView.tag];
-    NSLog(@"活动小图id=%@",actid);
+    DLog(@"活动小图id=%@",actid);
     web.activiId=actid;
     [self.navigationController pushViewController:web animated:YES];
 }

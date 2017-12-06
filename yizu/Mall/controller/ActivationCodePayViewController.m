@@ -42,7 +42,7 @@
     self.navigationItem.rightBarButtonItem = releaseButtonItem;
 }
 - (void)payClickedOKbtn {
-    NSLog(@"payClickedOKbtn");
+    DLog(@"payClickedOKbtn");
     if (_selectorPatnArray.count) {
         /**
          * 总钱数
@@ -55,12 +55,12 @@
             NSInteger money = [dict[@"payzong"] integerValue] * 100;
             allMoney += money;
         }
-        NSLog(@"%ld",allMoney);
+        DLog(@"%ld",allMoney);
         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"codePrice":[NSString stringWithFormat:@"%ld",allMoney],@"memberPrice":[_moneyDict objectForKey:@"money"],@"tian":[_moneyDict objectForKey:@"tian"],@"code":allcodeIdarray};
         NSString *jsonStr = [EncapsulationMethod dictToJsonData:dict];
         NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Member/memberCodeSSPP/data/%@",Main_Server,jsonStr] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
         [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             jxt_showAlertTitle(responseObject[@"message"]);
             if ([responseObject[@"result"] integerValue] == 1) {
                 NSDictionary *dictData = responseObject[@"data"];

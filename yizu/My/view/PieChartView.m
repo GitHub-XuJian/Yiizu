@@ -36,8 +36,8 @@
 - (void)reloadWithDict:(NSDictionary *)dict;
 {
     _pieChartStr = [NSString stringWithFormat:@"未提现：%@\n已提现：%@",dict[@"num"],dict[@"ennum"]];
-    _pieChartView.subTitleStr = [NSString stringWithFormat:@"平均持有：%@",dict[@"codenumstate"]];
-    _pieChartView.subTitleStr2 = [NSString stringWithFormat:@"平均等待：%@",dict[@"personnumstate"]];
+    _pieChartView.subTitleStr = [NSString stringWithFormat:@"平均持有：%@张",dict[@"codenumstate"]];
+    _pieChartView.subTitleStr2 = [NSString stringWithFormat:@"平均等待：%@天",dict[@"personnumstate"]];
     _number = [dict[@"ennum"] intValue] + [dict[@"num"] intValue];
     [self.pieChartArray addObject:[NSNumber numberWithInt:[dict[@"ennum"] intValue]]];
     [_pieChartView reloadData];

@@ -148,7 +148,7 @@
     UIBezierPath *lPath = [UIBezierPath bezierPath];
     UIBezierPath *path = [UIBezierPath bezierPath];
     
-    NSLog(@"value:%f-----maxvalue:%d",[valueArray[0] floatValue],_maxValue);
+    DLog(@"value:%f-----maxvalue:%d",[valueArray[0] floatValue],_maxValue);
     
     [path moveToPoint:CGPointMake(_x, _lineHeight - _lineHeight * ([valueArray[0] floatValue] / _maxValue)+Figure_Down)];
     [lPath moveToPoint:CGPointMake(_x, _lineHeight - _lineHeight * ([valueArray[0] floatValue] / _maxValue)+Figure_Down)];

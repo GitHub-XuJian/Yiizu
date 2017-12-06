@@ -19,7 +19,7 @@
     self.view.backgroundColor =kMAIN_BACKGROUND_COLOR;
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createUIView];
-    NSLog(@"%@",self.detailsDict);
+    DLog(@"%@",self.detailsDict);
 }
 - (void)createUIView
 {

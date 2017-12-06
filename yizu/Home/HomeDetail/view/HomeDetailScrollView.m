@@ -30,9 +30,9 @@
     NSString* ima=@"";
     
     for (int i=0;i<Amodel.dada.count;i++) {
-        //NSLog(@"个数==%lu",Amodel.dada.count);
+        //DLog(@"个数==%lu",Amodel.dada.count);
         ima = [NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,Amodel.dada[i]];
-        //NSLog(@"十图==%@",[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,Amodel.dada[i]]);
+        //DLog(@"十图==%@",[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,Amodel.dada[i]]);
         
                 self.homeImaView=[[HomeDetailImaView alloc]initWithFrame: CGRectMake(10+i*(w+10), 0, w, self.frame.size.height)];
                 self.homeImaView.layer.cornerRadius = 10;
@@ -47,13 +47,13 @@
 
 - (void)ImaViewima:(HomeDetailImaView *)imaView
 {
-    NSLog(@"详情代理");
+    DLog(@"详情代理");
     if ([self.homeDelegate respondsToSelector:@selector(HomeDetail:)]) {
         [self.homeDelegate HomeDetail:imaView];
-        NSLog(@"响应");
+        DLog(@"响应");
     }else
     {
-        NSLog(@"响应");
+        DLog(@"响应");
     }
 }
 

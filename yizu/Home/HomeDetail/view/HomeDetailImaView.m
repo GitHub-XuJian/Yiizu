@@ -30,15 +30,15 @@
 
 - (void)imaViewClike
 {
-     NSLog(@"点击事件");
+     DLog(@"点击事件");
     
 
     if ([self.delegate respondsToSelector:@selector(ImaViewima:)]) {
-        NSLog(@"响应");
+        DLog(@"响应");
         [self.delegate ImaViewima:self];
     }else
     {
-        NSLog(@"没响应");
+        DLog(@"没响应");
     }
     
         

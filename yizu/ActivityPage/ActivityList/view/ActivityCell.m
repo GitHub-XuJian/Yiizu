@@ -25,7 +25,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    //NSLog(@"%@\n%@",NSStringFromCGRect(self.customScroll.frame),NSStringFromCGRect(self.bigIma.frame));
+    //DLog(@"%@\n%@",NSStringFromCGRect(self.customScroll.frame),NSStringFromCGRect(self.bigIma.frame));
     // Initialization code
     
 //    self.collectionView.delegate=self;

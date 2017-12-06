@@ -37,7 +37,7 @@
 {
     NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"会员",@"交易", nil];
     self.macView = [[MembershipActivationCodeView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 50) andTitleArray:titleArray andClassBlock:^(UIButton *classBtn) {
-        NSLog(@"%@",classBtn.titleLabel.text);
+        DLog(@"%@",classBtn.titleLabel.text);
         if ([titleArray[classBtn.tag] isEqualToString:@"会员"]) {
             if (self.mView) {
                 [self.mView removeFromSuperview];
@@ -61,19 +61,19 @@
 }
 - (void)WeiXinPayNotificationAction:(NSNotification *)notification{
     
-    NSLog(@"%@",notification.object);
+    DLog(@"%@",notification.object);
     BaseResp*resp =(BaseResp*)notification.object;
     PayResp*response=(PayResp*)resp;
-    NSLog(@"%@",response.returnKey);
+    DLog(@"%@",response.returnKey);
     switch(response.errCode){
         case WXSuccess:{
             //服务器端查询支付通知或查询API返回的结果再提示成功
-            NSLog(@"支付成功");
+            DLog(@"支付成功");
             
             NSString *urlStr =[NSString stringWithFormat:@"%@weixin/order.php",Main_ServerImage];
             NSDictionary *dict = @{@"out_trade_no":[XSaverTool objectForKey:WXOut_trade_no]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 if ([responseObject[@"result_code"] isEqualToString:@"SUCCESS"]){
                     if ([responseObject[@"trade_state"] isEqualToString:@"SUCCESS"]) {
                         
@@ -83,7 +83,7 @@
                         NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Member/payMember/data/%@",Main_Server,[EncapsulationMethod dictToJsonData:dict]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                         
                         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                            NSLog(@"%@",responseObject);
+                            DLog(@"%@",responseObject);
                             jxt_showAlertTitle(responseObject[@"message"]);
                             if ([responseObject[@"result"] integerValue]) {
                                 NSDictionary *dataDict = responseObject[@"data"];
@@ -103,19 +103,19 @@
             break;
         }
         default:
-            NSLog(@"支付失败，retcode=%d",resp.errCode);
+            DLog(@"支付失败，retcode=%d",resp.errCode);
             
             break;
     }
     
-    NSLog(@"---接收到通知---");
+    DLog(@"---接收到通知---");
     [[NSNotificationCenter defaultCenter] removeObserver:@"WeiXinPayNotification" name:nil object:self];
 }
 - (void)ZhiFuBaoPayNotificationAction:(NSNotification *)notification{
-    NSLog(@"%@",notification.object);
+    DLog(@"%@",notification.object);
     NSString *resuleStr = notification.object[@"result"];
     id jsonDict = [EncapsulationMethod toArrayOrNSDictionary:resuleStr];
-    NSLog(@"%@",jsonDict);
+    DLog(@"%@",jsonDict);
     NSDictionary *alipayDict = jsonDict[@"alipay_trade_app_pay_response"];
     
     NSDictionary *dict = @{@"trade_no":alipayDict[@"trade_no"],@"out_trade_no":alipayDict[@"out_trade_no"]};
@@ -123,7 +123,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@zhifubao/order.php",Main_ServerImage];
     
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         
         if ([responseObject[@"result"] isEqualToString:@"SUCCESS"]){
             
@@ -132,7 +132,7 @@
             NSString *urlStr = [[NSString stringWithFormat:@"%@Mobile/Member/payMember/data/%@",Main_Server,[EncapsulationMethod dictToJsonData:dict]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
             
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 jxt_showAlertTitle(responseObject[@"message"]);
                 if ([responseObject[@"result"] integerValue]) {
                     NSDictionary *dataDict = responseObject[@"data"];
@@ -148,7 +148,7 @@
         
     }];
     
-    NSLog(@"---接收到通知---");
+    DLog(@"---接收到通知---");
     [[NSNotificationCenter defaultCenter] removeObserver:@"ZhiFuBaoPayNotification" name:nil object:self];
     
 }

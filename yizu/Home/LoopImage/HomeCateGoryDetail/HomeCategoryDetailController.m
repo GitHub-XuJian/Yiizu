@@ -60,7 +60,7 @@
         newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/1",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId];
     }
     
-    NSLog(@"行业类别列表%@",newUrl);
+    DLog(@"行业类别列表%@",newUrl);
     [self loadData:newUrl];
     
     [self setupRefresh];
@@ -73,8 +73,8 @@
      [SVProgressHUD showWithStatus:@"数据加载中..."];
     //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //NSLog(@"url===%@",[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId]);
-        //NSLog(@"catehome===%@",responseObject);
+        //DLog(@"url===%@",[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId]);
+        //DLog(@"catehome===%@",responseObject);
         //和首页数据类型一样
         NSArray* arr=responseObject[@"list"];
        
@@ -84,7 +84,7 @@
             
                         [_tabScroce addObject:model];
         }
-        // NSLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
+        // DLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
         [self.tableView.mj_header endRefreshing];
@@ -106,7 +106,7 @@
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/1",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId];
         }
         
-        NSLog(@"行业类别列表%@",newUrl);
+        DLog(@"行业类别列表%@",newUrl);
         [self loadData:newUrl];
         
     }];
@@ -126,7 +126,7 @@
         }
         
         [self requestMoreData:newUrl];
-        NSLog(@"上啦回调%@",newUrl);
+        DLog(@"上啦回调%@",newUrl);
         
     }];
     self.tableView.mj_footer = footer;
@@ -140,7 +140,7 @@
     
     
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        //NSLog(@"加载更多==%@",responseObject);
+        //DLog(@"加载更多==%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         self.tableView.tableFooterView.hidden=YES;
         
@@ -161,7 +161,7 @@
             
             [_tabScroce addObject:model];
         }
-        // NSLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
+        // DLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
         [self.tableView.mj_header endRefreshing];
@@ -243,7 +243,7 @@
         [self.navigationController pushViewController:dVC animated:YES];
     }else
     {
-        NSLog(@"点击了为开通");
+        DLog(@"点击了为开通");
         [self.navigationController popViewControllerAnimated:YES];
     }
     

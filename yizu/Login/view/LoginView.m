@@ -122,7 +122,7 @@
     _block = block;
 }
 - (BOOL)textFieldShouldClear:(UITextField *)textField{
-    NSLog(@"123131231");
+    DLog(@"123131231");
     if (textField == self.accountTextField) {
         self.accountTextField.text = @"";
     }

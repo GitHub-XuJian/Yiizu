@@ -168,7 +168,7 @@
 - (void)addBtnClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    NSLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
+    DLog(@"%@ 验证码：%@。 激活码：%@",btn.titleLabel.text,_validationStr,_activationStr);
     if (_activationStr.length>0 && _validationStr.length>0) {
         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"statevip":[XSaverTool objectForKey:Statevip],@"nownum":[NSString stringWithFormat:@"%ld",(long)_textFieldTagAdd],@"yzm": _validationStr,@"jhm":_activationStr};
         NSString *jsonDictStr = [EncapsulationMethod dictToJsonData:dict];
@@ -237,7 +237,7 @@
             return;
         }
     }
-    NSLog(@"%@ %@ %@",btn.titleLabel.text,self.dataDict,_codeArray);
+    DLog(@"%@ %@ %@",btn.titleLabel.text,self.dataDict,_codeArray);
     if (_validationStr.length && _activationStr.length) {
         NSDictionary *dict = @{@"yzm": _validationStr,@"jhm":_activationStr};
         NSDictionary *arrayDict = [_codeArray lastObject];
@@ -268,7 +268,7 @@
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"结束编辑");
+    DLog(@"结束编辑");
     switch (textField.tag) {
         case 0+TextFieldTag:{
             [self.dataDict setObject:textField.text forKey:@"pername"];

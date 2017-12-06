@@ -60,10 +60,10 @@
     _model=model;
     
     self.likeCellBtn.likeCount=model.upvote.integerValue;
-    //NSLog(@"开始点赞%ld",(long)model.upvote.integerValue);
+    //DLog(@"开始点赞%ld",(long)model.upvote.integerValue);
     //self.likeCellBtn.islike=model.status;
 //    if ([model.status isEqualToString:@"<null>"]) {
-//        NSLog(@"开始状态null");
+//        DLog(@"开始状态null");
 //        self.likeCellBtn.islike=NO;
 //    }else
 //    {

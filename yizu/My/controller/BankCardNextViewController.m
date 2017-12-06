@@ -51,7 +51,7 @@
     [SVProgressHUD showWithStatus:@"正在加载..."];
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         _dict = responseObject;
         if (responseObject[@"pername"]) {
             [_bankCardDict setObject:responseObject[@"pername"] forKey:TextFieldName];
@@ -119,12 +119,12 @@
 {
     switch (textField.tag) {
         case TextFieldTag+2:{
-            NSLog(@"姓名");
+            DLog(@"姓名");
             [_bankCardDict setObject:textField.text forKey:TextFieldName];
             break;
         }
         case TextFieldTag+4:{
-            NSLog(@"证件号");
+            DLog(@"证件号");
             BOOL isIdCard = [EncapsulationMethod isIdCardCard:textField.text];
             if (isIdCard) {
                 [_bankCardDict setObject:textField.text forKey:TextFieldId];
@@ -135,7 +135,7 @@
             break;
         }
         case TextFieldTag+5:{
-            NSLog(@"手机号");
+            DLog(@"手机号");
             [_bankCardDict setObject:textField.text forKey:TextFieldTel];
 
             break;
@@ -167,7 +167,7 @@
     [SVProgressHUD showWithStatus:@"正在加载..."];
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         [SVProgressHUD dismiss];
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         jxt_showAlertTitle(responseObject[@"message"]);
         if ([responseObject[@"result"] integerValue]) {
             [XSaverTool setObject:_bankCardDict[TextFieldTel] forKey:PhoneKey];

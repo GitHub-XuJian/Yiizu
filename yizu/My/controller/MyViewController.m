@@ -49,7 +49,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self createDataArray];
     [self createTableView];
-    NSLog(@"%f %f",kSCREEN_WIDTH,kSCREEN_HEIGHT);
+    DLog(@"%f %f",kSCREEN_WIDTH,kSCREEN_HEIGHT);
 }
 - (void)standInsideLetterNumber
 {
@@ -57,7 +57,7 @@
         NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageCode",Main_Server];
         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             [self.headerView standInsideLetter:[responseObject[@"nums"] integerValue]];           
             //设置推送消息个数
             [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[responseObject[@"nums"] integerValue]];
@@ -114,7 +114,7 @@
         }
         
     }else if (button.tag == 2222223) {
-        NSLog(@"站内信");
+        DLog(@"站内信");
         if ([XSaverTool boolForKey:IsLogin]) {
             StandInsideLetterViewController *standInsideLetterVC = [[StandInsideLetterViewController alloc] init];
             standInsideLetterVC.title = @"系统消息";
@@ -208,7 +208,7 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     UIViewController *viewController;
     switch (indexPath.section) {
