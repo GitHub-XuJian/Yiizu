@@ -109,7 +109,6 @@
     [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     [self.view addSubview:self.tableView];
-    
 }
 //设置行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -166,6 +165,25 @@
             NSLog(@"分享");
             _shareDict = cellDict;
             [self shareClick];
+        }else if ([btn.titleLabel.text isEqualToString:@"提现"]){
+            NSLog(@"提现");
+            jxt_showAlertTwoButton(@"提示", @"是否提现", @"确定", ^(NSInteger buttonIndex) {
+                NSDictionary *dict = @{@"codeid":cellDict[@"codeid"]};
+                NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Code/exchange",Main_Server];
+                [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+                    jxt_showAlertTitle(responseObject[@"message"]);
+                    if ([responseObject[@"result"] integerValue]) {
+                        /**
+                         * 提现成功刷新界面
+                         */
+                        [self createDataArray:@"activate"];
+                    }
+                } fail:^(NSURLSessionDataTask *task, NSError *error) {
+                    jxt_showAlertTitle(@"请求失败");
+                }];
+            }, @"取消", ^(NSInteger buttonIndex) {
+                
+            });
         }
     };
     return cell;

@@ -132,6 +132,9 @@
     if ([XSaverTool boolForKey:IsLogin]) {
         if ([[XSaverTool objectForKey:Identity] integerValue] == 1){
             ActivationCodeInputViewController *activationVC = [[ActivationCodeInputViewController alloc] init];
+            activationVC.block = ^{
+                self.selectedIndex = 3;
+            };
             [self presentViewController:activationVC animated:YES completion:nil];
         }else{
             jxt_showAlertTwoButton(@"提示", @"请补全信息", @"确定", ^(NSInteger buttonIndex) {

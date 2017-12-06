@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^ActivationCodeInputViewControllerBlock)();
 
 @interface ActivationCodeInputViewController : UIViewController
 
+@property (nonatomic, strong) ActivationCodeInputViewControllerBlock block;
 @end
