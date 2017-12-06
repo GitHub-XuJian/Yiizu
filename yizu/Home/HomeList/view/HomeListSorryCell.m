@@ -17,20 +17,13 @@
 
 @implementation HomeListSorryCell
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    
-    if (self = [super initWithFrame:frame]) {
-        
-        if (self) {
-            
-            self.imaView=[[UIImageView alloc]init];
-            
-            self.imaView.image=[UIImage imageNamed:@"sorry"];
-            
-            [self.contentView addSubview:self.imaView];
-        }
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.sorryIma=[[UIImageView alloc]init];
+        self.sorryIma.image=[UIImage imageNamed:@"sorry"];
+        [self.contentView addSubview:self.sorryIma];
     }
-    
     return self;
 }
 
@@ -38,7 +31,9 @@
     
     [super layoutSubviews];
     
-    self.imaView.frame=self.bounds;
+    CGFloat x=(kSCREEN_WIDTH-200)*0.5;
+    
+    self.sorryIma.frame=CGRectMake(x, 0, 200, 200);
 }
 
 

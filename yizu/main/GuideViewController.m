@@ -111,6 +111,7 @@ static NSInteger const MaxItemCount = 4;
     if (!_openBtn) {
         UIButton *open = [UIButton buttonWithType:UIButtonTypeCustom];
         //open.backgroundColor=[UIColor cyanColor];
+        [open setBackgroundImage:[UIImage imageNamed:@"kaiqi"] forState:UIControlStateNormal];
         [self.scrollView addSubview:open];
         open.backgroundColor = [UIColor clearColor];
         [open addTarget:self action:@selector(open) forControlEvents:UIControlEventTouchUpInside];

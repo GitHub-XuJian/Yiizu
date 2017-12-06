@@ -10,6 +10,6 @@
 
 @interface HomeListSorryCell : UITableViewCell
 
-@property (nonatomic, strong) UIImageView* imaView;
+@property (nonatomic, strong) UIImageView* sorryIma;
 
 @end
