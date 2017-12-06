@@ -2771,7 +2771,7 @@
 					"-all_load",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jinbaibei.yizu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2809,7 +2809,7 @@
 					"-all_load",
 					"-fobjc-arc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = jinbaibei.yizu;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
