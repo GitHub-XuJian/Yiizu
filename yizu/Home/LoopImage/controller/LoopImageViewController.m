@@ -300,6 +300,11 @@
     UIButton* btn= [self.btnView viewWithTag:102];
     [btn setTitle:title forState:UIControlStateNormal];
     
+    //通知
+    NSDictionary* dict=@{@"homePage":@"1"};
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"pages" object:nil userInfo:dict];
+    
+    
 }
 /*
 #pragma mark - Navigation

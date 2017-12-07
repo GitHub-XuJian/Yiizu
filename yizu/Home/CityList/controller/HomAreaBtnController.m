@@ -12,12 +12,17 @@
 
 @property(nonatomic,strong)NSMutableArray* arr;
 
+@property(nonatomic,assign)int areaPage;
+
 @end
 
 @implementation HomAreaBtnController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.areaPage=1;
+    
     self.navigationItem.title=@"选择区域";
     UIButton* btn=[UIButton buttonWithType:UIButtonTypeSystem];
     [btn setTitle:@"取消" forState:UIControlStateNormal];
@@ -87,10 +92,10 @@
     if (!IsLoginState)
     {
        
-        urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1/personid/0/sequence/0",Main_Server,self.cityId,model.areaId];
+        urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.cityId,model.areaId,self.areaPage];
     }else
     {
-        urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/1/personid/%@/sequence/0",Main_Server,self.cityId,model.areaId,[XSaverTool objectForKey:UserIDKey]];
+        urlStr=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/0",Main_Server,self.cityId,model.areaId,self.areaPage,[XSaverTool objectForKey:UserIDKey]];
     }
     
     
@@ -102,7 +107,7 @@
    
     //DLog(@"选择区域后的URL:%@",urlStr);
     
-    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId,@"areaUrl":urlStr};
+    NSDictionary* dict=@{@"name":model.name,@"areaId":model.areaId,@"areaUrl":urlStr,@"aCity":self.cityId};
     DLog(@"选择区域后:%@",model.name);
     [[NSNotificationCenter defaultCenter]postNotificationName:@"AreaId" object:nil userInfo:dict];
     [self dismissViewControllerAnimated:YES completion:nil];

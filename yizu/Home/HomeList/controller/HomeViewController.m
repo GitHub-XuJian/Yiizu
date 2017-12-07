@@ -47,6 +47,8 @@
 
 @property(nonatomic, strong) CLLocationManager *locationManager;
 
+@property (nonatomic, strong) NSString* paixu ;
+
 @end
 
 @implementation HomeViewController
@@ -57,6 +59,8 @@
     DLog(@"点击区域按钮后区域商家接口:%@",homeUrlStr);
     //http://47.104.18.18/index.php/Mobile/Index/index_area/data/73/area/843/page/1/personid/3/sequence/
     [self requestData:homeUrlStr];
+    
+   
 }
 - (void)setCityURLstr:(NSString *)CityURLstr
 {
@@ -95,7 +99,7 @@
     //
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(saixuanId:) name:@"saixuan" object:nil];
     
-
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pages:) name:@"pages" object:nil];
     
     
     self.currentPage=1;
@@ -152,16 +156,36 @@
         if (!IsLoginState)
         {
             if (self.homeListAreaId) {
-                newUrl=self.homeUrlStr;
+                if (self.paixu) {
+                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
+                    DLog(@"游客点击了区域按钮:%@",newUrl);
+                }else
+                {
+                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
+                }
+                
+               
               
             }else{
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
             }
         }else
         {
+            if (self.homeListAreaId) {
+                if (self.paixu) {
+                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage,[XSaverTool objectForKey:UserIDKey]];
+                    DLog(@"游客点击了区域按钮:%@",newUrl);
+                }else
+                {
+                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage,[XSaverTool objectForKey:UserIDKey]];
+                }
+                
+                
+                
+            }else{
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
         }
-
+        }
         [self requestMoreData:newUrl];
         DLog(@"上啦回调%@",newUrl);
 
@@ -361,15 +385,15 @@
 
 - (void)ClickLikeBtn:(BOOL)start
 {
-    DLog(@"5555555=%d",start);
+    
     self.isLikeStart=start;
     
 }
 - (void)saixuanId:(NSNotification *)notification
 {
     NSString* newStr=notification.userInfo[@"areaUrl"];
-    
-    DLog(@"homeNewStr===%@",newStr);
+    self.paixu=notification.userInfo[@"areaId"];
+    DLog(@"homeNewStr===%@",self.paixu);
     [self requestData:newStr];
     self.currentPage=1;
 }
@@ -517,6 +541,10 @@
     
 }
 
+- (void)pages:(NSNotification *)notification
+{
+    self.currentPage=1;
+}
 //- (void)viewDidLayoutSubviews
 //{
 //    [super viewDidLayoutSubviews];
