@@ -186,11 +186,12 @@ static NSString * const cityUrl = @"%@Mobile/Index/index_Chamber/data/%@personid
     //@"%@Mobile/Index/index_Chamber/data/%@personid/3/sequence/0/page/1/"
     NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,smodel.cityId];
     
-    NSLog(@"点击行按钮=%@%@",model.name,url);
+    NSLog(@"点击行按钮=%@%@%@",model.name,url,smodel.name);
 
     //代理回传城市title。。。
     if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:cityId:)]) {
         [self.delegate HomeCityBtnTitle:smodel.name url:url cityId:smodel.cityId];
+      
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];

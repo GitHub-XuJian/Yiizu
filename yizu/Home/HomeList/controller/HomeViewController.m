@@ -70,6 +70,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _listArr=[[NSMutableArray alloc]init];
     self.navigationController.navigationBar.clipsToBounds = 0.0;
    
     if (@available(iOS 11.0, *)) {
@@ -119,7 +120,7 @@
 
     [self setupRefresh];
    
-    NSLog(@"%@",NSStringFromCGRect(self.tableView.tableHeaderView.frame));
+ NSLog(@"%@",NSStringFromCGRect(self.tableView.tableHeaderView.frame));
 }
 //【下拉刷新】【上拉加载】
 -(void)setupRefresh{
@@ -140,7 +141,6 @@
       
         NSLog(@"下啦刷新回调:%@",newUrl);
         [self requestData:newUrl];
-        //[self loadData];
        
     }];
     
@@ -165,8 +165,7 @@
 
         [self requestMoreData:newUrl];
         NSLog(@"上啦回调%@",newUrl);
-//http://www.xdfishing.cn/index.php/Mobile/Index/index_Chamber/data/73/personid/0/sequence/0/page/2
-//http://www.xdfishing.cn/index.php/Mobile/Index/index_area/data/73/area/851/page/1/personid/3/sequence/0
+
     }];
     self.tableView.mj_footer = footer;
     /////////////////////////////////
@@ -175,7 +174,8 @@
 
 - (void)requestData:(NSString*)url
 {
-    _listArr=[[NSMutableArray alloc]init];
+    [_listArr removeAllObjects];
+    NSLog(@"行业列表====%@",url);
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         //NSLog(@"默认Data:%@",responseObject);
@@ -184,8 +184,6 @@
             NSLog(@"没有数据");
            
         }
-        
-       
         
             for (NSDictionary* dic in arr) {
                 HomeListModel* model=[HomeListModel ModelWithDict:dic];
@@ -216,12 +214,9 @@
     
         self.tableView.tableFooterView.hidden=YES;
         
-        
         if (!arr.count) {
-            
-            
             self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
-            
+            NSLog(@"没有更多数据了");
         }
             
         
@@ -296,7 +291,7 @@
     self.homeListCityId=cid;
     self.CityURLstr=url;
         NSDictionary *dict = @{@"name":title, @"cityId":cid};
-    
+    NSLog(@"传过来的=%@",cid);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"nameId" object:nil userInfo:dict];
 }
 - (void)didReceiveMemoryWarning {

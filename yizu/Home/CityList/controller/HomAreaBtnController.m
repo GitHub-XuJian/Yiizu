@@ -28,6 +28,7 @@
     
 
     NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_district/data/%@",Main_Server,self.cityId];
+    NSLog(@"区域看不见===%@",url);
   
     
         [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -97,7 +98,6 @@
     
     if ([self.delegate respondsToSelector:@selector(HomAreaBtnTitleId:areaId:)]) {
         [self.delegate HomAreaBtnTitleId:model.name areaId:model.areaId];
-        
     }
    
     //NSLog(@"选择区域后的URL:%@",urlStr);
