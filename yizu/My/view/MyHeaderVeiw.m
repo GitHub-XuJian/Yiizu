@@ -45,7 +45,7 @@
 }
 - (void)reloadData
 {
-    [self.iconBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+    [self.iconBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"iconRegistered"]];
     if ([[XSaverTool objectForKey:Statevip] integerValue]) {
         self.crownImageView.image = [UIImage imageNamed:@"crown"];
     }else{

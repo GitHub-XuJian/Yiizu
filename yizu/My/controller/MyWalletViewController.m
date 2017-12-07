@@ -36,7 +36,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Money/myMoneyApi",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         [self.walletView reloadMonay:responseObject[@"balance"]];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -56,11 +56,11 @@
 {
     switch (viewTag) {
         case 0:{
-            NSLog(@"银行卡");
+            DLog(@"银行卡");
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Bankcard/bankcardTFApi",Main_Server];
             NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 if ([responseObject[@"bankcard"] length] == 0) {
                     AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
                     addBankCardVC.title = @"银行卡";
@@ -77,7 +77,7 @@
             break;
         }
         case 1:{
-            NSLog(@"零钱");
+            DLog(@"零钱");
             ChangeViewController *changeVC = [[ChangeViewController alloc] init];
             changeVC.title = @"零钱";
             [self.navigationController pushViewController:changeVC animated:YES];
@@ -85,7 +85,7 @@
             break;
         }
         case 2:{
-            NSLog(@"积分");
+            DLog(@"积分");
             jxt_showAlertTitle(@"此功能尚未开通，敬请期待");
             break;
         }

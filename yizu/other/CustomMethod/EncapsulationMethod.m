@@ -153,7 +153,7 @@
     
     if (!jsonData) {
         
-        NSLog(@"%@",error);
+        DLog(@"%@",error);
         
     }else{
         
@@ -189,7 +189,7 @@
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     //    NSString *jsonTemp = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
     //    NSString *jsonResult = [jsonTemp stringByReplacingOccurrencesOfString:@" " withString:@""];
-    //    NSLog(@"json array is: %@", jsonResult);
+    //    DLog(@"json array is: %@", jsonResult);
     return jsonString;
 }
 // 将JSON串转化为字典或者数组
@@ -214,7 +214,7 @@
     NSRange range = [teleStr rangeOfString:@"@"];
     NSMutableString* string=[[NSMutableString alloc]initWithString:teleStr];//存在堆区，可变字符串
     [string insertString:@"***"atIndex:range.length];
-    NSLog(@"string:%@",string);
+    DLog(@"string:%@",string);
     return string;
     
 }
@@ -329,25 +329,25 @@
 }
 +(NSString *)stringWithDate:(NSDate *)date
 {
-    NSLog(@"%@",date);//2015-11-20 00:37:40 +0000
+    DLog(@"%@",date);//2015-11-20 00:37:40 +0000
     
     NSDateFormatter *dateFormatter=[[NSDateFormatter alloc]init];//创建一个日期格式化器
     
     //    dateFormatter.dateFormat=@"yyyy-MM-dd hh:mm:ss";//指定转date得日期格式化形式
     //
-    //    NSLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20 08:24:04
+    //    DLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20 08:24:04
     
     dateFormatter.dateFormat=@"yyyy-MM-dd";
     
-    NSLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20
+    DLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20
     
     //    dateFormatter.dateFormat=@"yyyy-MM-dd eeee aa HH:mm:ss";
     //
-    //    NSLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20 Friday AM 08:30:28
+    //    DLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20 Friday AM 08:30:28
     //
     //    dateFormatter.dateFormat=@"yyyy-MM-dd hh:mm:ss z";
     //
-    //    NSLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20 08:42:22 GMT+8
+    //    DLog(@"%@",[dateFormatter stringFromDate:date]);//2015-11-20 08:42:22 GMT+8
     //
     return [dateFormatter stringFromDate:date];
 }
@@ -419,12 +419,12 @@
     
     NSString *currentTimeString = [formatter stringFromDate:datenow];
     
-    NSLog(@"currentTimeString =  %@",currentTimeString);
+    DLog(@"currentTimeString =  %@",currentTimeString);
     /**
      * 时间戳
      */
 //    NSString *timeSp = [NSString stringWithFormat:@"%d", (long)[datenow timeIntervalSince1970]];
-//    NSLog(@"timeSp:%@",timeSp); //时间戳的值
+//    DLog(@"timeSp:%@",timeSp); //时间戳的值
     return currentTimeString;
     
 }

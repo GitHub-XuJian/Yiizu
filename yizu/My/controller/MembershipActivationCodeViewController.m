@@ -45,7 +45,7 @@
     NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/%@",Main_Server,str];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         [SVProgressHUD dismiss];
         self.dataArray = responseObject;
         if ([responseObject count] == 0) {
@@ -62,7 +62,7 @@
     _buttonStr = @"分享";
     NSMutableArray *titleArray = [NSMutableArray arrayWithObjects:@"未分享",@"已分享",@"可回购",@"已回购", nil];
     self.macView = [[MembershipActivationCodeView alloc] initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, 50) andTitleArray:titleArray andClassBlock:^(UIButton *classBtn) {
-        NSLog(@"%@",classBtn.titleLabel.text);
+        DLog(@"%@",classBtn.titleLabel.text);
         _buttonStr = nil;
         switch (classBtn.tag) {
             case 0:{
@@ -162,13 +162,13 @@
                 
             });
         }else if ([btn.titleLabel.text isEqualToString:@"分享"]){
-            NSLog(@"分享");
+            DLog(@"分享");
             _shareDict = cellDict;
             [self shareClick];
         }else if ([btn.titleLabel.text isEqualToString:@"提现"]){
-            NSLog(@"提现");
+            DLog(@"提现");
             jxt_showAlertTwoButton(@"提示", @"是否提现", @"确定", ^(NSInteger buttonIndex) {
-                NSDictionary *dict = @{@"codeid":cellDict[@"codeid"]};
+                NSDictionary *dict = @{@"codeid":cellDict[@"codeid"],@"personid":[XSaverTool objectForKey:UserIDKey]};
                 NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Code/exchange",Main_Server];
                 [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                     jxt_showAlertTitle(responseObject[@"message"]);
@@ -206,7 +206,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Code/shareMoney",Main_Server];
     NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         //创建分享消息对象
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
         
@@ -235,7 +235,7 @@
                     NSString *urlStr =[NSString stringWithFormat:@"%@Mobile/Code/shareApi",Main_Server];
                     NSDictionary *dict = @{@"codeid":_shareDict[@"codeid"]};
                     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                        NSLog(@"%@",responseObject);
+                        DLog(@"%@",responseObject);
                         jxt_showAlertOneButton(@"提示", responseObject[@"message"], @"确定", ^(NSInteger buttonIndex) {
                             if ([responseObject[@"result"] integerValue]) {
                                 
@@ -301,7 +301,7 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

@@ -34,7 +34,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/keepaw",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         self.dataArray = nil;
         if ([responseObject count] == 0) {
 //            jxt_showToastTitle(@"暂无数据", 1);
@@ -111,7 +111,7 @@
         NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/offkeepaw",Main_Server];
         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"chamber_id":model.chamber_id};
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             jxt_showAlertOneButton(@"提示", responseObject[@"msg"], @"确定", ^(NSInteger buttonIndex) {
                 if ([responseObject[@"code"] integerValue]) {
                     [self createDataArray];
@@ -128,7 +128,7 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }

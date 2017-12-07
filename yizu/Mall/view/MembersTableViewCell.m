@@ -97,7 +97,7 @@
 }
 -(void)clickButton:(UIButton *)button
 {
-    NSLog(@"%@",button.titleLabel.text);
+    DLog(@"%@",button.titleLabel.text);
     switch (button.tag) {
         case 0:{            // 激活码支付
             ActivationCodePayViewController *acpVC = [[ActivationCodePayViewController alloc] init];
@@ -111,14 +111,14 @@
             NSString *urlStr = [NSString stringWithFormat:@"%@weixin/index.php",Main_ServerImage];
             [SVProgressHUD showWithStatus:@"正在转到微信支付..."];
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 [SVProgressHUD dismiss];
                 if (responseObject) {
                     [self createWXPayReq:responseObject];
                     [XSaverTool setObject:responseObject[@"out_trade_no"] forKey:WXOut_trade_no];
                 }
             } fail:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"%@",error);
+                DLog(@"%@",error);
             }];
             break;
         }
@@ -128,7 +128,7 @@
             [SVProgressHUD showWithStatus:@"正在加载..."];
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
                 [SVProgressHUD dismiss];
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 if (!responseObject) {
                     jxt_showAlertTitle(@"系统忙，请稍后再试");
                 }
@@ -148,7 +148,7 @@
 - (void)createPayTreasure:(NSDictionary *)dict
 {
     [[AlipaySDK defaultService] payOrder:dict[@"json"] fromScheme:@"zhifubao2017102009402694" callback:^(NSDictionary *resultDic) {
-        NSLog(@"%@",resultDic);
+        DLog(@"%@",resultDic);
     }];
 }
 
@@ -165,7 +165,7 @@
     req.sign                = [dict objectForKey:@"sign"];
     [WXApi sendReq:req];
     //日志输出
-    NSLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
+    DLog(@"appid=%@\npartid=%@\nprepayid=%@\nnoncestr=%@\ntimestamp=%ld\npackage=%@\nsign=%@",[dict objectForKey:@"appid"],req.partnerId,req.prepayId,req.nonceStr,(long)req.timeStamp,req.package,req.sign );
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

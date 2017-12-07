@@ -82,7 +82,7 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField
 {
-    NSLog(@"textClear");
+    DLog(@"textClear");
     return YES;
 }
 

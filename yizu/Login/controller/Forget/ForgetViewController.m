@@ -48,7 +48,7 @@
 //
 //                        switch (code) {
 //                            case 0:{
-//                                NSLog(@"密码修改成功");
+//                                DLog(@"密码修改成功");
 //                                [SFProgressHUD show:@"密码修改成功" inView:weakself.resetPasswordView mode:(SFProgressMode *)SFProgressModeSuccess];
 //                                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 //                                    [self dismissViewControllerAnimated:YES completion:nil];
@@ -57,21 +57,21 @@
 //                                break;
 //                            }
 //                            case 1:
-//                                NSLog(@"密码修改失败");
+//                                DLog(@"密码修改失败");
 //                            case 2:
-//                                NSLog(@"旧密码不正确");
+//                                DLog(@"旧密码不正确");
 //                            case 3:
-//                                NSLog(@"旧密码不能为空");
+//                                DLog(@"旧密码不能为空");
 //                            case 4:
-//                                NSLog(@"新密码不能为空");
+//                                DLog(@"新密码不能为空");
 //                            case 5:
-//                                NSLog(@"ID不能为空");
+//                                DLog(@"ID不能为空");
 //                            default:
 //                                break;
 //                        }
 //                    } withFailureBlock:^(NSError *error) {
 //
-//                        NSLog(@"%@",error);
+//                        DLog(@"%@",error);
 //                    } progress:^(float progress) {
 //
 //                    }];
@@ -82,7 +82,7 @@
 //
 //                }
 //            }else {
-//                NSLog(@"请输入密码");
+//                DLog(@"请输入密码");
 //            }
 
             

@@ -180,7 +180,7 @@
     //终点
     MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:des addressDictionary:nil]];
     toLocation.name=model.full;
-    NSLog(@"导航终点==%@",model.full);
+    DLog(@"导航终点==%@",model.full);
     //默认驾车
     [MKMapItem openMapsWithItems:@[currentLocation, toLocation]
                    launchOptions:@{MKLaunchOptionsDirectionsModeKey:MKLaunchOptionsDirectionsModeDriving,
@@ -207,7 +207,7 @@
     CGRect rect=[ima convertRect: ima.bounds toView:[[[UIApplication sharedApplication] delegate] window]];
     self.imaV.frame = rect;
 //    self.imaV=ima;
-    NSLog(@"imaFrame==%@",NSStringFromCGRect(ima.frame));// imaFrame=={{10, 0}, {128, 95}}
+    DLog(@"imaFrame==%@",NSStringFromCGRect(ima.frame));// imaFrame=={{10, 0}, {128, 95}}
     //self.isBig=YES;
     //记录一下头像按钮的原始frame
     self.imaFrame=rect;

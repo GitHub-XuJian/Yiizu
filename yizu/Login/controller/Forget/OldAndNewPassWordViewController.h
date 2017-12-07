@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^OldAndNewPassWordViewControllerBlock)();
 
 @interface OldAndNewPassWordViewController : UIViewController
 
+@property (nonatomic, strong) OldAndNewPassWordViewControllerBlock block;
 @property (nonatomic, strong) NSString *phoneStr;
 @end

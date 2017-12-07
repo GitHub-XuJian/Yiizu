@@ -52,26 +52,26 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES];
-     NSLog(@"44444444444444");
+     DLog(@"44444444444444");
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
       [self.navigationController setNavigationBarHidden:NO];
-     NSLog(@"3333333333333");
+     DLog(@"3333333333333");
 }
 
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-     NSLog(@"2222222222222");
+     DLog(@"2222222222222");
     
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.searchBar becomeFirstResponder];
-    NSLog(@"111111111111111");
+    DLog(@"111111111111111");
 }
 
 #pragma mark 设置子视图
@@ -158,20 +158,20 @@
 //
 //    //清空格
 //    self.currentSeachText = [text stringByReplacingOccurrencesOfString:@" " withString:@""];
-//    NSLog(@"清空格后:%@",self.currentSeachText);
+//    DLog(@"清空格后:%@",self.currentSeachText);
 //    //转UTF-8
 //    NSString *keyword   = [self.currentSeachText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 //    NSString* str=[NSString stringWithFormat:@"%@/Mobile/Index/index_name/name/%@/page/1",Main_Server,keyword];
 //
 //    [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-//        NSLog(@"搜索数据=%@",responseObject);
+//        DLog(@"搜索数据=%@",responseObject);
 //        NSArray* arr=responseObject[@"list"];
 //        for (NSDictionary* dic in arr) {
 //            HomeListModel* model=[HomeListModel ModelWithDict:dic];
 //            [_seachArr addObject:model];
 //        }
 //        BOOL hasResult = _seachArr.count > 0;
-//         NSLog(@"是否隐藏:%d",hasResult);
+//         DLog(@"是否隐藏:%d",hasResult);
 //        self.noResultView.hidden = hasResult;
 //        if (hasResult) {
 //            [self.tableView reloadData];
@@ -208,12 +208,12 @@
         //转UTF-8
         NSString *keyword  = [self.currentSeachText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString* str=[NSString stringWithFormat:@"%@Mobile/Index/index_name/name/%@/personid/%@/page/1/",Main_Server,keyword,[XSaverTool objectForKey:UserIDKey]];
-    NSLog(@"搜索url==%@",str);
+    DLog(@"搜索url==%@",str);
    
     //
     [SVProgressHUD show];
         [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"搜索数据=%@",responseObject);
+            DLog(@"搜索数据=%@",responseObject);
             NSArray* arr=responseObject[@"list"];
             for (NSDictionary* dic in arr) {
                 HomeListModel* model=[HomeListModel ModelWithDict:dic];
@@ -224,7 +224,7 @@
             [self.tableView reloadData];
 
             BOOL hasResult = _seachArr.count > 0;
-             NSLog(@"是否隐藏:%d",hasResult);
+             DLog(@"是否隐藏:%d",hasResult);
             self.noResultView.hidden = hasResult;
             [SVProgressHUD dismiss];
 

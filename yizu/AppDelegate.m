@@ -144,13 +144,13 @@
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
     if (!result) {
         // 其他如支付等SDK的回调
-        NSLog(@"支付");
+        DLog(@"支付");
         if ([url.host isEqualToString:@"safepay"]) {
             // 支付跳转支付宝钱包进行支付，处理支付结果
             [[AlipaySDK defaultService]
              processOrderWithPaymentResult:url
              standbyCallback:^(NSDictionary *resultDic) {
-                 NSLog(@"result = %@",resultDic);//返回的支付结果
+                 DLog(@"result = %@",resultDic);//返回的支付结果
                  if ([resultDic[@"resultStatus"] integerValue] == 9000) {
                      NSNotification *notification =[NSNotification notificationWithName:@"ZhiFuBaoPayNotification" object:resultDic userInfo:nil];
                      [[NSNotificationCenter defaultCenter] postNotification:notification];
@@ -174,7 +174,7 @@
 -(void)onResp:(BaseResp*)resp{
     if ([resp isKindOfClass:[PayResp class]]){
         PayResp*response=(PayResp*)resp;
-        NSLog(@"%@",response.returnKey);
+        DLog(@"%@",response.returnKey);
         NSNotification *notification =[NSNotification notificationWithName:@"WeiXinPayNotification" object:resp userInfo:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
@@ -186,7 +186,7 @@
 {
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Login/explain",Main_Server];
     [XAFNetWork GET:urlStr params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         // 1.获取当前版本号
         NSString *currVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
         /**

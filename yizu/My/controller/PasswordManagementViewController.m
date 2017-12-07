@@ -75,18 +75,18 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     switch (indexPath.row) {
         case 0:{
-            NSLog(@"修改密码");
+            DLog(@"修改密码");
             ChangePasswordViewController *cpVC = [[ChangePasswordViewController alloc] init];
             cpVC.title = @"修改密码";
             [self.navigationController pushViewController:cpVC animated:YES];
             break;
         }
         case 1:{
-            NSLog(@"找回密码");
+            DLog(@"找回密码");
             SFValidationEmailViewController *validationVC = [[SFValidationEmailViewController alloc] init];
             validationVC.emailStr = [XSaverTool objectForKey:PhoneKey];
             validationVC.title = @"找回密码";

@@ -64,7 +64,7 @@
 }
 - (void)doTapChange:(UITapGestureRecognizer *)sender
 {
-    NSLog(@"%ld",sender.view.tag);
+    DLog(@"%ld",sender.view.tag);
     if([_delegate respondsToSelector:@selector(clickWithTag:)]){
         [_delegate clickWithTag:sender.view.tag];
     }

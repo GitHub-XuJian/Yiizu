@@ -59,7 +59,7 @@
     
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        //NSLog(@"title===%@",responseObject);
+        //DLog(@"title===%@",responseObject);
         ActivityDetailLabmodel* model=[ActivityDetailLabmodel modelWithDict:responseObject];
         
         [self initTitleLab:model];

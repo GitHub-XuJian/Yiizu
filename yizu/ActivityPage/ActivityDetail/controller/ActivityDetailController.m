@@ -51,7 +51,7 @@
         newUrl= [NSString stringWithFormat:@"%@Mobile/Bridge/Bridgelistlist/city_id/%@/personid/%@",Main_Server,self.townId,[XSaverTool objectForKey:UserIDKey]];
         
     }
-    NSLog(@"城市按钮活动列表页：%@",newUrl);
+    DLog(@"城市按钮活动列表页：%@",newUrl);
     
     [self loadData:newUrl];
     
@@ -65,7 +65,7 @@
     
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"aclist:===%@",responseObject);
+        DLog(@"aclist:===%@",responseObject);
         
         [responseObject enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             ActivityDetailListModel* model=[ActivityDetailListModel modelWithDict:obj];

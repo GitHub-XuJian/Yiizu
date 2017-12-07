@@ -44,7 +44,7 @@
 {
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        //NSLog(@"city==%@",responseObject);
+        //DLog(@"city==%@",responseObject);
         NSMutableArray* mArr=[NSMutableArray array];
         [responseObject enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             CityListModel* model=[self ModelWithDict:obj];

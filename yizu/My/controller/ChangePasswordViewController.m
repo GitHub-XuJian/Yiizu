@@ -84,14 +84,14 @@
         NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"password":[EncapsulationMethod md5:_oldoldPassword],@"Repassword":[EncapsulationMethod md5:_newPassword]};
         NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifypass",Main_Server];
         [XAFNetWork POST:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             jxt_showToastMessage(responseObject[@"msg"], 1);
             if ([responseObject[@"code"] integerValue]) {
                 [XSaverTool setObject:_newPassword forKey:Password];
                 [self.navigationController popViewControllerAnimated:YES];
             }
         } fail:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error);
+            DLog(@"%@",error);
         }];
     }else{
         jxt_showToastMessage(@"两次密码不一致", 1);

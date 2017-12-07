@@ -57,7 +57,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 - (void)like {
  
     if (!IsLoginState) {
-        NSLog(@"没登录");
+        DLog(@"没登录");
         
         return;
     }else{
@@ -72,7 +72,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
             [self.delegate ClickLikeBtn:self.islike];
         }else
         {
-            NSLog(@"没响应点赞按钮代理");
+            DLog(@"没响应点赞按钮代理");
         }
     
     NSString* isZan=@"";
@@ -104,15 +104,15 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     
         NSString *newUrl = [NSString stringWithFormat:@"%@Mobile/Index/index_upvoteAdd/name/%@/number/%@/personid/%@",Main_Server,self.chambername,isZan,[XSaverTool objectForKey:UserIDKey]];
     
-        NSLog(@"dianzanID=%@",newUrl);
+        DLog(@"dianzanID=%@",newUrl);
         newUrl = [newUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [XAFNetWork GET:newUrl params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
        
         if ([[responseObject objectForKey:@"dianzan"] isEqualToString:@"success"]) {
-            NSLog(@"点赞成功%@",responseObject[@"dianzan"]);
+            DLog(@"点赞成功%@",responseObject[@"dianzan"]);
         }else if ([[responseObject objectForKey:@"quxidianzan"] isEqualToString:@"success"])
         {
-            NSLog(@"取消点赞成功%@",responseObject[@"quxidianzan"]);
+            DLog(@"取消点赞成功%@",responseObject[@"quxidianzan"]);
         }
 
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
@@ -127,7 +127,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
 - (void)setIslike:(BOOL)islike {
     _islike = islike;
 //    int upCount = islike ? 1 : -1;
-//     NSLog(@"当前状态==%d",upCount);
+//     DLog(@"当前状态==%d",upCount);
 //    self.likeCount = self.likeCount + upCount;
     NSString *imageName = self.islike ? pressedImageName : normalImageName;
     
@@ -143,7 +143,7 @@ static NSString * const pressedImageName = @"ic_common_praise_pressed_15x15_";
     _likeCount = likeCount;
 
 
-    //NSLog(@"点赞数set方法%ld",(long)likeCount);
+    //DLog(@"点赞数set方法%ld",(long)likeCount);
     
     if (likeCount < 1) {
 

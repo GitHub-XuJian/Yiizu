@@ -27,7 +27,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Bankcard/bankcardTFApi",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         [self createView:responseObject];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -101,7 +101,7 @@
 }
 - (void)confirmBtnClick
 {
-    NSLog(@"%f %f",[self.textField.text floatValue],[_moneyStr floatValue]);
+    DLog(@"%f %f",[self.textField.text floatValue],[_moneyStr floatValue]);
 
     [self.textField  resignFirstResponder];
     if (self.textField.text.length) {
@@ -114,7 +114,7 @@
             NSString *urlStr = [NSString stringWithFormat:@"%@daishou/jpp_phpdemo_20170915/demo/CollectingPayment.php",Main_ServerImage];
             NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey],@"total":[NSString stringWithFormat:@"%f",[self.textField.text floatValue]*100]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 [SVProgressHUD dismiss];
 
                 if (responseObject) {
@@ -137,7 +137,7 @@
 }
 
 - (void)textFieldDidChange:(UITextField *)textField {
-    NSLog(@"%@",textField.text);
+    DLog(@"%@",textField.text);
     if ([textField.text floatValue] > [_moneyStr floatValue]) {
         self.label.text = @"输入金额超过零钱余额";
         self.label.textColor = [UIColor redColor];

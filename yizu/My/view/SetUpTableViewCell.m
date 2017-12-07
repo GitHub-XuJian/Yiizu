@@ -101,7 +101,7 @@
      */
     NSUInteger size = [SDImageCache sharedImageCache].getSize;
     double displaySize = size/ 1000.0 /1000.0;
-    NSLog(@"%.2f-------",displaySize);
+    DLog(@"%.2f-------",displaySize);
     self.cacheLabel.text = [NSString stringWithFormat:@"%.2f M",displaySize];
     self.cacheLabel.frame = CGRectMake(kSCREEN_WIDTH-120, 0, 100, 60);
 

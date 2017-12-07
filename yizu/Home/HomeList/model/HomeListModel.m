@@ -31,7 +31,7 @@
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray* mArr=[NSMutableArray array];
         NSArray* listArr=responseObject[@"list"];
-        //NSLog(@"homeList==%@",listArr);
+        //DLog(@"homeList==%@",listArr);
         for (NSDictionary* dic in listArr) {
             HomeListModel* model=[self ModelWithDict:dic];
             [mArr addObject:model];

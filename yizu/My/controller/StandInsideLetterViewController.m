@@ -42,7 +42,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageList",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         [SVProgressHUD dismiss];
 
         [self.dataArray removeAllObjects];
@@ -106,7 +106,7 @@
         NSDictionary *dict = @{@"id":cellDict[@"id"]};
         
         [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+            DLog(@"%@",responseObject);
             [SVProgressHUD dismiss];
             jxt_showAlertTitle(responseObject[@"message"]);
             if ([responseObject[@"result"] integerValue]) {
@@ -127,7 +127,7 @@
 //响应点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"响应单击事件");
+    DLog(@"响应单击事件");
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     NSDictionary *cellDict = self.dataArray[indexPath.row];
@@ -137,7 +137,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/code/messageStataApi",Main_Server];
     NSDictionary *dict = @{@"id":cellDict[@"id"]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];

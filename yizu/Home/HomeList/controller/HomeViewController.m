@@ -54,14 +54,14 @@
 - (void)setHomeUrlStr:(NSString *)homeUrlStr
 {
     _homeUrlStr=homeUrlStr;
-    NSLog(@"点击区域按钮后区域商家接口:%@",homeUrlStr);
+    DLog(@"点击区域按钮后区域商家接口:%@",homeUrlStr);
     //http://47.104.18.18/index.php/Mobile/Index/index_area/data/73/area/843/page/1/personid/3/sequence/
     [self requestData:homeUrlStr];
 }
 - (void)setCityURLstr:(NSString *)CityURLstr
 {
     _CityURLstr=CityURLstr;
-    NSLog(@"点击导航按钮:%@",CityURLstr);
+    DLog(@"点击导航按钮:%@",CityURLstr);
     //点击导航按钮请求城市全部商家接口
     [self requestData:CityURLstr];
     
@@ -114,13 +114,12 @@
 
       }
      //newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
-    NSLog(@"第一次请求=%@",newUrl);
+    DLog(@"第一次请求=%@",newUrl);
     
     [self requestData:newUrl];
 
     [self setupRefresh];
-   
- NSLog(@"%@",NSStringFromCGRect(self.tableView.tableHeaderView.frame));
+       DLog(@"%@",NSStringFromCGRect(self.tableView.tableHeaderView.frame));
 }
 //【下拉刷新】【上拉加载】
 -(void)setupRefresh{
@@ -139,7 +138,7 @@
         }
     
       
-        NSLog(@"下啦刷新回调:%@",newUrl);
+        DLog(@"下啦刷新回调:%@",newUrl);
         [self requestData:newUrl];
        
     }];
@@ -164,7 +163,7 @@
         }
 
         [self requestMoreData:newUrl];
-        NSLog(@"上啦回调%@",newUrl);
+        DLog(@"上啦回调%@",newUrl);
 
     }];
     self.tableView.mj_footer = footer;
@@ -178,10 +177,10 @@
     NSLog(@"行业列表====%@",url);
     [SVProgressHUD showWithStatus:@"数据加载中..."];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        //NSLog(@"默认Data:%@",responseObject);
+        //DLog(@"默认Data:%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         if (!arr.count) {
-            NSLog(@"没有数据");
+            DLog(@"没有数据");
            
         }
         
@@ -208,7 +207,7 @@
   
     
     [XAFNetWork GET:cityId params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        //NSLog(@"加载更多==%@",responseObject);
+        //DLog(@"加载更多==%@",responseObject);
         NSArray* arr=responseObject[@"list"];
         
     
@@ -268,7 +267,7 @@
 #pragma mark-通知回传
 - (void)massageCityId:(NSNotification *)notification
 {
-    //NSLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"areaId"]);
+    //DLog(@"homelist接受到通知%@,%@",notification.userInfo[@"name"],notification.userInfo[@"areaId"]);
     //self.homeListAreaId=notification.userInfo[@"areaId"];
     self.homeUrlStr=notification.userInfo[@"areaUrl"];
     self.homeListAreaId = notification.userInfo[@"areaId"];
@@ -286,7 +285,7 @@
 #pragma mark- homeCityBtnDelegate
 - (void)HomeCityBtnTitle:(NSString *)title url:(NSString *)url cityId:(NSString *)cid
 {
-    NSLog(@"首页返回的url：%@",url);
+    DLog(@"首页返回的url：%@",url);
     [self.navBtn setTitle:title forState:UIControlStateNormal];
     self.homeListCityId=cid;
     self.CityURLstr=url;
@@ -355,14 +354,14 @@
     [self.navigationController pushViewController:dVC animated:YES];
     }else
     {
-        NSLog(@"点击了为开通");
+        DLog(@"点击了为开通");
     }
     
 }
 
 - (void)ClickLikeBtn:(BOOL)start
 {
-    NSLog(@"5555555=%d",start);
+    DLog(@"5555555=%d",start);
     self.isLikeStart=start;
     
 }
@@ -370,13 +369,13 @@
 {
     NSString* newStr=notification.userInfo[@"areaUrl"];
     
-    NSLog(@"homeNewStr===%@",newStr);
+    DLog(@"homeNewStr===%@",newStr);
     [self requestData:newStr];
     self.currentPage=1;
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    //NSLog(@"Offset=%f",scrollView.contentOffset.y);
+    //DLog(@"Offset=%f",scrollView.contentOffset.y);
     if (scrollView.contentOffset.y >= 0) {
         [self.navigationController setNavigationBarHidden:NO animated:NO];
     }else{
@@ -431,7 +430,7 @@
 //- (void)viewWillAppear:(BOOL)animated
 //{
 //    [super viewWillAppear:animated];
-//    NSLog(@"viewWillAppear");
+//    DLog(@"viewWillAppear");
 //    //定位相关
 //    //定位服务管理对象初始化
 //    self.locationManager = [[CLLocationManager alloc] init];
@@ -460,11 +459,11 @@
     //    self.txtLng.text = [NSString stringWithFormat:@"%3.5f",
     //currLocation.coordinate.longitude];
     
-//    NSLog(@"定位回调中:lat===%@,long===%@",[NSString stringWithFormat:@"%3.5f",
+//    DLog(@"定位回调中:lat===%@,long===%@",[NSString stringWithFormat:@"%3.5f",
 //                                 currLocation.coordinate.latitude],[NSString stringWithFormat:@"%3.5f",
 //                                                                    currLocation.coordinate.longitude]);
     
-    NSLog(@"定位回调中:lat===%f,long===%f",
+    DLog(@"定位回调中:lat===%f,long===%f",
                                        currLocation.coordinate.latitude,
                                                                                                            currLocation.coordinate.longitude);
     
@@ -481,12 +480,12 @@
     [self.locationManager stopUpdatingLocation];
     
     NSString* str=[NSString stringWithFormat:@"%@Mobile/Index/indexposition/personid/%@/lat/%@/lng/%@",Main_Server,[XSaverTool objectForKey:UserIDKey],lat,lon];
-    NSLog(@"locanURL===%@",str);
+    DLog(@"locanURL===%@",str);
     //http://47.104.18.18/index.php/Mobile/Index/indexposition/personid/
     //http://47.104.18.18/index.php/Mobile/Index/indexposition/personid/123/lat/22.28468/lng/114.15818
     [XAFNetWork GET:str params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -495,7 +494,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    NSLog(@"定位错误error: %@",error);
+    DLog(@"定位错误error: %@",error);
     if (error.code == kCLErrorDenied) {
         // 提示用户出错原因，可按住Option键点击 KCLErrorDenied的查看更多出错信息，可打印error.code值查找原因所在
     }
@@ -505,15 +504,15 @@
 {
     
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
-        NSLog(@"Authorized");
+        DLog(@"Authorized");
     } else if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-        NSLog(@"AuthorizedWhenInUse");
+        DLog(@"AuthorizedWhenInUse");
     } else if (status == kCLAuthorizationStatusDenied) {
-        NSLog(@"Denied");
+        DLog(@"Denied");
     } else if (status == kCLAuthorizationStatusRestricted) {
-        NSLog(@"Restricted");
+        DLog(@"Restricted");
     } else if (status == kCLAuthorizationStatusNotDetermined) {
-        NSLog(@"NotDetermined");
+        DLog(@"NotDetermined");
     }
     
 }

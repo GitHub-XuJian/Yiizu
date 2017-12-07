@@ -68,7 +68,7 @@
 - (void)setImaArr:(NSMutableArray *)imaArr
 {
     _imaArr = imaArr;
-    NSLog(@"imaArr22==%lu",(unsigned long)imaArr.count);
+    DLog(@"imaArr22==%lu",(unsigned long)imaArr.count);
     
     self.SDScrollView.imageURLStringsGroup=imaArr;
 }

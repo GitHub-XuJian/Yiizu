@@ -82,7 +82,7 @@
 - (void)sendClick:(UIButton *)btn
 {
     [[UIApplication sharedApplication].keyWindow endEditing:NO];
-    NSLog(@"发送");
+    DLog(@"发送");
     if (_name.length == 0) {
         jxt_showAlertTitle(@"请输入姓名");
     }else if (_content.length == 0) {

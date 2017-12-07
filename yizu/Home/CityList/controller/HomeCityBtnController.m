@@ -61,7 +61,7 @@ static NSString * const cityUrl = @"%@Mobile/Index/index_Chamber/data/%@personid
         [self.collectionView reloadData];
        
     } error:^{
-        NSLog(@"出错了");
+        DLog(@"出错了");
         [SVProgressHUD dismiss];
 
         [SVProgressHUD showErrorWithStatus:@"出错了"];
@@ -186,7 +186,8 @@ static NSString * const cityUrl = @"%@Mobile/Index/index_Chamber/data/%@personid
     //@"%@Mobile/Index/index_Chamber/data/%@personid/3/sequence/0/page/1/"
     NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,smodel.cityId];
     
-    NSLog(@"点击行按钮=%@%@%@",model.name,url,smodel.name);
+
+    DLog(@"点击行按钮=%@%@",model.name,url);
 
     //代理回传城市title。。。
     if ([self.delegate respondsToSelector:@selector(HomeCityBtnTitle:url:cityId:)]) {

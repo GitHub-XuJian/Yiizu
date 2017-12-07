@@ -93,7 +93,7 @@
 - (void)setLeftNameStr:(NSString *)leftNameStr
 {
     self.nameLabel.text = leftNameStr;
-    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] placeholderImage:[UIImage imageNamed:@"icon_default_avatar"]];
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@public/%@",Main_ServerImage,[XSaverTool objectForKey:UserIconImage]]] placeholderImage:[UIImage imageNamed:@"iconRegistered"]];
 
     if ([[XSaverTool objectForKey:Sex] isEqualToString:@"1"]) {
         self.sexLabel.text = @"男";
@@ -122,7 +122,7 @@
     }
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Mine/modifydata",Main_Server];
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         if ([responseObject[@"code"] integerValue]) {
             [XSaverTool setObject:textField.text forKey:keyStr];
         }

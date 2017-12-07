@@ -34,7 +34,7 @@
     NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Money/myMoneyApi",Main_Server];
     NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
     [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        DLog(@"%@",responseObject);
         self.moneyLabel.text = [NSString stringWithFormat:@"￥%@",responseObject[@"balance"]];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
         
@@ -95,7 +95,7 @@
             NSString *urlStr = [NSString stringWithFormat:@"%@Mobile/Bankcard/bankcardTFApi",Main_Server];
             NSDictionary *dict = @{@"personid":[XSaverTool objectForKey:UserIDKey]};
             [XAFNetWork GET:urlStr params:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"%@",responseObject);
+                DLog(@"%@",responseObject);
                 if ([responseObject[@"bankcard"] length] == 0) {
                     AddBankCardViewController *addBankCardVC = [[AddBankCardViewController alloc] init];
                     addBankCardVC.title = @"银行卡";

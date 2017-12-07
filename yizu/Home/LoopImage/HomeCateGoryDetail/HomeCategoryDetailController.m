@@ -27,6 +27,12 @@
 
 @implementation HomeCategoryDetailController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -64,7 +70,7 @@
         newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/1",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId];
     }
     
-    NSLog(@"行业类别列表%@",newUrl);
+    DLog(@"行业类别列表%@",newUrl);
     [self loadData:newUrl];
     
     [self setupRefresh];
@@ -78,15 +84,14 @@
      [SVProgressHUD showWithStatus:@"数据加载中..."];
     //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-        
+
         NSArray* arr=responseObject[@"list"];
     
         for (NSDictionary* dic in arr) {
             HomeListModel* model =[HomeListModel ModelWithDict:dic];
             [_tabScroce addObject:model];
         }
-        
+
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
         [self endRefresh];
@@ -122,13 +127,14 @@
         {
         url= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/%d",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId,self.currentPage];
                    }
-        NSLog(@"上啦回调%@",url);
+        DLog(@"上啦回调%@",url);
         [self moreData:url];
+
         
     }];
     self.tableView.mj_footer = footer;
 
-    //self.tableView.mj_footer.automaticallyHidden=YES;
+    self.tableView.mj_footer.automaticallyHidden=YES;
 }
 
 - (void)moreData:(NSString*)url
@@ -142,6 +148,7 @@
             HomeListModel* model=[HomeListModel ModelWithDict:dic];
             [_tabScroce addObject:model];
         }
+
         [self.tableView reloadData];
         [self endRefresh];
         [SVProgressHUD dismiss];
@@ -230,19 +237,19 @@
         [self.navigationController pushViewController:dVC animated:YES];
     }else
     {
-        NSLog(@"点击了为开通");
+        DLog(@"点击了为开通");
         [self.navigationController popViewControllerAnimated:YES];
     }
     
 }
 
--(void)viewDidLayoutSubviews
-{
-    [self viewDidLayoutSubviews];
-    self.tableView.estimatedRowHeight = 0;
-    self.tableView.estimatedSectionHeaderHeight = 0;
-    self.tableView.estimatedSectionFooterHeight = 0;
-}
+//-(void)viewDidLayoutSubviews
+//{
+//    //[self viewDidLayoutSubviews];
+//    self.tableView.estimatedRowHeight = 0;
+//    self.tableView.estimatedSectionHeaderHeight = 0;
+//    self.tableView.estimatedSectionFooterHeight = 0;
+//}
 /*
 #pragma mark - Navigation
 
