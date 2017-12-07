@@ -2743,8 +2743,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Liaoning Jin Bai Bei Wang Luo Ke Ji Co., Ltd. (C46BYY9W39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Liaoning Jin Bai Bei Wang Luo Ke Ji Co., Ltd. (C46BYY9W39)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C46BYY9W39;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2776,8 +2776,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei0.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6624e431-7ee4-41a3-af67-1fbd9988ad7f";
-				PROVISIONING_PROFILE_SPECIFIER = TestDescriptionFile;
+				PROVISIONING_PROFILE = "d75985e7-0417-4c15-acc4-0f80cf2d34b1";
+				PROVISIONING_PROFILE_SPECIFIER = PostDescriptionFile;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2786,8 +2787,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Liaoning Jin Bai Bei Wang Luo Ke Ji Co., Ltd. (C46BYY9W39)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Liaoning Jin Bai Bei Wang Luo Ke Ji Co., Ltd. (C46BYY9W39)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = C46BYY9W39;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2819,8 +2820,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jinbaibei0.yizu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6624e431-7ee4-41a3-af67-1fbd9988ad7f";
-				PROVISIONING_PROFILE_SPECIFIER = TestDescriptionFile;
+				PROVISIONING_PROFILE = "d75985e7-0417-4c15-acc4-0f80cf2d34b1";
+				PROVISIONING_PROFILE_SPECIFIER = PostDescriptionFile;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
