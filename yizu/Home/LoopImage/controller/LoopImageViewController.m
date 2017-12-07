@@ -58,7 +58,7 @@
     
     
     //通知接受数据之前不崩现在崩
-    // [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(massageCityId:) name:@"nameId" object:nil];
 
     NSString*  url=[NSString stringWithFormat:@"%@Mobile/Index/index_Slideshow",Main_Server];
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -85,7 +85,12 @@
     
     
 }
-
+- (void)massageCityId:(NSNotification *)notification
+{
+    
+    self.cityID=notification.userInfo[@"cityId"];
+    
+}
 - (void)initCycleScrollView
 {
     //SDCycleScrollView* cycleScrollView=[SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 210) delegate:self placeholderImage:nil];

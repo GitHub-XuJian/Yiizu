@@ -27,19 +27,29 @@
 
 @implementation HomeCategoryDetailController
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    self.tableView.estimatedRowHeight = 0;
+    self.tableView.estimatedSectionHeaderHeight = 0;
+    self.tableView.estimatedSectionFooterHeight = 0;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    _tabScroce=[[NSMutableArray alloc]init];
     self.currentPage=1;
+    if (@available(iOS 11.0, *)) {
+        self.tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+    }else
+    {
+        self.automaticallyAdjustsScrollViewInsets = NO;
+    }
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, kSCREEN_WIDTH, kSCREEN_HEIGHT-64)];
     
     self.tableView.delegate=self;
     self.tableView.dataSource=self;
-    
+   
     UINib* nib=[UINib nibWithNibName:@"HomeCateDetailCell" bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:@"catecell"];
@@ -49,7 +59,7 @@
    
     [self.view addSubview:self.tableView];
     
-    _tabScroce=[[NSMutableArray alloc]init];
+    
     
     NSString* newUrl=@"";
     if (!IsLoginState)
@@ -64,113 +74,97 @@
     [self loadData:newUrl];
     
     [self setupRefresh];
+   
     // Do any additional setup after loading the view.
 }
-
+#pragma mark-请求数据
 - (void)loadData:(NSString*)url
 {
     [_tabScroce removeAllObjects];
      [SVProgressHUD showWithStatus:@"数据加载中..."];
     //http://47.104.18.18/index.php/Mobile/Index/fortress/personid/人员id/insid/行业类别/data/城市id/page/分页数
     [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        //DLog(@"url===%@",[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId]);
-        //DLog(@"catehome===%@",responseObject);
-        //和首页数据类型一样
-        NSArray* arr=responseObject[@"list"];
-       
 
+        NSArray* arr=responseObject[@"list"];
+    
         for (NSDictionary* dic in arr) {
             HomeListModel* model =[HomeListModel ModelWithDict:dic];
-            
-                        [_tabScroce addObject:model];
+            [_tabScroce addObject:model];
         }
-        // DLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
+
         [self.tableView reloadData];
         [SVProgressHUD dismiss];
-        [self.tableView.mj_header endRefreshing];
+        [self endRefresh];
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.tableView.mj_header endRefreshing];
+        [self endRefresh];
         [SVProgressHUD dismiss];
     }];
 }
 
-//【下拉刷新】【上拉加载】
+#pragma mark-刷新
 -(void)setupRefresh{
     MJRefreshNormalHeader *header  =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSString* newUrl=@"";
-        if (!IsLoginState)
-        {
-            newUrl=[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId];
-        }else
-        {
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/1",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId];
-        }
-        
-        DLog(@"行业类别列表%@",newUrl);
-        [self loadData:newUrl];
-        
-    }];
+                if (!IsLoginState)
+                {
+                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/1",Main_Server,self.insid,self.cityId];
+                }else
+                {
+                    newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/1",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId];
+                }
+                [self loadData:newUrl];
+            }];
     
-    self.tableView.mj_header = header;
+            self.tableView.mj_header = header;
     
-    MJRefreshAutoNormalFooter *footer  =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         self.currentPage+=1;
-        NSString* newUrl=@"";
+        NSString* url=@"";
         if (!IsLoginState)
         {
-            
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/%d",Main_Server,self.insid,self.cityId,self.currentPage];
+         url= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/0/insid/%@/data/%@/page/%d",Main_Server,self.insid,self.cityId,self.currentPage];
         }else
         {
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/%d",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId,self.currentPage];
-        }
-        
-        [self requestMoreData:newUrl];
-        DLog(@"上啦回调%@",newUrl);
+        url= [NSString stringWithFormat:@"%@Mobile/Index/fortress/personid/%@/insid/%@/data/%@/page/%d",Main_Server,[XSaverTool objectForKey:UserIDKey],self.insid,self.cityId,self.currentPage];
+                   }
+        DLog(@"上啦回调%@",url);
+        [self moreData:url];
+
         
     }];
     self.tableView.mj_footer = footer;
-    /////////////////////////////////
+
     self.tableView.mj_footer.automaticallyHidden=YES;
 }
 
-- (void)requestMoreData:(NSString*)url
+- (void)moreData:(NSString*)url
 {
-    [SVProgressHUD showWithStatus:@"数据加载中..."];
+    [SVProgressHUD showWithStatus:@"加载中"];
     
-    
-    [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
-        //DLog(@"加载更多==%@",responseObject);
-        NSArray* arr=responseObject[@"list"];
-        self.tableView.tableFooterView.hidden=YES;
+    [XAFNetWork GET:url params:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray* listArr=responseObject[@"list"];
         
-        
-            if (!arr.count) {
-                
-                
-                self.tableView.mj_footer.state = MJRefreshStateNoMoreData;
-              
-            }
-            
-        
-        
-        
-        
-        for (NSDictionary* dic in arr) {
-            HomeListModel* model =[HomeListModel ModelWithDict:dic];
-            
+        for (NSDictionary* dic in listArr) {
+            HomeListModel* model=[HomeListModel ModelWithDict:dic];
             [_tabScroce addObject:model];
         }
-        // DLog(@"catehome===%lu",(unsigned long)_tabScroce.count);
+
         [self.tableView reloadData];
+        [self endRefresh];
         [SVProgressHUD dismiss];
-        [self.tableView.mj_header endRefreshing];
+        
     } fail:^(NSURLSessionDataTask *task, NSError *error) {
-        [self.tableView.mj_header endRefreshing];
+        NSLog(@"错误");
+        [self endRefresh];
         [SVProgressHUD dismiss];
     }];
 }
 
+#pragma mark-结束刷新方法
+-(void)endRefresh{
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView.mj_footer endRefreshing];
+}
 - (void)setCateTitle:(NSString *)cateTitle
 {
     _cateTitle=cateTitle;
@@ -219,9 +213,10 @@
     //return 200;
     
     if (_tabScroce.count>0) {
-        return 220;
+        return 200;
     }
-    return kSCREEN_HEIGHT;
+    return kSCREEN_HEIGHT-64;
+   
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -233,7 +228,6 @@
         HomeDetailController* dVC=[[HomeDetailController alloc]init];
         
         HomeListModel* model=_tabScroce[indexPath.row];
-        
         
         
         dVC.chamber_id= model.chamber_id;
@@ -249,6 +243,13 @@
     
 }
 
+//-(void)viewDidLayoutSubviews
+//{
+//    //[self viewDidLayoutSubviews];
+//    self.tableView.estimatedRowHeight = 0;
+//    self.tableView.estimatedSectionHeaderHeight = 0;
+//    self.tableView.estimatedSectionFooterHeight = 0;
+//}
 /*
 #pragma mark - Navigation
 

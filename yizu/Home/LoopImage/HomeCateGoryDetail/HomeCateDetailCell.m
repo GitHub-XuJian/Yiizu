@@ -60,7 +60,7 @@
     
     self.rankingLab .text=[NSString stringWithFormat:@"%@| 排名：%@",model.city_id,model.up];
     
-    self.chamberjjLabel.text=[NSString stringWithFormat:@"%@%@",model.locus_id,model.full];
+    self.chamberjjLabel.text=[NSString stringWithFormat:@"%@",model.full];
     if (model.distance.integerValue>=1000) {
         
         self.distanceLab.text=[NSString stringWithFormat:@"距离：%1.1f km",model.distance.floatValue/1000];
