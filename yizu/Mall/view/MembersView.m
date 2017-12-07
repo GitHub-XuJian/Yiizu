@@ -33,7 +33,7 @@
 {
     self.dataArray = [NSMutableArray arrayWithObjects:
   @{@"title":@"VIP套餐",@"button":@1},
-                      @{@"title":@"1个月48元",@"button":@0,@"money":@1,@"tian":@30},
+                      @{@"title":@"1个月48元",@"button":@0,@"money":@4800,@"tian":@30},
   @{@"title":@"3个月128元",@"button":@0,@"money":@12800,@"tian":@90},
   @{@"title":@"6个月218元",@"button":@0,@"money":@21800,@"tian":@180},
   @{@"title":@"年费358元",@"button":@0,@"money":@35800,@"tian":@365}, nil];
