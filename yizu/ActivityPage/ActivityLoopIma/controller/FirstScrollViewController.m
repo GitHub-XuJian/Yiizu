@@ -13,7 +13,7 @@
 
 #import "ActivityDetailController.h"
 
-
+#import "CityBtn.h"
 
 
 @interface FirstScrollViewController ()<SDCycleScrollViewDelegate>
@@ -22,6 +22,7 @@
 @property (nonatomic, strong)SDCycleScrollView* SDCScrollView;
 @property (nonatomic, strong)NSMutableArray* cityArr;
 
+@property (nonatomic, copy) NSString* cityId;
 
 @end
 
@@ -102,12 +103,13 @@
     
     for (int i=0; i<4; i++) {
         ActivityPageModel* model=arr[i];
-        UIButton* btn=[[UIButton alloc]init];
+        CityBtn* btn=[[CityBtn alloc]init];
         int value= [model.idq intValue];
         btn.tag=10+value;
         [btn addTarget:self action:@selector(cityBtn:) forControlEvents:UIControlEventTouchUpInside];
-//        [btn setTitle:model.town forState:UIControlStateNormal];
         
+       // [btn setTitle:model.town forState:UIControlStateNormal];
+        btn.cityId=model.town;
         [btn sd_setBackgroundImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@Public/%@",Main_ServerImage,model.citypic]] forState:UIControlStateNormal];
         //self.SDCScrollView.frame获取不到frame
         
@@ -127,13 +129,13 @@
     }
 }
 
-- (void)cityBtn:(UIButton*)btn
+- (void)cityBtn:(CityBtn*)btn
 {
    ActivityDetailController* dVC=[[ActivityDetailController alloc]init];
     NSString * idq=[NSString stringWithFormat:@"%ld",btn.tag-10];
     dVC.idq=idq;
-    dVC.townId=btn.currentTitle;
-    
+    dVC.townId=btn.cityId;
+  
     [self.navigationController pushViewController:dVC animated:YES];
     
 }

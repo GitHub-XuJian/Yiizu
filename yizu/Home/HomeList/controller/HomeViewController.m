@@ -111,6 +111,7 @@
           //http:// 47.104.18.18/index.php/Mobile/Index/index_Chamber/data/城市id
           //personid/3/sequence/0/page/页数/
          newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+          
 
       }else
       {
@@ -157,8 +158,13 @@
         {
             if (self.homeListAreaId) {
                 if (self.paixu) {
+                    if (self.CityURLstr) {
+                        newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+                        DLog(@"又几把点回了商家列表");
+                    }else{
                     newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
                     DLog(@"游客点击了区域按钮:%@",newUrl);
+                    }
                 }else
                 {
                     newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
@@ -167,6 +173,7 @@
                
               
             }else{
+                
             newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
             }
         }else
@@ -192,6 +199,7 @@
     }];
     self.tableView.mj_footer = footer;
     /////////////////////////////////
+
     self.tableView.mj_footer.automaticallyHidden=YES;
 }
 
@@ -228,7 +236,7 @@
 - (void)requestMoreData:(NSString*)cityId
 {
     [SVProgressHUD showWithStatus:@"数据加载中..."];
-  
+    NSLog(@"加载更多数据的时候");
     
     [XAFNetWork GET:cityId params:nil success:^(NSURLSessionDataTask *task, NSDictionary* responseObject) {
         //DLog(@"加载更多==%@",responseObject);

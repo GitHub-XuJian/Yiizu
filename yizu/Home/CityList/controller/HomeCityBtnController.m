@@ -133,12 +133,6 @@ static NSString * const cityUrl = @"%@Mobile/Index/index_Chamber/data/%@personid
     cell.backgroundColor=[UIColor whiteColor];
     
   //加阴影
-//    cell.layer.shadowColor = [UIColor lightGrayColor].CGColor;
-//    cell.layer.shadowOffset = CGSizeMake(-10,-10);
-//    cell.layer.shadowRadius = 2.0f;
-//    cell.layer.shadowOpacity = 0.4f;
-//    cell.layer.masksToBounds = NO;
-//    cell.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:cell.bounds cornerRadius:cell.contentView.layer.cornerRadius].CGPath;
     
     CityListModel* model=self.cityArr[indexPath.section];
     SmallCityListModel* smodel=model.list[indexPath.item];
@@ -184,7 +178,15 @@ static NSString * const cityUrl = @"%@Mobile/Index/index_Chamber/data/%@personid
     
     // 点击城市按钮请求的是城市（排序方式）离我最近
     //@"%@Mobile/Index/index_Chamber/data/%@personid/3/sequence/0/page/1/"
-    NSString* url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/3/sequence/0/page/1/",Main_Server,smodel.cityId];
+    NSString* url=@"";
+    if (!IsLoginState)
+    {
+         url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/1/",Main_Server,smodel.cityId];
+    }else
+    {
+        url=[NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/1/",Main_Server,smodel.cityId,[XSaverTool objectForKey:UserIDKey]];
+    }
+    
     
 
     DLog(@"点击行按钮=%@%@",model.name,url);

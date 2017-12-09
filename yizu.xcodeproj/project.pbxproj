@@ -273,6 +273,7 @@
 		AFE98D6A1FD4FE4200EBBCA1 /* StandInsideLetterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D691FD4FE4200EBBCA1 /* StandInsideLetterViewController.m */; };
 		AFE98D6D1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */; };
 		AFE98D701FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */; };
+		E51E6F141FDB7B4600C7039F /* CityBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = E51E6F131FDB7B4600C7039F /* CityBtn.m */; };
 		E5EA18BD1FD5503200234B74 /* HomeDetailScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA18B91FD5503200234B74 /* HomeDetailScrollView.m */; };
 		E5EA18BE1FD5503200234B74 /* HomeDetailImaView.m in Sources */ = {isa = PBXBuildFile; fileRef = E5EA18BA1FD5503200234B74 /* HomeDetailImaView.m */; };
 /* End PBXBuildFile section */
@@ -800,6 +801,8 @@
 		AFE98D6C1FD50B8B00EBBCA1 /* StandInsideLetterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterTableViewCell.m; sourceTree = "<group>"; };
 		AFE98D6E1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StandInsideLetterDetailsViewController.h; sourceTree = "<group>"; };
 		AFE98D6F1FD5191B00EBBCA1 /* StandInsideLetterDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StandInsideLetterDetailsViewController.m; sourceTree = "<group>"; };
+		E51E6F121FDB7B4600C7039F /* CityBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityBtn.h; sourceTree = "<group>"; };
+		E51E6F131FDB7B4600C7039F /* CityBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityBtn.m; sourceTree = "<group>"; };
 		E5EA18B91FD5503200234B74 /* HomeDetailScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailScrollView.m; sourceTree = "<group>"; };
 		E5EA18BA1FD5503200234B74 /* HomeDetailImaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDetailImaView.m; sourceTree = "<group>"; };
 		E5EA18BB1FD5503200234B74 /* HomeDetailScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDetailScrollView.h; sourceTree = "<group>"; };
@@ -1018,6 +1021,8 @@
 			children = (
 				1F1767351FB3F91200BB5026 /* FirstScrollViewController.h */,
 				1F1767361FB3F91200BB5026 /* FirstScrollViewController.m */,
+				E51E6F121FDB7B4600C7039F /* CityBtn.h */,
+				E51E6F131FDB7B4600C7039F /* CityBtn.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -2536,6 +2541,7 @@
 				AF66ADFC1F9DE1B60079A2CF /* MJRefreshBackStateFooter.m in Sources */,
 				AF8B6CF51FA01A4A008DA068 /* UIImageView+HighlightedWebCache.m in Sources */,
 				AF626D231FA2D97D00A1225F /* HomeCityBtnController.m in Sources */,
+				E51E6F141FDB7B4600C7039F /* CityBtn.m in Sources */,
 				AF626D221FA2D97D00A1225F /* HomAreaBtnController.m in Sources */,
 				AF66ADF51F9DE1B60079A2CF /* MJRefreshFooter.m in Sources */,
 				AFB2156E1FC3BBCA006DD630 /* MallTransactionRecordsTableViewCell.m in Sources */,
