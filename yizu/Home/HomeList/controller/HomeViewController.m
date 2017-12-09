@@ -154,49 +154,59 @@
    MJRefreshAutoNormalFooter *footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
           self.currentPage+=1;
         NSString* newUrl=@"";
-        if (!IsLoginState)
-        {
-            if (self.homeListAreaId) {
-                if (self.paixu) {
-                    if (self.CityURLstr) {
-                        newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
-                        DLog(@"又几把点回了商家列表");
-                    }else{
-                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
-                    DLog(@"游客点击了区域按钮:%@",newUrl);
-                    }
-                }else
-                {
-                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
-                }
-                
+       if (!IsLoginState)
+       {
+           if (self.CityURLstr) {
+               if (self.homeListAreaId) {
+                   NSLog(@"点击了城市点击了区域");
+                   newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
+               }else
+               {
+                   NSLog(@"点击城市按钮后没点击区域和热门");
+                   newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+               }
+           }
+           else
+           {
+               if (self.homeListAreaId ) {
+                   
+                   if (self.paixu) {
+                       newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
+                       DLog(@"游客点击了区域按钮:%@",newUrl);
+                       
+                   }else{
+                       newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
+                   }
+                   
+                   
+               }else{
+                   
+                   newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+               }
+           }
+           
+           
+       }else
+       {
+           if (self.homeListAreaId) {
+               if (self.paixu) {
+                   newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage,[XSaverTool objectForKey:UserIDKey]];
+                   DLog(@"游客点击了区域按钮:%@",newUrl);
+               }else
+               {
+                   newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage,[XSaverTool objectForKey:UserIDKey]];
+               }
                
-              
-            }else{
-                
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
-            }
-        }else
-        {
-            if (self.homeListAreaId) {
-                if (self.paixu) {
-                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/1",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage,[XSaverTool objectForKey:UserIDKey]];
-                    DLog(@"游客点击了区域按钮:%@",newUrl);
-                }else
-                {
-                    newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/%@/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage,[XSaverTool objectForKey:UserIDKey]];
-                }
-                
-                
-                
-            }else{
-            newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
-        }
-        }
-        [self requestMoreData:newUrl];
-        DLog(@"上啦回调%@",newUrl);
-
-    }];
+               
+               
+           }else{
+               newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/%@/sequence/0/page/%d",Main_Server,self.homeListCityId,[XSaverTool objectForKey:UserIDKey],self.currentPage];
+           }
+       }
+       [self requestMoreData:newUrl];
+       DLog(@"上啦回调%@",newUrl);
+       
+   }];
     self.tableView.mj_footer = footer;
     /////////////////////////////////
 
