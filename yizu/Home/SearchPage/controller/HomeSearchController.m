@@ -131,8 +131,9 @@
 {
     HomeDetailController* hdc=[[HomeDetailController alloc]init];
     
-    hdc.model=self.seachArr[indexPath.row];
-    
+    HomeListModel* model=self.seachArr[indexPath.row];
+    hdc.chamber_id= model.chamber_id;
+    hdc.userId=[XSaverTool objectForKey:UserIDKey];
     
     [self.navigationController pushViewController:hdc animated:YES];
    
