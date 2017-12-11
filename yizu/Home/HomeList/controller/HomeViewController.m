@@ -159,13 +159,14 @@
            if (self.CityURLstr) {
                if (self.homeListAreaId) {
                    //NSLog(@"点击了城市点击了区域");
-//                   newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
-                    newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
+                   newUrl=[NSString stringWithFormat:@"%@Mobile/Index/index_area/data/%@/area/%@/page/%d/personid/0/sequence/0",Main_Server,self.homeListCityId,self.homeListAreaId,self.currentPage];
+                   
                }else
                {
                    NSLog(@"点击城市按钮后没点击区域和热门");
                    newUrl= [NSString stringWithFormat:@"%@Mobile/Index/index_Chamber/data/%@/personid/0/sequence/0/page/%d",Main_Server,self.homeListCityId,self.currentPage];
                }
+                
            }
            else
            {
